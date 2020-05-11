@@ -1,0 +1,25 @@
+.user-dropdown {
+    .user-icon {
+        vertical-align: middle;
+    }
+}
+
+.user-dropdown,
+.lang-dropdown {
+    cursor: pointer !important;
+    display: inline-block;
+    margin-right: 1rem;
+    margin-left: 1rem;
+}
+
+.account-menu {
+    background: #ff6358;
+    padding: 8px;
+    border-radius: 13px;
+}
+.header{
+    width: 100%;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+

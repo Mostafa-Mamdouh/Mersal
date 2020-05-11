@@ -1,0 +1,57 @@
+AutoMapper.AutoMapperMappingException: Error mapping types.
+
+Mapping types:
+AddPaymentMovmentViewModel -> PaymentMovment
+MersalAccountingService.Core.Models.ViewModels.PaymentMovment.AddPaymentMovmentViewModel -> MersalAccountingService.Entities.Entity.PaymentMovment
+
+Type Map configuration:
+AddPaymentMovmentViewModel -> PaymentMovment
+MersalAccountingService.Core.Models.ViewModels.PaymentMovment.AddPaymentMovmentViewModel -> MersalAccountingService.Entities.Entity.PaymentMovment
+
+Destination Member:
+PaymentMovmentNotificationDiscounts
+ ---> AutoMapper.AutoMapperConfigurationException: 
+Unmapped members were found. Review the types and members below.
+Add a custom mapping expression, ignore, add a custom resolver, or modify the source/destination type
+For no matching constructor, add a no-arg ctor, add optional arguments, or map all of the constructor parameters
+===========================================================================================================================================================================
+AutoMapper created this type map for you, but your types cannot be mapped using the current configuration.
+NotificationsDiscountViewModel -> PaymentMovmentNotificationDiscount (Destination member list)
+MersalAccountingService.Core.Models.ViewModels.PaymentMovment.NotificationsDiscountViewModel -> MersalAccountingService.Entities.Entity.PaymentMovmentNotificationDiscount (Destination member list)
+
+Unmapped properties:
+Id
+CreationDate
+FirstModificationDate
+LastModificationDate
+PaymentMovmentId
+PaymentMovment
+DiscountPercentage
+
+   at AutoMapper.ConfigurationValidator.AssertConfigurationIsValid(IEnumerable`1 typeMaps)
+   at lambda_method(Closure , AddPaymentMovmentViewModel , PaymentMovment , ResolutionContext )
+   --- End of inner exception stack trace ---
+   at lambda_method(Closure , AddPaymentMovmentViewModel , PaymentMovment , ResolutionContext )
+   at AutoMapper.Mapper.AutoMapper.IMapper.Map[TSource,TDestination](TSource source)
+   at MersalAccountingService.Core.AutoMapperConfig.Extentions.ToEntity(AddPaymentMovmentViewModel model) in C:\Mersal\SmartBalance\Version 1.0.0\Code\Backend\MersalAccounting\MersalAccountingService.Core\AutoMapperConfig\Extentions.cs:line 3005
+   at MersalAccountingService.BusinessLogic.Services.PaymentMovmentsService.Add(AddPaymentMovmentViewModel model) in C:\Mersal\SmartBalance\Version 1.0.0\Code\Backend\MersalAccounting\MersalAccountingService.BusinessLogic\Services\Shared\PaymentMovmentsService.cs:line 773
+   at MersalAccountingService.WebAPI.Controllers.API.PaymentMovmentsController.AddPaymentMovmentViewModel(AddPaymentMovmentViewModel model) in C:\Mersal\SmartBalance\Version 1.0.0\Code\Backend\MersalAccounting\MersalAccountingService.WebAPI\Controllers\API\Shared\PaymentMovmentsController.cs:line 208
+   at lambda_method(Closure , Object , Object[] )
+   at System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ActionExecutor.<>c__DisplayClass6_2.<GetExecutor>b__2(Object instance, Object[] methodParameters)
+   at System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ExecuteAsync(HttpControllerContext controllerContext, IDictionary`2 arguments, CancellationToken cancellationToken)
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Controllers.ApiControllerActionInvoker.<InvokeActionAsyncCore>d__1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Controllers.ActionFilterResult.<ExecuteAsync>d__5.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Controllers.AuthenticationFilterResult.<ExecuteAsync>d__5.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Controllers.ExceptionFilterResult.<ExecuteAsync>d__6.MoveNext()

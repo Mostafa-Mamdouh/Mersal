@@ -1,0 +1,55 @@
+<div class="row">
+    <div class="col-md-4 col-sm-6">
+            <div class="card mt0 height100">
+                    <h5 class="card-header"><i class="fa fa-tree"></i> {{'accountChart.accountTree'|translate}}</h5>
+                    <div class="card-body account-chart-tree">
+                        <!-- <button class="btn btn-primary" (click)="AddMainAcc()">{{'accountChart.CreateMain'|translate}}</button> -->
+                        <loader [hidden]="!ListLoading"></loader>
+                        <kendo-treeview *ngIf="!ListLoading" [nodes]="ChartTreeList" [children]="children"
+                            [hasChildren]="hasChildren" textField="name" [isExpanded]="isExpanded"
+                            (collapse)="handleCollapse($event)" (expand)="handleExpand($event)" kendoTreeViewSelectable
+                            kendoTreeViewHierarchyBinding (nodeClick)="onNodeClick($event)">
+                        </kendo-treeview>
+                        <kendo-contextmenu #treemenu [items]="items" (select)="onSelect($event)">
+                        </kendo-contextmenu>
+                    </div>
+                </div>
+    </div>
+    <div class="col-md-8 col-sm-6">
+            <addAccountChart [ParentAccountChart]="ParentAccountChart" 
+            (SucessAddOperation)='SucessAddOperation($event)'
+            (SucessEditOperation)="SucessEditOperation($event)"
+            [AccountChartDetailsId]="AccountChartDetailsId"></addAccountChart>
+    </div>
+</div>
+
+
+<!-- <div style="width: 500px; height: 500px; background: yellow;">
+        <as-split direction="horizontal">
+                <as-split-area size="40">
+                    <as-split direction="vertical">
+                        <as-split-area>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tiam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                        </as-split-area>
+                        <as-split-area>
+                            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eodolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
+                        </as-split-area>
+                        <as-split-area>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tiam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                        </as-split-area>
+                    </as-split>
+                </as-split-area>
+                <as-split-area size="60">
+                    <as-split direction="vertical">
+                        <as-split-area size="25">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tiam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                        </as-split-area>
+                        <as-split-area size="75">
+                            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eodolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
+                        </as-split-area>
+                    </as-split>
+                </as-split-area>
+            </as-split>
+</div> -->
+
+

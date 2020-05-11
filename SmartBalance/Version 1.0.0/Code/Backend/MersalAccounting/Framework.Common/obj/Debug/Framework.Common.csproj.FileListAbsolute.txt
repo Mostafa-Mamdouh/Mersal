@@ -1,0 +1,5 @@
+C:\Mersal\SmartBalance\Version 1.0.0\Code\Backend\MersalAccounting\Framework.Common\bin\Debug\Framework.Common.dll
+C:\Mersal\SmartBalance\Version 1.0.0\Code\Backend\MersalAccounting\Framework.Common\bin\Debug\Framework.Common.pdb
+C:\Mersal\SmartBalance\Version 1.0.0\Code\Backend\MersalAccounting\Framework.Common\obj\Debug\Framework.Common.dll
+C:\Mersal\SmartBalance\Version 1.0.0\Code\Backend\MersalAccounting\Framework.Common\obj\Debug\Framework.Common.pdb
+C:\Mersal\SmartBalance\Version 1.0.0\Code\Backend\MersalAccounting\Framework.Common\obj\Debug\Framework.Common.csprojAssemblyReference.cache

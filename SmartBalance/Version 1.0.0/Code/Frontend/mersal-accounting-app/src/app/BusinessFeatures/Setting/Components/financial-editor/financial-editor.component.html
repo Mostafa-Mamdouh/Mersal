@@ -1,0 +1,222 @@
+<div class="container-fluid">
+    <h3><i class="fa fa-credit-card"></i> {{ 'setting.financialSetting.title' | translate }}</h3>
+    <loader [hidden]="!PageLoading"></loader>
+
+    <section *ngIf="!PageLoading">
+        <form role="form" [formGroup]="editorForm">
+            <section class="border-curvy">
+                <div class="row">
+                    <!--showCasesThatMetRequiredAmount-->
+                    <div class="form-group col-md-6">
+                        <label>{{' '}}</label>
+                        <div>
+                            <input type="checkbox" placeholder=""
+                                class="form-control checkbox-inline checkbox-inline-25"
+                                formControlName="showCasesThatMetRequiredAmount" id="showCasesThatMetRequiredAmount"
+                                [ngClass]="{'border border-danger' : editorForm.controls['showCasesThatMetRequiredAmount'].invalid && 
+                                editorForm.controls['showCasesThatMetRequiredAmount'].touched}">
+                            <label
+                                for="showCasesThatMetRequiredAmount">{{ 'setting.financialSetting.showCasesThatMetRequiredAmount' | translate }}
+                            </label>
+                        </div>
+                        <div class="text-danger" *ngIf="(editorForm.controls['showCasesThatMetRequiredAmount'].hasError('invalid' ) || 
+                                         editorForm.controls['showCasesThatMetRequiredAmount'].hasError('required' ) )&&
+                                        (editorForm.controls['showCasesThatMetRequiredAmount'].touched || 
+                                         editorForm.controls['showCasesThatMetRequiredAmount'].dirty)">
+                            {{ 'movements.fieldReq' | translate }}
+                        </div>
+                    </div>
+
+                    <!--useChecksUnderCollection-->
+                    <div class="form-group col-md-6">
+                        <label>{{' '}}</label>
+                        <div>
+                            <input type="checkbox" placeholder=""
+                                class="form-control checkbox-inline checkbox-inline-25"
+                                formControlName="useChecksUnderCollection" id="useChecksUnderCollection" [ngClass]="{'border border-danger' : editorForm.controls['useChecksUnderCollection'].invalid && 
+                                editorForm.controls['useChecksUnderCollection'].touched}">
+                            <label
+                                for="useChecksUnderCollection">{{ 'setting.financialSetting.useChecksUnderCollection' | translate }}
+                            </label>
+                        </div>
+                        <div class="text-danger" *ngIf="(editorForm.controls['useChecksUnderCollection'].hasError('invalid' ) || 
+                                         editorForm.controls['useChecksUnderCollection'].hasError('required' ) )&&
+                                        (editorForm.controls['useChecksUnderCollection'].touched || 
+                                         editorForm.controls['useChecksUnderCollection'].dirty)">
+                            {{ 'movements.fieldReq' | translate }}
+                        </div>
+                    </div>
+
+                     <!--vatAccountNumber-->
+                     <div class="col-md-6">
+                        <label>{{ 'setting.financialSetting.vatAccountNumber' | translate }} <span
+                                class="text-danger">*</span> </label>
+                        <kendo-dropdownlist #list [data]="AccountCharts" [filterable]="true"
+                            [textField]="'displyedName'" [valueField]="'id'" [valuePrimitive]="true"
+                            [kendoDropDownFilter]="filterSettings" id="vatAccountNumber"
+                            formControlName="vatAccountNumber" class="width90 height38">
+                        </kendo-dropdownlist>
+
+                        <div class="text-danger" *ngIf="editorForm.controls['vatAccountNumber'].hasError('required') &&
+                                (editorForm.controls['vatAccountNumber'].touched || 
+                                editorForm.controls['vatAccountNumber'].dirty)">
+                            {{ 'movements.fieldReq' | translate }}
+                        </div>
+                    </div>
+
+                    <!--checksUnderCollectionAccountNumber-->
+                    <div class="col-md-6">
+                        <label>{{ 'setting.financialSetting.checksUnderCollectionAccountNumber' | translate }} <span
+                                class="text-danger">*</span> </label>
+                        <kendo-dropdownlist #list [data]="AccountCharts" [filterable]="true"
+                            [textField]="'displyedName'" [valueField]="'id'" [valuePrimitive]="true"
+                            [kendoDropDownFilter]="filterSettings" id="checksUnderCollectionAccountNumber"
+                            formControlName="checksUnderCollectionAccountNumber" class="width90 height38">
+                        </kendo-dropdownlist>
+
+                        <div class="text-danger" *ngIf="editorForm.controls['checksUnderCollectionAccountNumber'].hasError('required') &&
+                        (editorForm.controls['checksUnderCollectionAccountNumber'].touched || 
+                        editorForm.controls['checksUnderCollectionAccountNumber'].dirty)">
+                            {{ 'movements.fieldReq' | translate }}
+                        </div>
+                    </div>
+
+                    <!--donationAccountNumber-->
+                    <div class="col-md-6">
+                        <label>{{ 'setting.financialSetting.donationAccountNumber' | translate }} <span
+                                class="text-danger">*</span> </label>
+                        <kendo-dropdownlist #list [data]="AccountCharts" [filterable]="true"
+                            [textField]="'displyedName'" [valueField]="'id'" [valuePrimitive]="true"
+                            [kendoDropDownFilter]="filterSettings" id="donationAccountNumber"
+                            formControlName="donationAccountNumber" class="width90 height38">
+                        </kendo-dropdownlist>
+
+                        <div class="text-danger" *ngIf="editorForm.controls['donationAccountNumber'].hasError('required') &&
+                                (editorForm.controls['donationAccountNumber'].touched || 
+                                editorForm.controls['donationAccountNumber'].dirty)">
+                            {{ 'movements.fieldReq' | translate }}
+                        </div>
+                    </div>
+
+                    <!--donationReturnAccountNumber-->
+                    <div class="col-md-6">
+                        <label>{{ 'setting.financialSetting.donationReturnAccountNumber' | translate }} <span
+                                class="text-danger">*</span> </label>
+                        <kendo-dropdownlist #list [data]="AccountCharts" [filterable]="true"
+                            [textField]="'displyedName'" [valueField]="'id'" [valuePrimitive]="true"
+                            [kendoDropDownFilter]="filterSettings" id="donationReturnAccountNumber"
+                            formControlName="donationReturnAccountNumber" class="width90 height38">
+                        </kendo-dropdownlist>
+
+                        <div class="text-danger" *ngIf="editorForm.controls['donationReturnAccountNumber'].hasError('required') &&
+                                (editorForm.controls['donationReturnAccountNumber'].touched || 
+                                editorForm.controls['donationReturnAccountNumber'].dirty)">
+                            {{ 'movements.fieldReq' | translate }}
+                        </div>
+                    </div>
+
+                    <!--temporaryCovenantAccountNumber-->
+                    <div class="col-md-6">
+                        <label>{{ 'setting.financialSetting.temporaryCovenantAccountNumber' | translate }} <span
+                                class="text-danger">*</span> </label>
+                        <kendo-dropdownlist #list [data]="AccountCharts" [filterable]="true"
+                            [textField]="'displyedName'" [valueField]="'id'" [valuePrimitive]="true"
+                            [kendoDropDownFilter]="filterSettings" id="temporaryCovenantAccountNumber"
+                            formControlName="temporaryCovenantAccountNumber" class="width90 height38">
+                        </kendo-dropdownlist>
+
+                        <div class="text-danger" *ngIf="editorForm.controls['temporaryCovenantAccountNumber'].hasError('required') &&
+                (editorForm.controls['temporaryCovenantAccountNumber'].touched || 
+                editorForm.controls['temporaryCovenantAccountNumber'].dirty)">
+                            {{ 'movements.fieldReq' | translate }}
+                        </div>
+                    </div>
+                    <!--bankingPaymentsAccountNumber-->
+                    <div class="col-md-6">
+                        <label>{{ 'setting.financialSetting.bankingPaymentsAccountNumber' | translate }} <span
+                                class="text-danger">*</span> </label>
+                        <kendo-dropdownlist #list [data]="AccountCharts" [filterable]="true"
+                            [textField]="'displyedName'" [valueField]="'id'" [valuePrimitive]="true"
+                            [kendoDropDownFilter]="filterSettings" id="bankingPaymentsAccountNumber"
+                            formControlName="bankingPaymentsAccountNumber" class="width90 height38">
+                        </kendo-dropdownlist>
+
+                        <div class="text-danger" *ngIf="editorForm.controls['bankingPaymentsAccountNumber'].hasError('required') &&
+                (editorForm.controls['bankingPaymentsAccountNumber'].touched || 
+                editorForm.controls['bankingPaymentsAccountNumber'].dirty)">
+                            {{ 'movements.fieldReq' | translate }}
+                        </div>
+                    </div>
+                    <!--receiptPapersAccountNumber-->
+                    <div class="col-md-6">
+                        <label>{{ 'setting.financialSetting.receiptPapersAccountNumber' | translate }} <span
+                                class="text-danger">*</span> </label>
+                        <kendo-dropdownlist #list [data]="AccountCharts" [filterable]="true"
+                            [textField]="'displyedName'" [valueField]="'id'" [valuePrimitive]="true"
+                            [kendoDropDownFilter]="filterSettings" id="receiptPapersAccountNumber"
+                            formControlName="receiptPapersAccountNumber" class="width90 height38">
+                        </kendo-dropdownlist>
+
+                        <div class="text-danger" *ngIf="editorForm.controls['receiptPapersAccountNumber'].hasError('required') &&
+                    (editorForm.controls['receiptPapersAccountNumber'].touched || 
+                    editorForm.controls['receiptPapersAccountNumber'].dirty)">
+                            {{ 'movements.fieldReq' | translate }}
+                        </div>
+                    </div>
+                    <!--ChecksUnderReceiptPapersAccountNumber-->
+                    <div class="col-md-6">
+                        <label>{{ 'setting.financialSetting.checksUnderReceiptPapersAccountNumber' | translate }} <span
+                                class="text-danger">*</span> </label>
+                        <kendo-dropdownlist #list [data]="AccountCharts" [filterable]="true"
+                            [textField]="'displyedName'" [valueField]="'id'" [valuePrimitive]="true"
+                            [kendoDropDownFilter]="filterSettings" id="checksUnderReceiptPapersAccountNumber"
+                            formControlName="checksUnderReceiptPapersAccountNumber" class="width90 height38">
+                        </kendo-dropdownlist>
+
+                        <div class="text-danger" *ngIf="editorForm.controls['checksUnderReceiptPapersAccountNumber'].hasError('required') &&
+                    (editorForm.controls['checksUnderReceiptPapersAccountNumber'].touched || 
+                    editorForm.controls['checksUnderReceiptPapersAccountNumber'].dirty)">
+                            {{ 'movements.fieldReq' | translate }}
+                        </div>
+                    </div>
+
+                    <!--GeneralDonationsAccountNumber-->
+                    <div class="col-md-6">
+                        <label>{{ 'setting.financialSetting.generalDonationsAccountNumber' | translate }} <span
+                                class="text-danger">*</span> </label>
+                        <kendo-dropdownlist #list [data]="AccountCharts" [filterable]="true"
+                            [textField]="'displyedName'" [valueField]="'id'" [valuePrimitive]="true"
+                            [kendoDropDownFilter]="filterSettings" id="generalDonationsAccountNumber"
+                            formControlName="generalDonationsAccountNumber" class="width90 height38">
+                        </kendo-dropdownlist>
+
+                        <div class="text-danger" *ngIf="editorForm.controls['generalDonationsAccountNumber'].hasError('required') &&
+                    (editorForm.controls['generalDonationsAccountNumber'].touched || 
+                    editorForm.controls['generalDonationsAccountNumber'].dirty)">
+                            {{ 'movements.fieldReq' | translate }}
+                        </div>
+                    </div>
+
+
+                </div>
+
+            </section>
+
+            <loader [hidden]="!isProccessing"></loader>
+
+            <div class="row">
+                <div class="form-group col-lg-4">
+                    <button type="submit" (click)="save()" [disabled]="!editorForm.valid || isProccessing"
+                        class="btn btn-secondary">
+                        <i class="fa fa-floppy-o verticalLine"></i> {{ 'shared.save' | translate }}
+                    </button>
+                    &nbsp;
+                    <button routerLink="/setting/control-panel" class="btn btn-secondary">
+                        <i class="fa fa-undo"></i> {{'shared.back' | translate }}
+                    </button>
+                </div>
+            </div>
+        </form>
+    </section>
+
+</div>

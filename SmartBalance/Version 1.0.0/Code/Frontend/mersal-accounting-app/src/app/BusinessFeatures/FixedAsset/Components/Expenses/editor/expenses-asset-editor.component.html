@@ -1,0 +1,171 @@
+<div class="container-fluid">
+    <h3><i class="fa fa-credit-card"></i> {{ 'expensesAsset.shared.add' | translate }}</h3>
+
+    <loader [hidden]="!PageLoading"></loader>
+
+    <section class="editor-section" *ngIf="!PageLoading">
+        <form role="form" [formGroup]="editorForm">
+            <div class="row">
+
+                <!--asset-->
+                <div class="form-group col-md-2">
+                    <label>{{ 'expensesAsset.shared.asset' | translate }}
+                        <span *ngIf="canEdit()" class="text-danger">*</span>
+                    </label>
+                    <kendo-dropdownlist [data]="assets" [filterable]="true" [textField]="'brandName'"
+                        [valueField]="'assetId'" [valuePrimitive]="true" selected [kendoDropDownFilter]="filterSettings"
+                        id="asset" class=" height38 width-100-per" formControlName="asset"
+                        [disabled]="editorMode != editorModeEnum.add">
+                    </kendo-dropdownlist>
+
+                    <div class="text-danger" *ngIf="editorForm.controls['asset'].hasError('required') &&
+              (editorForm.controls['asset'].touched || 
+               editorForm.controls['asset'].dirty)">
+                        {{ 'movements.fieldReq' | translate }}
+                    </div>
+                </div>
+
+                <!--expensesType-->
+                <div class="form-group col-md-2">
+                    <label>{{ 'expensesAsset.shared.expensesType' | translate }}
+                        <span *ngIf="canEdit()" class="text-danger">*</span>
+                    </label>
+                    <kendo-dropdownlist #expensesType [data]="expensesTypes" [filterable]="true"
+                        [textField]="'displyedName'" [valueField]="'id'" [valuePrimitive]="true" selected
+                        [kendoDropDownFilter]="filterSettings" id="expensesType" class="height38 width-100-per"
+                        formControlName="expensesType" [disabled]="editorMode != editorModeEnum.add">
+                    </kendo-dropdownlist>
+
+                    <div class="text-danger" *ngIf="editorForm.controls['expensesType'].hasError('required') &&
+              (editorForm.controls['expensesType'].touched || 
+               editorForm.controls['expensesType'].dirty)">
+                        {{ 'movements.fieldReq' | translate }}
+                    </div>
+                </div>
+
+                <!--amount-->
+                <div class="form-group col-md-2">
+                    <label>{{ 'expensesAsset.shared.amount' | translate }}
+                        <i *ngIf="canEdit()" class="text-danger">*</i>
+                    </label>
+                    <div class="detail w-100">
+                        <input type="number" *ngIf="editorMode == editorModeEnum.add" min="0" class="form-control"
+                            #depreciationValue formControlName="amount">
+
+                        <input type="number" *ngIf="editorMode != editorModeEnum.add" min="0" class="form-control"
+                            #depreciationValue formControlName="amount" disabled>
+
+                        <div class="text-danger" *ngIf="(editorForm.controls['amount'].hasError('invalid' ) || 
+                                editorForm.controls['amount'].hasError('required' ) )&&
+                               (editorForm.controls['amount'].touched || 
+                                editorForm.controls['amount'].dirty)">
+                            {{ 'movements.fieldReq' | translate }}
+                        </div>
+                        <div class="text-danger" *ngIf="(editorForm.controls['amount'].hasError('invalid' ) || 
+                                            editorForm.controls['amount'].hasError('pattern' ) )&&
+                                           (editorForm.controls['amount'].touched || 
+                                            editorForm.controls['amount'].dirty)">
+                            {{ 'error.positiveNumbersOnly' | translate }}
+                        </div>
+                    </div>
+                </div>
+
+                <!--accountChart-->
+                <div class="form-group col-md-4">
+                    <label>{{ 'expensesAsset.shared.accountChart' | translate }}
+                        <span *ngIf="canEdit()" class="text-danger">*</span>
+                    </label>
+                    <kendo-dropdownlist #accountChartId [data]="accountCharts" [filterable]="true"
+                        [textField]="'displyedName'" [valueField]="'id'" [valuePrimitive]="true" selected
+                        [kendoDropDownFilter]="filterSettings" id="accountChartId" class="height38 width-100-per"
+                        formControlName="accountChartId" [disabled]="editorMode != editorModeEnum.add">
+                    </kendo-dropdownlist>
+
+                    <div class="text-danger" *ngIf="editorForm.controls['accountChartId'].hasError('required') &&
+                  (editorForm.controls['accountChartId'].touched || 
+                   editorForm.controls['accountChartId'].dirty)">
+                        {{ 'movements.fieldReq' | translate }}
+                    </div>
+                </div>
+
+
+                <!-- <div>
+                  <h3>{{editorForm.controls['bankId'].value}}</h3>
+              </div> -->
+            </div>
+
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5>
+                                <i class="fa fa-users" aria-hidden="true"></i>
+                                <span>
+                                    {{ 'asset.editor.description' | translate }}
+                                </span>
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+
+                                <div class="form-group col-lg-6">
+                                    <label>{{ 'asset.editor.descriptionAr' | translate }} </label>
+                                    <textarea *ngIf="canEdit()" class="form-control" formControlName="descriptionAr"
+                                        placeholder="{{ 'asset.editor.descriptionAr' | translate }}"></textarea>
+
+                                    <textarea *ngIf="!canEdit()" disabled class="form-control"
+                                        formControlName="descriptionAr"
+                                        placeholder="{{ 'asset.editor.descriptionAr' | translate }}"></textarea>
+
+                                    <div class="text-danger" *ngIf=" (editorForm.controls['descriptionAr'].hasError('invalid' ) || 
+                                              editorForm.controls['descriptionAr'].hasError('required' ) )&&
+                                                    (editorForm.controls['descriptionAr'].touched || 
+                                                    editorForm.controls['descriptionAr'].dirty)">
+                                        {{ 'movements.fieldReq' | translate }}
+                                    </div>
+
+                                </div>
+
+                                <div class="form-group col-lg-6">
+                                    <label>{{ 'asset.editor.descriptionEn' | translate }} </label>
+                                    <textarea *ngIf="canEdit()" class="form-control" formControlName="descriptionEn"
+                                        placeholder="{{ 'asset.editor.descriptionEn' | translate }}"></textarea>
+
+                                    <textarea *ngIf="!canEdit()" disabled class="form-control"
+                                        formControlName="descriptionEn"
+                                        placeholder="{{ 'asset.editor.descriptionEn' | translate }}"></textarea>
+
+                                    <div class="text-danger" *ngIf=" (editorForm.controls['descriptionEn'].hasError('invalid' ) || 
+                                                  editorForm.controls['descriptionEn'].hasError('required' ) )&&
+                                                    (editorForm.controls['descriptionEn'].touched || 
+                                                    editorForm.controls['descriptionEn'].dirty)">
+                                        {{ 'movements.fieldReq' | translate }}
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <loader [hidden]="!isProccessing"></loader>
+
+            <div class="row">
+                <div class="form-group col-lg-4">
+                    <button *ngIf="canEdit()" type="submit" (click)="save()"
+                        [disabled]="!editorForm.valid || isProccessing" class="btn btn-secondary">
+                        <i class="fa fa-floppy-o verticalLine"></i> {{ 'shared.save' | translate }}
+                    </button>
+                    &nbsp;
+                    <button (click)="goToBack()" class="btn btn-secondary">
+                        <i class="fa fa-undo"></i> {{'shared.back' | translate }}
+                    </button>
+                </div>
+            </div>
+        </form>
+    </section>
+
+</div>

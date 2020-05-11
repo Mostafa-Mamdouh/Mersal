@@ -1,0 +1,342 @@
+<div class="container-fluid">
+    <h3><i class="fa fa-credit-card"></i> {{ 'MenuItem.shared.title' | translate }}</h3>
+
+    <loader [hidden]="!PageLoading"></loader>
+
+    <section class="editor-section" *ngIf="!PageLoading">
+        <form role="form" [formGroup]="editorForm">
+            <div class="row">
+
+                <!--code-->
+                <div class="form-group col-md-2">
+                    <label>{{ 'MenuItem.shared.code' | translate }}
+                        <i *ngIf="canEdit()" class="text-danger">*</i>
+                    </label>
+                    <div class="detail w-100">
+                        <input type="text" *ngIf="canEdit()" min="0" class="form-control" #code formControlName="code">
+
+                        <label *ngIf="editorMode == editorModeEnum.detail"
+                            class="form-control">{{itemModel?.code}}</label>
+
+                        <div class="text-danger" *ngIf="(editorForm.controls['code'].hasError('invalid' ) || 
+                                        editorForm.controls['code'].hasError('required' ) )&&
+                                       (editorForm.controls['code'].touched || 
+                                        editorForm.controls['code'].dirty)">
+                            {{ 'movements.fieldReq' | translate }}
+                        </div>
+                        <div class="text-danger" *ngIf="(editorForm.controls['code'].hasError('invalid' ) || 
+                                            editorForm.controls['code'].hasError('pattern' ) )&&
+                                           (editorForm.controls['code'].touched || 
+                                            editorForm.controls['code'].dirty)">
+                            {{ 'error.positiveNumbersOnly' | translate }}
+                        </div>
+                    </div>
+                </div>
+
+                <!--itemOrder-->
+                <div class="form-group col-md-2">
+                    <label>{{ 'MenuItem.shared.itemOrder' | translate }}
+                        <i *ngIf="canEdit()" class="text-danger">*</i>
+                    </label>
+                    <div class="detail w-100">
+                        <input type="number" *ngIf="canEdit()" min="1" class="form-control" #itemOrder
+                            formControlName="itemOrder">
+
+                        <label *ngIf="editorMode == editorModeEnum.detail"
+                            class="form-control">{{itemModel?.itemOrder}}</label>
+
+                        <div class="text-danger" *ngIf="(editorForm.controls['itemOrder'].hasError('invalid' ) || 
+                                            editorForm.controls['itemOrder'].hasError('required' ) )&&
+                                           (editorForm.controls['itemOrder'].touched || 
+                                            editorForm.controls['itemOrder'].dirty)">
+                            {{ 'movements.fieldReq' | translate }}
+                        </div>
+                        <div class="text-danger" *ngIf="(editorForm.controls['itemOrder'].hasError('invalid' ) || 
+                                            editorForm.controls['itemOrder'].hasError('min' ) )&&
+                                           (editorForm.controls['itemOrder'].touched || 
+                                            editorForm.controls['itemOrder'].dirty)">
+                            {{ 'error.positiveNumbersOnly' | translate }}
+                        </div>
+                    </div>
+                </div>
+
+                <!--parentMenuItem-->
+                <div class="form-group col-md-4">
+                    <label>{{ 'MenuItem.editor.parentMenuItem' | translate }}
+
+                    </label>
+                    <kendo-combobox #parentMenuItemId [data]="menuItems" [filterable]="true"
+                        [textField]="'displyedName'" [valueField]="'id'" [valuePrimitive]="true" selected
+                        [kendoDropDownFilter]="filterSettings" id="parentMenuItemId" class="height38 width-100-per"
+                        formControlName="parentMenuItemId" [disabled]="!canEdit()">
+                    </kendo-combobox>
+
+                    <div class="text-danger" *ngIf="editorForm.controls['parentMenuItemId'].hasError('required') &&
+  (editorForm.controls['parentMenuItemId'].touched || 
+   editorForm.controls['parentMenuItemId'].dirty)">
+                        {{ 'movements.fieldReq' | translate }}
+                    </div>
+                </div>
+
+                <!--isActive-->
+                <div class="form-group col-lg-2">
+                    <label>{{ ' ' }}</label>
+                    <div class="detail w-100">
+                        <input *ngIf="canEdit()" type="checkbox" id="isActive" formControlName="isActive"
+                            class="form-control checkbox-inline">
+
+                        <input *ngIf="!canEdit()" type="checkbox" id="isActive" formControlName="isActive"
+                            disabled="disabled" class="form-control checkbox-inline">
+                        <label for="isActive">{{ 'MenuItem.shared.isActive' | translate }}</label>
+                    </div>
+                </div>
+
+                <!--allowAnonymous-->
+                <div class="form-group col-lg-2">
+                    <label>{{ ' ' }}</label>
+                    <div class="detail w-100">
+                        <input *ngIf="canEdit()" type="checkbox" id="allowAnonymous" formControlName="allowAnonymous"
+                            class="form-control checkbox-inline">
+
+                        <input *ngIf="!canEdit()" type="checkbox" id="allowAnonymous" formControlName="allowAnonymous"
+                            disabled="disabled" class="form-control checkbox-inline">
+                        <label for="isActive">{{ 'MenuItem.editor.allowAnonymous' | translate }}</label>
+                    </div>
+                </div>
+
+                <!--nameAr-->
+                <div class="form-group col-md-3">
+                    <label>{{ 'MenuItem.editor.nameAr' | translate }}
+                        <i *ngIf="canEdit()" class="text-danger">*</i>
+                    </label>
+                    <div class="detail w-100">
+                        <input type="text" *ngIf="canEdit()" min="0" class="form-control" #nameAr
+                            formControlName="nameAr">
+
+                        <input type="text" *ngIf="!canEdit()" min="0" class="form-control" #nameAr disabled
+                            formControlName="nameAr">
+                        <!-- <label *ngIf="editorMode == editorModeEnum.detail"
+                            class="form-control">{{itemModel?.nameAr}}</label> -->
+
+                        <div class="text-danger" *ngIf="(editorForm.controls['nameAr'].hasError('invalid' ) || 
+                                        editorForm.controls['nameAr'].hasError('required' ) )&&
+                                       (editorForm.controls['nameAr'].touched || 
+                                        editorForm.controls['nameAr'].dirty)">
+                            {{ 'movements.fieldReq' | translate }}
+                        </div>
+                    </div>
+                </div>
+
+                <!--nameEn-->
+                <div class="form-group col-md-3">
+                    <label>{{ 'MenuItem.editor.nameEn' | translate }}
+                        <span *ngIf="canEdit()" class="text-danger">*</span>
+                    </label>
+                    <div class="detail w-100">
+                        <input type="text" *ngIf="canEdit()" min="0" class="form-control" #nameEn
+                            formControlName="nameEn">
+
+                        <input type="text" *ngIf="!canEdit()" min="0" class="form-control" #nameEn disabled
+                            formControlName="nameEn">
+
+                        <!-- <label *ngIf="editorMode == editorModeEnum.detail"
+                            class="form-control">{{itemModel?.nameEn}}</label> -->
+
+                        <div class="text-danger" *ngIf="(editorForm.controls['nameEn'].hasError('invalid' ) || 
+                                        editorForm.controls['nameEn'].hasError('required' ) )&&
+                                       (editorForm.controls['nameEn'].touched || 
+                                        editorForm.controls['nameEn'].dirty)">
+                            {{ 'movements.fieldReq' | translate }}
+                        </div>
+                    </div>
+                </div>
+
+                <!--titleAr-->
+                <div class="form-group col-md-3">
+                    <label>{{ 'MenuItem.editor.titleAr' | translate }}
+                        <!-- <i *ngIf="canEdit()" class="text-danger">*</i> -->
+                    </label>
+                    <div class="detail w-100">
+                        <input type="text" *ngIf="canEdit()" min="0" class="form-control" #titleAr
+                            formControlName="titleAr">
+
+                        <input type="text" *ngIf="!canEdit()" min="0" class="form-control" #titleAr disabled
+                            formControlName="titleAr">
+                        <!-- <label *ngIf="editorMode == editorModeEnum.detail"
+                            class="form-control">{{itemModel?.titleAr}}</label> -->
+
+                        <div class="text-danger" *ngIf="(editorForm.controls['titleAr'].hasError('invalid' ) || 
+                                        editorForm.controls['titleAr'].hasError('required' ) )&&
+                                       (editorForm.controls['titleAr'].touched || 
+                                        editorForm.controls['titleAr'].dirty)">
+                            {{ 'movements.fieldReq' | translate }}
+                        </div>
+                    </div>
+                </div>
+
+                <!--titleEn-->
+                <div class="form-group col-md-3">
+                    <label>{{ 'MenuItem.editor.titleEn' | translate }}
+                        <!-- <i *ngIf="canEdit()" class="text-danger">*</i> -->
+                    </label>
+                    <div class="detail w-100">
+                        <input type="text" *ngIf="canEdit()" min="0" class="form-control" #titleEn
+                            formControlName="titleEn">
+
+                        <input type="text" *ngIf="!canEdit()" min="0" class="form-control" #titleEn disabled
+                            formControlName="titleEn">
+
+                        <!-- <label *ngIf="editorMode == editorModeEnum.detail"
+                            class="form-control">{{itemModel?.titleEn}}</label> -->
+
+                        <div class="text-danger" *ngIf="(editorForm.controls['titleEn'].hasError('invalid' ) || 
+                                        editorForm.controls['titleEn'].hasError('required' ) )&&
+                                       (editorForm.controls['titleEn'].touched || 
+                                        editorForm.controls['titleEn'].dirty)">
+                            {{ 'movements.fieldReq' | translate }}
+                        </div>
+                    </div>
+                </div>
+
+                <!--url-->
+                <div *ngIf="editorForm.controls['parentMenuItemId'].value > 0" class="form-group col-md-4">
+                    <label>{{ 'MenuItem.shared.url' | translate }}
+                    </label>
+                    <div class="detail w-100">
+                        <input type="text" *ngIf="canEdit()" min="0" class="form-control" #url formControlName="url">
+
+                        <input type="text" *ngIf="!canEdit()" min="0" class="form-control" disabled #url
+                            formControlName="url">
+
+                        <!-- <label *ngIf="editorMode == editorModeEnum.detail"
+                            class="form-control">{{itemModel?.url}}</label> -->
+
+                        <div class="text-danger" *ngIf="(editorForm.controls['url'].hasError('invalid' ) || 
+                                        editorForm.controls['url'].hasError('required' ) )&&
+                                       (editorForm.controls['url'].touched || 
+                                        editorForm.controls['url'].dirty)">
+                            {{ 'movements.fieldReq' | translate }}
+                        </div>
+                    </div>
+                </div>
+
+                <!--rootUrl-->
+                <div *ngIf="editorForm.controls['parentMenuItemId'].value > 0" class="form-group col-md-4">
+                    <label>{{ 'MenuItem.editor.rootUrl' | translate }}
+                    </label>
+                    <div class="detail w-100">
+                        <input type="text" *ngIf="canEdit()" min="0" class="form-control" #rootUrl
+                            formControlName="rootUrl">
+
+                        <input type="text" *ngIf="!canEdit()" min="0" class="form-control" disabled #rootUrl
+                            formControlName="rootUrl">
+
+                        <!-- <label *ngIf="editorMode == editorModeEnum.detail"
+                            class="form-control">{{itemModel?.rootUrl}}</label> -->
+
+                        <div class="text-danger" *ngIf="(editorForm.controls['rootUrl'].hasError('invalid' ) || 
+                                        editorForm.controls['rootUrl'].hasError('required' ) )&&
+                                       (editorForm.controls['rootUrl'].touched || 
+                                        editorForm.controls['rootUrl'].dirty)">
+                            {{ 'movements.fieldReq' | translate }}
+                        </div>
+                    </div>
+                </div>
+
+                <!--onErrorGoToURL-->
+                <div *ngIf="editorForm.controls['parentMenuItemId'].value > 0" class="form-group col-md-4">
+                    <label>{{ 'MenuItem.editor.onErrorGoToURL' | translate }}
+                        <!-- <i *ngIf="canEdit()" class="text-danger">*</i> -->
+                    </label>
+                    <div class="detail w-100">
+                        <input type="text" *ngIf="canEdit()" min="0" class="form-control" #onErrorGoToURL
+                            formControlName="onErrorGoToURL">
+
+                        <input type="text" *ngIf="!canEdit()" min="0" class="form-control" disabled #onErrorGoToURL
+                            formControlName="onErrorGoToURL">
+
+                        <!-- <label *ngIf="editorMode == editorModeEnum.detail"
+                            class="form-control">{{itemModel?.onErrorGoToURL}}</label> -->
+
+                        <div class="text-danger" *ngIf="(editorForm.controls['onErrorGoToURL'].hasError('invalid' ) || 
+                                        editorForm.controls['onErrorGoToURL'].hasError('required' ) )&&
+                                       (editorForm.controls['onErrorGoToURL'].touched || 
+                                        editorForm.controls['onErrorGoToURL'].dirty)">
+                            {{ 'movements.fieldReq' | translate }}
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5>
+                                <i class="fa fa-users" aria-hidden="true"></i>
+                                <span>
+                                    {{ 'MenuItem.shared.description' | translate }}
+                                </span>
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="form-group col-lg-6">
+                                    <label>{{ 'MenuItem.editor.descriptionAr' | translate }}</label>
+                                    <textarea *ngIf="canEdit()" class="form-control" formControlName="descriptionAr"
+                                        placeholder="{{ 'MenuItem.editor.descriptionAr' | translate }}"></textarea>
+
+                                    <textarea *ngIf="!canEdit()" disabled class="form-control"
+                                        formControlName="descriptionAr"
+                                        placeholder="{{ 'MenuItem.editor.descriptionAr' | translate }}"></textarea>
+
+                                    <div class="text-danger" *ngIf=" (editorForm.controls['descriptionAr'].hasError('invalid' ) || 
+                                                    editorForm.controls['descriptionAr'].hasError('required' ) )&&
+                                                          (editorForm.controls['descriptionAr'].touched || 
+                                                          editorForm.controls['descriptionAr'].dirty)">
+                                        {{ 'movements.fieldReq' | translate }}
+                                    </div>
+
+                                </div>
+                                <div class="form-group col-lg-6">
+                                    <label>{{ 'MenuItem.editor.descriptionEn' | translate }} </label>
+                                    <textarea *ngIf="canEdit()" class="form-control" formControlName="descriptionEn"
+                                        placeholder="{{ 'MenuItem.editor.descriptionEn' | translate }}"></textarea>
+
+                                    <textarea *ngIf="!canEdit()" disabled class="form-control"
+                                        formControlName="descriptionEn"
+                                        placeholder="{{ 'role.editor.descriptionEn' | translate }}"></textarea>
+
+                                    <div class="text-danger" *ngIf=" (editorForm.controls['descriptionEn'].hasError('invalid' ) || 
+                                                        editorForm.controls['descriptionEn'].hasError('required' ) )&&
+                                                          (editorForm.controls['descriptionEn'].touched || 
+                                                          editorForm.controls['descriptionEn'].dirty)">
+                                        {{ 'movements.fieldReq' | translate }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <loader [hidden]="!isProccessing"></loader>
+
+            <div class="row">
+                <div class="form-group col-lg-4">
+                    <button *ngIf="canEdit()" type="submit" (click)="save()"
+                        [disabled]="!editorForm.valid || isProccessing" class="btn btn-secondary">
+                        <i class="fa fa-floppy-o verticalLine"></i> {{ 'shared.save' | translate }}
+                    </button>
+                    &nbsp;
+                    <button (click)="goToBack()" class="btn btn-secondary">
+                        <i class="fa fa-undo"></i> {{'shared.back' | translate }}
+                    </button>
+                </div>
+            </div>
+        </form>
+    </section>
+
+</div>

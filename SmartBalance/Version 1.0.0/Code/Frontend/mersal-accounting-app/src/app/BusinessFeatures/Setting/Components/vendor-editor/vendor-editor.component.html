@@ -1,0 +1,207 @@
+<div class="container-fluid">
+    <h3><i class="fa fa-credit-card"></i> {{ 'setting.vendorSetting.title' | translate }}</h3>
+    <loader [hidden]="!PageLoading"></loader>
+           
+        <section *ngIf="!PageLoading">
+        <form role="form" [formGroup]="editorForm">
+            <section class="border-curvy">
+                <div class="row">
+                    <div class="col-lg-6">
+                            <div class="row">
+                                    <!--cashPurchaseAccountNumber-->
+                                    <div class="col-12">
+                                        <label>{{ 'setting.vendorSetting.cashPurchaseAccountNumber' | translate }} <span
+                                                class="text-danger">*</span> </label>
+                                        <kendo-dropdownlist #list [data]="AccountCharts" [filterable]="true"
+                                            [textField]="'displyedName'" [valueField]="'id'" [valuePrimitive]="true"
+                                            [kendoDropDownFilter]="filterSettings" id="cashPurchaseAccountNumber"
+                                            formControlName="cashPurchaseAccountNumber" class="width90 height38">
+                                        </kendo-dropdownlist>
+                
+                                        <div class="text-danger" *ngIf="editorForm.controls['cashPurchaseAccountNumber'].hasError('required' ) &&
+                                        (editorForm.controls['cashPurchaseAccountNumber'].touched || 
+                                        editorForm.controls['cashPurchaseAccountNumber'].dirty)">
+                                            {{ 'movements.fieldReq' | translate }}
+                                        </div>
+                                    </div>
+                
+                                    <!--futurePurchaseAccountNumber-->
+                                    <div class="col-12">
+                                        <label>{{ 'setting.vendorSetting.futurePurchaseAccountNumber' | translate }} <span
+                                                class="text-danger">*</span> </label>
+                                        <kendo-dropdownlist #list [data]="AccountCharts" [filterable]="true"
+                                            [textField]="'displyedName'" [valueField]="'id'" [valuePrimitive]="true"
+                                            [kendoDropDownFilter]="filterSettings" id="futurePurchaseAccountNumber"
+                                            formControlName="futurePurchaseAccountNumber" class="width90 height38">
+                                        </kendo-dropdownlist>
+                
+                                        <div class="text-danger" *ngIf="editorForm.controls['futurePurchaseAccountNumber'].hasError('required' ) &&
+                                    (editorForm.controls['futurePurchaseAccountNumber'].touched || 
+                                    editorForm.controls['futurePurchaseAccountNumber'].dirty)">
+                                            {{ 'movements.fieldReq' | translate }}
+                                        </div>
+                                    </div>
+                
+                                    <!--purchaseDiscountAccountNumber-->
+                                    <div class="col-12">
+                                        <label>{{ 'setting.vendorSetting.purchaseDiscountAccountNumber' | translate }} <span
+                                                class="text-danger">*</span> </label>
+                                        <kendo-dropdownlist #list [data]="AccountCharts" [filterable]="true"
+                                            [textField]="'displyedName'" [valueField]="'id'" [valuePrimitive]="true"
+                                            [kendoDropDownFilter]="filterSettings" id="purchaseDiscountAccountNumber"
+                                            formControlName="purchaseDiscountAccountNumber" class="width90 height38">
+                                        </kendo-dropdownlist>
+                
+                                        <div class="text-danger" *ngIf="editorForm.controls['purchaseDiscountAccountNumber'].hasError('required' ) &&
+                                        (editorForm.controls['purchaseDiscountAccountNumber'].touched || 
+                                        editorForm.controls['purchaseDiscountAccountNumber'].dirty)">
+                                            {{ 'movements.fieldReq' | translate }}
+                                        </div>
+                                    </div>
+                
+                                    <!--purchaseExpensesAccountNumber-->
+                                    <div class="col-12">
+                                        <label>{{ 'setting.vendorSetting.purchaseExpensesAccountNumber' | translate }} <span
+                                                class="text-danger">*</span> </label>
+                                        <kendo-dropdownlist #list [data]="AccountCharts" [filterable]="true"
+                                            [textField]="'displyedName'" [valueField]="'id'" [valuePrimitive]="true"
+                                            [kendoDropDownFilter]="filterSettings" id="purchaseExpensesAccountNumber"
+                                            formControlName="purchaseExpensesAccountNumber" class="width90 height38">
+                                        </kendo-dropdownlist>
+                
+                                        <div class="text-danger" *ngIf="editorForm.controls['purchaseExpensesAccountNumber'].hasError('required' ) &&
+                                        (editorForm.controls['purchaseExpensesAccountNumber'].touched || 
+                                        editorForm.controls['purchaseExpensesAccountNumber'].dirty)">
+                                            {{ 'movements.fieldReq' | translate }}
+                                        </div>
+                                    </div>
+                
+                                    <!--purchaseTaxAccountNumber-->
+                                    <div class="col-12">
+                                        <label>{{ 'setting.vendorSetting.purchaseTaxAccountNumber' | translate }} <span
+                                                class="text-danger">*</span> </label>
+                                        <kendo-dropdownlist #list [data]="AccountCharts" [filterable]="true"
+                                            [textField]="'displyedName'" [valueField]="'id'" [valuePrimitive]="true"
+                                            [kendoDropDownFilter]="filterSettings" id="purchaseTaxAccountNumber"
+                                            formControlName="purchaseTaxAccountNumber" class="width90 height38">
+                                        </kendo-dropdownlist>
+                
+                                        <div class="text-danger" *ngIf="editorForm.controls['purchaseTaxAccountNumber'].hasError('required' ) &&
+                                        (editorForm.controls['purchaseTaxAccountNumber'].touched || 
+                                        editorForm.controls['purchaseTaxAccountNumber'].dirty)">
+                                            {{ 'movements.fieldReq' | translate }}
+                                        </div>
+                                    </div>                    
+                                </div>
+                    </div>
+                    <div class="col-lg-6">
+                            <div class="row">                                                   
+                                    <!--cashPurchasesRebateAccountNumber-->
+                                    <div class="col-12">
+                                        <label>{{ 'setting.vendorSetting.cashPurchasesRebateAccountNumber' | translate }} <span
+                                                class="text-danger">*</span> </label>
+                                        <kendo-dropdownlist #list [data]="AccountCharts" [filterable]="true"
+                                            [textField]="'displyedName'" [valueField]="'id'" [valuePrimitive]="true"
+                                            [kendoDropDownFilter]="filterSettings" id="cashPurchasesRebateAccountNumber"
+                                            formControlName="cashPurchasesRebateAccountNumber" class="width90 height38">
+                                        </kendo-dropdownlist>
+                
+                                        <div class="text-danger" *ngIf="editorForm.controls['cashPurchasesRebateAccountNumber'].hasError('required' ) &&
+                                        (editorForm.controls['cashPurchasesRebateAccountNumber'].touched || 
+                                        editorForm.controls['cashPurchasesRebateAccountNumber'].dirty)">
+                                            {{ 'movements.fieldReq' | translate }}
+                                        </div>
+                                    </div>
+                
+                                    <!--futurePurchaseRebateAccountNumber-->
+                                    <div class="col-12">
+                                        <label>{{ 'setting.vendorSetting.futurePurchaseRebateAccountNumber' | translate }} <span
+                                                class="text-danger">*</span> </label>
+                                        <kendo-dropdownlist #list [data]="AccountCharts" [filterable]="true"
+                                            [textField]="'displyedName'" [valueField]="'id'" [valuePrimitive]="true"
+                                            [kendoDropDownFilter]="filterSettings" id="futurePurchaseRebateAccountNumber"
+                                            formControlName="futurePurchaseRebateAccountNumber" class="width90 height38">
+                                        </kendo-dropdownlist>
+                
+                                        <div class="text-danger" *ngIf="editorForm.controls['futurePurchaseRebateAccountNumber'].hasError('required' ) &&
+                                        (editorForm.controls['futurePurchaseRebateAccountNumber'].touched || 
+                                        editorForm.controls['futurePurchaseRebateAccountNumber'].dirty)">
+                                            {{ 'movements.fieldReq' | translate }}
+                                        </div>
+                                    </div>
+                
+                                    <!--purchaseRebateDiscountAccountNumber-->
+                                    <div class="col-12">
+                                        <label>{{ 'setting.vendorSetting.purchaseRebateDiscountAccountNumber' | translate }} <span
+                                                class="text-danger">*</span> </label>
+                                        <kendo-dropdownlist #list [data]="AccountCharts" [filterable]="true"
+                                            [textField]="'displyedName'" [valueField]="'id'" [valuePrimitive]="true"
+                                            [kendoDropDownFilter]="filterSettings" id="purchaseRebateDiscountAccountNumber"
+                                            formControlName="purchaseRebateDiscountAccountNumber" class="width90 height38">
+                                        </kendo-dropdownlist>
+                
+                                        <div class="text-danger" *ngIf="editorForm.controls['purchaseRebateDiscountAccountNumber'].hasError('required' ) &&
+                                        (editorForm.controls['purchaseRebateDiscountAccountNumber'].touched || 
+                                        editorForm.controls['purchaseRebateDiscountAccountNumber'].dirty)">
+                                            {{ 'movements.fieldReq' | translate }}
+                                        </div>
+                                    </div>
+                
+                                    <!--purchaseRebateExpensesAccountNumber-->
+                                    <div class="col-12">
+                                        <label>{{ 'setting.vendorSetting.purchaseRebateExpensesAccountNumber' | translate }} <span
+                                                class="text-danger">*</span> </label>
+                                        <kendo-dropdownlist #list [data]="AccountCharts" [filterable]="true"
+                                            [textField]="'displyedName'" [valueField]="'id'" [valuePrimitive]="true"
+                                            [kendoDropDownFilter]="filterSettings" id="purchaseRebateExpensesAccountNumber"
+                                            formControlName="purchaseRebateExpensesAccountNumber" class="width90 height38">
+                                        </kendo-dropdownlist>
+                
+                                        <div class="text-danger" *ngIf="editorForm.controls['purchaseRebateExpensesAccountNumber'].hasError('required' ) &&
+                                        (editorForm.controls['purchaseRebateExpensesAccountNumber'].touched || 
+                                        editorForm.controls['purchaseRebateExpensesAccountNumber'].dirty)">
+                                            {{ 'movements.fieldReq' | translate }}
+                                        </div>
+                                    </div>
+                
+                                    <!--purchaseRebateTaxAccountNumber-->
+                                    <div class="col-12">
+                                        <label>{{ 'setting.vendorSetting.purchaseRebateTaxAccountNumber' | translate }} <span
+                                                class="text-danger">*</span> </label>
+                                        <kendo-dropdownlist #list [data]="AccountCharts" [filterable]="true"
+                                            [textField]="'displyedName'" [valueField]="'id'" [valuePrimitive]="true"
+                                            [kendoDropDownFilter]="filterSettings" id="purchaseRebateTaxAccountNumber"
+                                            formControlName="purchaseRebateTaxAccountNumber" class="width90 height38">
+                                        </kendo-dropdownlist>
+                
+                                        <div class="text-danger" *ngIf="editorForm.controls['purchaseRebateTaxAccountNumber'].hasError('required' ) &&
+                                        (editorForm.controls['purchaseRebateTaxAccountNumber'].touched || 
+                                        editorForm.controls['purchaseRebateTaxAccountNumber'].dirty)">
+                                            {{ 'movements.fieldReq' | translate }}
+                                        </div>
+                                    </div>
+                
+                                </div>
+                    </div>    
+                </div>
+              
+            </section>
+
+            <loader [hidden]="!isProccessing"></loader>
+
+            <div class="row">
+                <div class="form-group col-lg-4">
+                    <button type="submit" (click)="save()" [disabled]="!editorForm.valid || isProccessing"
+                        class="btn btn-secondary">
+                        <i class="fa fa-floppy-o verticalLine"></i> {{ 'shared.save' | translate }}
+                    </button>
+                    &nbsp;
+                    <button routerLink="/setting/control-panel" class="btn btn-secondary">
+                        <i class="fa fa-undo"></i> {{'shared.back' | translate }}
+                    </button>
+                </div>
+            </div>
+        </form>
+    </section>
+
+</div>

@@ -1,0 +1,347 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--This Solution Generated From Ahmed Shaikoun Code Generator 1.0.0.0-->
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B0FE1618-9ECC-4FD9-B355-D2B011DE67B5}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MersalAccountingService.DataAccess</RootNamespace>
+    <AssemblyName>MersalAccountingService.DataAccess</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Linq.Dynamic, Version=1.0.6132.35681, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Linq.Dynamic.1.0.7\lib\net40\System.Linq.Dynamic.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Contexts\MersalAccountingContext.cs" />
+    <Compile Include="Mappings\AccountChart\AccountChartCategoryMap.cs" />
+    <Compile Include="Mappings\AccountChart\AccountChartGroupMap.cs" />
+    <Compile Include="Mappings\AccountChart\AccountChartLevelSettingMap.cs" />
+    <Compile Include="Mappings\AccountChart\AccountChartMap.cs" />
+    <Compile Include="Mappings\AccountChart\AccountChartSettingMap.cs" />
+    <Compile Include="Mappings\AccountChart\AccountTypeMap.cs" />
+    <Compile Include="Mappings\Address\AddressMap.cs" />
+    <Compile Include="Mappings\Asset\AssetCategoryMap.cs" />
+    <Compile Include="Mappings\Asset\AssetInventoryDetailMap.cs" />
+    <Compile Include="Mappings\Asset\AssetInventoryMap.cs" />
+    <Compile Include="Mappings\Asset\AssetLocationMap.cs" />
+    <Compile Include="Mappings\Asset\AssetMap.cs" />
+    <Compile Include="Mappings\Asset\DepreciationMap.cs" />
+    <Compile Include="Mappings\Asset\DepreciationRateMap.cs" />
+    <Compile Include="Mappings\Asset\DepreciationTypeMap.cs" />
+    <Compile Include="Mappings\Asset\EffiencyRaiseHistoryMap.cs" />
+    <Compile Include="Mappings\Asset\ExcludeMap.cs" />
+    <Compile Include="Mappings\Asset\ExpenseMap.cs" />
+    <Compile Include="Mappings\Asset\ExpensesTypeMap.cs" />
+    <Compile Include="Mappings\Asset\LocationMap.cs" />
+    <Compile Include="Mappings\Custody\AdvanceMap.cs" />
+    <Compile Include="Mappings\Custody\AdvancesTypeMap.cs" />
+    <Compile Include="Mappings\Custody\LiquidationMap.cs" />
+    <Compile Include="Mappings\Shared\AttachmentMap.cs" />
+    <Compile Include="Mappings\Bank\BankAccountChartMap.cs" />
+    <Compile Include="Mappings\Bank\BankMap.cs" />
+    <Compile Include="Mappings\Shared\BankMovementCostCentersMap.cs" />
+    <Compile Include="Mappings\Shared\BankMovementMap.cs" />
+    <Compile Include="Mappings\Shared\BranchMap.cs" />
+    <Compile Include="Mappings\Shared\BrandMap.cs" />
+    <Compile Include="Mappings\Shared\CaseMap.cs" />
+    <Compile Include="Mappings\ClosedMonth\ClosedMonthMap.cs" />
+    <Compile Include="Mappings\Shared\ClosedReceiptMap.cs" />
+    <Compile Include="Mappings\Shared\CostCenterTypeMap.cs" />
+    <Compile Include="Mappings\Shared\TestamentExtractionMap.cs" />
+    <Compile Include="Mappings\Custody\TestamentMap.cs" />
+    <Compile Include="Mappings\Shared\DiscountPercentageMap.cs" />
+    <Compile Include="Mappings\Group\GroupPermissionMap.cs" />
+    <Compile Include="Mappings\Inventory\InventoryMovementTypeMap.cs" />
+    <Compile Include="Mappings\Shared\CaseTypeMap.cs" />
+    <Compile Include="Mappings\Address\CityMap.cs" />
+    <Compile Include="Mappings\Shared\CostCenterBillMap.cs" />
+    <Compile Include="Mappings\Shared\CostCenterMap.cs" />
+    <Compile Include="Mappings\Address\CountryCallingCodeMap.cs" />
+    <Compile Include="Mappings\Address\CountryMap.cs" />
+    <Compile Include="Mappings\Shared\CurrencyMap.cs" />
+    <Compile Include="Mappings\Shared\CurrencyRateMap.cs" />
+    <Compile Include="Mappings\Shared\DelegateManMap.cs" />
+    <Compile Include="Mappings\Address\DistrictMap.cs" />
+    <Compile Include="Mappings\Shared\DonationCaseMap.cs" />
+    <Compile Include="Mappings\Shared\DonationCostCenterMap.cs" />
+    <Compile Include="Mappings\Shared\DonationInventoryMap.cs" />
+    <Compile Include="Mappings\Shared\DonationMap.cs" />
+    <Compile Include="Mappings\Shared\DonationProductMap.cs" />
+    <Compile Include="Mappings\Shared\DonationTypeMap.cs" />
+    <Compile Include="Mappings\Shared\DonatorMap.cs" />
+    <Compile Include="Mappings\Shared\DonatorProductMap.cs" />
+    <Compile Include="Mappings\Shared\EntrancePermissionMap.cs" />
+    <Compile Include="Mappings\Shared\ExchangeBondsMap.cs" />
+    <Compile Include="Mappings\Shared\ExitPermissionMap.cs" />
+    <Compile Include="Mappings\Shared\FiscalYearMap.cs" />
+    <Compile Include="Mappings\Shared\GeneralAccountMap.cs" />
+    <Compile Include="Mappings\Group\GroupMap.cs" />
+    <Compile Include="Mappings\Inventory\InventoryDifferenceMap.cs" />
+    <Compile Include="Mappings\Inventory\InventoryInMap.cs" />
+    <Compile Include="Mappings\Inventory\InventoryMap.cs" />
+    <Compile Include="Mappings\Inventory\InventoryMovementMap.cs" />
+    <Compile Include="Mappings\Inventory\InventoryMovementCostCenterMap.cs" />
+    <Compile Include="Mappings\Inventory\InventoryTransferCostCenterMap.cs" />
+    <Compile Include="Mappings\Inventory\InventoryOpeningBalanceCostCenterMap.cs" />
+    <Compile Include="Mappings\Inventory\InventoryOpeningBalanceMap.cs" />
+    <Compile Include="Mappings\Inventory\InventoryOutMap.cs" />
+    <Compile Include="Mappings\Inventory\InventoryTransferMap.cs" />
+    <Compile Include="Mappings\Shared\JournalMap.cs" />
+    <Compile Include="Mappings\Shared\JournalPostingMap.cs" />
+    <Compile Include="Mappings\Shared\JournalTypeMap.cs" />
+    <Compile Include="Mappings\Shared\MailMap.cs" />
+    <Compile Include="Mappings\Shared\MenuItemMap.cs" />
+    <Compile Include="Mappings\Shared\MobileMap.cs" />
+    <Compile Include="Mappings\Shared\PackageTypeMap.cs" />
+    <Compile Include="Mappings\Shared\PaymentMethodMap.cs" />
+    <Compile Include="Mappings\Shared\PaymentMovmentCostCenterMap.cs" />
+    <Compile Include="Mappings\Shared\PaymentMovmentInventoryMap.cs" />
+    <Compile Include="Mappings\Shared\PaymentMovmentMap.cs" />
+    <Compile Include="Mappings\Shared\PermissionMap.cs" />
+    <Compile Include="Mappings\Inventory\InventoryProductHistoryMap.cs" />
+    <Compile Include="Mappings\Shared\ProductMap.cs" />
+    <Compile Include="Mappings\Shared\ProductPriceMap.cs" />
+    <Compile Include="Mappings\Shared\ProductTypeMap.cs" />
+    <Compile Include="Mappings\Shared\PurchaseInvoiceCostCenterMap.cs" />
+    <Compile Include="Mappings\Shared\PurchaseInvoiceMap.cs" />
+    <Compile Include="Mappings\Shared\PurchaseInvoiceTypeMap.cs" />
+    <Compile Include="Mappings\Shared\PurchaseRebateCostCenterMap.cs" />
+    <Compile Include="Mappings\Shared\PurchaseRebateMap.cs" />
+    <Compile Include="Mappings\Shared\PurchaseRebateProductMap.cs" />
+    <Compile Include="Mappings\Shared\ReceiptsMap.cs" />
+    <Compile Include="Mappings\Shared\ReceivingMethodMap.cs" />
+    <Compile Include="Mappings\Group\GroupRoleMap.cs" />
+    <Compile Include="Mappings\Role\RoleMap.cs" />
+    <Compile Include="Mappings\Role\RolePermissionMap.cs" />
+    <Compile Include="Mappings\Shared\SafeAccountChartMap.cs" />
+    <Compile Include="Mappings\Shared\SafeMap.cs" />
+    <Compile Include="Mappings\Shared\SalesBillMap.cs" />
+    <Compile Include="Mappings\Shared\SalesBillProductMap.cs" />
+    <Compile Include="Mappings\Shared\SalesBillTypeMap.cs" />
+    <Compile Include="Mappings\Shared\SalesRebateMap.cs" />
+    <Compile Include="Mappings\Shared\SalesRebateProductMap.cs" />
+    <Compile Include="Mappings\Shared\MeasurementUnitMap.cs" />
+    <Compile Include="Mappings\Shared\StockAssessmentPolicyMap.cs" />
+    <Compile Include="Mappings\Shared\StoreMeasurementUnitMap.cs" />
+    <Compile Include="Mappings\Shared\StoreMovementMap.cs" />
+    <Compile Include="Mappings\Shared\TranactionDetailsMap.cs" />
+    <Compile Include="Mappings\Shared\TransactionMap.cs" />
+    <Compile Include="Mappings\Shared\TransferMap.cs" />
+    <Compile Include="Mappings\User\UserBranchMap.cs" />
+    <Compile Include="Mappings\User\UserGroupMap.cs" />
+    <Compile Include="Mappings\User\UserMap.cs" />
+    <Compile Include="Mappings\User\UserMenuItemMap.cs" />
+    <Compile Include="Mappings\User\UserPermissionMap.cs" />
+    <Compile Include="Mappings\User\UserRoleMap.cs" />
+    <Compile Include="Mappings\Vendor\VendorMap.cs" />
+    <Compile Include="Mappings\Vendor\VendorTypeMap.cs" />
+    <Compile Include="Migrations\202001121656407_ChartMigration.cs" />
+    <Compile Include="Migrations\202001121656407_ChartMigration.Designer.cs">
+      <DependentUpon>202001121656407_ChartMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\AccountChart\AccountChartCategoriesRepository.cs" />
+    <Compile Include="Repositories\AccountChart\AccountChartGroupsRepository.cs" />
+    <Compile Include="Repositories\AccountChart\AccountChartLevelSettingsRepository.cs" />
+    <Compile Include="Repositories\Asset\AssetLocationsRepository.cs" />
+    <Compile Include="Repositories\Asset\DepreciationRatesRepository.cs" />
+    <Compile Include="Repositories\Asset\DepreciationRepository.cs" />
+    <Compile Include="Repositories\Asset\DepreciationTypesRepository.cs" />
+    <Compile Include="Repositories\Asset\EffiencyRaiseHistoryRepository.cs" />
+    <Compile Include="Repositories\Asset\ExcludesRepository.cs" />
+    <Compile Include="Repositories\Asset\ExpensesRepository.cs" />
+    <Compile Include="Repositories\Asset\ExpensesTypesRepository.cs" />
+    <Compile Include="Repositories\Asset\AssetInventoryDetailsRepository.cs" />
+    <Compile Include="Repositories\Asset\AssetInventorysRepository.cs" />
+    <Compile Include="Repositories\Asset\LocationsRepository.cs" />
+    <Compile Include="Repositories\AccountChart\AccountChartDocumentRepository.cs" />
+    <Compile Include="Repositories\Bank\BanksAccountChartRepository.cs" />
+    <Compile Include="Repositories\Base\BaseServiceRepository.cs" />
+    <Compile Include="Repositories\Base\BaseServiceRepositoryAsync.cs" />
+    <Compile Include="Repositories\CostCenter\BankMovementsCostCentersRepository.cs" />
+    <Compile Include="Repositories\Custody\AdvancesRepository.cs" />
+    <Compile Include="Repositories\Custody\AdvancesTypeRepository.cs" />
+    <Compile Include="Repositories\Custody\LiquidationDetailRepository.cs" />
+    <Compile Include="Repositories\Custody\LiquidationRepository.cs" />
+    <Compile Include="Repositories\Shared\BrandsRepository.cs" />
+    <Compile Include="Repositories\ClosedMonth\ClosedMonthsRepository.cs" />
+    <Compile Include="Repositories\CostCenter\CostCenterTypesRepository.cs" />
+    <Compile Include="Repositories\CostCenter\ObjectCostCentersRepository.cs" />
+    <Compile Include="Repositories\Shared\ClosedChequeRepository.cs" />
+    <Compile Include="Repositories\Shared\ClosedReceiptRepository.cs" />
+    <Compile Include="Repositories\Shared\TestamentExtractionRepository.cs" />
+    <Compile Include="Repositories\Custody\TestamentRepository.cs" />
+    <Compile Include="Repositories\Shared\DiscountPercentagesRepository.cs" />
+    <Compile Include="Repositories\Shared\DocumentRepository.cs" />
+    <Compile Include="Repositories\Shared\DonationCasesRepository.cs" />
+    <Compile Include="Repositories\Shared\DonationTypesRepository.cs" />
+    <Compile Include="Repositories\Shared\FiscalYearsRepository.cs" />
+    <Compile Include="Repositories\Shared\GeneralAccountRepository.cs" />
+    <Compile Include="Repositories\Group\GroupPermissionsRepository.cs" />
+    <Compile Include="Repositories\Inventory\InventoryMovementTypeRepository.cs" />
+    <Compile Include="Repositories\Inventory\InventoryMovementCostCenterRepository.cs" />
+    <Compile Include="Repositories\Inventory\InventoryTransferCostCenterRepository.cs" />
+    <Compile Include="Repositories\Inventory\InventoryOpeningBalanceCostCenterRepository.cs" />
+    <Compile Include="Repositories\Inventory\InventoryOpeningBalanceRepository.cs" />
+    <Compile Include="Repositories\Inventory\InventoryProductHistoryRepository.cs" />
+    <Compile Include="Repositories\Shared\JournalPostingsRepository.cs" />
+    <Compile Include="Repositories\Shared\MenuItemsRepository.cs" />
+    <Compile Include="Repositories\Shared\PaymentCaseRepository.cs" />
+    <Compile Include="Repositories\Shared\SafeAccountChartsRepository.cs" />
+    <Compile Include="Repositories\Shared\StoreMovementsRepository.cs" />
+    <Compile Include="Repositories\JournalEntries\JournalTypeRepository.cs" />
+    <Compile Include="Repositories\Shared\PaymentMovmentsRepository.cs" />
+    <Compile Include="Repositories\Purchasing\PurchaseInvoiceCostCentersRepository.cs" />
+    <Compile Include="Repositories\Purchasing\PurchaseInvoiceTypesRepository.cs" />
+    <Compile Include="Repositories\Purchasing\PurchaseRebateCostCentersRepository.cs" />
+    <Compile Include="Repositories\Shared\ReceivingMethodsRepository.cs" />
+    <Compile Include="Repositories\Shared\SalesBillRepository.cs" />
+    <Compile Include="Repositories\Shared\SalesBillTypeRepository.cs" />
+    <Compile Include="Repositories\Shared\MeasurementUnitsRepository.cs" />
+    <Compile Include="Repositories\Shared\DonatorsRepository.cs" />
+    <Compile Include="Repositories\Shared\SettingsRepository.cs" />
+    <Compile Include="Repositories\Shared\TransactionsDetailsRepository.cs" />
+    <Compile Include="Repositories\Shared\UnitOfWork.cs" />
+    <Compile Include="Repositories\Shared\ExitPermissionsRepository.cs" />
+    <Compile Include="Repositories\Shared\EntrancePermissionsRepository.cs" />
+    <Compile Include="Repositories\Purchasing\PurchaseRebateProductsRepository.cs" />
+    <Compile Include="Repositories\Shared\SalesRebateProductsRepository.cs" />
+    <Compile Include="Repositories\AccountChart\AccountChartSettingsRepository.cs" />
+    <Compile Include="Repositories\User\UserBranchRepository.cs" />
+    <Compile Include="Repositories\User\UserGroupsRepository.cs" />
+    <Compile Include="Repositories\Group\GroupRolesRepository.cs" />
+    <Compile Include="Repositories\Group\GroupsRepository.cs" />
+    <Compile Include="Repositories\Role\RolePermissionsRepository.cs" />
+    <Compile Include="Repositories\Shared\PermissionsRepository.cs" />
+    <Compile Include="Repositories\User\UserMenuItemsRepository.cs" />
+    <Compile Include="Repositories\User\UserPermissionsRepository.cs" />
+    <Compile Include="Repositories\User\UserRolesRepository.cs" />
+    <Compile Include="Repositories\Role\RolesRepository.cs" />
+    <Compile Include="Repositories\Address\CountryCallingCodesRepository.cs" />
+    <Compile Include="Repositories\Address\AddresssRepository.cs" />
+    <Compile Include="Repositories\Shared\ProductPricesRepository.cs" />
+    <Compile Include="Repositories\JournalEntries\JournalsRepository.cs" />
+    <Compile Include="Repositories\Shared\ExchangeBondssRepository.cs" />
+    <Compile Include="Repositories\Shared\ReceiptssRepository.cs" />
+    <Compile Include="Repositories\Shared\SalesRebatesRepository.cs" />
+    <Compile Include="Repositories\Purchasing\PurchaseRebatesRepository.cs" />
+    <Compile Include="Repositories\Purchasing\PurchaseInvoicesRepository.cs" />
+    <Compile Include="Repositories\JournalEntries\TransactionsRepository.cs" />
+    <Compile Include="Repositories\Shared\PaymentMethodsRepository.cs" />
+    <Compile Include="Repositories\Asset\AssetsRepository.cs" />
+    <Compile Include="Repositories\Asset\AssetCategorysRepository.cs" />
+    <Compile Include="Repositories\Inventory\InventorysRepository.cs" />
+    <Compile Include="Repositories\Shared\ProductsRepository.cs" />
+    <Compile Include="Repositories\Shared\ProductTypesRepository.cs" />
+    <Compile Include="Repositories\Shared\StoreMeasurementUnitsRepository.cs" />
+    <Compile Include="Repositories\Shared\DelegateMansRepository.cs" />
+    <Compile Include="Repositories\Shared\CasesRepository.cs" />
+    <Compile Include="Repositories\Shared\CaseTypesRepository.cs" />
+    <Compile Include="Repositories\CostCenter\CostCentersRepository.cs" />
+    <Compile Include="Repositories\Bank\BanksRepository.cs" />
+    <Compile Include="Repositories\Shared\SafesRepository.cs" />
+    <Compile Include="Repositories\AccountChart\AccountChartsRepository.cs" />
+    <Compile Include="Repositories\Vendor\VendorTypesRepository.cs" />
+    <Compile Include="Repositories\Vendor\VendorsRepository.cs" />
+    <Compile Include="Repositories\AccountChart\AccountTypesRepository.cs" />
+    <Compile Include="Repositories\Shared\BranchsRepository.cs" />
+    <Compile Include="Repositories\Shared\DonationsRepository.cs" />
+    <Compile Include="Repositories\Shared\CurrencyRatesRepository.cs" />
+    <Compile Include="Repositories\Shared\CurrencysRepository.cs" />
+    <Compile Include="Repositories\User\UsersRepository.cs" />
+    <Compile Include="Repositories\Shared\AttachmentsRepository.cs" />
+    <Compile Include="Repositories\Address\CountrysRepository.cs" />
+    <Compile Include="Repositories\Address\CitysRepository.cs" />
+    <Compile Include="Repositories\Address\DistrictsRepository.cs" />
+    <Compile Include="Repositories\Shared\StockAssessmentPolicysRepository.cs" />
+    <Compile Include="Repositories\Shared\MailsRepository.cs" />
+    <Compile Include="Repositories\Shared\MobilesRepository.cs" />
+    <Compile Include="Repositories\Shared\BankMovementsRepository.cs" />
+    <Compile Include="Repositories\Shared\TransfersRepository.cs" />
+    <Compile Include="Repositories\Inventory\InventoryTransfersRepository.cs" />
+    <Compile Include="Repositories\Inventory\InventoryMovementsRepository.cs" />
+    <Compile Include="Repositories\Inventory\InventoryInsRepository.cs" />
+    <Compile Include="Repositories\Inventory\InventoryOutsRepository.cs" />
+    <Compile Include="Repositories\Inventory\InventoryDifferencesRepository.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Framework.Common\Framework.Common.csproj">
+      <Project>{F8BEADB8-AFFA-42E5-AC34-2265F936FF42}</Project>
+      <Name>Framework.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Framework.Core\Framework.Core.csproj">
+      <Project>{12E94E97-C887-4CAE-B03C-69AA46ED770F}</Project>
+      <Name>Framework.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Framework.DataAccess\Framework.DataAccess.csproj">
+      <Project>{AF86AE60-7E24-429E-AE27-A8BE8B16E231}</Project>
+      <Name>Framework.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MersalAccountingService.Common\MersalAccountingService.Common.csproj">
+      <Project>{D0CC6CCC-ED64-47F2-940E-D7C58CE19E48}</Project>
+      <Name>MersalAccountingService.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MersalAccountingService.Core\MersalAccountingService.Core.csproj">
+      <Project>{9622E50B-7F68-4115-A0AB-80B24D2F73C9}</Project>
+      <Name>MersalAccountingService.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MersalAccountingService.Entities\MersalAccountingService.Entities.csproj">
+      <Project>{1A9F998A-6C27-4B7A-ADEE-DC62F962312A}</Project>
+      <Name>MersalAccountingService.Entities</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202001121656407_ChartMigration.resx">
+      <DependentUpon>202001121656407_ChartMigration.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

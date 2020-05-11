@@ -1,0 +1,114 @@
+<form [formGroup]="addlocation" (ngSubmit)="Addlocation()">
+  <div class="row">
+    <!--code-->
+    <div class="form-group col-lg-4">
+      <label>{{ 'location.shared.code' | translate }} <i class="text-danger">*</i></label>
+      <div class="detail w-100">
+        <input type="text" class="form-control" [attr.disabled]="isSubmited ? '' : null" pattern=".*\S.*"
+          formControlName="code"
+          [ngClass]="{'border border-danger' :  addlocation.controls['code'].invalid && addlocation.controls['code'].touched}">
+      </div>
+      <div class="text-danger" *ngIf=" addlocation.controls['code'].hasError( 'required' ) &&
+                      (addlocation.controls['code'].touched || addlocation.controls['code'].dirty)">
+        {{ 'movements.fieldReq' | translate }}
+      </div>
+      <div class="text-danger" *ngIf=" addlocation.controls['code'].hasError( 'pattern' ) &&
+                      (addlocation.controls['code'].touched || addlocation.controls['code'].dirty)">
+        {{ 'movements.positiveNumbersOnly' | translate }}
+      </div>
+    </div>
+    <div class="form-group col-lg-2"></div>
+    <div class="form-group col-lg-4">
+      <label>{{ 'location.editor.parentLocation' | translate }}
+        <!-- <span *ngIf="canEdit()" class="text-danger">*</span> -->
+    </label>
+    <drop-down-tree [data]="locations" [childrenField]="'childLocations'" [textField]="'displyedName'"  [canEdit]="canEdit()"  (valuechangedOutPutEvent)="locationvalueChange($event)" (expandOutPutEvent)="locationExpandOutPutEvent($event)"  class="height38 width-100-per"></drop-down-tree>
+
+    </div>
+
+ 
+  </div>
+  
+  <div class="row">
+    <!--titleAr-->
+    <div class="form-group col-lg-6">
+      <label>{{ 'location.editor.titleAr' | translate }} <i class="text-danger">*</i></label>
+      <div class="detail w-100">
+        <input type="text" class="form-control" [attr.disabled]="isSubmited ? '' : null" pattern=".*\S.*"
+          formControlName="titleAr"
+          [ngClass]="{'border border-danger': addlocation.controls['titleAr'].invalid && addlocation.controls['titleAr'].touched}">
+      </div>
+      <div class="text-danger" *ngIf=" addlocation.controls['titleAr'].hasError( 'required' ) &&
+                        (addlocation.controls['titleAr'].touched || addlocation.controls['titleAr'].dirty)">
+        {{ 'movements.fieldReq' | translate }}
+      </div>
+    </div>
+
+    <!--titleEn-->
+    <div class="form-group col-lg-6">
+      <label>{{ 'location.editor.titleEn' | translate }} <i class="text-danger">*</i></label>
+      <div class="detail w-100">
+        <input type="text" class="form-control" [attr.disabled]="isSubmited ? '' : null" pattern=".*\S.*"
+          formControlName="titleEn"
+          [ngClass]="{'border border-danger': addlocation.controls['titleEn'].invalid && addlocation.controls['titleEn'].touched}">
+      </div>
+      <div class="text-danger" *ngIf=" addlocation.controls['titleEn'].hasError( 'required' ) &&
+                            (addlocation.controls['titleEn'].touched || addlocation.controls['titleEn'].dirty)">
+        {{ 'movements.fieldReq' | translate }}
+      </div>
+    </div>
+
+    <!--descriptionAr-->
+    <div class="form-group col-lg-6">
+      <label>{{ 'location.editor.descriptionAr' | translate }} <i class="text-danger">*</i></label>
+      <div class="detail w-100">
+        <textarea type="text" class="form-control" [attr.disabled]="isSubmited ? '' : null" pattern=".*\S.*" rows="3"
+          formControlName="descriptionAr"
+          [ngClass]="{'border border-danger': addlocation.controls['descriptionAr'].invalid && addlocation.controls['descriptionAr'].touched}"></textarea>
+      </div>
+      <div class="text-danger"
+        *ngIf=" addlocation.controls['descriptionAr'].hasError( 'required' ) &&
+                        (addlocation.controls['descriptionAr'].touched || addlocation.controls['descriptionAr'].dirty)">
+        {{ 'movements.fieldReq' | translate }}
+      </div>
+    </div>
+
+    <!--descriptionEn-->
+    <div class="form-group col-lg-6">
+      <label>{{ 'location.editor.descriptionEn' | translate }} <i class="text-danger">*</i></label>
+      <div class="detail w-100">
+        <textarea type="text" class="form-control" [attr.disabled]="isSubmited ? '' : null" pattern=".*\S.*" rows="3"
+          formControlName="descriptionEn"
+          [ngClass]="{'border border-danger': addlocation.controls['descriptionEn'].invalid && addlocation.controls['descriptionEn'].touched}"></textarea>
+      </div>
+      <div class="text-danger" *ngIf=" addlocation.controls['descriptionEn'].hasError( 'required' ) &&
+                    (addlocation.controls['descriptionEn'].touched || addlocation.controls['descriptionEn'].dirty)">
+        {{ 'movements.fieldReq' | translate }}
+      </div>
+    </div>
+
+
+    <!-- <div class="form-group col-lg-4">
+    <label>{{ 'financial.accountChart' | translate }} <i class="text-danger">*</i></label>
+    <div class="detail w-100">
+      <select [attr.disabled]="isSubmited ? '' : null" class="form-control form-control-sm" id="AccountChart"
+              formControlName="donerAccountChart" [ngClass]="{ 'border border-danger': addlocation.controls['donerAccountChart'].invalid
+                  &&(addlocation.controls['donerAccountChart'].touched || addlocation.controls['donerAccountChart'].dirty) }">
+        <option *ngFor="let item of AccountCharts" [value]="item.id">
+          {{item.name}}
+        </option>
+      </select>
+    </div>
+    <di   v class="text-danger" *ngIf=" addlocation.controls['donerAccountChart'].hasError('required' ) &&
+                    (addlocation.controls['donerAccountChart'].touched || addlocation.controls['donerAccountChart'].dirty)">
+      {{ 'movements.fieldReq' | translate }}
+    </div>
+  </div> -->
+    <div class="form-group col-lg-4" *ngIf="!isSubmited">
+      <button type="button" (click)="fireAddEvent()" [disabled]="!addlocation.valid" class="btn btn-secondary"
+        data-dismiss="modal">{{ 'shared.add' | translate }}</button>
+      <button type="reset" (click)="Close()" class="btn btn-secondary"
+        data-dismiss="modal">{{ 'shared.cancel' | translate }}</button>
+    </div>
+  </div>
+</form>

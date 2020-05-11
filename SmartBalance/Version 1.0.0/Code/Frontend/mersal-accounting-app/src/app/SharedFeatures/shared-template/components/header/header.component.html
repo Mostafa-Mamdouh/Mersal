@@ -1,0 +1,68 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark navbar-absolute fixed-top">
+    <!-- navbar-dark  navbar-absolute fixed-top   -->
+    <div class="row header">
+        <div class="navbar-wrapper site-menu-icon">
+            <a class="navbar-brand" (click)="hideSidebar()" ><i class="material-icons">menu</i></a>
+        </div>
+        <div class="navbar-wrapper site-brand">
+            <a class="navbar-brand" routerLink="/home/dashboard" routerLinkActive="active">{{'menu.brand' | translate}}</a>
+        </div>
+
+        <div class="navbar-wrapper site-account">
+            <div class="dropdown lang-dropdown" tabindex="-1" (blur)="hideLangDropdown()">
+                <h6 class="dropdown-toggle" (click)="showLangDropdown()" id="dropdownMenuLanguage" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    {{'language.title' | translate}}
+                </h6>
+                <div class="dropdown-menu" [ngClass]="{'show': langDropdownShow}">
+                    <a (click)="changeLanguage('en')" 
+                       class="dropdown-item"                       
+                       aria-labelledby="dropdownMenuLanguage">
+                    {{'language.english' | translate}}
+                </a>
+                    <a class="dropdown-item"                      
+                       (click)="changeLanguage('ar')">
+                    {{'language.arabic' | translate}}
+                </a>
+                </div>
+            </div>
+
+            <div class="dropdown user-dropdown account-menu" tabindex="-2" (blur)="hideUserDropdown()">
+                <h5 class="dropdown-toggle" (click)="showUserDropdown()" id="dropdownMenuUser" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="material-icons user-icon">account_circle</i> {{currentUser.userName}}
+                </h5>
+                <div class="dropdown-menu" [ngClass]="{'show': userDropdownShow}">
+                    <a class="dropdown-item" (click)="userLogout()" aria-labelledby="dropdownMenuUser">
+                        {{'user.userMenu.logout' | translate}}
+                </a>
+                </div>
+            </div>
+        </div>
+           <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation"> 
+                <span class="sr-only">Toggle navigation</span>
+                <span class="navbar-toggler-icon icon-bar"></span>
+                <span class="navbar-toggler-icon icon-bar"></span>
+                <span class="navbar-toggler-icon icon-bar"></span>
+            </button>  -->
+        <!-- <div class="collapse navbar-collapse" id="navbarsExample04">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/home/home" routerLinkActive="active">{{'menu.home' | translate}}
+                        <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/contact/home"
+                        routerLinkActive="active">{{'menu.contact' | translate}}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/about/home"
+                        routerLinkActive="active">{{'menu.about' | translate}}</a>
+                </li>
+             
+            </ul>
+            <form class="form-inline my-2 my-md-0">
+                <input class="form-control" type="text" placeholder="Search">
+            </form>
+           
+        </div> -->
+    </div>
+</nav>

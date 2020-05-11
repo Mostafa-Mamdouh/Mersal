@@ -1,0 +1,424 @@
+<div class="container-fluid">
+    <h3><i class="fa fa-credit-card"></i> {{ 'testament.shared.title' | translate }}</h3>
+    <!-- <loader [hidden]="!PageLoading"></loader> -->
+    <section class="editor-section" *ngIf="!PageLoading">
+        <form role="form" [formGroup]="editorForm">
+
+            <div class="row">
+                <!--code-->
+                <div class="form-group col-lg-2">
+                    <label>{{ 'testament.shared.code' | translate }}
+                        <i *ngIf="canEdit()" class="text-danger">*</i>
+                    </label>
+                    <div class="detail w-100">
+                        <input type="text" *ngIf="canEdit()" disabled min="0" class="form-control" #code
+                            formControlName="code">
+
+                        <label *ngIf="editorMode == editorModeEnum.detail"
+                            class="form-control">{{itemModel?.code}}</label>
+
+                        <div class="text-danger" *ngIf="(editorForm.controls['code'].hasError('invalid' ) || 
+                                    editorForm.controls['code'].hasError('required' ) )&&
+                                   (editorForm.controls['code'].touched || 
+                                    editorForm.controls['code'].dirty)">
+                            {{ 'movements.fieldReq' | translate }}
+                        </div>
+                        <div class="text-danger" *ngIf="(editorForm.controls['code'].hasError('invalid' ) || 
+                                        editorForm.controls['code'].hasError('pattern' ) )&&
+                                       (editorForm.controls['code'].touched || 
+                                        editorForm.controls['code'].dirty)">
+                            {{ 'error.positiveNumbersOnly' | translate }}
+                        </div>
+                    </div>
+                </div>
+
+                <!--advancesTypeId-->
+                <div class="form-group col-lg-2">
+                    <label>{{ 'testament.shared.advancesType' | translate }} <span
+                            *ngIf="editorMode == editorModeEnum.add" class="text-danger">*</span> </label>
+                    <kendo-dropdownlist #list [data]="advancesTypes" [filterable]="true" [textField]="'name'"
+                        [valueField]="'id'" [valuePrimitive]="true" [kendoDropDownFilter]="filterSettings"
+                        id="advancesTypeId" formControlName="advancesTypeId"
+                        [disabled]="editorMode != editorModeEnum.add" class="height38 width-100-per">
+                    </kendo-dropdownlist>
+
+                    <div class="text-danger" *ngIf=" editorForm.controls['advancesTypeId'].hasError('required' ) &&
+(editorForm.controls['advancesTypeId'].touched || editorForm.controls['advancesTypeId'].dirty)">
+                        {{ 'movements.fieldReq' | translate }}
+                    </div>
+                </div>
+
+                <!--vendorId-->
+                <div class="form-group col-lg-3">
+                    <label>{{ 'financial.vendorName' | translate }}
+                        <!-- <span *ngIf="editorForm == editorMode.add"
+                            class="text-danger">*</span> -->
+                    </label>
+                    <kendo-dropdownlist #list [data]="vendors" [filterable]="true" [textField]="'displyedName'"
+                        [valueField]="'id'" [valuePrimitive]="true" selected [kendoDropDownFilter]="filterSettings"
+                        id="vendorId" class="height38 width-100-per" formControlName="vendorId"
+                        [disabled]="editorMode != editorModeEnum.add">
+                    </kendo-dropdownlist>
+                    <div class="text-danger" *ngIf=" editorForm.controls['vendorId'].hasError('required' ) &&
+        (editorForm.controls['vendorId'].touched || editorForm.controls['vendorId'].dirty)">
+                        {{ 'movements.fieldReq' | translate }}
+                    </div>
+                </div>
+
+                <!--date-->
+                <div class="form-group col-lg-2">
+                    <label>{{ 'journalEntries.date' | translate }} <i *ngIf="editorMode == editorModeEnum.add"
+                            class="text-danger">*</i></label>
+                    <input *ngIf="editorMode  == editorModeEnum.add" type="text" placeholder="Datepicker"
+                        class="form-control" formControlName="date"
+                        [ngClass]="{'border border-danger' : editorForm.controls['date'].invalid && editorForm.controls['date'].touched}"
+                        bsDatepicker [minDate]="minDate" [maxDate]="maxDate" readonly
+                        value="{{editorForm.controls['date'].value |date:'dd/MM/yyyy'}}">
+
+                    <label *ngIf="editorMode != editorModeEnum.add"
+                        class="form-control">{{itemModel?.date | date:'dd/MM/yyyy'}}</label>
+
+                    <div class="text-danger" *ngIf=" (editorForm.controls['date'].hasError('invalid' ) || editorForm.controls['date'].hasError('required' ) )&&
+           (editorForm.controls['date'].touched || editorForm.controls['date'].dirty)">
+                        {{ 'movements.fieldReq' | translate }}
+                    </div>
+                </div>
+
+                <!--totalValue-->
+                <div class="form-group col-lg-2">
+                    <label>{{ 'testament.shared.totalValue' | translate }} <i *ngIf="editorMode == editorModeEnum.add"
+                            class="text-danger">*</i></label>
+                    <input *ngIf="editorMode  == editorModeEnum.add" type="number" class="form-control"
+                        formControlName="totalValue"
+                        [ngClass]="{'border border-danger' : editorForm.controls['totalValue'].invalid && editorForm.controls['totalValue'].touched}">
+
+                    <input *ngIf="editorMode != editorModeEnum.add" type="number" class="form-control"
+                        formControlName="totalValue" disabled
+                        [ngClass]="{'border border-danger' : editorForm.controls['totalValue'].invalid && editorForm.controls['totalValue'].touched}">
+
+                    <div class="text-danger" *ngIf=" (editorForm.controls['totalValue'].hasError('invalid' ) || editorForm.controls['totalValue'].hasError('required' ) )&&
+           (editorForm.controls['totalValue'].touched || editorForm.controls['totalValue'].dirty)">
+                        {{ 'movements.fieldReq' | translate }}
+                    </div>
+
+                    <div class="text-danger" *ngIf=" (editorForm.controls['totalValue'].hasError('invalid' ) || editorForm.controls['totalValue'].hasError('min' ) )&&
+           (editorForm.controls['totalValue'].touched || editorForm.controls['totalValue'].dirty)">
+                        {{ 'movements.minLength' | translate }} 10
+                    </div>
+
+                    <div class="text-danger" *ngIf=" (editorForm.controls['totalValue'].hasError('invalid' ) || editorForm.controls['totalValue'].hasError('max' ) )&&
+           (editorForm.controls['totalValue'].touched || editorForm.controls['totalValue'].dirty)">
+                        {{ 'movements.MaxLength' | translate }} 1000000
+                    </div>
+                </div>
+
+
+            </div>
+
+            <div class="card mb-3">
+                <div class="card-header">
+
+                </div>
+                <div class="card-body table-responsive padding-sides-2">
+                    <table class="table table-inline-edit">
+                        <thead>
+                            <tr>
+                                <th class="header-table">{{ 'testament.editor.advance.liquidationNumber' | translate }}
+                                </th>
+                                <th class="header-table">{{ 'testament.editor.descriptionAr' | translate }}</th>
+                                <th class="header-table-1">{{ 'testament.editor.descriptionEn' | translate }}</th>
+                                <th class="header-table-1">{{ 'testament.editor.advance.amount' | translate }}</th>
+                                <th class="header-table-1">{{ 'testament.editor.advance.employees'     | translate }}
+                                </th>
+                                <th class="header-table-1">{{ 'testament.editor.advance.caseCode'     | translate }}
+                                </th>
+                                <th class="header-table-1">{{ 'testament.editor.advance.paymentMethod' | translate }}
+                                </th>
+                                <th class="header-table-1">
+                                    {{ 'testament.editor.advance.bank' | translate }}</th>
+                                <th class="header-table-1">
+                                    {{ 'testament.editor.advance.accountChart' | translate }}
+                                </th>
+
+
+
+
+                                <th *ngIf="editorMode == editorModeEnum.add" class="">
+                                    <button class="btn secondary-btn btn-white"
+                                        [disabled]="editorMode != editorModeEnum.add" (click)="addAdvance()">
+                                        <i class="fa fa-plus" aria-hidden="true"></i>
+                                    </button>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody formArrayName="advances"
+                            *ngFor="let item of editorForm['controls'].advances['controls']; let i=index;">
+                            <ng-container>
+                                <tr formGroupName="{{i}}">
+                                    <!--liquidationNumber-->
+                                    <td>
+                                        <div class="detail w-100">
+                                            <input type="text" min="0" class="form-control"
+                                                *ngIf="editorMode == editorModeEnum.add"
+                                                formControlName="liquidationNumber">
+                                            <label *ngIf="editorMode != editorModeEnum.add"
+                                                class="form-control">{{item.controls['liquidationNumber'].value}}</label>
+
+                                        </div>
+
+                                        <div *ngIf="(item.controls['liquidationNumber'].touched || item.controls['liquidationNumber'].dirty)
+                                                        &&item.controls['liquidationNumber'].invalid"
+                                            class="text-danger">
+                                            {{ 'movements.fieldReq' | translate }}
+                                        </div>
+                                    </td>
+                                    <!--descriptionAr-->
+                                    <td>
+                                        <div class="detail w-100">
+                                            <input *ngIf="editorMode == editorModeEnum.add" type="text" min="0"
+                                                class="form-control" pattern=".*\S.*" formControlName="descriptionAr">
+                                            <label *ngIf="editorMode != editorModeEnum.add"
+                                                class="form-control">{{item.controls['descriptionAr'].value}}</label>
+                                        </div>
+                                        <div *ngIf="(item.controls['descriptionAr'].touched || 
+                                                      item.controls['descriptionAr'].dirty)
+                                                      &&item.controls['descriptionAr'].invalid" class="text-danger">
+                                            {{ 'movements.fieldReq' | translate }}
+                                        </div>
+                                    </td>
+                                    <!--descriptionEn-->
+                                    <td>
+                                        <div class="detail w-100">
+                                            <input type="text" min="0" class="form-control" pattern=".*\S.*"
+                                                *ngIf="editorMode == editorModeEnum.add"
+                                                formControlName="descriptionEn">
+
+                                            <label *ngIf="editorMode != editorModeEnum.add"
+                                                class="form-control">{{item.controls['descriptionEn'].value}}</label>
+                                        </div>
+                                        <div *ngIf="item.controls['descriptionEn'].hasError('required' ) && (item.controls['descriptionEn'].touched || item.controls['descriptionEn'].dirty)
+                                                        &&item.controls['descriptionEn'].invalid" class="text-danger">
+                                            {{ 'movements.fieldReq' | translate }}
+                                        </div>
+                                    </td>
+                                    <!--amount-->
+                                    <td>
+                                        <div class="detail w-100">
+                                            <input type="number" min="0" class="form-control"
+                                                *ngIf="editorMode == editorModeEnum.add" formControlName="amount">
+
+                                            <label *ngIf="editorMode != editorModeEnum.add"
+                                                class="form-control">{{item.controls['amount'].value}}</label>
+                                        </div>
+                                        <div *ngIf=" item.controls['amount'].hasError('required' ) &&  (item.controls['amount'].touched || item.controls['amount'].dirty)
+                                                        &&item.controls['amount'].invalid" class="text-danger">
+                                            {{ 'movements.fieldReq' | translate }}
+                                        </div>
+                                        <div *ngIf=" item.controls['amount'].hasError('min' ) &&  (item.controls['amount'].touched || item.controls['amount'].dirty)
+                                                        &&item.controls['amount'].invalid" class="text-danger">
+                                            {{ 'movements.minLength' | translate }} 1
+                                        </div>
+                                    </td>
+                                    <!--costCenterId-->
+                                    <td>
+                                        <div class="detail w-100">
+                                            <kendo-dropdownlist #list [data]="costCenterDropDown" [filterable]="true"
+                                                textField="displyedName" valueField="id" [valuePrimitive]="true"
+                                                [kendoDropDownFilter]="filterSettings" id="costCenterId"
+                                                formControlName="costCenterId" class="kendo small-width"
+                                                [disabled]="editorMode != editorModeEnum.add">
+                                            </kendo-dropdownlist>
+
+                                            <div *ngIf="(item.controls['costCenterId'].touched || item.controls['costCenterId'].dirty)
+                                            &&item.controls['costCenterId'].invalid" class="text-danger">
+                                                {{ 'movements.fieldReq' | translate }}
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <!--caseCode-->
+                                    <td>
+                                        <div class="detail w-100">
+                                            <input *ngIf="editorMode == editorModeEnum.add" type="text"
+                                                class="form-control" formControlName="caseCode">
+
+                                            <label *ngIf="editorMode != editorModeEnum.add"
+                                                class="form-control">{{item.controls['caseCode'].value}}</label>
+
+                                            <div *ngIf="(item.controls['caseCode'].touched || item.controls['caseCode'].dirty)
+                                                &&item.controls['caseCode'].invalid" class="text-danger">
+                                                {{ 'movements.fieldReq' | translate }}
+                                            </div>
+
+                                        </div>
+                                    </td>
+                                    <!--paymentMethodId-->
+                                    <td>
+                                        <div class="detail w-100">
+                                            <kendo-dropdownlist #list [disabled]="editorMode != editorModeEnum.add"
+                                                formControlName="paymentMethodId" [data]="PaymentDropDownData"
+                                                [filterable]="true" textField="name" valueField="id"
+                                                [valuePrimitive]="true" [kendoDropDownFilter]="filterSettings"
+                                                class="kendo small-width"
+                                                (valueChange)="paymentMethodValueChange($event, i)">
+                                            </kendo-dropdownlist>
+
+                                            <div *ngIf="(item.controls['paymentMethodId'].touched || item.controls['paymentMethodId'].dirty)
+                                            &&item.controls['paymentMethodId'].invalid" class="text-danger">
+                                                {{ 'movements.fieldReq' | translate }}
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <!--bankId-->
+                                    <td>
+                                        <div *ngIf="item.controls['paymentMethodId'].value == 4 || item.controls['paymentMethodId'].value == 7 || item.controls['paymentMethodId'].value == 10"
+                                            class="detail w-100">
+                                            <kendo-dropdownlist #list [disabled]="editorMode != editorModeEnum.add"
+                                                formControlName="bankId" [data]="banks" [filterable]="true"
+                                                textField="name" valueField="id" [kendoDropDownFilter]="filterSettings"
+                                                class="kendo small-width" (valueChange)="bankValueChange($event, i)"
+                                                [valuePrimitive]="true">
+                                            </kendo-dropdownlist>
+
+                                            <div *ngIf="(item.controls['bankId'].touched || item.controls['bankId'].dirty)
+                                            &&item.controls['bankId'].invalid" class="text-danger">
+                                                {{ 'movements.fieldReq' | translate }}
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <!--accountChart-->
+                                    <td>
+                                        <div class="detail w-100">
+                                            <kendo-dropdownlist
+                                                *ngIf="item.controls['paymentMethodId'].value == 4 || item.controls['paymentMethodId'].value == 7
+                                                || item.controls['paymentMethodId'].value == 10"
+                                                #list [disabled]="editorMode != editorModeEnum.add"
+                                                formControlName="accountChartId" [data]="accountCharts[i]"
+                                                [valuePrimitive]="true" [filterable]="true" textField="displyedName"
+                                                valueField="id" [kendoDropDownFilter]="filterSettings"
+                                                class="kendo small-width">
+                                            </kendo-dropdownlist>
+
+                                            <kendo-dropdownlist *ngIf="item.controls['paymentMethodId'].value == 1"
+                                                #list [disabled]="editorMode != editorModeEnum.add"
+                                                formControlName="accountChartId" [data]="accountCharts[i]"
+                                                [valuePrimitive]="true" [filterable]="true" textField="name"
+                                                valueField="value" [kendoDropDownFilter]="filterSettings"
+                                                class="kendo small-width">
+                                            </kendo-dropdownlist>
+
+                                            <div *ngIf="(item.controls['accountChartId'].touched || item.controls['accountChartId'].dirty)
+                                            &&item.controls['accountChartId'].invalid" class="text-danger">
+                                                {{ 'movements.fieldReq' | translate }}
+                                            </div>
+                                        </div>
+                                    </td>
+
+
+                                    <td *ngIf="editorMode == editorModeEnum.add">
+                                        <button class="btn action" [disabled]="editorMode == editorModeEnum.detail"
+                                            (click)="deleteAdvance(i)">
+                                            <i class="fa fa-times"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </ng-container>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5><i class="fa fa-book"></i> {{'testament.editor.description' | translate }} </h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <!--descriptionAr-->
+                                <div class="form-group col-lg-6">
+                                    <label>{{ 'testament.editor.descriptionAr' | translate }}<i *ngIf="canEdit()"
+                                            class="text-danger">*</i> </label>
+                                    <textarea *ngIf="canEdit()" class="form-control" formControlName="descriptionAr"
+                                        placeholder="{{ 'testament.editor.descriptionAr' | translate }}"></textarea>
+
+                                    <textarea *ngIf="!canEdit()" disabled class="form-control"
+                                        formControlName="descriptionAr"
+                                        placeholder="{{ 'testament.editor.descriptionAr' | translate }}"></textarea>
+
+                                    <div class="text-danger"
+                                        *ngIf=" (editorForm.controls['descriptionAr'].hasError('invalid' ) || 
+                                          editorForm.controls['descriptionAr'].hasError('required' ) )&&
+                                                (editorForm.controls['descriptionAr'].touched || editorForm.controls['descriptionAr'].dirty)">
+                                        {{ 'movements.fieldReq' | translate }}
+                                    </div>
+                                </div>
+                                <!--descriptionEn-->
+                                <div class="form-group col-lg-6">
+                                    <label>{{ 'testament.editor.descriptionEn' | translate }} </label>
+                                    <textarea *ngIf="canEdit()" class="form-control" formControlName="descriptionEn"
+                                        placeholder="{{ 'testament.editor.descriptionEn' | translate }}"></textarea>
+
+                                    <textarea *ngIf="!canEdit()" disabled class="form-control"
+                                        formControlName="descriptionEn"
+                                        placeholder="{{ 'testament.editor.descriptionEn' | translate }}"></textarea>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <loader [hidden]="!isProccessing"></loader>
+
+
+
+            <div class="row">
+                <div class="form-group col-lg-4">
+                    <button *ngIf="canEdit()" type="submit" (click)="save()"
+                        [disabled]="!editorForm.valid || isProccessing" class="btn btn-secondary">
+                        <i class="fa fa-floppy-o verticalLine"></i> {{ 'shared.save' | translate }}
+                    </button>
+                    &nbsp;
+                    <button (click)="goToBack()" class="btn btn-secondary">
+                        <i class="fa fa-undo"></i> {{'shared.back' | translate }}
+                    </button>
+                </div>
+            </div>
+
+
+
+        </form>
+    </section>
+</div>
+
+<button type="button" id="openPostlBTN" [hidden]="true" data-backdrop="static" data-keyboard="false" data-toggle="modal"
+    data-target="#postModal"></button>
+<div class="modal fade" id="postModal" data-backdrop="static" data-keyboard="false" role="dialog"
+    aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <!-- <h5 class="modal-title" id="exampleModalLabel"> {{ 'movements.multiCostCenter' | translate }}</h5> -->
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <journal-entries-editor (journalValueChange)="journalValueChange($event)"
+                    (journalApprove)="journalApprove($event)" (journalReject)="journalReject($event)"
+                    *ngIf="journalPreviewShow" [postingStatus]="0" [journalPreview]="journalPreview">
+                </journal-entries-editor>
+
+                <!-- <app-add-cost-center [donationValue]="editorForm.controls['Amount'].value"
+                    (costCentersListChanged)="addCostCenters($event)" 
+                    [DetailsCostCenters]="CostCenters">
+                  </app-add-cost-center> -->
+            </div>
+
+        </div>
+    </div>
+</div>

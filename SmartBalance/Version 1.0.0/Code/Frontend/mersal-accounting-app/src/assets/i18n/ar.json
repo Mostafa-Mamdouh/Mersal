@@ -1,0 +1,1321 @@
+{
+    "error": {
+        "error": "خطأ",
+        "notFound": "صفحة غير موجودة!",
+        "numberOnly": "هذا الحقل يقبل ارقام فقط",
+        "dataMissing": "برجاء استكمال جميع البيانات الناقصه",
+        "accountCurrencyNotMatchSelectedCurrencyg": "عملة الحساب لا تتفق مع العملة المختارة",
+        "accountCurrencyNotMatchSystemCurrencyg": "عملة الحساب لا تتفق مع عملة النظام",
+        "maxDateAlert": "اقصى قيمة للتاريخ مسموح بها هى تاريخ اليوم",
+        "invalidSourceAndDestInventory": "لا يمكن التحويل من المخزن لنفسه",
+        "positiveNumbersOnly": " هذا الحقل يقبل ارقام موجبة فقط",
+        "inventoryDonotHaveProduct": "هذا المخزن لا يوجد فى منتجات",
+        "auth": "ليس لديك صلاحية",
+        "0001": "اسم المستخدم او كلمة المرور غير صحيحة!",
+        "1": "هذا الحساب لا ينتمى لاى مستوى من مستويات الحسابات الموجوده!",
+        "2": "الحساب الاب لهذا الحساب غير موجود!",
+        "3": "هذا الكود موجود من قبل، من فضلك ادخل كود جديد",
+        "4": "لا يمكن اضافة اى حساب تحت حساب فرعى!",
+        "5": "هذا بريد الكتروني موجود من قبل، من فضلك ادخل بريد الكتروني جديد",
+        "6": "هذا الهاتف موجود من قبل، من فضلك ادخل الهاتف جديد",
+        "7": "",
+        "8": "اسم المستخدم موجود من قبل",
+        "9": "المستخدم الحالى لا يستطيع تغيير فعاليته",
+        "10": "المستخدم الحالى لا يستطيع تغيير صلاحياته",
+        "11": "المستخدم الحالى لا يستطيع تغيير ادواره",
+        "12": "المستخدم الحالى لا يستطيع تغيير مجموعاته",
+        "13": "المستخدم الحالى لا يستطيع تغيير قوائمه",
+        "14": "عملة الحركة لا تتوافق مع عملة الحساب التى سترحل اليه فى قيد اليومية",
+        "15": "من فضلك اختر مكان او انشاء مكان جديد",
+        "17": "كلمة المرور غير صحيحة",
+        "18": "القيد غير متزن",
+        "19": "هذا رقم الدفتر موجود من قبل، من فضلك ادخل رقم دفتر جديد",
+        "20": "هذا الملف غير صحيح",
+        "21": "يجب اختيار اول يوم فى الشهر كتاريخ بداية الشهر!",
+        "22": "يجب اختيار اخر يوم فى الشهر كتاريخ نهاية الشهر",
+        "23": "الشهر فى التاريخ من لا يطابق الشهر فى التاريخ الى!",
+        "24": "هذا الشهر تمت اضافته من قبل!",
+        "25": "هذا الشهر تم اغلاقه لذا لن يتم اضافة او تعديل اى حركات فيه",
+        "26": "هذا رقم الايصال تم اغلاقه من فضلك ادخل رقم ايصال جديد",
+        "27": "لا يوجد حسبات للاصول الثابتة",
+        "28": "هذا رقم الإيصال خارج النطاق",
+        "29": "هذا البنك ليس لديه حساب",
+        "30": "قيمة الخصم موجود من قبل",
+        "409": "الوصف غير صحيح"
+    },
+    "shared": {
+        "add": "إضافة",
+        "edit": "تعديل",
+        "detail": "تفاصيل",
+        "delete": "حذف",
+        "close": "اغلاق",
+        "save": "حفظ",
+        "back": "رجوع",
+        "select": "أختر",
+        "loadmore": "تحميل المزيد ",
+        "loading": "تحميل ...",
+        "deleteQuestion": "هل تريد حقا حذف هذا العنصر؟",
+        "operationSuccessed": "العملية تمت بنجاح",
+        "operationFailed": "لقد فشلت العملية!",
+        "pageNotFound": "الصفحة التى تريد الوصول لها غير موجودة!",
+        "cancel": "إلغاء",
+        "clearSearch": "إلغاء البحث",
+        "deletedSuccessfully": "تم الحذف بنجاح",
+        "addedSuccessfully": "تمت الإضافة بنجاح",
+        "reset": "إلغاء",
+        "yes": "نعم",
+        "ok": "موافق",
+        "approve": "موافقة",
+        "reject": "رفض",
+        "repass": "تمرير",
+        "pass": "تمرير",
+        "deny": "ارجاع العقد",
+        "no": "لا",
+        "next": "التالي",
+        "noData": "لا يوجد بيانات",
+        "previous": "السابق",
+        "searchAbout": "ابحث عن",
+        "from": "من",
+        "to": "الى",
+        "fromDate": "من تاريخ",
+        "toDate": "الى تاريخ",
+        "search": "بحث",
+        "advancedSearch": "بحث متقدم",
+        "all": "الكل",
+        "export": "اصدار التقرير",
+        "newestFirst": "الاجدد اولا",
+        "oldestFirst": "الاقدم اولا",
+        "showDetails": "عرض التفاصيل",
+        "enterVatidEmail": "برجاء ادخال بريد الكتروني صحيح !",
+        "enterValidPassword": "برجاء ادخال كلمة المرور لا تقل عن 6 خانات !",
+        "searchbyname": "بحث بالأسم",
+        "searchbyId": "بحث بالكود",
+        "address": "العنوان",
+        "mobile": "الهاتف المحمول",
+        "print": "طباعة",
+        "total": "المجموع",
+        "false": "لا",
+        "true": "نعم",
+        "displayReport": "عرض التقرير",
+        "underDevelopment": "تحت التطوير",
+        "descriptionAr": "الوصف بالعربى",
+        "descriptionEn": "الوصف بالانجليزي",
+        "change": "تغيير",
+        "alert": "تنبيه",
+        "clear": "مسح",
+        "date": "التاريخ",
+        "display": "إعرض",
+        "import": "استيراد",
+        "added": "تم اضافة",
+        "loadVendorsFailed": "فشلت عملية تحميل الموردين!",
+        "unselect": "مسح",
+        "data": "البيانات",
+        "multiSelect": "الاختيار متعدد ...",
+        "exportTo": {
+            "excel": "تصدير لاكسيل"
+        },
+        "validation": {
+            "min": "علي الأقل يجب ان يحتوي علي",
+            "max": "علي الأكثر يجب ان يحتوي علي"
+        },
+        "Exception": {
+            "404": "غير موجود",
+            "AccountChart404": " حساب رئيسي غير موجود ",
+            "500": "حدث خطا",
+            "403": "غير مسموح",
+            "AccountChart403": "كود حساب خاطئ",
+            "AccountChart406": "حساب الاب لا يسمح بانشاء حساب "
+        }
+    },
+    "menu": {
+        "brand": "حسابات مؤسسة مرسال",
+        "home": "الرئيسة",
+        "about": "حولنا",
+        "contact": "تواصل",
+        "journalEntries": "القيود اليومية",
+        "accountChart": "إدارة الحسابات",
+        "reports": "التقارير",
+        "dashboard": "الرئيسة"
+    },
+    "dashboard": {
+        "PaymentMovement": "حركة الدفع",
+        "BankMovement": "حركة البنك",
+        "purchaseInvoice": "فاتورة الشراء",
+        "PurchaseRebate": "مرتد الشراء",
+        "Donation": "التبرعات",
+        "financialTransactions": "الحركات المالية",
+        "PaymentAndReceiptChart": "المصروفات والمقبوضات"
+    },
+    "contact": {
+        "title": "مؤسسة مرسال"
+    },
+    "footer": {
+        "siteName": "حسابات مؤسسة مرسال",
+        "rights": "جميع الحقوق محفوظة لشركة",
+        "manifucture": "سمارت تك"
+    },
+    "language": {
+        "title": "اللغة",
+        "arabic": "العربية",
+        "english": "English"
+    },
+    "user": {
+        "shared": {
+            "maxPaymentLimitAlert": "الحد الاقصى للصرف للمستخدم الحالى هو ",
+            "title": "المستخدم",
+            "code": "الكود",
+            "name": "الاسم",
+            "userName": "اسم المستخدم",
+            "isActive": "فعال",
+            "description": "الوصف",
+            "birthDate": "تاريخ الميلاد",
+            "maxPaymentLimit": "الحد الاقصى للصرف"
+        },
+        "list": {
+            "users": "المستخدمين",
+            "name": "الاسم",
+            "userName": "اسم المستخدم"
+        },
+        "editor": {
+            "name": {
+                "name": "الاسم",
+                "error": {
+                    "required": "هذا الحقل مطلوب!",
+                    "minlength": "يجب الا يقل عدد الحروف عن 2!"
+                }
+            },
+            "userName": {
+                "userName": "اسم المستخدم",
+                "error": {
+                    "required": "هذا الحقل مطلوب!",
+                    "minlength": "يجب الا يقل عدد الحروف عن 2!"
+                }
+            },
+            "password": {
+                "password": "كلمة المرور",
+                "error": {
+                    "required": "هذا الحقل مطلوب!",
+                    "minlength": "كلمة المرور يجب الا تقل عن 6 احرف"
+                }
+            },
+            "maxPaymentLimit": {
+                "maxPaymentLimit": "الحد الاقصى للصرف",
+                "error": {
+                    "invalidValue": "القيمة خطأ"
+                }
+            },
+            "nameAr": "الاسم بالعربى",
+            "nameEn": "الاسم بالانجليزي",
+            "descriptionAr": "الوصف بالعربى",
+            "descriptionEn": "الوصف بالانجليزي",
+            "changePassword": "تغير كلمة المرور",
+            "oldPassword": {
+                "oldPassword": "كلمة المرور القديمة"
+            },
+            "newPassword": {
+                "newPassword": "كلمة المرور الجديدة"
+            },
+            "confirmPassword": {
+                "confirmPassword": "اعد كتابة كلمة المرور",
+                "error": "كلمة المرور غير متطابقة"
+            },
+            "resetPassword": {
+                "resetPassword": "اعد تعين كلمة المرور",
+                "modalQuestion": "هل تريد اعد تعين كلمة المرور ؟"
+            }
+        },
+        "login": {
+            "username": "اسم المستخدم",
+            "password": "كلمة المرور",
+            "login": "تسجيل الدخول"
+        },
+        "userMenu": {
+            "logout": "تسجيل الخروج"
+        },
+        "master": {
+            "userPermissions": "صلاحيات المستخدم",
+            "userRoles": "ادوار المستخدم",
+            "userGroups": "مجموعات المستخدم",
+            "userMenuItems": "قوائم المستخدم"
+        },
+        "userPermissions": {
+            "title": "صلاحيات المستخدم"
+        },
+        "userRoles": {
+            "title": "ادوار المستخدم"
+        },
+        "userGroups": {
+            "title": "مجموعات المستخدم"
+        },
+        "userMenuItems": {
+            "title": "قوائم المستخدم"
+        },
+        "userBranch": {
+            "title": "فروع المستخدم"
+        }
+    },
+    "journalEntries": {
+        "shared": {
+            "journalEntries": "القيود اليومية"
+        },
+        "error": {
+            "invalidAccountCode": "كود الحساب غير صحيح!"
+        },
+        "post": {
+            "journalUnderPreview": "قيود قيد الترحيل",
+            "postJournal": "ترحيل قيود اليومية",
+            "previewPostJournal": "استعراض قيود اليومية",
+            "previewJournal": "استعراض القيد",
+            "approveAll": "موافقة الكل",
+            "rejectAll": "رفض الكل",
+            "approve": "موافقة",
+            "reject": "رفض",
+            "modalQuestion": "هل تريد حفظ هذه التغييرات ؟",
+            "noJournalUnderPreview": "لا يوجد قيود قيد الترحيل",
+            "journalcanceled": "تم الغاء القيد"
+        },
+        "debtor": "مدين",
+        "creditor": "دائن",
+        "status": "الحالة",
+        "date": "التاريخ",
+        "accounts": "الحسابات",
+        "balance": "القيد غير متزن",
+        "valueRequired": "يجب ادخال القيم للحسابات",
+        "accountCode": "كود الحساب",
+        "reversed": "هذا القيد تم عكسه من قبل",
+        "canNotReversed": "لا يمكن عكس هذا القيد مرة اخرى"
+    },
+    "accountChart": {
+        "accountTree": "الشجرة المحاسبية",
+        "accountNumber": "كود الحساب",
+        "arabicName": "اسم بالعربي",
+        "englishName": "اسم بالإنجليزية",
+        "accountType": "نوع الحساب",
+        "AccountGroup": "مجموعة الحساب",
+        "AccountCategory": "فئة الحساب",
+        "credit": "دائن",
+        "debt": "مدين",
+        "createAccount": "حساب",
+        "editAccount": "تعديل حساب",
+        "Accounts": "الحسابات",
+        "amount": "رصيد الحساب",
+        "date": "تاريخ",
+        "mainInfo": "بيانات رئيسية",
+        "openingbalance": "الرصيد الأفتتاحي ",
+        "finalnode": "حساب نهائي",
+        "CreateMain": "إنشاء حساب رئيسي",
+        "DetailsProcess": "عرض تفاصيل حساب",
+        "CreateProcess": "  إنشاء حساب جديد",
+        "currentDebitBalance": "الرصيد الحالى المدين",
+        "currentCreditBalance": "الرصيد الحالى الدائن",
+        "accountNature": "طبيعة الحساب",
+        "isCreditAccount": "حساب دائن",
+        "isDebitAccount": "حساب مدين",
+        "accountDocument": {
+            "title": "دفاتر الحساب",
+            "account": "الحساب",
+            "document": "الدفتر",
+            "documentNumber": "رقم الدفتر",
+            "countReceipts": "عدد الايصالات"
+        }
+    },
+    "addProduct": {
+        "Products": "المنتجات",
+        "ProductCode": "كود الصنف",
+        "ProductName": "اسم الصنف",
+        "UnitCode": "كود الوحدة",
+        "UnitName": "اسم الوحدة",
+        "Quantity": " الكمية",
+        "price": " السعر",
+        "Total": " الاجمالي",
+        "Value": "القيمة",
+        "fieldReq": "هذا الحقل مطلوب ",
+        "brandIsUnique": "لا يمكن تكرار نفس الصنف",
+        "quantityMax": "الكميه المدخلة اكبر من المخزون"
+    },
+    "donation": {
+        "assoctcase": "مرتبط بحالة",
+        "costcentername": "اسم المركز",
+        "code": "كود المستند",
+        "branch": "الفرع",
+        "receiptDate": "تاريخ القيد",
+        "donationValue": "قيمةالتبرع",
+        "customerDonor": "المتبرع",
+        "cases": "الحالات",
+        "caseName": " الحالة",
+        "caseCode": "كود الحالة",
+        "phone": "الهاتف غير صحيح",
+        "requiredAmount": "المبلغ المطلوب",
+        "Amount": "المبلغ",
+        "assignValue": "التبرع",
+        "total": "المجموع",
+        "AssociatedBeneficiariesCases": "مرتبط بحالات مستفيدين",
+        "donerName": "اسم المتبرع",
+        "email": "البريد الالكتروني",
+        "phoneNumber": "رقم التلفون",
+        "nationalId": "الرقم القومي",
+        "reqAmount": "المبلغ المطلوب",
+        "deductedAmount": "المبلغ المخصص من الاجمالي",
+        "description": "وصف الحركة",
+        "info": "معلومات",
+        "delegateManReciptNumber": "رقم الايصال",
+        "invoicefor": "إيصال مؤسسة مرسال",
+        "donationType": "نوع التبرع",
+        "SecondarydonationType": "نوع التبرع فرعي",
+        "duedate": "تاريخ الاستحقاق",
+        "addReceiptDate": "تاريح الايصال"
+    },
+    "financial": {
+        "safes": "الخزنة",
+        "banks": "البنك",
+        "sourceBank": "بنك الإصدار",
+        "cashBank": "بنك الايداع",
+        "isCash": "تم الصرف",
+        "isDeposite": "تم الإيداع",
+        "chequeNumber": "رقم الشيك",
+        "dueDate": "التاريخ",
+        "visaNumber": "رقم بطاقة إئتمان ",
+        "Cash": "نقدي",
+        "cheque": "شيك",
+        "visa": "رقم بطاقة إئتمان",
+        "vendor": "مورد",
+        "donator": "متبرع",
+        "accountChart": " حساب",
+        "addConator": "أضافة متبرع",
+        "vendorName": "اسم المورد",
+        "customerDatails": "بيانات المتبرع",
+        "costCenterNotificationError": "برجاء مراجعة مركز التكلفة !",
+        "vendorNotificationError": "برجاء اختيار المورد !",
+        "accountChartNotificationError": "برجاء اختيار رقم حساب !",
+        "customerNotificationError": "برجاء مراجعة بيانات المتبرع/المتبرع !",
+        "paymentNotificationError": " برجاء مراجعة طريقة المصروف والتاكد من إستكمال جميع بيانات طريقة المصروف المختارة! ",
+        "formNotificationError": "برجاء مراعة البيانات المُدخلة !",
+        "costCenterTotalValue": "القيم المخصصة لمراكز التكلفة لا تساوى قيمة الحركة",
+        "casesTotalValue": "القيم المخصصة للجهات اكبر من قيمة الحركة",
+        "casesAssignValue": "يجب تخصيص مبلغ للحالات المختارة",
+        "addNewDonator": "إضافة متبرع جديد",
+        "dateRang": "نطاق التاريخ المدخل غير صحيح",
+        "amountRang": "نطاق القيمة المدخلة غير صحيح",
+        "discountpercentage": "نسبة الخصم",
+        "discountAmount": "مبلغ الخصم",
+        "invoiceAmount": "مبلغ الفاتورة",
+        "notificationReceiptNumber": "رقم ايصال الاشعار",
+        "discountNotice": "اشعار الخصم",
+        "PaymentDirectionError": " يجب ان تختار على الأقل نوع مصدر واحد",
+        "PaymentError": " مبلغ الفاتورة يجب ان يكون مساويا لمبلغ القيمة الفعلية مضافا اليه مبلغ الخصم"
+    },
+    "purchasing": {
+        "shared": {
+            "code": "رقم الفاتورة",
+            "date": "تاريخ الفاتورة",
+            "vendor": "المورد",
+            "safe": "الخزينة",
+            "cash": "نقدى",
+            "postpone": "آجل",
+            "credit": "إئتمان",
+            "amount": "القيمة",
+            "discount": "الخصم",
+            "totalAmountBeforeTax": "إجمالى  قبل الضريبة",
+            "totalAmountAfterTax": "إجمالى الفاتورة بعد الضريبة",
+            "totalAmount": "إجمالى الفاتورة",
+            "totalExpenses": "إجمالى المصروفات",
+            "totalDiscount": "إجمالى الخصم",
+            "netAmount": "صافى القيمة",
+            "itemCode": "كود الصنف",
+            "measurementUnit": "وحدة القياس",
+            "productCode": "كود الوحدة",
+            "quantity": "الكمية",
+            "price": "السعر",
+            "total": "الاجمالى",
+            "net": "الصافى",
+            "expenses": "المصروف",
+            "deduction": "خصم الفاتورة",
+            "inventory": "المخزن",
+            "openingBalanceInvoice": "فاتورةالمورد",
+            "description": "وصف"
+        },
+        "invoice": {
+            "title": "فاتورة المشتريات",
+            "vendorInvoiceCode": "رقم فاتورة المورد",
+            "inventory": "المخزن",
+            "invoiceType": "نوع الفاتورة",
+            "additionalExpenses": "مصروفات إضافية",
+            "taxAmount": "قيمة الضريبة"
+        },
+        "rebate": {
+            "title": "مرتد المشتريات",
+            "totalAmount": "إجمالى الفاتورة",
+            "categories": "الاصناف",
+            "productReq": "يجب اختيار صنف واحد علي الاقل",
+            "costCenteReq": "يجب اختيار مركز التكلفة",
+            "safeReq": "يجب اختيار اسم الخزنة",
+            "additionalExpensesReq": "يجب ادخال قيمة المصروفات الاضافية",
+            "discountReq": "يجب ادخال قيمةالخصوم "
+        }
+    },
+    "banking": {
+        "shared": {
+            "code": "كود المستند",
+            "date": "التاريخ",
+            "amount": "القيمة",
+            "bank": "البنك",
+            "journalType": "نوع اليومية"
+        },
+        "bankMovement": {
+            "title": "حركة البنوك",
+            "toBank": "إلى بنك",
+            "safe": "الخزينة",
+            "accountChart": " حساب",
+            "remittanceVoucherNumber": "رقم الحوالة",
+            "directlyDonationBank": "بنك التبرعات مباشرة",
+            "chequesNotClosed": "شيكات لم يتم تحصله"
+        }
+    },
+    "journalPosting": {
+        "shared": {
+            "date": "التاريخ",
+            "movementType": "نوع الحركة",
+            "counts": "اعداد القيود",
+            "automaticPostingOn": "إعدادات ترحيل القيود تلقائية داخل النظام"
+        },
+        "journalPosting": {
+            "title": "ترحيل قيود اليومية",
+            "isAutomaticPosting": "ترحيل تلقائى",
+            "isBulkPosting": "قيد مجمع",
+            "selectAll": "اختيار الكل",
+            "postedReceiptsMovementCount": "قيود حركة المقبوضات",
+            "postedPaymentMovementCount": "قيود حركة المصروفات",
+            "postedBankMovementCount": "قيود حركة البنوك",
+            "postedPurchaseInvoiceCount": "قيود فاتورة المشتريات",
+            "postedPurchaseRebateCount": "قيود مرتد المشتريات",
+            "postedStoreMovementCount": "قيود حركة المخازن",
+            "postedSalesInvoiceCount": "قيود فاتورة المبيعات",
+            "postedSalesRebateCount": "قيود مرتد المبيعات"
+        }
+    },
+    "setting": {
+        "shared": {
+            "title": "الاعدادات"
+        },
+        "vat": {
+            "title": "إعدادات ضريبة القيمة المضافة",
+            "vat": "ضريبة القيمة المضافة",
+            "errors": {
+                "invalidVATPattern": "قيمة الضريبة غير صحيحة"
+            }
+        },
+        "vendorSetting": {
+            "title": "إعدادات نظام الموردين",
+            "vendor": "نظام الموردين",
+            "cashPurchaseAccountNumber": "رقم حساب المشتريات النقدية",
+            "futurePurchaseAccountNumber": "رقم حساب المشتريات الاجلة",
+            "purchaseDiscountAccountNumber": "رقم حساب خصم المشتريات المكتسب",
+            "purchaseExpensesAccountNumber": "رقم حساب مصروفات المشتريات",
+            "purchaseTaxAccountNumber": "رقم حساب ضريبة المشتريات",
+            "cashPurchasesRebateAccountNumber": "رقم حساب مرتد المشتريات النقدية",
+            "futurePurchaseRebateAccountNumber": "رقم حساب مرتد المشتريات الاجلة",
+            "purchaseRebateDiscountAccountNumber": "رقم حساب خصم مرتد المشتريات المكتسب",
+            "purchaseRebateExpensesAccountNumber": "رقم حساب مصروفات مرتد المشتريات",
+            "purchaseRebateTaxAccountNumber": "رقم حساب ضريبة مرتد المشتريات"
+        },
+        "financialSetting": {
+            "title": "إعدادات الحركة المالية",
+            "financial": "الحركة المالية",
+            "fiscalYear": "السنة المالية",
+            "showCasesThatMetRequiredAmount": "اظهار الحالات التى استوفت المبلغ المطلوب",
+            "useChecksUnderCollection": "استخدام شيكات تحت التحصيل",
+            "vatAccountNumber": "رقم حساب ضريبة الخصم والاضافة",
+            "checksUnderCollectionAccountNumber": "رقم حساب شيكات تحت التحصيل",
+            "donationAccountNumber": "رقم حساب التبرعات",
+            "fiscalYearEndDay": "يوم نهاية السنة المالية",
+            "fiscalYearEndMonth": "شهر نهاية السنة المالية",
+            "fiscalYearStartDay": "يوم بداية السنة المالية",
+            "fiscalYearStartMonth": "شهر بداية السنة المالية",
+            "donationReturnAccountNumber": "رقم حساب رد التبرعات",
+            "isInventoryRequired": "المخزن اجبارى فى فاتورة ومرتد المشتريات",
+            "temporaryCovenantAccountNumber": "رقم حساب العهد المؤقتة",
+            "bankingPaymentsAccountNumber": "رقم حساب المصروفات البنكية",
+            "receiptPapersAccountNumber": "رقم حساب أوراق القبض",
+            "generalDonationsAccountNumber": "رقم حساب التبرعات العامة",
+            "checksUnderReceiptPapersAccountNumber": "رقم حساب أوراق القبض تحت التحصيل"
+        },
+        "testamentAndAdvancesSetting": {
+            "title": "إعدادات العهد والسلفيات",
+            "testamentAndAdvances": "العهد والسلفيات",
+            "testamentAccountNumber": "رقم حساب العهد",
+            "advancesAccountNumber": "رقم حساب السلفيات"
+        },
+        "postingSetting": {
+            "title": "إعدادات ترحيل القيود",
+            "posting": "ترحيل القيود",
+            "isAutomaticPosting": "ترحيل تلقائى",
+            "isBulkPosting": "قيد مجمع",
+            "allowPostingAccountCurrencyMisMatch": "السماح بالترحيل لحساب عملته لا تماثل عملة الحركة",
+            "automaticPostingNotification": "يرجى العلم ان اعدادات ترحيل قيود اليومية موضوعة على الوضع التلقائى ، لتغييرها يرجى الذهاب للتالى "
+        },
+        "systemCurrencySetting": {
+            "title": "عملة النظام",
+            "currency": "العملة"
+        },
+        "generalSetting": {
+            "title": "إعدادات عامة"
+        },
+        "AccountChartSetting": {
+            "title": "اعدادت الدليل المحاسبى",
+            "levelCount": "عدد مستويات الدليل",
+            "level": "المستوى",
+            "length": "طول الكود"
+        },
+        "fixedAssetAccountChartSetting": {
+            "title": "اعدادت حسبات الاصول الثابتة",
+            "AccountChart": "الحساب",
+            "AccountCharts": "الحسابات"
+        }
+    },
+    "checksUnderCollection": {
+        "shared": {},
+        "checksUnderCollection": {
+            "title": "شيكات تحت التحصيل",
+            "amount": "القيمة",
+            "bank": "البنك",
+            "modalQuestion": "هل تريد حفظ هذه الشيكات ؟"
+        }
+    },
+    "sales": {
+        "shared": {
+            "code": "رقم الفاتورة",
+            "date": "تاريخ الفاتورة"
+        },
+        "invoice": {
+            "title": "فاتورة مبيعات"
+        },
+        "rebate": {
+            "title": "مرتد المبيعات"
+        }
+    },
+    "movements": {
+        "date": "تاريخ الحركة",
+        "financial": " حركات مالية",
+        "sales": "فاتورة مبيعات",
+        "billNumber": "رقم الفاتورة",
+        "dateBill": "تاريخ الفاتورة",
+        "costCenter": " مرتبط بمركز تكلفة",
+        "multiCostCenter": " مرتبط بعدة مراكز تكلفة",
+        "billType": " نوع الفاتورة",
+        "customer": " المتبرع",
+        "delegate": " المندوب",
+        "storeNumber": "رقم المخزن",
+        "offerPrice": "عرض سعر",
+        "products": "المنتجات",
+        "billTotal": "اجمالي الفاتورة",
+        "totalCost": "اجمالي المصروفات",
+        "totalDiscount": "اجمالي الخصم",
+        "billNet": " صافي الفاتورة",
+        "additionalExpenses": "مصروفات اضافية ",
+        "billDiscount": "خصم الفاتورة",
+        "cashPayment": "مصروف نقدي",
+        "discountValue": "قيمة الخصم ",
+        "expensesValue": " قيمة المصروفات",
+        "productCode": "كود الصنف",
+        "productName": "اسم الصنف",
+        "unitCode": "كود الوحدة",
+        "unitName": "اسم الوحدة",
+        "quantity": " الكمية",
+        "price": " السعر",
+        "total": " الاجمالي",
+        "summary": "الخلاصة",
+        "receipts": "حركة المقبوضات",
+        "documentNumber": "رقم المستند",
+        "dateDocument": "تاريخ المستند",
+        "source": "المصدر",
+        "associatedProducts": "مرتبط بصرف منتجات",
+        "paymentMethod": "طريقة المصروف",
+        "value": "القيمة",
+        "statementAr": "بيان الحركة بالعربية",
+        "statementEn": "بيان الحركة بالانجليزية",
+        "supplierCode": "كود المورد",
+        "payments": "حركة المصروفات",
+        "storeMovement": "حركة المخزون",
+        "storeTransfer": "تحويلات المخزون",
+        "startBalance": "الرصيد الافتتاحي",
+        "movementType": "نوع الحركة ",
+        "referenceNumber": "الرقم الدفتري",
+        "storeFrom": "المخزن المحول منه",
+        "storeTo": " المخزن المحول اليه",
+        "dailyRestrictions": "القيود اليومية",
+        "reverseConstraint": "عكس القيد",
+        "purchases": "فاتورة المشتريات",
+        "returnPurchases": "مرتد المشتريات",
+        "billPurchasesNumber": "رقم فاتورة المورد",
+        "discountPercent": "نسبة الخصم",
+        "accountNumber": "رقم الحساب",
+        "accountName": "اسم الحساب",
+        "creditor": "دائن",
+        "debtor": " مدين",
+        "costCenterCode": "كود مركز التكلفة",
+        "costCenterName": "اسم مركز التكلفة",
+        "discription": "وصف",
+        "discriptionAr": " وصف بالعربي",
+        "discriptionEn": "وصف بالإنجليزية",
+        "fieldReq": "هذا الحقل مطلوب ",
+        "Donations": "شاشة المقبوضات",
+        "minLength": "اقل قيمة لهذة الحقل هى ",
+        "MaxLength": "اكثر قيمة لهذة الحقل هى  ",
+        "Currency": "العملة",
+        "destination": "الجهة",
+        "TotalAmount": "  القيمة الأجمالية غير موجودة قم بإدخالها ثم أعد الإختيار حتي يتم حفظ القيم الجديدة",
+        "costcenteramounterror": "لقد حدث خطا بسبب قيمه مدخله في مركز تكلفة برجاء إدخال قيم أكبر من صفر وإعادة المحاولة",
+        "bankMovement": "حركة البنوك",
+        "inventoryMovement": "حركة المخزون",
+        "openingBalance": "الرصيد الافتتاحى",
+        "inventoryTransfers": "حركة المخزن",
+        "inventoryInventoryTransfers": "تحويلات المخزون",
+        "reciptNumber": "رقم الايصال",
+        "captureMethod": "طريقة القبض"
+    },
+    "costCenter": {
+        "costcenters": "مراكز التكلفة",
+        "costcenter": "مركز التكلفة",
+        "noCostCentersRelated": "لا يوجد مراكز تكلفة مرتبطة",
+        "SucessCostCentersAdd": "تمت إضافة مراكز تكلفة بنجاح",
+        "required": "يجب اختيار مركز تكلفة",
+        "shared": {
+            "code": "الكود",
+            "openingCredit": "الرصيد الأفتاحى",
+            "isActive": "فعال",
+            "costCenterType": "نوع مركز التكلفة"
+        },
+        "list": {
+            "name": "الاسم"
+        },
+        "editor": {
+            "nameAr": "الاسم بالعربى",
+            "nameEn": "الاسم بالانجليزي",
+            "isDebt": "مدين",
+            "isCredit": "دائن",
+            "description": "الوصف",
+            "descriptionAr": "وصف بالعربى",
+            "descriptionEn": "وصف بالانجليزي"
+        }
+    },
+    "costCenterType": {
+        "shared": {
+            "title": "انواع مراكز التكلفة",
+            "code": "الكود",
+            "name": "الاسم"
+        },
+        "list": {},
+        "editor": {
+            "nameAr": "الاسم بالعربى",
+            "nameEn": "الاسم بالانجليزي",
+            "description": "الوصف",
+            "descriptionAr": "الوصف بالعربى",
+            "descriptionEn": "الوصف بالانجليزي"
+        }
+    },
+    "closedMonth": {
+        "shared": {
+            "title": "الشهور المغلقة",
+            "month": "الشهر",
+            "name": "الاسم",
+            "isClosed": "تم اغلاقه",
+            "from": "من",
+            "to": "الى"
+        },
+        "list": {},
+        "editor": {
+            "nameAr": "الاسم بالعربى",
+            "nameEn": "الاسم بالانجليزي",
+            "description": "الوصف",
+            "descriptionAr": "الوصف بالعربى",
+            "descriptionEn": "الوصف بالانجليزي"
+        }
+    },
+    "bank": {
+        "shared": {
+            "title": "البنك",
+            "code": "الكود",
+            "name": "الاسم",
+            "date": "التاريخ"
+        },
+        "list": {
+            "accountCharts": "حسابات البنك",
+            "bankDocuments": "دفاتر البنك"
+        },
+        "editor": {
+            "nameAr": "الاسم بالعربى",
+            "nameEn": "الاسم بالانجليزي",
+            "openingCredit": "الرصيد الأفتاحى",
+            "isDebt": "مدين",
+            "isCredit": "دائن",
+            "description": "وصف البنك",
+            "descriptionAr": "وصف البنك بالعربى",
+            "descriptionEn": "وصف البنك بالانجليزي"
+        }
+    },
+    "bankAccountCharts": {
+        "shared": {
+            "title": "الحسبات البنك",
+            "bank": "البنك",
+            "accountChart": "الحساب",
+            "accountCharts": "الحسابات"
+        },
+        "list": {},
+        "editor": {
+            "nameAr": "الاسم بالعربى",
+            "nameEn": "الاسم بالانجليزي",
+            "openingCredit": "الرصيد الأفتاحى",
+            "isDebt": "مدين",
+            "isCredit": "دائن",
+            "description": "وصف البنك",
+            "descriptionAr": "وصف البنك بالعربى",
+            "descriptionEn": "وصف البنك بالانجليزي"
+        }
+    },
+    "vendor": {
+        "shared": {
+            "title": "المورد",
+            "code": "الكود",
+            "name": "الاسم",
+            "date": "التاريخ",
+            "openingCredit": "الرصيد الأفتاحى",
+            "description": "الوصف"
+        },
+        "list": {},
+        "editor": {
+            "isDebt": "مدين",
+            "isCredit": "دائن",
+            "nameAr": "الاسم بالعربى",
+            "nameEn": "الاسم بالانجليزي",
+            "descriptionAr": "الوصف بالعربى",
+            "descriptionEn": "الوصف بالانجليزي",
+            "accountChart": " حساب",
+            "phone": "الهاتف",
+            "commercialRegister": "رقم السجل التجارى",
+            "taxcard": "رقم البطاقة الضريبة",
+            "payeeName": "اسم المستفيد فى الشيكات",
+            "VATRegistrationCertificate": "شهادة التسجيل فى الضريبة",
+            "address": "العنوان",
+            "exemptFromTax": "معفى من الضريبة",
+            "notExemptFromTax": "غير معفى من الضريبة"
+        }
+    },
+    "safe": {
+        "shared": {
+            "title": "الخزنة",
+            "code": "الكود",
+            "name": "الاسم",
+            "date": "التاريخ",
+            "openingCredit": "الرصيد الأفتاحى",
+            "description": "الوصف",
+            "branch": "الفرع"
+        },
+        "list": {},
+        "editor": {
+            "isDebt": "مدين",
+            "isCredit": "دائن",
+            "nameAr": "الاسم بالعربى",
+            "nameEn": "الاسم بالانجليزي",
+            "descriptionAr": "الوصف بالعربى",
+            "descriptionEn": "الوصف بالانجليزي",
+            "safeAccountChart": " حسابات الخرنة"
+        }
+    },
+    "delegate": {
+        "shared": {
+            "title": "المندوب",
+            "code": "الكود",
+            "name": "الاسم",
+            "date": "التاريخ",
+            "phone": "الهاتف",
+            "email": "البريد الاكترونى"
+        },
+        "list": {},
+        "editor": {
+            "nameAr": "الاسم بالعربى",
+            "nameEn": "الاسم بالانجليزي",
+            "address": "العنوان",
+            "description": "وصف المندوب",
+            "descriptionAr": "وصف المندوب بالعربى",
+            "descriptionEn": "وصف المندوب بالانجليزي"
+        }
+    },
+    "branch": {
+        "shared": {
+            "title": "الفرع",
+            "code": "الكود",
+            "name": "الاسم",
+            "date": "التاريخ",
+            "description": "الوصف"
+        },
+        "list": {},
+        "editor": {
+            "nameAr": "الاسم بالعربى",
+            "nameEn": "الاسم بالانجليزي",
+            "descriptionAr": "الوصف بالعربى",
+            "descriptionEn": "الوصف بالانجليزي"
+        }
+    },
+    "brand": {
+        "shared": {
+            "title": "الصنف",
+            "code": "الكود",
+            "name": "الاسم",
+            "date": "التاريخ",
+            "description": "الوصف"
+        },
+        "list": {},
+        "editor": {
+            "nameAr": "الاسم بالعربى",
+            "nameEn": "الاسم بالانجليزي",
+            "descriptionAr": "الوصف بالعربى",
+            "descriptionEn": "الوصف بالانجليزي",
+            "parentBrand": "الصنف الاب"
+        }
+    },
+    "measurementUnit": {
+        "shared": {
+            "title": "وحدة القياس",
+            "code": "الكود",
+            "name": "الاسم",
+            "date": "التاريخ",
+            "description": "الوصف"
+        },
+        "list": {},
+        "editor": {
+            "nameAr": "الاسم بالعربى",
+            "nameEn": "الاسم بالانجليزي",
+            "descriptionAr": "الوصف بالعربى",
+            "descriptionEn": "الوصف بالانجليزي"
+        }
+    },
+    "currency": {
+        "exchange": {
+            "shared": {
+                "title": "سعر العملة",
+                "code": "الكود",
+                "price": "السعر",
+                "date": "التاريخ",
+                "ExchangeCurrency": "عملة الصرف"
+            },
+            "list": {},
+            "editor": {
+                "nameAr": "الاسم بالعربى",
+                "nameEn": "الاسم بالانجليزي",
+                "descriptionAr": "وصف بالعربى",
+                "descriptionEn": "وصف بالانجليزي"
+            },
+            "errors": {
+                "sameSourceAndDest": "العملات متماثلة!"
+            }
+        },
+        "currency": {
+            "shared": {
+                "title": "العملة",
+                "code": "الكود",
+                "name": "الاسم",
+                "date": "التاريخ",
+                "description": "الوصف"
+            },
+            "list": {},
+            "editor": {
+                "nameAr": "الاسم بالعربى",
+                "nameEn": "الاسم بالانجليزي",
+                "descriptionAr": "وصف بالعربى",
+                "descriptionEn": "وصف بالانجليزي",
+                "symbol": "الرمز"
+            }
+        }
+    },
+    "permission": {
+        "shared": {
+            "title": "الصلاحية",
+            "code": "الكود",
+            "name": "الاسم",
+            "isActive": "فعال",
+            "description": "الوصف"
+        },
+        "list": {},
+        "editor": {
+            "nameAr": "الاسم بالعربى",
+            "nameEn": "الاسم بالانجليزي",
+            "descriptionAr": "الوصف بالعربى",
+            "descriptionEn": "الوصف بالانجليزي"
+        }
+    },
+    "role": {
+        "shared": {
+            "title": "الدور",
+            "code": "الكود",
+            "name": "الاسم",
+            "isActive": "فعال",
+            "description": "الوصف",
+            "date": "التاريخ"
+        },
+        "list": {},
+        "editor": {
+            "nameAr": "الاسم بالعربى",
+            "nameEn": "الاسم بالانجليزي",
+            "descriptionAr": "الوصف بالعربى",
+            "descriptionEn": "الوصف بالانجليزي"
+        },
+        "master": {
+            "rolePermissions": "صلاحيات الدور"
+        },
+        "rolePermissions": {
+            "title": "صلاحيات الدور"
+        }
+    },
+    "group": {
+        "shared": {
+            "title": "المجموعة",
+            "code": "الكود",
+            "name": "الاسم",
+            "isActive": "فعال",
+            "description": "الوصف",
+            "date": "التاريخ"
+        },
+        "list": {},
+        "editor": {
+            "nameAr": "الاسم بالعربى",
+            "nameEn": "الاسم بالانجليزي",
+            "descriptionAr": "الوصف بالعربى",
+            "descriptionEn": "الوصف بالانجليزي"
+        },
+        "groupPermissions": {
+            "title": "صلاحيات المجموعة"
+        }
+    },
+    "inventory": {
+        "shared": {
+            "title": "المخزن",
+            "code": "الكود",
+            "name": "الاسم",
+            "description": "الوصف",
+            "date": "التاريخ"
+        },
+        "list": {},
+        "editor": {
+            "nameAr": "الاسم بالعربى",
+            "nameEn": "الاسم بالانجليزي",
+            "descriptionAr": "الوصف بالعربى",
+            "descriptionEn": "الوصف بالانجليزي",
+            "address": "العنوان",
+            "accountChart": "حساب",
+            "outgoingType": "نوع الصادر"
+        }
+    },
+    "donator": {
+        "shared": {
+            "title": "المتبرع",
+            "code": "الكود",
+            "name": "الاسم",
+            "description": "الوصف",
+            "date": "التاريخ"
+        },
+        "list": {},
+        "editor": {
+            "nameAr": "الاسم بالعربى",
+            "nameEn": "الاسم بالانجليزي",
+            "descriptionAr": "الوصف بالعربى",
+            "descriptionEn": "الوصف بالانجليزي",
+            "accountChart": "حساب"
+        }
+    },
+    "MenuItem": {
+        "shared": {
+            "title": "عنصر القائمة",
+            "code": "الكود",
+            "name": "الاسم",
+            "description": "الوصف",
+            "isActive": "فعال",
+            "url": "رابط",
+            "itemOrder": "ترتيب العنصر",
+            "userMenuItems": "مستخدمين القائمة ",
+            "hasParent": "له اب"
+        },
+        "list": {},
+        "editor": {
+            "nameAr": "الاسم بالعربى",
+            "nameEn": "الاسم بالانجليزي",
+            "descriptionAr": "الوصف بالعربى",
+            "descriptionEn": "الوصف بالانجليزي",
+            "title": "العنوان",
+            "titleAr": "العنوان بالعربى",
+            "titleEn": "العنوان بالانجليزي",
+            "rootUrl": "رابط الجذر",
+            "allowAnonymous": "السماح مجهول",
+            "onErrorGoToURL": "رابط الخطاء",
+            "parentMenuItem": "القائمة الاب"
+        },
+        "errors": {
+            "parentIsSame": "القائمة , القائمة الاب متماثلتين!"
+        }
+    },
+    "asset": {
+        "shared": {
+            "title": "استلام اصل",
+            "receivedAssets": "الاصول المستلمة",
+            "brand": "الصنف",
+            "location": "المكان",
+            "accountChart": " حساب",
+            "depreciationRate": "معدل الاهلاك",
+            "depreciationType": "نوع الاهلاك",
+            "PurchaseInvoice": "فاتورة المشتريات",
+            "EffiencyRaise": "رفع كفاءه",
+            "EffiencyRaiseAmount": "قيمة رفع الكفاءه",
+            "EffiencyRaiseDate": "تاريخ رقع الكفاءه",
+            "EffiencyRaiseSuccessed": "تم رفع الكفاءه بنجاح"
+        },
+        "list": {},
+        "editor": {
+            "depreciationValue": "قيمه الاهلاك",
+            "startDepreciationDate": "تاريخ بداية الاهلاك",
+            "Properties": "الخصائص",
+            "description": "الوصف",
+            "descriptionAr": "الوصف بالعربى",
+            "descriptionEn": "الوصف بالانجليزي",
+            "invoice": "تفصيل فاتورة",
+            "vendor": "المورد",
+            "date": "التاريخ",
+            "Amount": "القيمة",
+            "Quantity": "الكمية",
+            "serial": "السيريال",
+            "model": "الموديل",
+            "color": "اللون",
+            "size": "المقاس",
+            "status": "الحالة"
+        }
+    },
+    "expensesAsset": {
+        "shared": {
+            "title": "مصروفات الاصول",
+            "add": "إضافة مصروف",
+            "asset": "الاصل",
+            "accountChart": " حساب",
+            "expensesType": "نوع المصروف",
+            "amount": "سعر الخدمة"
+        },
+        "list": {},
+        "editor": {
+            "description": "الوصف",
+            "descriptionAr": "الوصف بالعربى",
+            "descriptionEn": "الوصف بالانجليزي"
+        }
+    },
+    "depreciationAsset": {
+        "shared": {
+            "title": "اهلاك الاصول",
+            "brand": "الصنف",
+            "accountChart": " حساب",
+            "location": "المكان",
+            "depreciationRate": "معدل الاهلاك",
+            "depreciationType": "نوع الاهلاك",
+            "amount": "سعر الشراء",
+            "currentValue": "القيمة الحالية",
+            "date": "التاريخ",
+            "modalQuestion": "هل تريد اهلاك هذه الاصول ؟",
+            "modalButton": "اهلاك",
+            "successed": "نجحت العملية",
+            "depreciationValue": "قيمه الاهلاك",
+            "nextDepreciationDate": "تاريخ الاهلاك القادم"
+        },
+        "list": {},
+        "editor": {
+            "description": "الوصف",
+            "descriptionAr": "الوصف بالعربى",
+            "descriptionEn": "الوصف بالانجليزي"
+        }
+    },
+    "excludeAsset": {
+        "shared": {
+            "title": "استبعاد الاصول",
+            "code": "الكود",
+            "brand": "الصنف",
+            "accountChart": " حساب",
+            "currentValue": "القيمة الحالية",
+            "depreciationValue": "قمه الاهلاك",
+            "modalQuestion": "هل تريد استبعاد هذه الاصول ؟",
+            "speculationButton": "استبعاد",
+            "saleButton": "بيع",
+            "salePrice": "سعر البيع"
+        },
+        "list": {},
+        "editor": {
+            "description": "الوصف",
+            "descriptionAr": "الوصف بالعربى",
+            "descriptionEn": "الوصف بالانجليزي"
+        }
+    },
+    "location": {
+        "shared": {
+            "title": "المكان",
+            "code": "الكود",
+            "description": "الوصف",
+            "locationTitle": "العنوان"
+        },
+        "list": {},
+        "editor": {
+            "title": "العنوان",
+            "titleAr": "العنوان بالعربى",
+            "titleEn": "العنوان بالانجليزي",
+            "descriptionAr": "الوصف بالعربى",
+            "descriptionEn": "الوصف بالانجليزي",
+            "parentLocation": "المكان الاب"
+        }
+    },
+    "assetInventory": {
+        "shared": {
+            "title": "جرد الاصول",
+            "code": "الكود",
+            "date": "التاريخ",
+            "location": "المكان"
+        },
+        "list": {},
+        "editor": {
+            "assetDetails": "تفاصيل الأصول",
+            "brand": "الصنف",
+            "expectedNumber": "العدد المتوقع",
+            "actualNumber": "العدد الفعلى",
+            "difference": "الفرق",
+            "description": "الوصف",
+            "descriptionAr": "الوصف بالعربى",
+            "descriptionEn": "الوصف بالانجليزي"
+        }
+    },
+    "assetLocation": {
+        "shared": {
+            "title": "اماكن الاصول",
+            "asset": "الاصل",
+            "location": "المكان"
+        },
+        "list": {},
+        "editor": {
+            "description": "الوصف",
+            "descriptionAr": "الوصف بالعربى",
+            "descriptionEn": "الوصف بالانجليزي"
+        }
+    },
+    "expensesType": {
+        "shared": {
+            "title": "انواع المصاريف",
+            "code": "الكود",
+            "name": "الاسم"
+        },
+        "list": {},
+        "editor": {
+            "nameAr": "الاسم بالعربى",
+            "nameEn": "الاسم بالانجليزي",
+            "description": "الوصف",
+            "descriptionAr": "الوصف بالعربى",
+            "descriptionEn": "الوصف بالانجليزي"
+        }
+    },
+    "document": {
+        "shared": {
+            "title": "الدفاتر",
+            "documentNumber": "رقم الدفتر",
+            "countReceipts": "عدد الايصالات",
+            "firstNumber": "اول رقم"
+        },
+        "list": {},
+        "editor": {}
+    },
+    "discountPercent": {
+        "shared": {
+            "title": "نسبة الخصم",
+            "value": "القيمة",
+            "valueError": "نسبة الخصم يجب ان تكون مثل هذا: 60%"
+        },
+        "list": {},
+        "editor": {
+            "nameAr": "الاسم بالعربى",
+            "nameEn": "الاسم بالانجليزي",
+            "description": "الوصف",
+            "descriptionAr": "الوصف بالعربى",
+            "descriptionEn": "الوصف بالانجليزي"
+        }
+    },
+    "testament": {
+        "shared": {
+            "title": "عهد و سلفيات",
+            "code": "الكود",
+            "advancesType": "انواع السلفيات",
+            "totalValue": "القيمة الاجمالية",
+            "liquidation": "تصفية"
+        },
+        "list": {},
+        "editor": {
+            "custodyLiquidation": "تصفية العهدة",
+            "advanceliquidation": "تصفية السلفة",
+            "nameAr": "الاسم بالعربى",
+            "nameEn": "الاسم بالانجليزي",
+            "description": "الوصف",
+            "descriptionAr": "الوصف بالعربى",
+            "descriptionEn": "الوصف بالانجليزي",
+            "advance": {
+                "liquidationNumber": "رقم التصفيه",
+                "employees": "الموظفين",
+                "caseCode": "كود الحالة",
+                "amount": "المبلغ",
+                "paymentMethod": "طريقة الدفع",
+                "bank": "البنك",
+                "accountChart": " حساب"
+            }
+        },
+        "error": {
+            "sumAmountNotEqualTotalValue": "مجموع المبلغ لا يسوى القيمة الاجملية"
+        }
+    },
+    "liquidation": {
+        "totalAmount": "المبلغ الاجمالى",
+        "amount": "المبلغ",
+        "documentCode": "رقم تصفية",
+        "testamentExtraction": "النوع",
+        "employee": "الموظف",
+        "costCenter": "مركز تكلفة",
+        "caseCode": "كود الحالة",
+        "taxDiscount": "ضريبة الخصم و الاضافة",
+        "medicineDiscount": "خصم الادوية",
+        "liquidationType": {
+            "testament": "سلفيات",
+            "advance": "عهد"
+        },
+        "status": {
+            "status": "الحالة",
+            "closed": "مغلق",
+            "open": "مفتوح"
+        },
+        "error": {
+            "sumAmountNotEqualTotalValue": "مجموع المبلغ لا يسوى المبلغ الاجمالى"
+        }
+    },
+    "reports": {
+        "accountReports": "تقارير كشوف الحسابات",
+        "balanceReports": "تقارير ارصدة الحسابات",
+        "accountsReport": "كشف حساب",
+        "safeAccountReport": "كشف حساب خزنة",
+        "vendorAccountReport": "كشف حساب مورد",
+        "bankAccountReport": "كشف حساب بنك",
+        "costCenterAccountReport": "كشف حساب مركز التكلفة",
+        "accountBalanceReport": "رصيد الحساب",
+        "safeBalanceReport": "رصيد حساب خزنة",
+        "vendorBalanceReport": "رصيد حساب مورد",
+        "bankBalanceReport": "رصيد حساب بنك",
+        "costCenterBalanceReport": "رصيد حساب مركز التكلفة",
+        "balanceSheetReport": "ميزان مراجعة",
+        "level": "المستوى",
+        "fixedAssetReports": "تقارير الاصول الثابتة",
+        "fixedAssetDepreciationReport": "تقرير اهلاكات الاصول",
+        "fixedAssetLocationReport": "تقرير اماكن الاصول",
+        "fixedAssetMoveReport": "تقرير تنقلات الاصول",
+        "fixedAssetInventoryReport": "تقرير جرد الاصول",
+        "fixedAssetLostReport": "تقرير الاصول المفقودة",
+        "fixedAssetExcludedReport": "تقرير الاصول المستبعدة",
+        "inventoryReports": "تقارير المخزون",
+        "inventoryBalanceReport": "تقرير ارصدة المخزون",
+        "donationReports": "تقارير التبرعات",
+        "donatorCasesHistoryReport": "تاريخ التبرعات",
+        "donationCasesBalanceReport": "ارصدة التبرعات للحالات"
+    }
+}

@@ -1,0 +1,30 @@
+<div class="">
+  <form [formGroup]="addressFormGroup">
+    <label>{{ 'shared.address' | translate }}</label>
+    <div class="detail w-100">
+      <textarea class="form-control" [attr.disabled]="isSubmited ? '' : null" pattern=".*\S.*"
+      formControlName="address" (keyup)="addressChanged()"
+      [ngClass]="{'border border-danger':addressFormGroup.controls['address'].invalid && addressFormGroup.controls['address'].touched}"></textarea>
+      
+      <!-- <input type="address" class="form-control" [attr.disabled]="isSubmited ? '' : null" pattern=".*\S.*"
+        formControlName="address" (keyup)="addressChanged()"
+        [ngClass]="{'border border-danger':addressFormGroup.controls['address'].invalid && addressFormGroup.controls['address'].touched}"> -->
+    </div>
+    <div class="text-danger" *ngIf=" addressFormGroup.controls['address'].hasError( 'required' ) &&
+                        (addressFormGroup.controls['address'].touched || addressFormGroup.controls['address'].dirty)">
+      {{ 'movements.fieldReq' | translate }}
+    </div>
+
+    <div class="text-danger"
+      *ngIf="addressFormGroup.controls['address'].hasError( 'maxlength' )  &&
+    (addressFormGroup.controls['address'].touched && addressFormGroup.controls['address'].dirty&& addressFormGroup.controls['address'].invalid)">
+      {{ 'movements.maxLength' | translate }} 400
+    </div>
+
+    <div class="text-danger"
+      *ngIf="addressFormGroup.controls['address'].hasError( 'minlength' ) &&
+    (addressFormGroup.controls['address'].touched && addressFormGroup.controls['address'].dirty&& addressFormGroup.controls['address'].invalid)">
+      {{ 'movements.minLength' | translate }} 4
+    </div>
+  </form>
+</div>

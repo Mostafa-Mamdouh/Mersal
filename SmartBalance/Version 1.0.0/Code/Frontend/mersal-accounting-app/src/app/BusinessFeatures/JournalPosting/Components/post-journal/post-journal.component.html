@@ -1,0 +1,148 @@
+<div class="container-fluid">
+    <h3><i class="fa fa-credit-card"></i> {{ 'journalEntries.post.postJournal' | translate }}</h3>
+    <loader [hidden]="!PageLoading"></loader>
+
+    <div *ngIf="postingSetting.isPostingAutomatic">
+        <p>{{'journalPosting.shared.automaticPostingOn'| translate}}</p>
+    </div>
+    <section class="editor-section" *ngIf="!PageLoading && !postingSetting.isPostingAutomatic">
+        <form role="form" [formGroup]="editorForm">
+            <section class="">
+                <div class="row">
+                    <!--toDate-->
+                    <div class="form-group col-md-3">
+                        <label>{{ 'journalPosting.shared.date' | translate }}
+                        </label>
+                        <input type="text" placeholder="Datepicker" class="form-control" formControlName="toDate"
+                            [ngClass]="{'border border-danger' :  editorForm.controls['toDate'].invalid && 
+    editorForm.controls['toDate'].touched}" bsDatepicker value="{{editorForm.controls['toDate'].value |date:'dd/MM/yyyy'}}">
+
+                        <div class="text-danger" *ngIf="(editorForm.controls['toDate'].hasError('invalid' ) || 
+    editorForm.controls['toDate'].hasError('required' ) )&&
+    (editorForm.controls['toDate'].touched || 
+    editorForm.controls['toDate'].dirty)">
+                            {{ 'movements.fieldReq' | translate }}
+                        </div>
+                    </div>
+
+                    <!--selectAll-->
+                    <div class="form-group col-md-12">
+                        <div class="detail w-100">
+                            <input type="checkbox" id="selectAll" (click)="selectAllChanged()"
+                                class="form-control checkbox-inline checkbox-inline-25" formControlName="selectAll" />
+
+                            <label for="selectAll"
+                                (click)="selectAllChanged()">{{ 'journalPosting.journalPosting.selectAll' | translate }}</label>
+                        </div>
+                    </div>
+
+                    <!--postReceiptsMovement-->
+                    <div class="form-group col-md-12">
+                        <div class="detail w-100">
+                            <input type="checkbox" id="postReceiptsMovement"
+                                class="form-control checkbox-inline checkbox-inline-25"
+                                formControlName="postReceiptsMovement" />
+
+                            <label for="postReceiptsMovement">{{ 'movements.receipts' | translate }}</label>
+                        </div>
+                    </div>
+
+                    <!--postPaymentMovement-->
+                    <div class="form-group col-md-12">
+                        <div class="detail w-100">
+                            <input type="checkbox" id="postPaymentMovement"
+                                class="form-control checkbox-inline checkbox-inline-25"
+                                formControlName="postPaymentMovement" />
+
+                            <label for="postPaymentMovement">{{ 'movements.payments' | translate }}</label>
+                        </div>
+                    </div>
+
+                    <!--postBankMovement-->
+                    <div class="form-group col-md-12">
+                        <div class="detail w-100">
+                            <input type="checkbox" id="postBankMovement"
+                                class="form-control checkbox-inline checkbox-inline-25"
+                                formControlName="postBankMovement" />
+
+                            <label for="postBankMovement">{{ 'banking.bankMovement.title' | translate }}</label>
+                        </div>
+                    </div>
+
+                    <!--postPurchaseInvoice-->
+                    <div class="form-group col-md-12">
+                        <div class="detail w-100">
+                            <input type="checkbox" id="postPurchaseInvoice"
+                                class="form-control checkbox-inline checkbox-inline-25"
+                                formControlName="postPurchaseInvoice" />
+
+                            <label for="postPurchaseInvoice">{{ 'purchasing.invoice.title' | translate }}</label>
+                        </div>
+                    </div>
+
+                    <!--postPurchaseRebate-->
+                    <div class="form-group col-md-12">
+                        <div class="detail w-100">
+                            <input type="checkbox" id="postPurchaseRebate"
+                                class="form-control checkbox-inline checkbox-inline-25"
+                                formControlName="postPurchaseRebate" />
+
+                            <label for="postPurchaseRebate">{{ 'purchasing.rebate.title' | translate }}</label>
+                        </div>
+                    </div>
+
+                    <!--postStoreMovement-->
+                    <div class="form-group col-md-12">
+                        <div class="detail w-100">
+                            <input type="checkbox" id="postStoreMovement"
+                                class="form-control checkbox-inline checkbox-inline-25"
+                                formControlName="postStoreMovement" />
+
+                            <label for="postStoreMovement">{{ 'movements.storeMovement' | translate }}</label>
+                        </div>
+                    </div>
+
+                    <!--postSalesInvoice-->
+                    <div class="form-group col-md-12">
+                        <div class="detail w-100">
+                            <input type="checkbox" id="postSalesInvoice"
+                                class="form-control checkbox-inline checkbox-inline-25"
+                                formControlName="postSalesInvoice" />
+
+                            <label for="postSalesInvoice">{{ 'sales.invoice.title' | translate }}</label>
+                        </div>
+                    </div>
+
+                    <!--postSalesRebate-->
+                    <div class="form-group col-md-12">
+                        <div class="detail w-100">
+                            <input type="checkbox" id="postSalesRebate"
+                                class="form-control checkbox-inline checkbox-inline-25"
+                                formControlName="postSalesRebate" />
+
+                            <label for="postSalesRebate">{{ 'sales.rebate.title' | translate }}</label>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <loader [hidden]="!isProccessing"></loader>
+
+            <div class="row">
+                <div class="form-group col-lg-4">
+                    <button type="submit" (click)="save()"
+                        [disabled]="!editorForm.valid || isProccessing || !isAnySelected()" class="btn btn-secondary">
+                        <i class="fa fa-floppy-o verticalLine"></i>
+                        {{ 'journalEntries.post.previewPostJournal' | translate }}
+                    </button>
+                    &nbsp;
+                    <button routerLink="/journal/preview-list" class="btn btn-secondary">
+                        <i class="fa fa-undo"></i> {{'shared.back' | translate }}
+                    </button>
+                </div>
+            </div>
+        </form>
+    </section>
+
+</div>

@@ -1,0 +1,451 @@
+<div class="container-fluid">
+    <h3><i class="fa fa-credit-card"></i> {{ 'vendor.shared.title' | translate }}</h3>
+
+    <loader [hidden]="!PageLoading"></loader>
+
+    <section class="editor-section" *ngIf="!PageLoading">
+        <form role="form" [formGroup]="editorForm">
+            <div class="row">
+                <!--code-->
+                <!-- <div *ngIf="editorMode != editorModeEnum.add" class="form-group col-lg-2">
+                    <label>{{ 'donation.code' | translate }} </label>
+                    <label class="form-control">{{editorForm.controls['code'].value}}</label>
+                </div> -->
+
+                <!--code-->
+                <div class="form-group col-md-2">
+                    <label>{{ 'vendor.shared.code' | translate }}
+                        <i *ngIf="canEdit()" class="text-danger">*</i>
+                    </label>
+                    <div class="detail w-100">
+                        <input type="text" *ngIf="canEdit()" min="0" class="form-control" #code formControlName="code">
+
+                        <label *ngIf="editorMode == editorModeEnum.detail"
+                            class="form-control">{{itemModel?.code}}</label>
+
+                        <div class="text-danger" *ngIf="(editorForm.controls['code'].hasError('invalid' ) || 
+                                    editorForm.controls['code'].hasError('required' ) )&&
+                                   (editorForm.controls['code'].touched || 
+                                    editorForm.controls['code'].dirty)">
+                            {{ 'movements.fieldReq' | translate }}
+                        </div>
+                        <div class="text-danger" *ngIf="(editorForm.controls['code'].hasError('invalid' ) || 
+                                            editorForm.controls['code'].hasError('pattern' ) )&&
+                                           (editorForm.controls['code'].touched || 
+                                            editorForm.controls['code'].dirty)">
+                            {{ 'error.positiveNumbersOnly' | translate }}
+                        </div>
+                    </div>
+                </div>
+
+                <!--date-->
+                <div class="form-group col-md-2">
+                    <label>{{ 'vendor.shared.date' | translate }}
+                        <i *ngIf="canEdit()" class="text-danger">*</i>
+                    </label>
+                    <input *ngIf="editorMode != editorModeEnum.detail" type="text" [disabled]="!canEdit()"
+                        placeholder="Datepicker" class="form-control" formControlName="date"
+                        [ngClass]="{'border border-danger' :  editorForm.controls['date'].invalid && editorForm.controls['date'].touched}"
+                        bsDatepicker readonly
+                        value="{{editorForm.controls['date'].value |date:'dd/MM/yyyy'}}">
+
+                    <label *ngIf="editorMode == editorModeEnum.detail"
+                        class="form-control">{{itemModel?.date | date:'dd/MM/yyyy'}}</label>
+
+                    <div class="text-danger" *ngIf="(editorForm.controls['date'].hasError('invalid' ) || 
+                                 editorForm.controls['date'].hasError('required' ) )&&
+                                (editorForm.controls['date'].touched || 
+                                 editorForm.controls['date'].dirty)">
+                        {{ 'movements.fieldReq' | translate }}
+                    </div>
+                </div>
+
+                <!--nameAr-->
+                <div class="form-group col-md-2">
+                    <label>{{ 'vendor.editor.nameAr' | translate }}
+                        <i *ngIf="canEdit()" class="text-danger">*</i>
+                    </label>
+                    <div class="detail w-100">
+                        <input type="text" *ngIf="canEdit()" min="0" class="form-control" #nameAr
+                            formControlName="nameAr">
+
+                        <label *ngIf="editorMode == editorModeEnum.detail"
+                            class="form-control">{{itemModel?.nameAr}}</label>
+
+                        <div class="text-danger" *ngIf="(editorForm.controls['nameAr'].hasError('invalid' ) || 
+                                    editorForm.controls['nameAr'].hasError('required' ) )&&
+                                   (editorForm.controls['nameAr'].touched || 
+                                    editorForm.controls['nameAr'].dirty)">
+                            {{ 'movements.fieldReq' | translate }}
+                        </div>
+                    </div>
+                </div>
+
+                <!--nameEn-->
+                <div class="form-group col-md-2">
+                    <label>{{ 'vendor.editor.nameEn' | translate }}
+                        <span *ngIf="canEdit()" class="text-danger">*</span>
+                    </label>
+                    <div class="detail w-100">
+                        <input type="text" *ngIf="canEdit()" min="0" class="form-control" #nameEn
+                            formControlName="nameEn">
+
+                        <label *ngIf="editorMode == editorModeEnum.detail"
+                            class="form-control">{{itemModel?.nameEn}}</label>
+
+                        <div class="text-danger" *ngIf="(editorForm.controls['nameEn'].hasError('invalid' ) || 
+                                    editorForm.controls['nameEn'].hasError('required' ) )&&
+                                   (editorForm.controls['nameEn'].touched || 
+                                    editorForm.controls['nameEn'].dirty)">
+                            {{ 'movements.fieldReq' | translate }}
+                        </div>
+                    </div>
+                </div>
+
+                <!--accountChart-->
+                <div class="form-group col-md-4">
+                    <label>{{ 'vendor.editor.accountChart' | translate }}
+                        <span *ngIf="canEdit()" class="text-danger">*</span>
+                    </label>
+                    <kendo-dropdownlist #accountChartId [data]="accountCharts" [filterable]="true"
+                        [textField]="'displyedName'" [valueField]="'id'" [valuePrimitive]="true" selected
+                        [kendoDropDownFilter]="filterSettings" id="accountChartId" class="height38 width-100-per"
+                        formControlName="accountChartId" [disabled]="!canEdit()">
+                    </kendo-dropdownlist>
+
+                    <div class="text-danger" *ngIf="editorForm.controls['accountChartId'].hasError('required') &&
+                  (editorForm.controls['accountChartId'].touched || 
+                   editorForm.controls['accountChartId'].dirty)">
+                        {{ 'movements.fieldReq' | translate }}
+                    </div>
+                </div>
+
+                <!--phone-->
+                <div class="form-group col-md-2">
+                    <label>{{ 'vendor.editor.phone' | translate }}
+                    </label>
+                    <div class="detail w-100">
+                        <input type="text" *ngIf="canEdit()" min="0" class="form-control" #phone
+                            formControlName="phone">
+
+                        <label *ngIf="editorMode == editorModeEnum.detail"
+                            class="form-control">{{itemModel?.phone}}</label>
+
+                        <div class="text-danger" *ngIf="(editorForm.controls['phone'].hasError('invalid' ) || 
+                                                        editorForm.controls['phone'].hasError('required' ) )&&
+                                                       (editorForm.controls['phone'].touched || 
+                                                        editorForm.controls['phone'].dirty)">
+                            {{ 'movements.fieldReq' | translate }}
+                        </div>
+
+                        <div class="text-danger" *ngIf="(editorForm.controls['phone'].hasError('invalid' ) || 
+                                                editorForm.controls['phone'].hasError('pattern' ) )&&
+                                                (editorForm.controls['phone'].touched || 
+                                                editorForm.controls['phone'].dirty)">
+                            {{ 'donation.phone' | translate }}
+                        </div>
+                    </div>
+                </div>
+
+                <!--commercialRegister-->
+                <div class="form-group col-md-2">
+                    <label>{{ 'vendor.editor.commercialRegister' | translate }}
+                    </label>
+                    <div class="detail w-100">
+                        <input type="text" *ngIf="canEdit()" min="0" class="form-control" #commercialRegister
+                            formControlName="commercialRegister">
+
+                        <label *ngIf="editorMode == editorModeEnum.detail"
+                            class="form-control">{{itemModel?.commercialRegister}}</label>
+
+                        <!-- <input type="text" *ngIf="canEdit()" min="0" class="form-control" #address
+                            formControlName="address">
+
+                        <label *ngIf="editorMode == editorModeEnum.detail"
+                            class="form-control">{{itemModel?.address}}</label> -->
+
+                        <div class="text-danger" *ngIf="(editorForm.controls['commercialRegister'].hasError('invalid' ) || 
+                                    editorForm.controls['commercialRegister'].hasError('required' ) )&&
+                                (editorForm.controls['commercialRegister'].touched || 
+                                    editorForm.controls['commercialRegister'].dirty)">
+                            {{ 'movements.fieldReq' | translate }}
+                        </div>
+                    </div>
+                </div>
+
+                <!--VATRegistrationCertificate-->
+                <div class="form-group col-md-2">
+                    <label>{{ 'vendor.editor.VATRegistrationCertificate' | translate }}
+                    </label>
+                    <div class="detail w-100">
+                        <input type="text" *ngIf="canEdit()" min="0" class="form-control" #VATRegistrationCertificate
+                            formControlName="VATRegistrationCertificate">
+
+                        <label *ngIf="editorMode == editorModeEnum.detail"
+                            class="form-control">{{itemModel?.vatRegistrationCertificate}}</label>
+
+                        <!-- <input type="text" *ngIf="canEdit()" min="0" class="form-control" #address
+                            formControlName="address">
+
+                        <label *ngIf="editorMode == editorModeEnum.detail"
+                            class="form-control">{{itemModel?.address}}</label> -->
+
+                        <div class="text-danger" *ngIf="(editorForm.controls['VATRegistrationCertificate'].hasError('invalid' ) || 
+                                    editorForm.controls['VATRegistrationCertificate'].hasError('required' ) )&&
+                                (editorForm.controls['VATRegistrationCertificate'].touched || 
+                                    editorForm.controls['VATRegistrationCertificate'].dirty)">
+                            {{ 'movements.fieldReq' | translate }}
+                        </div>
+                    </div>
+                </div>
+
+                <!--taxcard-->
+                <div class="form-group col-md-2">
+                    <label>{{ 'vendor.editor.taxcard' | translate }}
+                    </label>
+                    <div class="detail w-100">
+                        <input type="text" *ngIf="canEdit()" min="0" class="form-control" #taxcard
+                            formControlName="taxcard">
+
+                        <label *ngIf="editorMode == editorModeEnum.detail"
+                            class="form-control">{{itemModel?.taxCard}}</label>
+
+                        <!-- <input type="text" *ngIf="canEdit()" min="0" class="form-control" #address
+                            formControlName="address">
+
+                        <label *ngIf="editorMode == editorModeEnum.detail"
+                            class="form-control">{{itemModel?.address}}</label> -->
+
+                        <div class="text-danger" *ngIf="(editorForm.controls['taxcard'].hasError('invalid' ) || 
+                                    editorForm.controls['taxcard'].hasError('required' ) )&&
+                                (editorForm.controls['taxcard'].touched || 
+                                    editorForm.controls['taxcard'].dirty)">
+                            {{ 'movements.fieldReq' | translate }}
+                        </div>
+                    </div>
+                </div>
+
+                <!--payeeName -->
+                <div class="form-group col-md-3">
+                    <label>{{ 'vendor.editor.payeeName' | translate }}
+                    </label>
+                    <div class="detail w-100">
+                        <input type="text" *ngIf="canEdit()" min="0" class="form-control" #payeeName
+                            formControlName="payeeName">
+
+                        <label *ngIf="editorMode == editorModeEnum.detail"
+                            class="form-control">{{itemModel?.payeeName}}</label>
+
+                        <!-- <input type="text" *ngIf="canEdit()" min="0" class="form-control" #address
+                            formControlName="address">
+
+                        <label *ngIf="editorMode == editorModeEnum.detail"
+                            class="form-control">{{itemModel?.address}}</label> -->
+
+                        <div class="text-danger" *ngIf="(editorForm.controls['payeeName'].hasError('invalid' ) || 
+                                    editorForm.controls['payeeName'].hasError('required' ) )&&
+                                (editorForm.controls['payeeName'].touched || 
+                                    editorForm.controls['payeeName'].dirty)">
+                            {{ 'movements.fieldReq' | translate }}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <!--exemptFromTax-->
+                    <div class="row">
+                        <!--exemptFromTax-->
+                        <div class='form-group col-md-6'>
+                            <label>{{' '}}
+                            </label>
+                            <div class="radio radio-info radio-inline">
+                                <input *ngIf="canEdit()" type="radio" id="exemptFromTax" [value]="true"
+                                    formControlName="exemptFromTax" />
+                                <input *ngIf="!canEdit()" disabled type="radio" id="exemptFromTax" [value]="true"
+                                    formControlName="exemptFromTax" />
+
+                                <label for="exemptFromTax">{{ 'vendor.editor.exemptFromTax' | translate }}</label>
+                            </div>
+                        </div>
+                        <!--notExemptFromTax-->
+                        <div class='form-group col-md-6'>
+                            <label>{{' '}}
+                            </label>
+                            <div class="radio radio-info radio-inline">
+                                <input *ngIf="canEdit()" type="radio" id="notExemptFromTax" [value]="false"
+                                    formControlName="exemptFromTax" />
+                                <input *ngIf="!canEdit()" disabled type="radio" id="notExemptFromTax" [value]="false"
+                                    formControlName="exemptFromTax" />
+
+                                <label for="notExemptFromTax">{{ 'vendor.editor.notExemptFromTax' | translate }}</label>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!--address-->
+                <div class="form-group col-md-12">
+                    <label>{{ 'vendor.editor.address' | translate }}
+                    </label>
+                    <div class="detail w-100">
+                        <textarea *ngIf="canEdit()" class="form-control" formControlName="address"
+                            placeholder="{{ 'delegate.editor.address' | translate }}"></textarea>
+
+                        <textarea *ngIf="!canEdit()" disabled class="form-control" formControlName="address"
+                            placeholder="{{ 'delegate.editor.address' | translate }}"></textarea>
+
+                        <!-- <input type="text" *ngIf="canEdit()" min="0" class="form-control" #address
+                                            formControlName="address">
+                
+                                        <label *ngIf="editorMode == editorModeEnum.detail"
+                                            class="form-control">{{itemModel?.address}}</label> -->
+
+                        <div class="text-danger" *ngIf="(editorForm.controls['address'].hasError('invalid' ) || 
+                                                    editorForm.controls['address'].hasError('required' ) )&&
+                                                (editorForm.controls['address'].touched || 
+                                                    editorForm.controls['address'].dirty)">
+                            {{ 'movements.fieldReq' | translate }}
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5>
+                                <i class="fa fa-users" aria-hidden="true"></i>
+                                <span>
+                                    {{ 'vendor.shared.openingCredit' | translate }}
+                                </span>
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <!--openingCredit-->
+                                <div class="form-group col-md-2">
+                                    <label>{{ 'vendor.shared.openingCredit' | translate }}
+                                    </label>
+                                    <div class="detail w-100">
+                                        <text-box [control]="editorForm.controls['openingCredit']"
+                                            [canEdit]="canEdit()"></text-box>
+
+                                        <label *ngIf="editorMode == editorModeEnum.detail"
+                                            class="form-control">{{itemModel?.openingCredit}}</label>
+
+                                        <div class="text-danger" *ngIf="(editorForm.controls['openingCredit'].hasError('invalid' ) || 
+                                        editorForm.controls['openingCredit'].hasError('pattern' ) )&&
+                                       (editorForm.controls['openingCredit'].touched || 
+                                        editorForm.controls['openingCredit'].dirty)">
+                                            {{ 'error.numberOnly' | translate }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--Debt-->
+                                <div class='form-group col-md-2'>
+                                    <label>{{' '}}
+                                    </label>
+                                    <div class="radio radio-info radio-inline">
+                                        <input *ngIf="canEdit()" type="radio" id="isDebt" [value]="true"
+                                            formControlName="isDebt" />
+                                        <input *ngIf="!canEdit()" disabled type="radio" id="isDebt" [value]="true"
+                                            formControlName="isDebt" />
+
+                                        <label for="isDebt">{{ 'vendor.editor.isDebt' | translate }}</label>
+                                    </div>
+                                </div>
+                                <!--Credit-->
+                                <div class='form-group col-md-2'>
+                                    <label>{{' '}}
+                                    </label>
+                                    <div class="radio radio-info radio-inline">
+                                        <input *ngIf="canEdit()" type="radio" id="isCredit" [value]="false"
+                                            formControlName="isDebt" />
+                                        <input *ngIf="!canEdit()" disabled type="radio" id="isCredit" [value]="false"
+                                            formControlName="isDebt" />
+
+                                        <label for="isCredit">{{ 'vendor.editor.isCredit' | translate }}</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5>
+                                <i class="fa fa-users" aria-hidden="true"></i>
+                                <span>
+                                    {{ 'vendor.shared.description' | translate }}
+                                </span>
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="form-group col-lg-6">
+                                    <label>{{ 'vendor.editor.descriptionAr' | translate }} </label>
+                                    <textarea *ngIf="canEdit()" class="form-control" formControlName="descriptionAr"
+                                        placeholder="{{ 'vendor.editor.descriptionAr' | translate }}"></textarea>
+
+                                    <textarea *ngIf="!canEdit()" disabled class="form-control"
+                                        formControlName="descriptionAr"
+                                        placeholder="{{ 'vendor.editor.descriptionAr' | translate }}"></textarea>
+
+                                    <div class="text-danger" *ngIf=" (editorForm.controls['descriptionAr'].hasError('invalid' ) || 
+                                                editorForm.controls['descriptionAr'].hasError('required' ) )&&
+                                                      (editorForm.controls['descriptionAr'].touched || 
+                                                      editorForm.controls['descriptionAr'].dirty)">
+                                        {{ 'movements.fieldReq' | translate }}
+                                    </div>
+
+                                </div>
+                                <div class="form-group col-lg-6">
+                                    <label>{{ 'vendor.editor.descriptionEn' | translate }} </label>
+                                    <textarea *ngIf="canEdit()" class="form-control" formControlName="descriptionEn"
+                                        placeholder="{{ 'vendor.editor.descriptionEn' | translate }}"></textarea>
+
+                                    <textarea *ngIf="!canEdit()" disabled class="form-control"
+                                        formControlName="descriptionEn"
+                                        placeholder="{{ 'vendor.editor.descriptionEn' | translate }}"></textarea>
+
+                                    <div class="text-danger" *ngIf=" (editorForm.controls['descriptionEn'].hasError('invalid' ) || 
+                                                    editorForm.controls['descriptionEn'].hasError('required' ) )&&
+                                                      (editorForm.controls['descriptionEn'].touched || 
+                                                      editorForm.controls['descriptionEn'].dirty)">
+                                        {{ 'movements.fieldReq' | translate }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <loader [hidden]="!isProccessing"></loader>
+
+            <div class="row">
+                <div class="form-group col-lg-4">
+                    <button *ngIf="canEdit()" type="submit" (click)="save()"
+                        [disabled]="!editorForm.valid || isProccessing" class="btn btn-secondary">
+                        <i class="fa fa-floppy-o verticalLine"></i> {{ 'shared.save' | translate }}
+                    </button>
+                    &nbsp;
+                    <button (click)="goToBack()" class="btn btn-secondary">
+                        <i class="fa fa-undo"></i> {{'shared.back' | translate }}
+                    </button>
+                </div>
+            </div>
+        </form>
+    </section>
+
+</div>

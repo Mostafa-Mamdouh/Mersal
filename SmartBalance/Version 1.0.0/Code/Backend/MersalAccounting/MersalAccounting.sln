@@ -1,0 +1,200 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29306.81
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Framework", "Framework", "{E8D48F92-D3F4-46EC-B666-B0F65E5370C4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MersalAccountingService", "MersalAccountingService", "{4765D2C1-F35A-4478-930B-41740DBBB655}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Framework.Core", "Framework.Core\Framework.Core.csproj", "{12E94E97-C887-4CAE-B03C-69AA46ED770F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Framework.Common", "Framework.Common\Framework.Common.csproj", "{F8BEADB8-AFFA-42E5-AC34-2265F936FF42}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MersalAccountingService.Core", "MersalAccountingService.Core\MersalAccountingService.Core.csproj", "{9622E50B-7F68-4115-A0AB-80B24D2F73C9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MersalAccountingService.Common", "MersalAccountingService.Common\MersalAccountingService.Common.csproj", "{D0CC6CCC-ED64-47F2-940E-D7C58CE19E48}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Framework.DataAccess", "Framework.DataAccess\Framework.DataAccess.csproj", "{AF86AE60-7E24-429E-AE27-A8BE8B16E231}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MersalAccountingService.DataAccess", "MersalAccountingService.DataAccess\MersalAccountingService.DataAccess.csproj", "{B0FE1618-9ECC-4FD9-B355-D2B011DE67B5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MersalAccountingService.BusinessLogic", "MersalAccountingService.BusinessLogic\MersalAccountingService.BusinessLogic.csproj", "{FD3F1343-41F1-4F10-97E4-8CD41A24CD39}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MersalAccountingService.DependancyInjection", "MersalAccountingService.DependancyInjection\MersalAccountingService.DependancyInjection.csproj", "{5D956EDC-6111-4CFA-A26B-CB7E13D57C2D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MersalAccountingService.Resourcing", "MersalAccountingService.Resourcing\MersalAccountingService.Resourcing.csproj", "{6E39D3CF-D6A7-4CBA-8093-BDB6EA97D35E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MersalAccountingService.Entities", "MersalAccountingService.Entities\MersalAccountingService.Entities.csproj", "{1A9F998A-6C27-4B7A-ADEE-DC62F962312A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MersalAccountingService.WebAPI", "MersalAccountingService.WebAPI\MersalAccountingService.WebAPI.csproj", "{02E0DD9D-5132-401D-9EE6-DED0D69D9068}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MersalAccountingService.WebAPI.Tests", "MersalAccountingService.WebAPI.Tests\MersalAccountingService.WebAPI.Tests.csproj", "{CC8EE873-0A96-4C56-ACF5-B0A65FD664BE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MersalAccountingService.Reports", "MersalReports\MersalAccountingService.Reports.csproj", "{76976210-EDC0-4CD3-9D56-BB0984C405D2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		DebugLocal|Any CPU = DebugLocal|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{12E94E97-C887-4CAE-B03C-69AA46ED770F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{12E94E97-C887-4CAE-B03C-69AA46ED770F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{12E94E97-C887-4CAE-B03C-69AA46ED770F}.DebugLocal|Any CPU.ActiveCfg = Debug|Any CPU
+		{12E94E97-C887-4CAE-B03C-69AA46ED770F}.DebugLocal|Any CPU.Build.0 = Debug|Any CPU
+		{12E94E97-C887-4CAE-B03C-69AA46ED770F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{12E94E97-C887-4CAE-B03C-69AA46ED770F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F8BEADB8-AFFA-42E5-AC34-2265F936FF42}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8BEADB8-AFFA-42E5-AC34-2265F936FF42}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8BEADB8-AFFA-42E5-AC34-2265F936FF42}.DebugLocal|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8BEADB8-AFFA-42E5-AC34-2265F936FF42}.DebugLocal|Any CPU.Build.0 = Debug|Any CPU
+		{F8BEADB8-AFFA-42E5-AC34-2265F936FF42}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8BEADB8-AFFA-42E5-AC34-2265F936FF42}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9622E50B-7F68-4115-A0AB-80B24D2F73C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9622E50B-7F68-4115-A0AB-80B24D2F73C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9622E50B-7F68-4115-A0AB-80B24D2F73C9}.DebugLocal|Any CPU.ActiveCfg = Debug|Any CPU
+		{9622E50B-7F68-4115-A0AB-80B24D2F73C9}.DebugLocal|Any CPU.Build.0 = Debug|Any CPU
+		{9622E50B-7F68-4115-A0AB-80B24D2F73C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9622E50B-7F68-4115-A0AB-80B24D2F73C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D0CC6CCC-ED64-47F2-940E-D7C58CE19E48}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0CC6CCC-ED64-47F2-940E-D7C58CE19E48}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0CC6CCC-ED64-47F2-940E-D7C58CE19E48}.DebugLocal|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0CC6CCC-ED64-47F2-940E-D7C58CE19E48}.DebugLocal|Any CPU.Build.0 = Debug|Any CPU
+		{D0CC6CCC-ED64-47F2-940E-D7C58CE19E48}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D0CC6CCC-ED64-47F2-940E-D7C58CE19E48}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF86AE60-7E24-429E-AE27-A8BE8B16E231}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF86AE60-7E24-429E-AE27-A8BE8B16E231}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF86AE60-7E24-429E-AE27-A8BE8B16E231}.DebugLocal|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF86AE60-7E24-429E-AE27-A8BE8B16E231}.DebugLocal|Any CPU.Build.0 = Debug|Any CPU
+		{AF86AE60-7E24-429E-AE27-A8BE8B16E231}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF86AE60-7E24-429E-AE27-A8BE8B16E231}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B0FE1618-9ECC-4FD9-B355-D2B011DE67B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B0FE1618-9ECC-4FD9-B355-D2B011DE67B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B0FE1618-9ECC-4FD9-B355-D2B011DE67B5}.DebugLocal|Any CPU.ActiveCfg = Debug|Any CPU
+		{B0FE1618-9ECC-4FD9-B355-D2B011DE67B5}.DebugLocal|Any CPU.Build.0 = Debug|Any CPU
+		{B0FE1618-9ECC-4FD9-B355-D2B011DE67B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B0FE1618-9ECC-4FD9-B355-D2B011DE67B5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD3F1343-41F1-4F10-97E4-8CD41A24CD39}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD3F1343-41F1-4F10-97E4-8CD41A24CD39}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD3F1343-41F1-4F10-97E4-8CD41A24CD39}.DebugLocal|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD3F1343-41F1-4F10-97E4-8CD41A24CD39}.DebugLocal|Any CPU.Build.0 = Debug|Any CPU
+		{FD3F1343-41F1-4F10-97E4-8CD41A24CD39}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD3F1343-41F1-4F10-97E4-8CD41A24CD39}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5D956EDC-6111-4CFA-A26B-CB7E13D57C2D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D956EDC-6111-4CFA-A26B-CB7E13D57C2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D956EDC-6111-4CFA-A26B-CB7E13D57C2D}.DebugLocal|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D956EDC-6111-4CFA-A26B-CB7E13D57C2D}.DebugLocal|Any CPU.Build.0 = Debug|Any CPU
+		{5D956EDC-6111-4CFA-A26B-CB7E13D57C2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D956EDC-6111-4CFA-A26B-CB7E13D57C2D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6E39D3CF-D6A7-4CBA-8093-BDB6EA97D35E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E39D3CF-D6A7-4CBA-8093-BDB6EA97D35E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E39D3CF-D6A7-4CBA-8093-BDB6EA97D35E}.DebugLocal|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E39D3CF-D6A7-4CBA-8093-BDB6EA97D35E}.DebugLocal|Any CPU.Build.0 = Debug|Any CPU
+		{6E39D3CF-D6A7-4CBA-8093-BDB6EA97D35E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E39D3CF-D6A7-4CBA-8093-BDB6EA97D35E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1A9F998A-6C27-4B7A-ADEE-DC62F962312A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A9F998A-6C27-4B7A-ADEE-DC62F962312A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A9F998A-6C27-4B7A-ADEE-DC62F962312A}.DebugLocal|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A9F998A-6C27-4B7A-ADEE-DC62F962312A}.DebugLocal|Any CPU.Build.0 = Debug|Any CPU
+		{1A9F998A-6C27-4B7A-ADEE-DC62F962312A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A9F998A-6C27-4B7A-ADEE-DC62F962312A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{02E0DD9D-5132-401D-9EE6-DED0D69D9068}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02E0DD9D-5132-401D-9EE6-DED0D69D9068}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02E0DD9D-5132-401D-9EE6-DED0D69D9068}.DebugLocal|Any CPU.ActiveCfg = Debug|Any CPU
+		{02E0DD9D-5132-401D-9EE6-DED0D69D9068}.DebugLocal|Any CPU.Build.0 = Debug|Any CPU
+		{02E0DD9D-5132-401D-9EE6-DED0D69D9068}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{02E0DD9D-5132-401D-9EE6-DED0D69D9068}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CC8EE873-0A96-4C56-ACF5-B0A65FD664BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC8EE873-0A96-4C56-ACF5-B0A65FD664BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC8EE873-0A96-4C56-ACF5-B0A65FD664BE}.DebugLocal|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC8EE873-0A96-4C56-ACF5-B0A65FD664BE}.DebugLocal|Any CPU.Build.0 = Debug|Any CPU
+		{CC8EE873-0A96-4C56-ACF5-B0A65FD664BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC8EE873-0A96-4C56-ACF5-B0A65FD664BE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{76976210-EDC0-4CD3-9D56-BB0984C405D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{76976210-EDC0-4CD3-9D56-BB0984C405D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{76976210-EDC0-4CD3-9D56-BB0984C405D2}.DebugLocal|Any CPU.ActiveCfg = Debug|Any CPU
+		{76976210-EDC0-4CD3-9D56-BB0984C405D2}.DebugLocal|Any CPU.Build.0 = Debug|Any CPU
+		{76976210-EDC0-4CD3-9D56-BB0984C405D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{76976210-EDC0-4CD3-9D56-BB0984C405D2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{12E94E97-C887-4CAE-B03C-69AA46ED770F} = {E8D48F92-D3F4-46EC-B666-B0F65E5370C4}
+		{F8BEADB8-AFFA-42E5-AC34-2265F936FF42} = {E8D48F92-D3F4-46EC-B666-B0F65E5370C4}
+		{9622E50B-7F68-4115-A0AB-80B24D2F73C9} = {4765D2C1-F35A-4478-930B-41740DBBB655}
+		{D0CC6CCC-ED64-47F2-940E-D7C58CE19E48} = {4765D2C1-F35A-4478-930B-41740DBBB655}
+		{AF86AE60-7E24-429E-AE27-A8BE8B16E231} = {E8D48F92-D3F4-46EC-B666-B0F65E5370C4}
+		{B0FE1618-9ECC-4FD9-B355-D2B011DE67B5} = {4765D2C1-F35A-4478-930B-41740DBBB655}
+		{FD3F1343-41F1-4F10-97E4-8CD41A24CD39} = {4765D2C1-F35A-4478-930B-41740DBBB655}
+		{5D956EDC-6111-4CFA-A26B-CB7E13D57C2D} = {4765D2C1-F35A-4478-930B-41740DBBB655}
+		{6E39D3CF-D6A7-4CBA-8093-BDB6EA97D35E} = {4765D2C1-F35A-4478-930B-41740DBBB655}
+		{1A9F998A-6C27-4B7A-ADEE-DC62F962312A} = {4765D2C1-F35A-4478-930B-41740DBBB655}
+		{02E0DD9D-5132-401D-9EE6-DED0D69D9068} = {4765D2C1-F35A-4478-930B-41740DBBB655}
+		{CC8EE873-0A96-4C56-ACF5-B0A65FD664BE} = {4765D2C1-F35A-4478-930B-41740DBBB655}
+		{76976210-EDC0-4CD3-9D56-BB0984C405D2} = {4765D2C1-F35A-4478-930B-41740DBBB655}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {52774FB4-D6F7-4829-AF15-939DBE99F28B}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 14
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://dev.azure.com/sourcecontrol-smarttech
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = Framework.Core\\Framework.Core.csproj
+		SccProjectTopLevelParentUniqueName1 = MersalAccounting.sln
+		SccProjectName1 = Framework.Core
+		SccLocalPath1 = Framework.Core
+		SccProjectUniqueName2 = Framework.Common\\Framework.Common.csproj
+		SccProjectTopLevelParentUniqueName2 = MersalAccounting.sln
+		SccProjectName2 = Framework.Common
+		SccLocalPath2 = Framework.Common
+		SccProjectUniqueName3 = MersalAccountingService.Core\\MersalAccountingService.Core.csproj
+		SccProjectTopLevelParentUniqueName3 = MersalAccounting.sln
+		SccProjectName3 = MersalAccountingService.Core
+		SccLocalPath3 = MersalAccountingService.Core
+		SccProjectUniqueName4 = MersalAccountingService.Common\\MersalAccountingService.Common.csproj
+		SccProjectTopLevelParentUniqueName4 = MersalAccounting.sln
+		SccProjectName4 = MersalAccountingService.Common
+		SccLocalPath4 = MersalAccountingService.Common
+		SccProjectUniqueName5 = Framework.DataAccess\\Framework.DataAccess.csproj
+		SccProjectTopLevelParentUniqueName5 = MersalAccounting.sln
+		SccProjectName5 = Framework.DataAccess
+		SccLocalPath5 = Framework.DataAccess
+		SccProjectUniqueName6 = MersalAccountingService.DataAccess\\MersalAccountingService.DataAccess.csproj
+		SccProjectTopLevelParentUniqueName6 = MersalAccounting.sln
+		SccProjectName6 = MersalAccountingService.DataAccess
+		SccLocalPath6 = MersalAccountingService.DataAccess
+		SccProjectUniqueName7 = MersalAccountingService.BusinessLogic\\MersalAccountingService.BusinessLogic.csproj
+		SccProjectTopLevelParentUniqueName7 = MersalAccounting.sln
+		SccProjectName7 = MersalAccountingService.BusinessLogic
+		SccLocalPath7 = MersalAccountingService.BusinessLogic
+		SccProjectUniqueName8 = MersalAccountingService.DependancyInjection\\MersalAccountingService.DependancyInjection.csproj
+		SccProjectTopLevelParentUniqueName8 = MersalAccounting.sln
+		SccProjectName8 = MersalAccountingService.DependancyInjection
+		SccLocalPath8 = MersalAccountingService.DependancyInjection
+		SccProjectUniqueName9 = MersalAccountingService.Resourcing\\MersalAccountingService.Resourcing.csproj
+		SccProjectTopLevelParentUniqueName9 = MersalAccounting.sln
+		SccProjectName9 = MersalAccountingService.Resourcing
+		SccLocalPath9 = MersalAccountingService.Resourcing
+		SccProjectUniqueName10 = MersalAccountingService.Entities\\MersalAccountingService.Entities.csproj
+		SccProjectTopLevelParentUniqueName10 = MersalAccounting.sln
+		SccProjectName10 = MersalAccountingService.Entities
+		SccLocalPath10 = MersalAccountingService.Entities
+		SccProjectUniqueName11 = MersalAccountingService.WebAPI\\MersalAccountingService.WebAPI.csproj
+		SccProjectTopLevelParentUniqueName11 = MersalAccounting.sln
+		SccProjectName11 = MersalAccountingService.WebAPI
+		SccLocalPath11 = MersalAccountingService.WebAPI
+		SccProjectUniqueName12 = MersalAccountingService.WebAPI.Tests\\MersalAccountingService.WebAPI.Tests.csproj
+		SccProjectTopLevelParentUniqueName12 = MersalAccounting.sln
+		SccProjectName12 = MersalAccountingService.WebAPI.Tests
+		SccLocalPath12 = MersalAccountingService.WebAPI.Tests
+		SccProjectUniqueName13 = MersalReports\\MersalAccountingService.Reports.csproj
+		SccProjectTopLevelParentUniqueName13 = MersalAccounting.sln
+		SccProjectName13 = MersalReports
+		SccLocalPath13 = MersalReports
+	EndGlobalSection
+EndGlobal

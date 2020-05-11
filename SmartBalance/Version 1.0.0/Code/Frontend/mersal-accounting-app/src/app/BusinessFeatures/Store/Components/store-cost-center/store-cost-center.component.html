@@ -1,0 +1,44 @@
+<!-- <h2>{{ 'movements.costCenter' | translate }}</h2> -->
+<div class="card mb-3">
+  <div class="card-header">
+    {{ 'movements.multiCostCenter' | translate }}
+  </div>
+  <div class="card-body table-responsive">
+    <label *ngIf="!IsDetails">{{'shared.search' |translate}} </label>
+    <input type="text" class="fomControl" class="serachmargin" *ngIf="!IsDetails" #key (keyup)="search(key.value)">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>{{'shared.select' |translate}} </th>
+          <th>{{'donation.costcentername' |translate}} </th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container *ngFor="let item of costCentersList; let i = index">
+          <tr *ngIf="item.display">
+            <!--(change)="changeCheckingBox(item.id,$event)"-->
+            <td> <input type="checkbox" class="form-control" [disabled]="IsDetails" [(ngModel)]="item.checked"></td>
+            <td>
+              {{item.name}}
+            </td>
+          </tr>
+        </ng-container>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div>
+  <div class="row">
+    <div class="FotterBtnModal">
+      <button type="button" class="btn btn-success" (click)="submitAddCostCenter()" *ngIf="!IsDetails">
+        {{ 'shared.save' | translate }}
+      </button>
+      <button type="button" class="btn btn-danger" (click)="close()">
+        {{ 'shared.cancel' | translate }}
+      </button>
+    </div>
+  </div>
+
+</div>

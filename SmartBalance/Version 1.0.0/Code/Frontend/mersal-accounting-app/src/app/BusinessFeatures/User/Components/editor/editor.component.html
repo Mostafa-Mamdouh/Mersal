@@ -1,0 +1,445 @@
+<div class="container-fluid">
+    <h3><i class="fa fa-credit-card"></i> {{ 'user.shared.title' | translate }}</h3>
+
+    <loader [hidden]="!PageLoading"></loader>
+
+    <section class="editor-section" *ngIf="!PageLoading">
+        <form role="form" [formGroup]="editorForm">
+            <div class="row">
+
+                <!--userName-->
+                <div class="form-group col-md-2">
+                    <label>{{ 'user.shared.userName' | translate }}
+                        <i *ngIf="canEdit()" class="text-danger">*</i>
+                    </label>
+                    <div class="detail w-100">
+                        <input type="text" *ngIf="canEdit()" min="0" class="form-control" #userName
+                            formControlName="userName">
+
+                        <label *ngIf="editorMode == editorModeEnum.detail"
+                            class="form-control">{{itemModel?.userName}}</label>
+
+                        <div class="text-danger" *ngIf="(editorForm.controls['userName'].hasError('invalid' ) || 
+                                        editorForm.controls['userName'].hasError('required' ) )&&
+                                       (editorForm.controls['userName'].touched || 
+                                        editorForm.controls['userName'].dirty)">
+                            {{ 'movements.fieldReq' | translate }}
+                        </div>
+                    </div>
+                </div>
+
+                <!--password-->
+                <div *ngIf="editorMode == editorModeEnum.add" class="form-group col-md-3">
+                    <label>{{ 'user.editor.password.password' | translate }}
+                        <i class="text-danger">*</i>
+                    </label>
+                    <div class="detail w-100">
+                        <input type="text" *ngIf="canEdit()" min="0" class="form-control" #password
+                            formControlName="password">
+
+                        <label *ngIf="editorMode == editorModeEnum.detail"
+                            class="form-control">{{itemModel?.password}}</label>
+
+                        <div class="text-danger" *ngIf="(editorForm.controls['password'].hasError('invalid' ) || 
+                                            editorForm.controls['password'].hasError('required' ) )&&
+                                           (editorForm.controls['password'].touched || 
+                                            editorForm.controls['password'].dirty)">
+                            {{ 'movements.fieldReq' | translate }}
+                        </div>
+
+                        <!-- <h1>
+                                {{editorForm?.controls['password']?.errors | json}}
+                            </h1> -->
+                        <div class="text-danger" *ngIf="(editorForm.controls['password'].hasError('invalid' ) || 
+                            editorForm.controls['password'].hasError('minlength' ) )&&
+                           (editorForm.controls['password'].touched || 
+                            editorForm.controls['password'].dirty)">
+                            {{ 'user.editor.password.error.minlength' | translate }}
+                        </div>
+                    </div>
+                </div>
+
+                <!--birthDate-->
+                <div class="form-group col-md-2">
+                    <label>{{ 'user.shared.birthDate' | translate }}
+                        <i *ngIf="canEdit()" class="text-danger">*</i>
+                    </label>
+
+                    <input *ngIf="editorMode != editorModeEnum.detail" type="text" [disabled]="!canEdit()"
+                        placeholder="Datepicker" class="form-control" formControlName="birthDate"
+                        [ngClass]="{'border border-danger' :  editorForm.controls['birthDate'].invalid && editorForm.controls['birthDate'].touched}"
+                        bsDatepicker readonly value="{{editorForm.controls['birthDate'].value |date:'dd/MM/yyyy'}}">
+
+                    <label *ngIf="editorMode == editorModeEnum.detail"
+                        class="form-control">{{itemModel?.birthDate | date:'dd/MM/yyyy'}}</label>
+
+                    <div class="text-danger" *ngIf="(editorForm.controls['birthDate'].hasError('invalid' ) || 
+                                                     editorForm.controls['birthDate'].hasError('required' ) )&&
+                                                    (editorForm.controls['birthDate'].touched || 
+                                                     editorForm.controls['birthDate'].dirty)">
+                        {{ 'movements.fieldReq' | translate }}
+                    </div>
+                </div>
+
+                <!--nameAr-->
+                <div class="form-group col-md-3">
+                    <label>{{ 'user.editor.nameAr' | translate }}
+                        <i *ngIf="canEdit()" class="text-danger">*</i>
+                    </label>
+                    <div class="detail w-100">
+                        <input type="text" *ngIf="canEdit()" min="0" class="form-control" #nameAr
+                            formControlName="nameAr">
+
+                        <label *ngIf="editorMode == editorModeEnum.detail"
+                            class="form-control">{{itemModel?.nameAr}}</label>
+
+                        <div class="text-danger" *ngIf="(editorForm.controls['nameAr'].hasError('invalid' ) || 
+                                        editorForm.controls['nameAr'].hasError('required' ) )&&
+                                       (editorForm.controls['nameAr'].touched || 
+                                        editorForm.controls['nameAr'].dirty)">
+                            {{ 'movements.fieldReq' | translate }}
+                        </div>
+                    </div>
+                </div>
+
+                <!--nameEn-->
+                <div class="form-group col-md-3">
+                    <label>{{ 'user.editor.nameEn' | translate }}
+                        <!-- <span *ngIf="canEdit()" class="text-danger">*</span> -->
+                    </label>
+                    <div class="detail w-100">
+                        <input type="text" *ngIf="canEdit()" min="0" class="form-control" #nameEn
+                            formControlName="nameEn">
+
+                        <label *ngIf="editorMode == editorModeEnum.detail"
+                            class="form-control">{{itemModel?.nameEn}}</label>
+
+                        <div class="text-danger" *ngIf="(editorForm.controls['nameEn'].hasError('invalid' ) || 
+                                        editorForm.controls['nameEn'].hasError('required' ) )&&
+                                       (editorForm.controls['nameEn'].touched || 
+                                        editorForm.controls['nameEn'].dirty)">
+                            {{ 'movements.fieldReq' | translate }}
+                        </div>
+                    </div>
+                </div>
+
+                <!--maxPaymentLimit-->
+                <div class="form-group col-md-2">
+                    <label>{{ 'user.shared.maxPaymentLimit' | translate }}
+                        <span *ngIf="canEdit()" class="text-danger">*</span>
+                    </label>
+                    <div class="detail w-100">
+                        <input type="number" *ngIf="canEdit()" min="0" class="form-control" #maxPaymentLimit
+                            formControlName="maxPaymentLimit">
+
+                        <label *ngIf="editorMode == editorModeEnum.detail"
+                            class="form-control">{{itemModel?.maxPaymentLimit}}</label>
+
+                        <div class="text-danger" *ngIf="(editorForm.controls['maxPaymentLimit'].hasError('invalid' ) || 
+                                        editorForm.controls['maxPaymentLimit'].hasError('required' ) )&&
+                                       (editorForm.controls['maxPaymentLimit'].touched || 
+                                        editorForm.controls['maxPaymentLimit'].dirty)">
+                            {{ 'movements.fieldReq' | translate }}
+                        </div>
+
+                        <div class="text-danger" *ngIf="(editorForm.controls['maxPaymentLimit'].hasError('invalid' ) || 
+                        editorForm.controls['maxPaymentLimit'].hasError('pattern' ) )&&
+                       (editorForm.controls['maxPaymentLimit'].touched || 
+                        editorForm.controls['maxPaymentLimit'].dirty)">
+                            {{ 'user.editor.maxPaymentLimit.error.invalidValue' | translate }}
+                        </div>
+                    </div>
+                </div>
+
+                <!--isActive-->
+                <div class="form-group col-lg-2">
+                    <label>{{ ' ' }}</label>
+                    <div class="detail w-100">
+                        <input *ngIf="canEdit()" type="checkbox" id="isActive" formControlName="isActive"
+                            class="form-control checkbox-inline">
+
+                        <input *ngIf="!canEdit()" type="checkbox" id="isActive" formControlName="isActive"
+                            disabled="disabled" class="form-control checkbox-inline">
+                        <label for="isActive">{{ 'user.shared.isActive' | translate }}</label>
+                    </div>
+                </div>
+
+                <!--phone-->
+                <div class="form-group col-md-2">
+                    <label>{{ 'delegate.shared.phone' | translate }}
+                        <span *ngIf="canEdit()" class="text-danger">*</span>
+                    </label>
+                    <div class="detail w-100">
+                        <input type="text" *ngIf="canEdit()" min="0" class="form-control" #phone
+                            formControlName="phone">
+
+                        <label *ngIf="editorMode == editorModeEnum.detail"
+                            class="form-control">{{itemModel?.phone}}</label>
+
+                        <div class="text-danger" *ngIf="(editorForm.controls['phone'].hasError('invalid' ) || 
+                                                        editorForm.controls['phone'].hasError('required' ) )&&
+                                                       (editorForm.controls['phone'].touched || 
+                                                        editorForm.controls['phone'].dirty)">
+                            {{ 'movements.fieldReq' | translate }}
+                        </div>
+
+                        <div class="text-danger" *ngIf="(editorForm.controls['phone'].hasError('invalid' ) || 
+                                                editorForm.controls['phone'].hasError('pattern' ) )&&
+                                                (editorForm.controls['phone'].touched || 
+                                                editorForm.controls['phone'].dirty)">
+                            {{ 'donation.phone' | translate }}
+                        </div>
+                    </div>
+                </div>
+
+                <!--email-->
+                <div class="form-group col-md-3">
+                    <label>{{ 'delegate.shared.email' | translate }}
+                        <span *ngIf="canEdit()" class="text-danger">*</span>
+                    </label>
+                    <div class="detail w-100">
+                        <input type="text" *ngIf="canEdit()" min="0" class="form-control" #email
+                            formControlName="email">
+
+                        <label *ngIf="editorMode == editorModeEnum.detail"
+                            class="form-control">{{itemModel?.email}}</label>
+
+                        <div class="text-danger" *ngIf="(editorForm.controls['email'].hasError('invalid' ) || 
+                                                        editorForm.controls['email'].hasError('required' ) )&&
+                                                       (editorForm.controls['email'].touched || 
+                                                        editorForm.controls['email'].dirty)">
+                            {{ 'movements.fieldReq' | translate }}
+                        </div>
+                        <div class="text-danger" *ngIf="(editorForm.controls['email'].hasError('invalid' ) || 
+                                                        editorForm.controls['email'].hasError('email' ) )&&
+                                                        (editorForm.controls['email'].touched || 
+                                                        editorForm.controls['email'].dirty)">
+                            {{ 'shared.enterVatidEmail' | translate }}
+                        </div>
+                    </div>
+                </div>
+
+                <!--branch-->
+                <!-- <div class="form-group col-md-3">
+                    <label>{{ 'safe.shared.branch' | translate }}
+                    </label>
+                    <kendo-combobox  #branchId [data]="branchs" [filterable]="true" [textField]="'displyedName'"
+                        [valueField]="'id'" [valuePrimitive]="true" selected [kendoDropDownFilter]="filterSettings"
+                        id="branchId" class="height38 width-100-per" formControlName="branchId" [disabled]="!canEdit()">
+                    </kendo-combobox >
+
+                    <div class="text-danger" *ngIf="editorForm.controls['branchId'].hasError('required') &&
+                                                                  (editorForm.controls['branchId'].touched || 
+                                                                   editorForm.controls['branchId'].dirty)">
+                        {{ 'movements.fieldReq' | translate }}
+                    </div>
+                </div> -->
+
+                <!--address-->
+                <div class="form-group col-md-12">
+                    <label>{{ 'delegate.editor.address' | translate }}
+                        <!-- <span *ngIf="canEdit()" class="text-danger">*</span> -->
+                    </label>
+                    <div class="detail w-100">
+                        <textarea *ngIf="canEdit()" class="form-control" formControlName="address"
+                            placeholder="{{ 'delegate.editor.address' | translate }}"></textarea>
+
+                        <textarea *ngIf="!canEdit()" disabled class="form-control" formControlName="address"
+                            placeholder="{{ 'delegate.editor.address' | translate }}"></textarea>
+
+                        <!-- <input type="text" *ngIf="canEdit()" min="0" class="form-control" #address
+                                            formControlName="address">
+                
+                                        <label *ngIf="editorMode == editorModeEnum.detail"
+                                            class="form-control">{{itemModel?.address}}</label> -->
+
+                        <div class="text-danger" *ngIf="(editorForm.controls['address'].hasError('invalid' ) || 
+                                                    editorForm.controls['address'].hasError('required' ) )&&
+                                                (editorForm.controls['address'].touched || 
+                                                    editorForm.controls['address'].dirty)">
+                            {{ 'movements.fieldReq' | translate }}
+                        </div>
+                    </div>
+                </div>
+
+                <!--changePasswordBtn-->
+                <div *ngIf="editorMode == editorModeEnum.edit" class="form-group col-md-6">
+                    <div class="detail w-100">
+                        <button class="btn btn-block" data-toggle="modal"
+                            data-target="#changePasswordModal">{{ 'user.editor.changePassword' | translate }}</button>
+                    </div>
+                </div>
+
+                <!--resetPasswordBtn-->
+                <div *ngIf="editorMode == editorModeEnum.edit" class="form-group col-md-6">
+                    <div class="detail w-100">
+                        <button class="btn btn-block" data-toggle="modal"
+                            data-target="#resetPasswordModal">{{ 'user.editor.resetPassword.resetPassword' | translate }}</button>
+                    </div>
+                </div>
+
+            </div>
+
+            <loader [hidden]="!isProccessing"></loader>
+
+            <div class="row">
+                <div class="form-group col-lg-4">
+                    <button *ngIf="canEdit()" type="submit" (click)="save()"
+                        [disabled]="!editorForm.valid || isProccessing" class="btn btn-secondary">
+                        <i class="fa fa-floppy-o verticalLine"></i> {{ 'shared.save' | translate }}
+                    </button>
+                    &nbsp;
+                    <button (click)="goToBack()" class="btn btn-secondary">
+                        <i class="fa fa-undo"></i> {{'shared.back' | translate }}
+                    </button>
+                </div>
+            </div>
+        </form>
+    </section>
+</div>
+
+<!-- changePasswordModal -->
+<div class="modal fade" id="changePasswordModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="failedModalLabel">{{ 'user.editor.changePassword' | translate }}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form role="form" [formGroup]="changePasswordForm">
+
+                    <!--oldPassword-->
+                    <div class="form-group col-md-6">
+                        <label>{{ 'user.editor.oldPassword.oldPassword' | translate }}
+                            <i class="text-danger">*</i>
+                        </label>
+                        <div class="detail w-100">
+                            <input type="text" *ngIf="canEdit()" min="0" class="form-control" #oldPassword
+                                formControlName="oldPassword">
+
+                            <div class="text-danger" *ngIf="(changePasswordForm.controls['oldPassword'].hasError('invalid' ) || 
+                            changePasswordForm.controls['oldPassword'].hasError('required' ) )&&
+                               (changePasswordForm.controls['oldPassword'].touched || 
+                               changePasswordForm.controls['oldPassword'].dirty)">
+                                {{ 'movements.fieldReq' | translate }}
+                            </div>
+                            <div class="text-danger" *ngIf="(changePasswordForm.controls['oldPassword'].hasError('invalid' ) || 
+                            changePasswordForm.controls['oldPassword'].hasError('minlength' ) )&&
+                           (changePasswordForm.controls['oldPassword'].touched || 
+                           changePasswordForm.controls['oldPassword'].dirty)">
+                                {{ 'user.editor.password.error.minlength' | translate }}
+                            </div>
+
+                            <!-- <h1>
+                    {{editorForm?.controls['password']?.errors | json}}
+                </h1> -->
+                            <div class="text-danger" *ngIf="(editorForm.controls['password'].hasError('invalid' ) || 
+                editorForm.controls['password'].hasError('minlength' ) )&&
+               (editorForm.controls['password'].touched || 
+                editorForm.controls['password'].dirty)">
+                                {{ 'user.editor.password.error.minlength' | translate }}
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--newPassword-->
+                    <div class="form-group col-md-6">
+                        <label>{{ 'user.editor.newPassword.newPassword' | translate }}
+                            <i class="text-danger">*</i>
+                        </label>
+                        <div class="detail w-100">
+                            <input type="text" *ngIf="canEdit()" min="0" class="form-control" #newPassword
+                                formControlName="newPassword">
+
+                            <div class="text-danger" *ngIf="(changePasswordForm.controls['newPassword'].hasError('invalid' ) || 
+                                    changePasswordForm.controls['newPassword'].hasError('required' ) )&&
+                                   (changePasswordForm.controls['newPassword'].touched || 
+                                   changePasswordForm.controls['newPassword'].dirty)">
+                                {{ 'movements.fieldReq' | translate }}
+                            </div>
+                            <div class="text-danger" *ngIf="(changePasswordForm.controls['newPassword'].hasError('invalid' ) || 
+                            changePasswordForm.controls['newPassword'].hasError('minlength' ) )&&
+                           (changePasswordForm.controls['newPassword'].touched || 
+                           changePasswordForm.controls['newPassword'].dirty)">
+                                {{ 'user.editor.password.error.minlength' | translate }}
+                            </div>
+
+                            <!-- <h1>
+                        {{editorForm?.controls['password']?.errors | json}}
+                    </h1> -->
+                            <div class="text-danger" *ngIf="(editorForm.controls['password'].hasError('invalid' ) || 
+                    editorForm.controls['password'].hasError('minlength' ) )&&
+                   (editorForm.controls['password'].touched || 
+                    editorForm.controls['password'].dirty)">
+                                {{ 'user.editor.password.error.minlength' | translate }}
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--confirmPassword-->
+                    <div class="form-group col-md-6">
+                        <label>{{ 'user.editor.confirmPassword.confirmPassword' | translate }}
+                            <i class="text-danger">*</i>
+                        </label>
+                        <div class="detail w-100">
+                            <input type="text" *ngIf="canEdit()" min="0" class="form-control" #confirmPassword
+                                formControlName="confirmPassword">
+
+                            <div class="text-danger" *ngIf="(changePasswordForm.controls['confirmPassword'].hasError('invalid' ) || 
+                                        changePasswordForm.controls['confirmPassword'].hasError('required' ) )&&
+                                       (changePasswordForm.controls['confirmPassword'].touched || 
+                                       changePasswordForm.controls['confirmPassword'].dirty)">
+                                {{ 'user.editor.confirmPassword.error' | translate }}
+                            </div>
+
+                            <!-- <h1>
+                            {{editorForm?.controls['password']?.errors | json}}
+                        </h1> -->
+                            <div class="text-danger" *ngIf="(editorForm.controls['password'].hasError('invalid' ) || 
+                        editorForm.controls['password'].hasError('minlength' ) )&&
+                       (editorForm.controls['password'].touched || 
+                        editorForm.controls['password'].dirty)">
+                                {{ 'user.editor.password.error.minlength' | translate }}
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary"
+                    data-dismiss="modal">{{ 'shared.no' | translate }}</button>
+                <button [disabled]="!changePasswordForm.valid || isProccessing" type="button" class="btn btn-success"
+                    data-dismiss="modal" (click)="saveChangePassword()">{{ 'shared.yes' | translate }}</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- resetPasswordModal -->
+<div class="modal fade" id="resetPasswordModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="failedModalLabel">{{ 'user.editor.resetPassword.resetPassword' | translate }}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                    {{ 'user.editor.resetPassword.resetPassword' | translate }}
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary"
+                    data-dismiss="modal">{{ 'shared.no' | translate }}</button>
+                <button type="button" class="btn btn-success"
+                    data-dismiss="modal" (click)="saveResetPassword()">{{ 'shared.yes' | translate }}</button>
+            </div>
+        </div>
+    </div>
+</div>

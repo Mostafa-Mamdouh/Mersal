@@ -1,0 +1,135 @@
+<section>
+    <div class="row">
+         <div class="col-md-10">
+         <h3>{{ 'movements.Donations' | translate }}</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group col-lg-6">
+          <label>{{ 'donation.branch' | translate }}:</label><label class="labelValue">{{details?.branch}}</label><br>
+          <label>{{ 'movements.value' | translate }}:</label><label class="labelValue">{{details?.totalAmount}}</label><br>
+          <label>{{ 'movements.statementAr' | translate }}:</label>
+              <textarea class="form-control" [value]="details?.descriptionAR" disabled
+                placeholder="{{ 'movements.statementAr' | translate }}"></textarea>
+        </div>
+        <div class="form-group col-lg-6">
+          <label>{{ 'movements.dateDocument' | translate }}:</label><label class="labelValue">{{details?.date | date: 'dd/MM/yyyy'}}</label><br>
+          <label *ngIf="sourceType.vendor==details?.sourceType">
+            {{ 'financial.vendorName' | translate }}:</label>
+            <label class="labelValue" *ngIf="sourceType.vendor==details?.sourceType">
+              {{details?.vendorName}}
+          </label>
+          <label *ngIf="sourceType.AccountChart==details?.sourceType">
+              {{ 'financial.accountChart' | translate }}:</label>
+              <label class="labelValue" *ngIf="sourceType.AccountChart==details?.sourceType">
+                {{details?.accountNumber}}
+          </label>
+          <label *ngIf="sourceType.Donator==details?.sourceType">
+                  {{ 'financial.customerDatails' | translate }}:</label>
+                  <label class="labelValue" *ngIf="sourceType.Donator==details?.sourceType">
+                    {{details?.customerName}}
+          </label>  <br>
+          <label>{{ 'movements.statementEn' | translate }}</label>
+          <textarea class="form-control" [value]="details?.descriptionEN" disabled
+                placeholder="{{ 'movements.statementEn' | translate }}"></textarea>
+                 
+        </div>             
+    </div>   
+    <hr>     
+     <div class="row">
+        <section class="form-group col-lg-6" *ngIf="details?.products?.length>0">
+            <div class="col-md-10">
+              <h4>{{ 'addProduct.Products' | translate }}</h4>
+             </div>
+             <div class="col-md-12" *ngFor="let item of details?.products; let i = index">
+                <label>{{ 'addProduct.ProductName' | translate }}:</label><label class="labelValue">{{item.name}}</label><br>
+                <label>{{ 'addProduct.Quantity' | translate }}:</label><label class="labelValue">{{item.amount}}</label><br>
+                <label>{{ 'addProduct.UnitName' | translate }}:</label><label class="labelValue">{{item.measurementUnit}}</label><hr>                 
+             </div>
+        </section>
+        <section class="form-group col-lg-6" *ngIf="details?.costCenters?.length>0||details?.cases?.length>0">
+             <div class="col-md-10" *ngIf="details?.costCenters?.length>0">
+              <h4>{{ 'movements.costCenter' | translate }}</h4>
+             </div>
+             <div *ngIf="details?.costCenters?.length>0">
+                <div class="col-md-12"  *ngFor="let item of details.costCenters; let i = index">
+                    <label>{{ 'movements.costCenterCode' | translate }}:</label><label class="labelValue">{{item.name}}</label><br>
+                    <label>{{ 'donation.Amount' | translate }}:</label><label class="labelValue">{{item.amount}}</label>
+                                   
+                 </div>
+             </div>  
+             <hr *ngIf="details?.cases?.length>0">           
+             <div class="col-md-10" *ngIf="details?.cases?.length>0">
+                <h4>{{ 'donation.cases' | translate }}</h4>
+               </div>
+               <div *ngIf="details?.cases?.length>0">
+                  <div class="col-md-12" *ngFor="let item of details.cases; let i = index" >
+                      <label>{{ 'donation.caseCode' | translate }}:</label><label class="labelValue">{{item.name}}</label><br>
+                      <label>{{ 'donation.Amount' | translate }}:</label><label class="labelValue">{{item.amount}}</label>
+                   </div>
+               </div>              
+        </section>    
+        
+        <section class="form-group col-lg-6" *ngIf="details?.cases?.length>0||details?.cases?.length>0">
+                <div class="col-md-10" *ngIf="details?.cases?.length>0">
+                 <h4>{{ 'movements.cases' | translate }}</h4>
+                </div>
+                <div *ngIf="details?.cases?.length>0">
+                   <div class="col-md-12"  *ngFor="let item of details.cases; let i = index">
+                      <label class="labelValue">{{item.name}}</label><br>
+                       <label>{{ 'donation.Amount' | translate }}:</label><label class="labelValue">{{item.amount}}</label>
+                                      
+                    </div>
+                </div>  
+                <hr *ngIf="details?.cases?.length>0">           
+                <div class="col-md-10" *ngIf="details?.cases?.length>0">
+                   <h4>{{ 'donation.cases' | translate }}</h4>
+                  </div>
+                  <div *ngIf="details?.cases?.length>0">
+                     <div class="col-md-12" *ngFor="let item of details.cases; let i = index" >
+                         <label>{{ 'donation.caseCode' | translate }}:</label><label class="labelValue">{{item.name}}</label><br>
+                         <label>{{ 'donation.Amount' | translate }}:</label><label class="labelValue">{{item.amount}}</label>
+                      </div>
+                  </div>              
+           </section>    
+    </div>
+    <div class="row">
+            <section class="form-group col-lg-6" *ngIf="details?.receivingMethodId==1">
+                    <div class="col-md-10">
+                     <h4>{{'movements.paymentMethod'| translate}} : {{ 'financial.Cash' | translate }}</h4>
+                    </div>
+                         <div class="col-md-12">
+                             <label>{{ 'financial.safes' | translate }}:</label><label class="labelValue">{{details.safeName}}</label><br>
+                          </div>
+               </section>
+
+               <section class="form-group col-lg-6" *ngIf="details?.receivingMethodId==2">
+                    <div class="col-md-10">
+                     <h4>{{'movements.paymentMethod'| translate}} : {{ 'financial.cheque' | translate }}</h4>
+                    </div>
+                         <div class="col-md-12">
+                             <label>{{ 'financial.chequeNumber' | translate }}:</label><label class="labelValue">{{details.chequeNumber}}</label><br>
+                          </div>
+                          <div class="col-md-12">
+                                <label>{{ 'financial.dueDate' | translate }}:</label><label class="labelValue">{{details.chequeDuedate |date :"dd/MM/yyyy"}}</label><br>
+                             </div>
+                             <div class="col-md-12">
+                                    <label>{{ 'financial.banks' | translate }}:</label><label class="labelValue">{{details.bankName}}</label><br>
+                                 </div>
+               </section>
+
+               <section class="form-group col-lg-6" *ngIf="details?.receivingMethodId==3">
+                    <div class="col-md-10">
+                     <h4>{{'movements.paymentMethod'| translate}} : {{ 'financial.Visa ' | translate }}</h4>
+                    </div>
+                         <div class="col-md-12">
+                             <label>{{ 'financial.visaNumber' | translate }}:</label><label class="labelValue">{{details.visaNumber}}</label><br>
+                          </div>
+
+                             <div class="col-md-12">
+                                    <label>{{ 'financial.banks' | translate }}:</label><label class="labelValue">{{details.bankName}}</label><br>
+                                 </div>
+               </section>
+    </div>
+
+  </section>

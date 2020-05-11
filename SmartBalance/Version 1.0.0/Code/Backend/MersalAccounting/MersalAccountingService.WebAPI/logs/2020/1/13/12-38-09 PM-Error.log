@@ -1,0 +1,22 @@
+System.ArgumentNullException: Value cannot be null.
+Parameter name: parameters
+   at System.Data.Entity.Utilities.Check.NotNull[T](T value, String parameterName)
+   at System.Data.Entity.Database.SqlQuery[TElement](String sql, Object[] parameters)
+   at MersalAccountingService.DataAccess.Repositories.UnitOfWork.SQLQuery[T](String sql, Object[] parameters) in C:\Mersal\SmartBalance\Version 1.0.0\Code\Backend\MersalAccounting\MersalAccountingService.DataAccess\Repositories\Shared\UnitOfWork.cs:line 46
+   at MersalAccountingService.BusinessLogic.Services.ChartService.GetFinancialMovementsChart() in C:\Mersal\SmartBalance\Version 1.0.0\Code\Backend\MersalAccounting\MersalAccountingService.BusinessLogic\Services\Charts\ChartService.cs:line 37
+   at MersalAccountingService.WebAPI.Controllers.API.DashboardController.GetPaymentMovementsChart() in C:\Mersal\SmartBalance\Version 1.0.0\Code\Backend\MersalAccounting\MersalAccountingService.WebAPI\Controllers\API\Shared\DashboardController.cs:line 43
+   at lambda_method(Closure , Object , Object[] )
+   at System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ActionExecutor.<>c__DisplayClass6_2.<GetExecutor>b__2(Object instance, Object[] methodParameters)
+   at System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ExecuteAsync(HttpControllerContext controllerContext, IDictionary`2 arguments, CancellationToken cancellationToken)
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Controllers.ApiControllerActionInvoker.<InvokeActionAsyncCore>d__1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Controllers.ActionFilterResult.<ExecuteAsync>d__5.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Controllers.ExceptionFilterResult.<ExecuteAsync>d__6.MoveNext()

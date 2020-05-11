@@ -1,0 +1,73 @@
+<kendo-grid [data]="gridView" *ngIf="!ListLoading" [pageSize]="pageSize" [skip]="skip" [scrollable]="'none'"
+        [columnMenu]="true" [filter]="state.filter" [filterable]="true" [sortable]="true" [pageable]="true"
+        (dataStateChange)="dataStateChange($event)" (pageChange)="pageChange($event)"
+        class="kendoGridHeightAndDirection">
+
+        <!-- <ng-template kendoGridToolbarTemplate>
+            <div class="row">
+                    <div class="col-md-11">
+                            <label>{{'shared.display'| translate}}&nbsp;&nbsp;</label>
+                                <kendo-dropdownlist #list [(ngModel)]="pagenationSize" 
+                                (valueChange)="pagenationSizeChange($event)"
+                                [data]="pagenationSizeList" [filterable]="true" 
+                                textField="value" valueField="value"
+                                [kendoDropDownFilter]="filterSettings" class="kendo small-width">
+                            </kendo-dropdownlist>
+                        </div>
+                <div *ngIf="gridView?.data?.length > 0" class="col-md-1">
+                    <button type="button" kendoGridExcelCommand 
+                        class="btn-excel"
+                        title="{{'shared.exportTo.excel' | translate}}">
+                        <i class="fa fa-file-excel-o" aria-hidden="true"></i>
+                    </button>
+                    <button type="button" 
+                        class="btn-excel"
+                        kendoGridExcelCommand
+                        icon="file-excel">{{'shared.exportTo.excel' | translate}}</button>
+                </div>
+            </div>
+        </ng-template> -->
+
+        <!--code-->
+        <kendo-grid-column [filterable]="false" field="code" title="{{ 'donation.code' | translate }}" class="width130px">
+        </kendo-grid-column>
+
+        <!--date-->
+        <kendo-grid-column [filterable]="false" field="date" id="dateFilter" title="{{ 'purchasing.shared.date' | translate }}"
+            class="width130px" filter="date" format="{0:MM/dd/yyyy}">
+            <ng-template kendoGridCellTemplate let-dataItem>
+                {{dataItem.date | date: 'mediumDate'}}
+            </ng-template>
+        </kendo-grid-column>  
+
+        <!--amount-->
+        <kendo-grid-column [filterable]="false" field="amount" title="{{ 'movements.value' | translate }}" class="width130px">           
+        </kendo-grid-column>    
+
+        <kendo-grid-column *ngIf="canEidt" field="" title="" class="width180px" [filterable]="false">
+            <ng-template kendoGridCellTemplate let-dataItem>
+                <!-- <span>
+                    <a routerLink="/purchasing/purchase-invoice/detail/{{dataItem.id}}" title="{{'shared.detail' | translate}}"><i class="fa fa-eye"></i></a>
+                </span> -->
+
+                <input type="checkbox" 
+                [(ngModel)]="isChecked[dataItem?.id]"
+                (change)="checkboxChange(isChecked[dataItem?.id], dataItem?.id)"
+                id="{{dataItem.id}}"
+                class="form-control" />
+
+               <!-- <input type="checkbox" 
+                      *ngIf="!isChecked[dataItem.id]"
+                      [(ngModel)]="isChecked[dataItem.id]"
+                      (change)="checkboxChange(isChecked[dataItem.id], dataItem.id)"
+                      id="{{dataItem.id}}"
+                      class="form-control" /> -->
+                      
+                      <!-- <loader [hidden]="!isChecked[dataItem.id]" 
+                      [smallSize]="true"></loader>                  -->
+            </ng-template>
+        </kendo-grid-column>
+
+        <kendo-grid-excel fileName="Checks Under Collection.xlsx"></kendo-grid-excel>
+
+    </kendo-grid>

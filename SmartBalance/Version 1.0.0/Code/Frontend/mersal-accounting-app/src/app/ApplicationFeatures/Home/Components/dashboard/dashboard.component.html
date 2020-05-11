@@ -1,0 +1,184 @@
+<!-- <div class="container">
+  <p>{{'menu.dashboard' | translate}}</p>
+</div> -->
+<div class="dashboard-background">
+
+  <div class="row">
+    <div class="col-md-3">
+      <div class="chart-item">    
+        <loader *ngIf="!lineChartseriesDataRetrived"></loader>  
+        <kendo-chart *ngIf="lineChartseriesDataRetrived" [categoryAxis]="{ categories: categories }">
+          <kendo-chart-title text="{{'dashboard.financialTransactions' | translate}}" font="15pt Segoe UI"
+            align="center">
+          </kendo-chart-title>
+          <kendo-chart-series-defaults type="line">
+          </kendo-chart-series-defaults>
+          <kendo-chart-legend position="{{PaymentMovementChartPosition}}" [visible]="isVisible" [padding]="10">
+          </kendo-chart-legend>
+          <kendo-chart-tooltip format="{0 | currency}"></kendo-chart-tooltip>
+          <kendo-chart-series>
+            <kendo-chart-series-item *ngFor="let item of lineChartseries" type="line" [data]="item.data"
+              [name]="item.name">
+            </kendo-chart-series-item>
+            <!-- <kendo-chart-series-item *ngFor="let item of PaymentMovementsChart" type="line" [data]="[item.january, item.february, item.march, item.april, item.may, item.june, item.july,item.august,item.september,item.october,item.november,item.december]">
+        </kendo-chart-series-item>-->
+          </kendo-chart-series>
+        </kendo-chart>        
+        <!--<kendo-chart>
+      <kendo-chart-title text="Units sold"></kendo-chart-title>
+   
+      <kendo-chart-category-axis >
+          <kendo-chart-category-axis-item 
+              [categories]="['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul' ,'Aug' , 'Sep' , 'Oct' , 'Nov' , 'Dec']"
+              [title]="{ text: 'Months' }">
+          </kendo-chart-category-axis-item>
+      </kendo-chart-category-axis>
+      <kendo-chart-series>
+        <kendo-chart-series-item *ngFor="let item of PaymentMovementsChart" type="line" [data]="[item.january, item.february, item.march, item.april, item.may, item.june, item.july,item.august,item.september,item.october,item.november,item.december]">
+        </kendo-chart-series-item>
+      </kendo-chart-series>
+    </kendo-chart>-->
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="chart-item">
+        <loader *ngIf="!columnChartseriesDataRetrived"></loader>
+        <kendo-chart *ngIf="columnChartseriesDataRetrived" [categoryAxis]="{ categories: categories}">
+          <kendo-chart-title text="{{'dashboard.PaymentAndReceiptChart' | translate}}" font="15pt Segoe UI"
+            align="center">
+          </kendo-chart-title>
+          <kendo-chart-series-defaults type="column">
+          </kendo-chart-series-defaults>
+          <kendo-chart-legend position="{{PaymentMovementChartPosition}}" [visible]="isVisible" [padding]="10">
+          </kendo-chart-legend>
+          <kendo-chart-tooltip format="{0}"></kendo-chart-tooltip>
+          <kendo-chart-series>
+            <kendo-chart-series-item *ngFor="let columnItem of columnChartseries" [data]="columnItem.data"
+              [name]="columnItem.name">
+            </kendo-chart-series-item>
+          </kendo-chart-series>
+        </kendo-chart>
+      </div>
+    </div>
+
+    <!-- <div class="col-md-3">
+      <div class="chart-item">
+        <kendo-chart>
+          <kendo-chart-series>
+            <kendo-chart-series-item type="donut" [data]="data" categoryField="kind" field="share">
+              <kendo-chart-series-item-labels [content]="labelContent" color="#fff" background="none">
+              </kendo-chart-series-item-labels>
+            </kendo-chart-series-item>
+          </kendo-chart-series>
+          <kendo-chart-legend [visible]="false"></kendo-chart-legend>
+        </kendo-chart>
+      </div>
+    </div> -->
+
+    <!-- <div class="col-md-3">
+      <div class="chart-item">
+        <kendo-chart>
+          <kendo-chart-title text="Units sold"></kendo-chart-title>
+          <kendo-chart-category-axis>
+              <kendo-chart-category-axis-item [categories]="['Q1', 'Q2', 'Q3', 'Q4']">
+              </kendo-chart-category-axis-item>
+          </kendo-chart-category-axis>
+          <kendo-chart-series>
+            <kendo-chart-series-item type="bar" [gap]="2" [spacing]=".25" [data]="[100, 123, 234, 343]">
+            </kendo-chart-series-item>
+            <kendo-chart-series-item type="bar" [data]="[120, 67, 231, 196]">
+            </kendo-chart-series-item>
+            <kendo-chart-series-item type="bar" [data]="[45, 124, 189, 143]">
+            </kendo-chart-series-item>
+            <kendo-chart-series-item type="bar" [data]="[87, 154, 210, 215]">
+            </kendo-chart-series-item>
+          </kendo-chart-series>
+        </kendo-chart>     
+      </div>
+    </div> -->
+
+    <!-- <div class="col-md-3">
+      <div class="chart-item">
+        <kendo-chart [seriesColors]="['orange', '#ffe']">
+          <kendo-chart-legend position="top"></kendo-chart-legend>
+          <kendo-chart-series>
+            <kendo-chart-series-item type="pie"
+              [data]="pieData"
+              field="value"
+              categoryField="category">
+            </kendo-chart-series-item>
+          </kendo-chart-series>
+        </kendo-chart>
+      </div>
+    </div> -->
+
+    <!-- <div class="col-md-3">
+      <div class="chart-item">
+        <kendo-chart [title]="{ text: 'Average Weather Conditions' }">
+          <kendo-chart-series>
+            <kendo-chart-series-item type="rangeColumn"
+                                     [data]="weatherData" fromField="min" toField="max" categoryField="month">
+              <kendo-chart-series-item-labels-from [content]="labelContentFrom">
+              </kendo-chart-series-item-labels-from>
+              <kendo-chart-series-item-labels-to [content]="labelContentTo">
+              </kendo-chart-series-item-labels-to>
+            </kendo-chart-series-item>
+          </kendo-chart-series>
+          <kendo-chart-category-axis>
+              <kendo-chart-category-axis-item [labels]="{ rotation: 'auto' }">
+              </kendo-chart-category-axis-item>
+          </kendo-chart-category-axis>
+          <kendo-chart-tooltip>
+            <ng-template kendoChartSeriesTooltipTemplate let-value="value">
+              Avg Min Temp : {{ value.from }} °C <br>
+              Avg Max Temp : {{ value.to }} °C"
+            </ng-template>
+          </kendo-chart-tooltip>
+        </kendo-chart>
+      </div>
+    </div> -->
+
+    <!-- <div class="col-md-3">
+      <div class="chart-item">
+        <kendo-chart>
+          <kendo-chart-title text="Units sold"></kendo-chart-title>
+          <kendo-chart-category-axis>
+              <kendo-chart-category-axis-item
+                  [categories]="['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul']"
+                  [title]="{ text: 'Months' }">
+              </kendo-chart-category-axis-item>
+          </kendo-chart-category-axis>
+          <kendo-chart-series>
+            <kendo-chart-series-item type="area" [data]="[123, 276, 310, 212, 240, 156, 98]">
+            </kendo-chart-series-item>
+            <kendo-chart-series-item type="area" [data]="[165, 210, 287, 144, 190, 167, 212]">
+            </kendo-chart-series-item>
+            <kendo-chart-series-item type="area" [data]="[56, 140, 195, 46, 123, 78, 95]">
+            </kendo-chart-series-item>
+          </kendo-chart-series>
+        </kendo-chart>
+      </div>
+    </div> -->
+
+    <!-- <div class="col-md-3">
+      <div class="chart-item">
+        <kendo-chart>
+          <kendo-chart-title text="Sales funnel"></kendo-chart-title>
+          <kendo-chart-series>
+            <kendo-chart-series-item type="funnel" [data]="model" field="count" categoryField="stat" colorField="color">
+              <kendo-chart-series-item-labels background="none" color="white" format="N0">
+              </kendo-chart-series-item-labels>
+            </kendo-chart-series-item>
+          </kendo-chart-series>
+          <kendo-chart-tooltip>
+            <ng-template kendoChartSeriesTooltipTemplate let-category="category">
+              {{ category }}
+            </ng-template>
+          </kendo-chart-tooltip>
+          <kendo-chart-legend [visible]="false"></kendo-chart-legend>
+        </kendo-chart>
+      </div>
+    </div> -->
+  </div>
+</div>

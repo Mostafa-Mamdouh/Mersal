@@ -1,0 +1,27 @@
+<div class="container-fluid">
+    <div class="row header">
+        <div class="col-md-12">
+            <h3>{{ 'user.userGroups.title' | translate }} <label class="label label-info">{{itemModel?.userName}}</label></h3>
+        </div>
+    </div>
+
+    <div *ngIf="!isProccessing && id">
+        <list-editor [canEdit]="canEdit()" [sourceList]="sourceList" [destList]="destList" (sourceListChanged)="onSourceListChanged($event)"
+            (destListChanged)="onDestListChanged($event)"></list-editor>
+    </div>
+
+    <loader [hidden]="!isProccessing"></loader>
+
+    <div class="row">
+        <div class="form-group col-lg-4">
+            <button *ngIf="canEdit()" (click)="save()"
+                [disabled]="!hasChange || isProccessing" class="btn btn-secondary">
+                <i class="fa fa-floppy-o verticalLine"></i> {{ 'shared.save' | translate }}
+            </button>
+            &nbsp;
+            <button routerLink="/user/list" class="btn btn-secondary">
+                <i class="fa fa-undo"></i> {{'shared.back' | translate }}
+            </button>
+        </div>
+    </div>
+</div>

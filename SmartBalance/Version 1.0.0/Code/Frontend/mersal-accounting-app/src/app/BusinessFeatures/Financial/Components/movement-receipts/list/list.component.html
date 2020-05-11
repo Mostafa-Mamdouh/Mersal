@@ -1,0 +1,139 @@
+<div class="container-fluid">
+    <div class="row header">
+        <div class="col-md-10">
+            <h3>{{ 'movements.receipts' | translate }}</h3>
+        </div>
+        <div class="col-md-2">
+            <a routerLink="/financial/addReceipts" class="btn btn-dark btn-block">{{'shared.add' | translate}}</a>
+        </div>
+    </div>
+
+    <loader [hidden]="!ListLoading"></loader>
+    <kendo-grid [data]="gridView" *ngIf="!ListLoading" [pageSize]="pageSize" [skip]="skip" [scrollable]="'none'"
+        [columnMenu]="true" [filter]="state.filter" [filterable]="true" [sortable]="true" [pageable]="true"
+        class="kendoGridHeightAndDirection" (dataStateChange)="dataStateChange($event)"
+        (pageChange)="pageChange($event)">
+
+        <ng-template kendoGridToolbarTemplate>
+            <div class="row">
+                <div class="col-md-11">
+                    <label>{{'shared.display'| translate}}&nbsp;&nbsp;</label>
+                    <kendo-dropdownlist #list [(ngModel)]="pagenationSize" (valueChange)="pagenationSizeChange($event)"
+                        [data]="pagenationSizeList" [filterable]="true" textField="value" valueField="value"
+                        [kendoDropDownFilter]="filterSettings" class="kendo small-width">
+                    </kendo-dropdownlist>
+                </div>
+                <div *ngIf="gridView?.data?.length > 0" class="col-md-1">
+                    <button type="button" kendoGridExcelCommand class="btn-excel"
+                        title="{{'shared.exportTo.excel' | translate}}">
+                        <i class="fa fa-file-excel-o" aria-hidden="true"></i>
+                    </button>
+                    <!-- <button type="button" 
+                        class="btn-excel"
+                        kendoGridExcelCommand
+                        icon="file-excel">{{'shared.exportTo.excel' | translate}}</button> -->
+                </div>
+            </div>
+        </ng-template>
+
+        <kendo-grid-column media="(max-width: 768px)" title="{{ 'shared.data' | translate }}">
+            <ng-template kendoGridCellTemplate let-dataItem>
+                <!-- template for mobile -->
+                <dl>
+                    <dt>{{ 'donation.code' | translate }}</dt>
+                    <dd>{{dataItem.code}}</dd>
+
+                    <dt>{{ 'donation.branch' | translate }}</dt>
+                    <dd>{{dataItem.branch}}</dd>
+
+                    <dt>{{ 'donation.delegateManReciptNumber' | translate }}</dt>
+                    <dd>{{dataItem.delegateManReciptNumber}}</dd>
+
+                    <dt>{{ 'movements.source' | translate }}</dt>
+                    <dd>{{dataItem.source}}</dd>
+
+                    <dt>{{ 'movements.paymentMethod' | translate }}</dt>
+                    <dd>{{dataItem.paymentMethod}}</dd>
+
+                    <dt>{{ 'movements.value' | translate }}</dt>
+                    <dd>{{dataItem.amount}}</dd>
+
+                    <dt>{{ 'donation.receiptDate' | translate }}</dt>
+                    <dd>{{dataItem.date | date: 'mediumDate'}}</dd>
+                </dl>
+            </ng-template>
+        </kendo-grid-column>
+
+        <kendo-grid-column field="code" title="{{ 'donation.code' | translate }}" class="width130px" media="md">
+        </kendo-grid-column>
+
+        <kendo-grid-column field="branch" title="{{ 'donation.branch' | translate }}" class="width130px" media="md">
+            <ng-template kendoGridFilterCellTemplate let-filter>
+                <kendo-dropdownlist #list [(ngModel)]="branchId" (valueChange)="branchChange($event)"
+                    [data]="BranchesDropDownData" [filterable]="true" textField="text" valueField="value"
+                    [kendoDropDownFilter]="filterSettings" class="kendo small-width">
+                </kendo-dropdownlist>
+            </ng-template>
+        </kendo-grid-column>
+
+
+        <kendo-grid-column field="delegateManReciptNumber" title="{{ 'donation.delegateManReciptNumber' | translate }}"
+            class="width130px" media="md"></kendo-grid-column>
+
+        <kendo-grid-column field="source" title="{{ 'movements.source' | translate }}" class="width130px" media="md">
+        </kendo-grid-column>
+
+        <kendo-grid-column field="paymentMethod" title="{{ 'movements.paymentMethod' | translate }}" class="width130px" media="md">
+            <ng-template kendoGridFilterCellTemplate let-filter>
+                <kendo-dropdownlist #list [(ngModel)]="PaymentId" (valueChange)="paymentChange($event)"
+                    [data]="PaymentDropDownData" [filterable]="true" textField="text" valueField="value"
+                    [kendoDropDownFilter]="filterSettings" class="kendo small-width">
+                </kendo-dropdownlist>
+            </ng-template>
+        </kendo-grid-column>
+
+        <kendo-grid-column field="amount" title="{{ 'movements.value' | translate }}" class="width130px" media="md">
+        </kendo-grid-column>
+
+        <kendo-grid-column field="date" id="dateFilter" title="{{ 'donation.receiptDate' | translate }}"
+            class="width130px" filter="date" format="{0:MM/dd/yyyy}" media="md">
+            <ng-template kendoGridCellTemplate let-dataItem>
+                {{dataItem.date | date: 'mediumDate'}}
+            </ng-template>
+        </kendo-grid-column>
+
+        <kendo-grid-column field="" title="{{ 'shared.print' | translate }}" class="width180px" [filterable]="false">
+            <ng-template kendoGridCellTemplate let-dataItem>
+                <span>
+                    <a routerLink="/financial/detail/{{dataItem.id}}"><i class="fa fa-eye"></i></a>
+                </span>
+                &nbsp;
+                <span>
+                    <a routerLink="/financial/edit/{{dataItem.id}}"><i class="fa fa-edit"></i></a>
+                </span>
+                &nbsp;
+                <!-- Large modal -->
+                <button *ngIf="canPrintRecipt" type="button" (click)="printRecipt(dataItem)" class="btn btn-link"
+                    data-toggle="modal" [attr.data-target]="'#'+dataItem.id"><i class="fa fa-print"></i></button>
+
+                <div *ngIf="canPrintRecipt" class="modal fade" [attr.id]="dataItem.id" tabindex="-1" role="dialog"
+                    aria-labelledby="myLargeModalLabel">
+                    <div class="modal-dialog modal-lg" role="document">
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                <kendo-pdf-export #pdf paperSize="A4" margin="2cm">
+                                    <receipt-invoice *ngIf="dataItem.printRecipt" [id]="dataItem.id"></receipt-invoice>
+                                </kendo-pdf-export>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </ng-template>
+        </kendo-grid-column>
+
+        <kendo-grid-excel fileName="Movement Receipt List.xlsx"></kendo-grid-excel>
+
+    </kendo-grid>
+
+</div>

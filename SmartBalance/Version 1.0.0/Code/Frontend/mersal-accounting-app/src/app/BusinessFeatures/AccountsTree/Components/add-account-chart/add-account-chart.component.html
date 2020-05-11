@@ -1,0 +1,483 @@
+<div class="row">
+    <div class="col-md-9">
+        <h5> <i class="fa fa-file-text"></i> {{ 'accountChart.createAccount' | translate }}</h5>
+    </div>
+    <div class="col-md-3">
+        <loader [hidden]="!PageLoading"></loader>
+        <!-- <form [formGroup]="form" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
+            <div style="overflow: hidden;">
+                <input #fileUpload type="file" class="file-upload" style="position: absolute;top: -150px;" name="avatar"
+                    (change)="onFileChange($event)" />
+        
+                <button *ngIf="!PageLoading" type="button" (click)="triggerFileUpload()" class="btn btn-success btn-block">{{'shared.import' | translate}}</button>
+            </div>
+        </form> -->
+    </div>
+</div>
+
+<section *ngIf="!PageLoading" class="mtPt0">
+    <form role="form" [formGroup]="accountChartFormModel">
+        <div class="card">
+            <div class="card-header">
+                <i class="fa fa-info"></i>
+                {{'accountChart.mainInfo'|translate}}
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <!--<h3>
+                        {{accountChartFormModel?.value|json}}
+                    </h3>-->
+                    <!--code-->
+                    <div class="col-md-3">
+                        <label>
+                            <span>{{'accountChart.accountNumber'|translate}} </span>
+                            <i class="text-danger" *ngIf="!IsDetails">*</i>
+                        </label>
+                        <div class="form-group">
+                            <!-- (blur)="CheckAccountChartCode()" -->
+                            <input *ngIf="!IsDetails" type="text" class="form-control" formControlName="Code"
+                                (keyup.enter)="CheckAccountChartCode()" (blur)="CheckAccountChartCode()"
+                                [ngClass]="{'border border-danger' :  accountChartFormModel.controls['Code'].invalid && accountChartFormModel.controls['Code'].touched}">
+
+                            <input *ngIf="IsDetails" type="text" class="form-control" formControlName="Code" disabled
+                                (keyup.enter)="CheckAccountChartCode()" (blur)="CheckAccountChartCode()"
+                                [ngClass]="{'border border-danger' :  accountChartFormModel.controls['Code'].invalid && accountChartFormModel.controls['Code'].touched}">
+                        </div>
+
+                        <div *ngIf="(accountChartFormModel.controls['Code'].touched || accountChartFormModel.controls['Code'].dirty)&&accountChartFormModel.controls['Code'].invalid"
+                            class="text-danger">
+                            <span *ngIf="accountChartFormModel.controls['Code'].hasError( 'required' )">
+                                {{ 'movements.fieldReq' | translate }}
+                            </span>
+                            <span *ngIf="accountChartFormModel.controls['Code'].hasError( 'minlength' )">
+                                {{ 'movements.minLength' | translate }} {{codelength}}
+                            </span>
+                            <span *ngIf="accountChartFormModel.controls['Code'].hasError( 'maxlength' )">
+                                {{ 'movements.MaxLength' | translate }} {{codelength}}
+                            </span>
+                        </div>
+                    </div>
+                    <!--Account Type Drown Down-->
+                    <div class="col-md-2">
+                        <label>{{ 'accountChart.accountType' | translate }} <i *ngIf="!IsDetails"
+                                class="text-danger">*</i></label>
+                        <!--*ngIf="isBranchedLoaded" disabled="disabled"-->
+                        <div class="form-group">
+                            <kendo-dropdownlist #list [data]="AccountsTypeDropDownData" [filterable]="true"
+                                textField="name" valueField="id" id="AccountType" [valuePrimitive]="true"
+                                [valuePrimitive]="true"
+                                (selectionChange)="onBranchChange($event)"
+                                formControlName="AccountType" [kendoDropDownFilter]="filterSettings"
+                                [disabled]="IsDetails" class="width100 height38">
+                            </kendo-dropdownlist>
+                        </div>
+
+                        <div class="text-danger"
+                            *ngIf=" (accountChartFormModel.controls['AccountType'].hasError('invalid' ) || accountChartFormModel.controls['AccountType'].hasError('required' ) )&&
+                                                              (accountChartFormModel.controls['AccountType'].touched || accountChartFormModel.controls['AccountType'].dirty)">
+                            {{ 'movements.fieldReq' | translate }}
+                        </div>
+                    </div>
+                    <!--Account Group Drown Down-->
+                    <div class="col-md-3">
+                        <label>{{ 'accountChart.AccountGroup' | translate }} <i *ngIf="!IsDetails"
+                                class="text-danger">*</i></label>
+                        <!--*ngIf="isBranchedLoaded"-->
+                        <div class="form-group">
+                            <kendo-dropdownlist #list [data]="AccountsGroupsDropDownData" [filterable]="true"
+                                textField="name" valueField="id" id="AccountGroup" [valuePrimitive]="true"
+                                formControlName="AccountGroup" [kendoDropDownFilter]="filterSettings"
+                                [disabled]="IsDetails" class="width100 height38">
+                            </kendo-dropdownlist>
+                        </div>
+
+
+                        <div class="text-danger"
+                            *ngIf=" (accountChartFormModel.controls['AccountGroup'].hasError('invalid' ) || accountChartFormModel.controls['AccountGroup'].hasError('required' ) )&&
+                                                      (accountChartFormModel.controls['AccountGroup'].touched || accountChartFormModel.controls['AccountGroup'].dirty)">
+                            {{ 'movements.fieldReq' | translate }}
+                        </div>
+                    </div>
+                    <!--Account Group Drown Down-->
+                    <div class="col-md-2">
+                        <label>{{ 'accountChart.AccountCategory' | translate }} <i *ngIf="!IsDetails"
+                                class="text-danger">*</i></label>
+                        <!--*ngIf="isBranchedLoaded"-->
+                        <div class="form-group">
+                            <kendo-dropdownlist #list [data]="AccountsCategoriesDropDownData" [filterable]="true"
+                                textField="name" valueField="id" id="AccountCategory" [valuePrimitive]="true"
+                                formControlName="AccountCategory" [kendoDropDownFilter]="filterSettings"
+                                [disabled]="IsDetails" class="width100 height38">
+                            </kendo-dropdownlist>
+                        </div>
+
+                        <div class="text-danger"
+                            *ngIf=" (accountChartFormModel.controls['AccountCategory'].hasError('invalid' ) || accountChartFormModel.controls['AccountCategory'].hasError('required' ) )&&
+                                                      (accountChartFormModel.controls['AccountCategory'].touched || accountChartFormModel.controls['AccountCategory'].dirty)">
+                            {{ 'movements.fieldReq' | translate }}
+                        </div>
+                    </div>
+                    <!--branch-->
+                    <div class="form-group col-md-2">
+                        <label>{{ 'safe.shared.branch' | translate }}
+                            <span *ngIf="branchRequired" class="text-danger">*</span>
+                        </label>
+                        <kendo-combobox #branchId 
+                        [data]="branchs" 
+                        [filterable]="true" 
+                        [textField]="'displyedName'"
+                            [valueField]="'id'" 
+                            [kendoDropDownFilter]="filterSettings"                           
+                            id="branchId" class="height38 width-100-per" 
+                            formControlName="branchId"
+                            [disabled]="IsDetails">
+                        </kendo-combobox>
+
+                        <div class="text-danger" *ngIf="accountChartFormModel.controls['branchId'].hasError('required') &&
+                                                  (accountChartFormModel.controls['branchId'].touched || 
+                                                  accountChartFormModel.controls['branchId'].dirty)">
+                            {{ 'movements.fieldReq' | translate }}
+                        </div>
+                    </div>
+                    <!-- 
+                    <div class="form-group col-md-3 checkbox-col">
+                        <input type="checkbox" id="IsFinalNode" class="form-control checkbox-inline"
+                            formControlName="IsFinalNode" />
+
+                        <label for="IsFinalNode" class="">
+                            {{ 'accountChart.finalnode' | translate }}
+
+                        </label>
+                        CostCenters Modal -->
+
+                    <!--End Cost Centers Modal-->
+                    <!--  </div> -->
+                    <!--*ngIf="isBranchedLoaded"-->
+
+                </div>
+                <div class="row">
+                    <!--currencyId-->
+                    <div class="form-group col-md-6">
+                        <label>{{ 'currency.currency.shared.title' | translate }}
+                            <span *ngIf="!IsDetails" class="text-danger">*</span>
+                        </label>
+                        <kendo-dropdownlist #currencyId [data]="currencys" [filterable]="true"
+                            [textField]="'displyedName'" [valueField]="'id'" [valuePrimitive]="true" selected
+                            [kendoDropDownFilter]="filterSettings" id="currencyId" class="height38 width-100-per"
+                            formControlName="currencyId" [disabled]="IsDetails">
+                        </kendo-dropdownlist>
+
+                        <div class="text-danger" *ngIf="accountChartFormModel.controls['currencyId'].hasError('required') &&
+      (accountChartFormModel.controls['currencyId'].touched || 
+      accountChartFormModel.controls['currencyId'].dirty)">
+                            {{ 'movements.fieldReq' | translate }}
+                        </div>
+                    </div>
+
+                    <!--currentDebitBalance-->
+                    <div class="col-lg-3" *ngIf="IsDetails">
+                        <label>{{ 'accountChart.currentDebitBalance' | translate }}
+                        </label>
+
+                        <div class="form-group">
+                            <input type="number" class="form-control" disabled formControlName="currentDebitBalance"
+                                [ngClass]="{'border border-danger' : accountChartFormModel.controls['currentDebitBalance'].invalid && accountChartFormModel.controls['currentDebitBalance'].touched}">
+                        </div>
+                    </div>
+
+                    <!--currentCreditBalance-->
+                    <div class="col-lg-3" *ngIf="IsDetails">
+                        <label>{{ 'accountChart.currentCreditBalance' | translate }}
+                        </label>
+
+                        <div class="form-group">
+                            <input type="number" class="form-control" disabled formControlName="currentCreditBalance"
+                                [ngClass]="{'border border-danger' : accountChartFormModel.controls['currentCreditBalance'].invalid && accountChartFormModel.controls['currentCreditBalance'].touched}">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <!--arabic name-->
+                    <div class="col-md-6">
+                        <label>{{ 'accountChart.arabicName' | translate }} <i *ngIf="!IsDetails"
+                                class="text-danger">*</i></label>
+
+                        <div class="form-group">
+                            <input *ngIf="!IsDetails || (IsDetails && isCurrentUserHassPermission)" type="text"
+                                class="form-control" formControlName="NameAR"
+                                [ngClass]="{'border border-danger' :  accountChartFormModel.controls['NameAR'].invalid && accountChartFormModel.controls['NameAR'].touched}">
+
+                            <input *ngIf="IsDetails && !isCurrentUserHassPermission" type="text" class="form-control"
+                                formControlName="NameAR" disabled
+                                [ngClass]="{'border border-danger' :  accountChartFormModel.controls['NameAR'].invalid && accountChartFormModel.controls['NameAR'].touched}">
+                        </div>
+
+                        <div *ngIf="(accountChartFormModel.controls['NameAR'].touched || accountChartFormModel.controls['NameAR'].dirty)&&accountChartFormModel.controls['NameAR'].invalid"
+                            class="text-danger">
+                            <span *ngIf="accountChartFormModel.controls['NameAR'].hasError( 'required' )">
+                                {{ 'movements.fieldReq' | translate }}
+                            </span>
+                            <span *ngIf="accountChartFormModel.controls['NameAR'].hasError( 'minlength' )">
+                                {{ 'movements.minLength' | translate }} 1
+                            </span>
+                            <span *ngIf="accountChartFormModel.controls['NameAR'].hasError( 'maxlength' )">
+                                {{ 'movements.MaxLength' | translate }} 50
+                            </span>
+                        </div>
+                    </div>
+                    <!--english name-->
+                    <div class="col-md-6">
+                        <label>{{ 'accountChart.englishName' | translate }} <i *ngIf="!IsDetails"
+                                class="text-danger">*</i></label>
+
+                        <div class="form-group">
+                            <input *ngIf="!IsDetails || (IsDetails && isCurrentUserHassPermission)" type="text"
+                                class="form-control" formControlName="NameEN"
+                                [ngClass]="{'border border-danger' :  accountChartFormModel.controls['NameEN'].invalid && accountChartFormModel.controls['NameEN'].touched}">
+
+                            <input *ngIf="IsDetails && !isCurrentUserHassPermission" type="text" class="form-control"
+                                formControlName="NameEN" disabled
+                                [ngClass]="{'border border-danger' :  accountChartFormModel.controls['NameEN'].invalid && accountChartFormModel.controls['NameEN'].touched}">
+                        </div>
+
+                        <div *ngIf="(accountChartFormModel.controls['NameEN'].touched || accountChartFormModel.controls['NameEN'].dirty)&&accountChartFormModel.controls['NameEN'].invalid"
+                            class="text-danger">
+                            <span *ngIf="accountChartFormModel.controls['NameEN'].hasError( 'required' )">
+                                {{ 'movements.fieldReq' | translate }}
+                            </span>
+                            <span *ngIf="accountChartFormModel.controls['NameEN'].hasError( 'minlength' )">
+                                {{ 'movements.minLength' | translate }} 1
+                            </span>
+                            <span *ngIf="accountChartFormModel.controls['NameEN'].hasError( 'maxlength' )">
+                                {{ 'movements.MaxLength' | translate }} 50
+                            </span>
+                        </div>
+                    </div>
+                    <!--Account Group Drown Down-->
+
+                    <!--descriptionAr-->
+                    <div class="col-md-6">
+                        <label>{{ 'shared.descriptionAr' | translate }}
+                            <!-- <i *ngIf="!IsDetails"
+                                class="text-danger">*</i> -->
+                        </label>
+                        <textarea *ngIf="!IsDetails || (IsDetails && isCurrentUserHassPermission)" class="form-control"
+                            formControlName="descriptionAr"
+                            placeholder="{{ 'movements.statementAr' | translate }}"></textarea>
+
+                        <textarea *ngIf="IsDetails && !isCurrentUserHassPermission" disabled class="form-control"
+                            formControlName="descriptionAr"
+                            placeholder="{{ 'movements.statementAr' | translate }}"></textarea>
+
+                        <div class="text-danger" *ngIf=" (accountChartFormModel.controls['descriptionAr'].hasError('invalid' ) || 
+        accountChartFormModel.controls['descriptionAr'].hasError('required' ) )&&
+              (accountChartFormModel.controls['descriptionAr'].touched || 
+              accountChartFormModel.controls['descriptionAr'].dirty)">
+                            {{ 'movements.fieldReq' | translate }}
+                        </div>
+
+                    </div>
+                    <!--descriptionEn-->
+                    <div class="col-md-6">
+                        <label>{{ 'shared.descriptionEn' | translate }} </label>
+                        <!-- <label>IsDetails: {{IsDetails}}, isCurrentUserHassPermission:
+                            {{isCurrentUserHassPermission}}</label> -->
+                        <textarea *ngIf="!IsDetails || (IsDetails && isCurrentUserHassPermission)" class="form-control"
+                            formControlName="descriptionEn"
+                            placeholder="{{ 'movements.statementEn' | translate }}"></textarea>
+
+                        <textarea *ngIf="IsDetails && !isCurrentUserHassPermission" disabled class="form-control"
+                            formControlName="descriptionEn"
+                            placeholder="{{ 'movements.statementEn' | translate }}"></textarea>
+
+                        <div class="text-danger" *ngIf="(accountChartFormModel.controls['descriptionEn'].hasError('invalid' ) || 
+        accountChartFormModel.controls['descriptionEn'].hasError('required' ) )&&
+              (accountChartFormModel.controls['descriptionEn'].touched || 
+              accountChartFormModel.controls['descriptionEn'].dirty)">
+                            {{ 'movements.fieldReq' | translate }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div *ngIf="true" class="card">
+            <div class="card-header">
+                <i class="fa fa-money"></i>
+                {{'accountChart.accountNature' |translate}}
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <!--isCreditAccount-->
+                    <div class="col-md-2">
+                        <div class='radiosDiv mt40'>
+                            <div class="radio radio-info radio-inline">
+                                <input *ngIf="!IsDetails" id="" type="radio" [value]="true" id="isCreditAccount"
+                                    formControlName="isCreditAccount" />
+
+                                <input *ngIf="IsDetails" id="" type="radio" [value]="true" id="isCreditAccount" disabled
+                                    formControlName="isCreditAccount" />
+
+                                <label for="isCreditAccount">{{'accountChart.isCreditAccount'|translate}}</label>
+                            </div>
+                        </div>
+                        <div *ngIf="(accountChartFormModel.controls['isCreditAccount'].touched || accountChartFormModel.controls['isCreditAccount'].dirty) && accountChartFormModel.controls['isCreditAccount'].invalid"
+                            class="text-danger">
+                            <span *ngIf="accountChartFormModel.controls['isCreditAccount'].hasError( 'required' )">
+                                {{ 'movements.fieldReq' | translate }}
+                            </span>
+
+                        </div>
+                    </div>
+                    <!--isDebitAccount-->
+                    <div class="col-md-2">
+                        <div class='radiosDiv mt40'>
+                            <div class="radio radio-info radio-inline">
+                                <input *ngIf="!IsDetails" id="" type="radio" [value]="false" id="isDebitAccount"
+                                    formControlName="isCreditAccount" />
+
+                                <input *ngIf="IsDetails" id="" type="radio" [value]="false" id="isDebitAccount" disabled
+                                    formControlName="isCreditAccount" />
+
+                                <label for="isDebitAccount">{{'accountChart.isDebitAccount'|translate}}</label>
+                            </div>
+                        </div>
+
+                        <div *ngIf="(accountChartFormModel.controls['isCreditAccount'].touched || accountChartFormModel.controls['isCreditAccount'].dirty) && accountChartFormModel.controls['isCreditAccount'].invalid"
+                            class="text-danger">
+                            <span *ngIf="accountChartFormModel.controls['isCreditAccount'].hasError( 'required' )">
+                                {{ 'movements.fieldReq' | translate }}
+                            </span>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+        <div *ngIf="hasOpeningBalance" class="card">
+            <div class="card-header">
+                <i class="fa fa-money"></i>
+                {{'accountChart.openingbalance' |translate}}
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <!--amount-->
+                    <div class="col-lg-3">
+                        <label>{{ 'accountChart.amount' | translate }}
+                            <!-- <i *ngIf="!isDetails"
+                                class="text-danger">*</i> -->
+                        </label>
+
+                        <div class="form-group">
+                            <input  type="number" class="form-control" formControlName="Amount"
+                                [ngClass]="{'border border-danger' :  accountChartFormModel.controls['Amount'].invalid && accountChartFormModel.controls['Amount'].touched}">
+
+                            
+
+                        </div>
+
+                        <div *ngIf="(accountChartFormModel.controls['Amount'].touched || accountChartFormModel.controls['Amount'].dirty)&&accountChartFormModel.controls['Amount'].invalid"
+                            class="text-danger">
+                            <span *ngIf="accountChartFormModel.controls['Amount'].hasError( 'required' )">
+                                {{ 'movements.fieldReq' | translate }}
+                            </span>
+
+                            <span *ngIf="accountChartFormModel.controls['Amount'].hasError( 'min' )">
+                                {{ 'shared.validation.min' | translate }} 1
+                            </span>
+                            <span *ngIf="accountChartFormModel.controls['Amount'].hasError( 'max' )">
+                                {{ 'shared.validation.max' | translate }} 1000000
+                            </span>
+                        </div>
+                    </div>
+
+                    <!--date-->
+                    <div class="col-lg-3">
+                        <label>{{ 'accountChart.date' | translate }}
+                            <!-- <i *ngIf="!isDetails"
+                                class="text-danger">*</i> -->
+                        </label>
+
+                        <div class="form-group">
+                            <input type="text" min="0" class="form-control" formControlName="Date" bsDatepicker
+                                *ngIf="!IsDetails"
+                                [ngClass]="{'border border-danger' :  accountChartFormModel.controls['Date'].invalid && accountChartFormModel.controls['Date'].touched}">
+
+                            <input type="text" *ngIf="IsDetails"
+                                value="{{accountChartFormModel.controls['Date'].value |date:'dd/MM/yyyy'}}"
+                                disabled="disabled" class="form-control">
+                        </div>
+
+                        <div *ngIf="(accountChartFormModel.controls['Date'].touched || accountChartFormModel.controls['Date'].dirty)&&accountChartFormModel.controls['Date'].invalid"
+                            class="text-danger">
+                            <span *ngIf="accountChartFormModel.controls['Date'].hasError( 'required' )">
+                                {{ 'movements.fieldReq' | translate }}
+                            </span>
+                        </div>
+                    </div>
+
+                    <!--cridetor and debitor-->
+                    <div class="col-md-2">
+                        <div class='radiosDiv mt40'>
+                            <div class="radio radio-info radio-inline">
+                                <input id="" type="radio" [value]="true" id="IsCreditor"
+                                    formControlName="IsCreditor" />
+                                
+
+                                <label for="IsCreditor">{{'accountChart.debt'|translate}}</label>
+                            </div>
+                        </div>
+                        <div *ngIf="(accountChartFormModel.controls['IsCreditor'].touched || accountChartFormModel.controls['IsCreditor'].dirty)&&accountChartFormModel.controls['IsCreditor'].invalid"
+                            class="text-danger">
+                            <span *ngIf="accountChartFormModel.controls['IsCreditor'].hasError( 'required' )">
+                                {{ 'movements.fieldReq' | translate }}
+                            </span>
+
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+
+                        <div class='radiosDiv mt40'>
+                            <div class="radio radio-info radio-inline">
+                                <input id="" type="radio" [value]="false" id="IsCreditor"
+                                    formControlName="IsCreditor" />
+
+
+                                <label for="IsCreditor">{{'accountChart.credit'|translate}}</label>
+                            </div>
+                        </div>
+
+                        <div *ngIf="(accountChartFormModel.controls['IsCreditor'].touched || accountChartFormModel.controls['IsCreditor'].dirty)&&accountChartFormModel.controls['IsCreditor'].invalid"
+                            class="text-danger">
+                            <span *ngIf="accountChartFormModel.controls['IsCreditor'].hasError( 'required' )">
+                                {{ 'movements.fieldReq' | translate }}
+                            </span>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="row">
+            <button class="btn btn-success" [disabled]="!accountChartFormModel.valid"
+                [hidden]="IsDetails && !isCurrentUserHassPermission" (click)="addOrEditAccountChart()">
+                <i class="fa fa-floppy-o verticalLine"></i> {{ 'shared.save' | translate }}
+            </button>
+            <span>&nbsp;</span>
+            <button class="btn btn-light" [hidden]="!IsDetails" (click)="ResetForm()">
+                {{ 'shared.cancel' | translate }}
+            </button>
+            <!-- <button class="btn btn-success"   (click)="checkvalidation()" >
+                <i class="fa fa-floppy-o verticalLine"></i> check
+        </button> -->
+        </div>
+    </form>
+</section>

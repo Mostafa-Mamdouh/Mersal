@@ -1,0 +1,193 @@
+<form role="form" class="margin-bootom-0" [formGroup]="modelForm">
+  <div class="card mb-3">
+    <div class="card-header">
+      {{ 'purchasing.rebate.categories' | translate }}
+    </div>
+    <div class="card-body table-responsive padding-sides-2">
+      <table class="table table-inline-edit">
+        <thead>
+          <tr>
+            <th class="header-table">{{ 'purchasing.shared.itemCode' | translate }}</th>
+            <th class="header-table">{{ 'purchasing.shared.measurementUnit' | translate }}</th>
+            <th class="header-table-1">{{ 'purchasing.shared.quantity' | translate }}</th>
+            <th class="header-table-1">{{ 'purchasing.shared.price' | translate }}</th>
+            <th class="header-table-1">{{ 'purchasing.shared.total'     | translate }}</th>
+            <th class="header-table-1">{{ 'purchasing.shared.discount'     | translate }}</th>
+            <th class="header-table-1">{{ 'purchasing.shared.expenses' | translate }}</th>
+            <th class="header-table-1" *ngIf="!isInvoice">{{ 'purchasing.shared.deduction'     | translate }}</th>
+            <th class="header-table-1">{{ 'purchasing.shared.net'     | translate }}</th>
+            <th class="header-table-1">{{ 'purchasing.shared.description'     | translate }}</th>
+
+            
+            <th *ngIf="editorMode == editorModeEnum.add" class="">
+              <button class="btn secondary-btn btn-white" [disabled]="editorMode != editorModeEnum.add"
+                (click)="addProduct()">
+                <i class="fa fa-plus" aria-hidden="true"></i>
+              </button>
+            </th>
+          </tr>
+        </thead>
+        <tbody formArrayName="products" *ngFor="let item of modelForm['controls'].products['controls']; let i=index;">
+          <ng-container *ngIf="editorMode != editorModeEnum.detail">
+            <tr formGroupName="{{i}}">
+              <td>
+                <!--brandId-->
+                <div class="detail w-100">
+                  <!-- <input type="number" min="0" class="form-control" pattern=".*\S.*" formControlName="brandId"> -->
+                  <!-- <kendo-dropdownlist #list [data]="brands" [filterable]="true" [textField]="'displyedName'"
+                    [valueField]="'id'" [valuePrimitive]="true" selected [kendoDropDownFilter]="filterSettings"
+                    id="brandId" class=" height38 width-100-per" formControlName="brandId"
+                    [disabled]="editorMode != editorModeEnum.add">
+                  </kendo-dropdownlist> -->
+
+                  <drop-down-tree [data]="brands" [textField]="'displyedName'" [childrenField]="'childBrands'"  [canEdit]="editorMode  == editorModeEnum.add" [value]="item.controls['brandName'].value" (valuechangedOutPutEvent)="onBrandChange(i, $event)" (expandOutPutEvent)="brandExpand($event)"  class="height38 width-100-per"></drop-down-tree>
+                </div>
+                <div *ngIf="(item.controls['brandId'].touched || item.controls['brandId'].dirty)
+                                          &&item.controls['brandId'].invalid" class="text-danger">
+                  {{ 'movements.fieldReq' | translate }}
+                </div>
+              </td>
+              <td>
+                <!--measurementUnitId-->
+                <div class="detail w-100">
+                  <kendo-dropdownlist #list [data]="measurementUnits" [filterable]="true" [textField]="'displyedName'"
+                    [valueField]="'id'" [valuePrimitive]="true" selected [kendoDropDownFilter]="filterSettings"
+                    id="measurementUnitId" class=" height38 width-100-per" formControlName="measurementUnitId"
+                    [disabled]="editorMode != editorModeEnum.add">
+                  </kendo-dropdownlist>
+                </div>
+                <div *ngIf="(item.controls['measurementUnitId'].touched || 
+                                        item.controls['measurementUnitId'].dirty)
+                                        &&item.controls['measurementUnitId'].invalid" class="text-danger">
+                  {{ 'movements.fieldReq' | translate }}
+                </div>
+              </td>
+              <!-- <td *ngIf="!isInvoice">
+                                          <div class="detail w-100">
+                                              <kendo-dropdownlist #list [data]="units" [filterable]="true" [textField]="'code'" [valueField]="'id'"
+                                                [valuePrimitive]="true" selected [kendoDropDownFilter]="filterSettings" class="height38"  
+                                                formControlName="productId" [disabled]="editorMode != editorModeEnum.add">
+                                              </kendo-dropdownlist>
+                                            </div>     
+                                          <div *ngIf="(item.controls['productId'].touched || item.controls['productId'].dirty)
+                                          &&item.controls['productId'].invalid"  class="text-danger">
+                                              {{ 'movements.fieldReq' | translate }}              
+                                          </div>
+                                      </td> -->
+              <!-- <td *ngIf="isInvoice">
+                                        <div class="detail w-100">
+                                          <input type="number" min="0" class="form-control" pattern=".*\S.*" (blur)="calculateForProduct(i)" formControlName="productId">
+                                        </div>     
+                                      <div *ngIf="(item.controls['productId'].touched || item.controls['productId'].dirty)
+                                              &&item.controls['productId'].invalid"  class="text-danger">
+                                          {{ 'movements.fieldReq' | translate }}              
+                                      </div>
+                                    </td> -->
+              <td>
+                <div class="detail w-100">
+                  <input type="number" min="0" class="form-control" pattern=".*\S.*" (blur)="calculateForProduct(i)"
+                    formControlName="quantity">
+                </div>
+                <div *ngIf="item.controls['quantity'].hasError('required' ) && (item.controls['quantity'].touched || item.controls['quantity'].dirty)
+                                          &&item.controls['quantity'].invalid" class="text-danger">
+                  {{ 'movements.fieldReq' | translate }}
+                </div>
+                <div *ngIf="item.controls['quantity'].hasError('min' ) && (item.controls['quantity'].touched || item.controls['quantity'].dirty)
+                                          &&item.controls['quantity'].invalid" class="text-danger">
+                  {{ 'movements.minLength' | translate }} 1
+                </div>
+              </td>
+              <td>
+                <div class="detail w-100">
+                  <input type="number" min="0" class="form-control" pattern=".*\S.*" (blur)="calculateForProduct(i)"
+                    formControlName="price">
+                </div>
+                <div *ngIf=" item.controls['price'].hasError('required' ) &&  (item.controls['price'].touched || item.controls['price'].dirty)
+                                          &&item.controls['price'].invalid" class="text-danger">
+                  {{ 'movements.fieldReq' | translate }}
+                </div>
+                <div *ngIf=" item.controls['price'].hasError('min' ) &&  (item.controls['price'].touched || item.controls['price'].dirty)
+                                          &&item.controls['price'].invalid" class="text-danger">
+                  {{ 'movements.minLength' | translate }} 1
+                </div>
+              </td>
+              <td>
+                <div class="detail w-100">
+                  <input type="number" min="0" class="form-control" disabled pattern=".*\S.*" formControlName="total">
+                </div>
+              </td>
+              <td>
+                <div class="detail w-100">
+                  <input type="number" min="0" class="form-control" pattern=".*\S.*" (blur)="calculateForProduct(i)"
+                    formControlName="discount">
+                </div>
+              </td>
+              <td>
+                <div class="detail w-100">
+                  <input type="number" min="0" class="form-control" pattern=".*\S.*" (blur)="calculateForProduct(i)"
+                    formControlName="expenses">
+                </div>
+              </td>
+              <td *ngIf="!isInvoice">
+                <div class="detail w-100">
+                  <input type="number" min="0" class="form-control" pattern=".*\S.*" (blur)="calculateForProduct(i)"
+                    formControlName="totalDiscount">
+                </div>
+              </td>
+              <td>
+                <div class="detail w-100">
+                  <input type="number" min="0" class="form-control" disabled pattern=".*\S.*"
+                    formControlName="netValue">
+                </div>
+              </td>
+              <td>
+                <div class="detail w-100">
+                  <input type="text" class="form-control"  formControlName="description">
+                </div>
+              </td>
+              <td *ngIf="editorMode == editorModeEnum.add">
+                <button class="btn action" [disabled]="editorMode == editorModeEnum.detail" 
+                  (click)="deleteProduct(i)">
+                  <i class="fa fa-times"></i>
+                </button>
+              </td>
+            </tr>
+          </ng-container>
+          <ng-container *ngIf="editorMode == editorModeEnum.detail">
+            <tr formGroupName="{{i}}">
+              <td>
+                <div class="detail w-100">
+                  <!-- <kendo-dropdownlist #list [data]="brands" [filterable]="true" [textField]="'displyedName'"
+                    [valueField]="'id'" [valuePrimitive]="true" selected [kendoDropDownFilter]="filterSettings"
+                    class="height38 width-100-per" formControlName="brandId" disabled>
+                  </kendo-dropdownlist> -->
+                  <drop-down-tree [data]="brands" [textField]="'displyedName'" [childrenField]="'childBrands'"  [canEdit]="false" [value]="item.controls['brandName'].value" (valuechangedOutPutEvent)="onBrandChange(i, $event)" (expandOutPutEvent)="brandExpand($event)"  class="height38 width-100-per"></drop-down-tree>
+                </div>
+              </td>
+              <td>
+                <div class="detail w-100">
+                  <kendo-dropdownlist #list [data]="measurementUnits" [filterable]="true" [textField]="'displyedName'"
+                    [valueField]="'id'" [valuePrimitive]="true" selected [kendoDropDownFilter]="filterSettings"
+                    class="height38 width-100-per" formControlName="measurementUnitId" disabled>
+                  </kendo-dropdownlist>
+
+                </div>
+              </td>
+              <td> {{item.controls['quantity'].value }} </td>
+              <td>{{item.controls['price'].value }} </td>
+              <td> {{item.controls['total'].value }} </td>
+              <td> {{item.controls['discount'].value }} </td>
+              <td> {{item.controls['expenses'].value }} </td>
+              <td *ngIf="!isInvoice"> {{item.controls['totalDiscount'].value }} </td>
+              <td> {{item.controls['netValue'].value }} </td>
+              <td> {{item.controls['description'].value }} </td>
+
+              <!-- <td> </td> -->
+            </tr>
+          </ng-container>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+</form>

@@ -1,0 +1,11 @@
+<div *ngIf="itemModel?.isPostingAutomatic" 
+     class="notification">
+    <!-- <h4><i class="fa fa-alert"></i> {{ 'shared.alert' | translate }}</h4> -->
+   
+    <section class="">
+       <p>
+           {{'setting.postingSetting.automaticPostingNotification' | translate}} &nbsp;
+           <button type="button" class="btn btn-info" (click)="gotoPostingEditor()">{{ 'shared.change' | translate }}</button>
+       </p>       
+    </section>
+</div>

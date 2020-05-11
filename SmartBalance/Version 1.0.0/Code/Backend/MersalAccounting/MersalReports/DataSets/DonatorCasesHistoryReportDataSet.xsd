@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DonatorCasesHistoryReportDataSet" targetNamespace="http://tempuri.org/DonatorCasesHistoryReportDataSet.xsd" xmlns:mstns="http://tempuri.org/DonatorCasesHistoryReportDataSet.xsd" xmlns="http://tempuri.org/DonatorCasesHistoryReportDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DonatorCasesHistoryReportDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DonatorCasesHistoryReportDataSet" msprop:Generator_UserDSName="DonatorCasesHistoryReportDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="DonatorCasesHistoryReportTable" msprop:Generator_TableClassName="DonatorCasesHistoryReportTableDataTable" msprop:Generator_TableVarName="tableDonatorCasesHistoryReportTable" msprop:Generator_RowChangedName="DonatorCasesHistoryReportTableRowChanged" msprop:Generator_TablePropName="DonatorCasesHistoryReportTable" msprop:Generator_RowDeletingName="DonatorCasesHistoryReportTableRowDeleting" msprop:Generator_RowChangingName="DonatorCasesHistoryReportTableRowChanging" msprop:Generator_RowEvHandlerName="DonatorCasesHistoryReportTableRowChangeEventHandler" msprop:Generator_RowDeletedName="DonatorCasesHistoryReportTableRowDeleted" msprop:Generator_RowClassName="DonatorCasesHistoryReportTableRow" msprop:Generator_UserTableName="DonatorCasesHistoryReportTable" msprop:Generator_RowEvArgName="DonatorCasesHistoryReportTableRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Amount" msprop:Generator_ColumnVarNameInTable="columnAmount" msprop:Generator_ColumnPropNameInRow="Amount" msprop:Generator_ColumnPropNameInTable="AmountColumn" msprop:Generator_UserColumnName="Amount" type="xs:string" minOccurs="0" />
+              <xs:element name="ExternalId" msprop:Generator_ColumnVarNameInTable="columnExternalId" msprop:Generator_ColumnPropNameInRow="ExternalId" msprop:Generator_ColumnPropNameInTable="ExternalIdColumn" msprop:Generator_UserColumnName="ExternalId" type="xs:string" minOccurs="0" />
+              <xs:element name="CaseName" msprop:Generator_ColumnVarNameInTable="columnCaseName" msprop:Generator_ColumnPropNameInRow="CaseName" msprop:Generator_ColumnPropNameInTable="CaseNameColumn" msprop:Generator_UserColumnName="CaseName" type="xs:string" minOccurs="0" />
+              <xs:element name="Date" msprop:Generator_ColumnVarNameInTable="columnDate" msprop:Generator_ColumnPropNameInRow="Date" msprop:Generator_ColumnPropNameInTable="DateColumn" msprop:Generator_UserColumnName="Date" type="xs:string" minOccurs="0" />
+              <xs:element name="DonatorName" msprop:Generator_ColumnVarNameInTable="columnDonatorName" msprop:Generator_ColumnPropNameInRow="DonatorName" msprop:Generator_ColumnPropNameInTable="DonatorNameColumn" msprop:Generator_UserColumnName="DonatorName" type="xs:string" minOccurs="0" />
+              <xs:element name="DonatorId" msprop:Generator_ColumnVarNameInTable="columnDonatorId" msprop:Generator_ColumnPropNameInRow="DonatorId" msprop:Generator_ColumnPropNameInTable="DonatorIdColumn" msprop:Generator_UserColumnName="DonatorId" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="ReportFilter" msprop:Generator_TableClassName="ReportFilterDataTable" msprop:Generator_TableVarName="tableReportFilter" msprop:Generator_RowChangedName="ReportFilterRowChanged" msprop:Generator_TablePropName="ReportFilter" msprop:Generator_RowDeletingName="ReportFilterRowDeleting" msprop:Generator_RowChangingName="ReportFilterRowChanging" msprop:Generator_RowEvHandlerName="ReportFilterRowChangeEventHandler" msprop:Generator_RowDeletedName="ReportFilterRowDeleted" msprop:Generator_RowClassName="ReportFilterRow" msprop:Generator_UserTableName="ReportFilter" msprop:Generator_RowEvArgName="ReportFilterRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="DateFrom" msprop:Generator_ColumnVarNameInTable="columnDateFrom" msprop:Generator_ColumnPropNameInRow="DateFrom" msprop:Generator_ColumnPropNameInTable="DateFromColumn" msprop:Generator_UserColumnName="DateFrom" type="xs:string" minOccurs="0" />
+              <xs:element name="DateTo" msprop:Generator_ColumnVarNameInTable="columnDateTo" msprop:Generator_ColumnPropNameInRow="DateTo" msprop:Generator_ColumnPropNameInTable="DateToColumn" msprop:Generator_UserColumnName="DateTo" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,87 @@
+<div class="card mb-3">
+  <div class="card-header">
+    {{ 'donation.cases' | translate }}
+  </div>
+  <div class="card-body table-responsive">
+    <!--search-->
+     <div *ngIf="!isDetails" class="row">
+      <div class="col-md-4">
+        <label>{{'shared.searchbyId' |translate}} </label>
+        <input type="number" class="form-control" class="serachmargin" maxlength="7" #key (keyup)="SecarchByID()"
+          [(ngModel)]="searchKeyID">
+      </div>
+      <!--<div class="col-md-4">
+        <label>{{'shared.searchbyname' |translate}} </label>
+        <input type="text" class="form-control" class="serachmargin" #key (keyup)="Search()" [(ngModel)]="searchKey">
+      </div>-->
+      <div class="col-md-3 height67px">
+      </div>
+    </div> 
+    <table class="table">
+      <thead>
+        <tr>
+          <th *ngIf="!isDetails">{{'shared.select'| translate }}</th>
+          <th *ngIf="isDetails">{{'donation.caseCode'| translate }}</th>
+
+          <th>{{ 'donation.caseName' | translate }}</th>
+          <th *ngIf="!isDetails">{{ 'donation.reqAmount' | translate }}</th>
+          <th *ngIf="isDetails">{{ 'donation.Amount' | translate }}</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody *ngIf="!isDetails">
+        <ng-container *ngFor="let item of casesLookup; let i = index">
+          <tr *ngIf="item.display">
+            <td> 
+              <input type="checkbox" class="form-control" [(ngModel)]="item.checked" (blur)="AddBeneficiaries()">
+            </td>
+            <td>
+              {{item.id}}-{{item.name}}
+            </td>
+            <td>
+              {{item.RequiredAmount}}
+            </td>
+            <td>
+              <input type="number" [disabled]="!item.checked" min="0" 
+              max="100000" maxlength="6" class="form-control"              
+                pattern=".*\S.*" [id]="'amount'+item.id" [(ngModel)]="item.amount" 
+                (blur)="AddBeneficiaries()">
+            </td>
+          </tr>
+        </ng-container>
+      </tbody>
+      <tbody class="cases" *ngIf="isDetails">
+        <tr *ngFor="let item of donationDetails">
+          <td>{{item.caseId}}</td>
+          <td>{{item.name}}</td>
+          <td>{{item.amount}}</td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div *ngIf="!isDetails" 
+       class="row">
+    <div class="FotterBtnModal">
+      <button class="btn btn-defualt" *ngIf="!propPageLoading" (click)="onScroll() ">
+        {{ 'shared.loadmore' | translate }} ....
+      </button><br> <br>
+      <loader *ngIf="propPageLoading"></loader>
+      <div class="row">
+        <div class="FotterBtnModal" *ngIf="!propPageLoading">
+          <!-- <button class="btn btn-success" (click)="AddBeneficiaries() ">
+            {{ 'shared.save' | translate }}
+          </button> -->
+          <!-- <button class="btn btn-danger" onClick="$('#openCasesModalBTN').click()">
+            {{ 'shared.close' | translate }}
+          </button> -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <!-- <div>
+    <button class="btn btn-success" (click)="AddBeneficiaries()">
+      {{ 'shared.save' | translate }}
+    </button>
+  </div> -->

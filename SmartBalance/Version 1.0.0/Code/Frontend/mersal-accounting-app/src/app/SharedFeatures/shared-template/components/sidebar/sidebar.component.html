@@ -1,0 +1,221 @@
+<div class="sidebar1"  [ngClass]="{'rtl':language === 'ar', 'ltr':language === 'en'}" data-color="azure" data-background-color="dark">
+    <!--
+            Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
+    
+            Tip 2: you can also add an image using data-image tag
+        -->
+    <!-- <div class="logo">
+        <a routerLink="/home/dashboard" title="{{'menu.brand' | translate}}" class="simple-text logo-normal">
+            {{'menu.brand' | translate}}
+        </a>
+    </div> -->
+    <div class="sidebar-wrapper">
+        <ul class="nav">
+            <li class="nav-item tree-toggle nav-header">
+                <!-- <i class="fa fa-search" style="margin-left: -30px;"></i> -->
+                <input class="form-control" type="text" name="search" 
+                [(ngModel)]="searchText" autocomplete="off"
+                    placeholder="{{'shared.searchAbout' | translate}} ...">
+            </li>
+            <li class="nav-item tree-toggle nav-header" *ngFor="let routslistItem of userRoutes | filter:searchText">
+                <label *ngIf="routslistItem.url == null" class="nav-link parent-menu-item"
+                    (click)="showchild(routslistItem)"
+                    [title]="getCurrentLang() == 'ar' ? routslistItem.titleAr : routslistItem.titleEn">
+                    <!-- <i class="material-icons">dvr</i> -->
+                    <span>
+                        <i *ngIf="routslistItem.show" class="fa fa-angle-up"></i>
+                        <i *ngIf="!routslistItem.show" class="fa fa-angle-down"></i>
+                    </span>
+                    &nbsp;&nbsp;
+                    <span>
+                        <span *ngIf="getCurrentLang() == 'ar'">{{routslistItem.nameAr}}</span>
+                        <span *ngIf="getCurrentLang() == 'en'">{{routslistItem.nameEn}}</span>
+                    </span>
+
+                </label>
+                <a *ngIf="routslistItem?.childMenuItems?.length == 0 && 
+                                  routslistItem.parentMenuItemId == null" class="nav-link"
+                    (click)="showchild(routslistItem)"
+                    [title]="getCurrentLang() == 'ar' ? routslistItem.titleAr : routslistItem.titleEn">
+                    <i class="material-icons">dvr</i>
+                    <p>
+                        <span *ngIf="getCurrentLang() == 'ar'">{{routslistItem.nameAr}}</span>
+                        <span *ngIf="getCurrentLang() == 'en'">{{routslistItem.nameEn}}</span>
+                    </p>
+                </a>
+                <div class="" *ngIf="routslistItem.show">
+                    <ul class="nav tree chiled-menu" style="color: azure">
+                        <ng-container *ngFor="let p of routslistItem.childMenuItems | filter:searchText">
+                            <li *ngIf="routslistItem.isActive">
+                                <a *ngIf="p.isActive" class="nav-link" (click)="hideSidebar()"
+                                    [title]="getCurrentLang() == 'ar' ? p.titleAr : p.titleEn" routerLink="{{p.url}}">
+                                    <i class="fa fa-address-card"></i>
+                                    <!-- <i class="material-icons">dvr</i> -->
+                                    <p *ngIf="getCurrentLang() == 'ar'">{{p.nameAr}}</p>
+                                    <p *ngIf="getCurrentLang() == 'en'">{{p.nameEn}}</p>
+                                </a>
+                            </li>
+                        </ng-container>
+                    </ul>
+                </div>
+            </li>
+
+            <!-- 
+                    <li class="nav-item" *ngFor="let routslistItem of userRoutes">
+                        <a *ngIf="routslistItem.applicationId === 1 && routslistItem.isActive"  
+                        class="nav-link" (click)="hideSidebar()"
+                         [title]="routslistItem.name" routerLink="{{routslistItem.url}}">
+                            <i class="material-icons">dvr</i>
+                            <p *ngIf="getCurrentLang() == 'ar'">{{routslistItem.nameAr}}</p>
+                            <p *ngIf="getCurrentLang() == 'en'">{{routslistItem.nameEn}}</p>                          
+                        </a>
+                    </li> -->
+
+
+
+
+            <!-- <li class="nav-item" *ngFor="let routslistItem of userRoutes">
+                <a *ngIf="routslistItem.applicationId === 4 && routslistItem.isActive"  class="nav-link" (click)="hideSidebar()"
+                 [title]="routslistItem.name | translate" routerLink="{{routslistItem.url}}">
+                    <i class="material-icons">dvr</i>
+                    <p>{{routslistItem.name | translate}}</p>
+                </a>
+            </li> -->
+
+            <!-- <li class="nav-item">
+                    <a class="nav-link" title="{{'journalEntries.post.journalUnderPreview' | translate}}"  (click)="hideSidebar()" 
+                    routerLink="/journal/preview-list">
+                        <i class="material-icons">dvr</i>
+                        <p>{{'journalEntries.post.journalUnderPreview' | translate}}</p>
+                    </a>
+                </li> -->
+            <!-- <li class="nav-item">
+                <a class="nav-link" title="{{'costCenter.costcenters' | translate}}"  (click)="hideSidebar()" 
+                routerLink="/cost-center/list">
+                    <i class="material-icons">dvr</i>
+                    <p>{{'costCenter.costcenters' | translate}}</p>
+                </a>
+            </li> -->
+            <!-- <li class="nav-item">
+                    <a class="nav-link" title="{{'donator.shared.title' | translate}}"  (click)="hideSidebar()" 
+                    routerLink="/donator/list">
+                        <i class="material-icons">dvr</i>
+                        <p>{{'donator.shared.title' | translate}}</p>
+                    </a>
+                </li> -->
+            <!-- <li class="nav-item">
+                <a class="nav-link" title="{{'permission.shared.title' | translate}}"  (click)="hideSidebar()" 
+                routerLink="/permission/list">
+                    <i class="material-icons">dvr</i>
+                    <p>{{'permission.shared.title' | translate}}</p>
+                </a>
+            </li> -->
+            <!-- <li class="nav-item">
+                <a class="nav-link" title="{{'role.shared.title' | translate}}"  (click)="hideSidebar()" 
+                routerLink="/role/list">
+                    <i class="material-icons">dvr</i>
+                    <p>{{'role.shared.title' | translate}}</p>
+                </a>
+            </li> -->
+            <!-- <li class="nav-item">
+                <a class="nav-link" title="{{'group.shared.title' | translate}}"  (click)="hideSidebar()" 
+                routerLink="/group/list">
+                    <i class="material-icons">dvr</i>
+                    <p>{{'group.shared.title' | translate}}</p>
+                </a>
+            </li> -->
+            <!-- <li class="nav-item">
+                <a class="nav-link" title="{{'menu.reports' | translate}}"  (click)="hideSidebar()" routerLink="/reports/control-panel">
+                    <i class="material-icons">report</i>                    
+                    <p>{{'menu.reports' | translate}}</p>
+                </a>
+            </li> -->
+
+            <!-- <li class="nav-item">
+                <a class="nav-link" title="{{'menu.reports' | translate}}"  (click)="hideSidebar()" routerLink="/store/opening-balance/list">
+                    <i class="material-icons">report</i>                    
+                    <p>{{ 'movements.startBalance' | translate }}</p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" title="{{'menu.reports' | translate}}"  (click)="hideSidebar()" routerLink="/store/inventory-transfers/list">
+                    <i class="material-icons">report</i>                
+                    <p>{{ 'movements.inventoryTransfers' | translate }}</p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" title="{{'menu.reports' | translate}}"  (click)="hideSidebar()" routerLink="/store/inventory/list">
+                    <i class="material-icons">report</i>            
+                    <p>{{ 'movements.inventoryMovement' | translate }}</p>
+                </a>
+            </li> -->
+
+            <!--report-->
+
+
+            <!--contact-->
+            <!-- <li class="nav-item">
+                <a class="nav-link" title="{{'menu.contact' | translate}}" routerLink="/contact/home">
+                    <i class="material-icons">dashboard</i>
+                    <p>{{'menu.contact' | translate}}</p>
+                </a>
+            </li> -->
+            <!--Receipts-->
+            <!-- <li class="nav-item">
+                <a class="nav-link" title="{{'Movements.Receipts' | translate}}" routerLink="/home/dashboard">
+                    <i class="material-icons">dashboard</i>
+                    <p>{{ 'movements.receipts' | translate }}</p>
+                </a>
+            </li> -->
+            <!--Payments-->
+            <!-- <li class="nav-item">
+                <a class="nav-link" title="{{'Movements.Payments' | translate}}" routerLink="/financial/payment-list">
+                    <i class="material-icons">dashboard</i>
+                    <p>{{ 'movements.payments' | translate }}</p>
+                </a>
+            </li> -->
+            <!--Purchases-->
+            <!-- <li class="nav-item ">
+                <a class="nav-link" title="{{'Movements.Purchases' | translate}}" routerLink="/home/home">
+                    <i class="material-icons">dashboard</i>
+                    <p>{{'Movements.Purchases' | translate}}</p>
+                </a>
+            </li> -->
+            <!--ReturnPurchases-->
+            <!-- <li class="nav-item ">
+                <a class="nav-link" title="{{'Movements.ReturnPurchases' | translate}}" routerLink="/home/home">
+                    <i class="material-icons">dashboard</i>
+                    <p>{{'Movements.ReturnPurchases' | translate}}</p>
+                </a>
+            </li> -->
+            <!--StoreMovement-->
+            <!-- <li class="nav-item ">
+                <a class="nav-link" title="{{'Movements.StoreMovement' | translate}}" routerLink="/home/home">
+                    <i class="material-icons">dashboard</i>
+                    <p>{{'Movements.StoreMovement' | translate}}</p>
+                </a>
+            </li> -->
+            <!--StoreTransfer-->
+            <!-- <li class="nav-item ">
+                <a class="nav-link" title="{{'Movements.StoreTransfer' | translate}}" routerLink="/home/home">
+                    <i class="material-icons">dashboard</i>
+                    <p>{{'Movements.StoreTransfer' | translate}}</p>
+                </a>
+            </li> -->
+            <!--DailyRestrictions-->
+            <!-- <li class="nav-item ">
+                <a class="nav-link" title="{{'Movements.DailyRestrictions' | translate}}" routerLink="/home/home">
+                    <i class="material-icons">dashboard</i>
+                    <p>{{'Movements.DailyRestrictions' | translate}}</p>
+                </a>
+            </li> -->
+            <!--StartBalance-->
+            <!-- <li class="nav-item ">
+                <a class="nav-link" title="{{'Movements.StartBalance' | translate}}" routerLink="/home/home">
+                    <i class="material-icons">dashboard</i>
+                    <p>{{'Movements.StartBalance' | translate}}</p>
+                </a>
+            </li> -->
+        </ul>
+    </div>
+</div>

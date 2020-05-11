@@ -1,0 +1,7 @@
+ 
+        <div class="btn-group">
+            <input type="text" *ngIf="canEdit" min="0" class="form-control"
+                #openingCredit [formControl]="control" (input)="textChange($event.target.value)">
+            <samp (click)="clearControl(control)"
+                class="glyphicon glyphicon-remove-circle searchclear" [ngClass]="{'searchclearRTL':language === 'ar', 'searchclearLTR':language === 'en'}">X</samp>
+        </div>

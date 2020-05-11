@@ -1,0 +1,86 @@
+<form class="row" [formGroup]="chequeFormGroup">
+
+  <!--sourceBank-->
+  <div class="formgroup col-md-2">
+    <label class="block">{{ 'financial.sourceBank' | translate }}<span *ngIf="canEdit" class="text-danger">*</span>
+    </label>
+    <kendo-dropdownlist #list [data]="banks" [filterable]="true" [textField]="'displyedName'" [valueField]="'id'"
+      [kendoDropDownFilter]="filterSettings" id="fromBankId" class="height38 width-100-per" formControlName="fromBankId"
+      [valuePrimitive]="true" [disabled]="!canEdit">
+    </kendo-dropdownlist>
+    <div class="text-danger" *ngIf="chequeFormGroup.controls['fromBankId'].hasError('required') &&
+                                (chequeFormGroup.controls['fromBankId'].touched || 
+                                chequeFormGroup.controls['fromBankId'].dirty)">
+      {{ 'addProduct.fieldReq' | translate }}
+    </div>
+  </div>
+
+  <!--chequeNumber-->
+  <div class="formgroup col-md-2">
+    <label class="block">{{ 'financial.chequeNumber' | translate }} <span *ngIf="canEdit" class="text-danger">*</span>
+    </label>
+    <input *ngIf="canEdit" type="text" class="form-control" formControlName="chequeNumber" class="form-control" />
+    <input *ngIf="!canEdit" type="text" class="form-control" formControlName="chequeNumber" class="form-control"
+      disabled />
+    <div class="text-danger"
+      *ngIf=" chequeFormGroup.controls['chequeNumber'].hasError('required' ) &&
+                                  (chequeFormGroup.controls['chequeNumber'].touched || chequeFormGroup.controls['chequeNumber'].dirty)">
+      {{ 'movements.fieldReq' | translate }}
+    </div>
+
+  </div>
+
+  <!--dueDate-->
+  <div class="formgroup col-md-2">
+    <label class="block">{{ 'financial.dueDate' | translate }} <span *ngIf="canEdit" class="text-danger">*</span>
+    </label>
+    <input type="text" *ngIf="canEdit" placeholder="{{ 'financial.dueDate' | translate }}" class="form-control"
+      value="{{chequeFormGroup.controls['dueDate'].value |date:'dd/MM/yyyy'}}" formControlName="dueDate" bsDatepicker
+      readonly />
+    <input type="text" *ngIf="!canEdit" value="{{chequeFormGroup.controls['dueDate'].value |date:'dd/MM/yyyy'}}"
+      disabled="disabled" class="form-control" readonly>
+    <div class="text-danger"
+      *ngIf=" chequeFormGroup.controls['dueDate'].hasError('required' ) &&
+                                    (chequeFormGroup.controls['dueDate'].touched || chequeFormGroup.controls['dueDate'].dirty)">
+      {{ 'movements.fieldReq' | translate }}
+    </div>
+  </div>
+
+  <!--cashBank-->
+  <!-- <div class=" col-2" *ngIf="pageSource==pageSourceTypes.receiptsMovement"> -->
+  <div class="formgroup col-md-2">
+    <label class="block"> {{ 'financial.cashBank' | translate }}
+      
+    </label>
+
+    <kendo-dropdownlist #list [data]="banks" [filterable]="true" [textField]="'displyedName'" [valueField]="'id'"
+      [kendoDropDownFilter]="filterSettings" id="toBankId" class="height38 width-100-per" formControlName="toBankId"
+      [valuePrimitive]="true" (selectionChange)="ToBankCahnged($event)" [disabled]="!canEdit">
+    </kendo-dropdownlist>
+
+    <div class="text-danger" *ngIf="chequeFormGroup.controls['toBankId'].hasError('required') &&
+            (chequeFormGroup.controls['toBankId'].touched || 
+            chequeFormGroup.controls['toBankId'].dirty)">
+      {{ 'addProduct.fieldReq' | translate }}
+    </div>
+  </div>
+
+      <!--BankAccountChart-->
+
+      <div class="col-md-2">
+                 
+        <label class="block">{{ 'financial.accountChart' | translate }} <span
+          *ngIf="isRequired" class="text-danger">*</span> </label>
+          <kendo-dropdownlist #list [data]="BankAcountChartsDropDownData" [filterable]="true" [textField]="'text'"
+          [valueField]="'value'" [valuePrimitive]="true" [kendoDropDownFilter]="filterSettings" id="bankaccountchartId"
+          formControlName="bankaccountchartId"
+          class="height38 width-100-per">
+        </kendo-dropdownlist>
+        <div class="text-danger" *ngIf="chequeFormGroup.controls['bankaccountchartId'].hasError('required') &&
+        (chequeFormGroup.controls['bankaccountchartId'].touched || 
+        chequeFormGroup.controls['bankaccountchartId'].dirty)">
+        {{ 'movements.fieldReq' | translate }}
+</div>
+      </div>
+
+</form>

@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="BalanceSheetReport" targetNamespace="http://tempuri.org/BalanceSheetReport.xsd" xmlns:mstns="http://tempuri.org/BalanceSheetReport.xsd" xmlns="http://tempuri.org/BalanceSheetReport.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="BalanceSheetReport" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="BalanceSheetReport" msprop:Generator_UserDSName="BalanceSheetReport">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="BalanceSheetReport" msprop:Generator_TableClassName="BalanceSheetReportDataTable" msprop:Generator_TableVarName="tableBalanceSheetReport" msprop:Generator_TablePropName="_BalanceSheetReport" msprop:Generator_RowDeletingName="BalanceSheetReportRowDeleting" msprop:Generator_RowChangingName="BalanceSheetReportRowChanging" msprop:Generator_RowEvHandlerName="BalanceSheetReportRowChangeEventHandler" msprop:Generator_RowDeletedName="BalanceSheetReportRowDeleted" msprop:Generator_UserTableName="BalanceSheetReport" msprop:Generator_RowChangedName="BalanceSheetReportRowChanged" msprop:Generator_RowEvArgName="BalanceSheetReportRowChangeEvent" msprop:Generator_RowClassName="BalanceSheetReportRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Name" msprop:Generator_ColumnVarNameInTable="columnName" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnPropNameInTable="NameColumn" msprop:Generator_UserColumnName="Name" type="xs:string" minOccurs="0" />
+              <xs:element name="Code" msprop:Generator_ColumnVarNameInTable="columnCode" msprop:Generator_ColumnPropNameInRow="Code" msprop:Generator_ColumnPropNameInTable="CodeColumn" msprop:Generator_UserColumnName="Code" type="xs:string" minOccurs="0" />
+              <xs:element name="CreditorValue" msprop:Generator_ColumnVarNameInTable="columnCreditorValue" msprop:Generator_ColumnPropNameInRow="CreditorValue" msprop:Generator_ColumnPropNameInTable="CreditorValueColumn" msprop:Generator_UserColumnName="CreditorValue" type="xs:string" minOccurs="0" />
+              <xs:element name="DebtorValue" msprop:Generator_ColumnVarNameInTable="columnDebtorValue" msprop:Generator_ColumnPropNameInRow="DebtorValue" msprop:Generator_ColumnPropNameInTable="DebtorValueColumn" msprop:Generator_UserColumnName="DebtorValue" type="xs:string" minOccurs="0" />
+              <xs:element name="CreationDate" msprop:Generator_ColumnVarNameInTable="columnCreationDate" msprop:Generator_ColumnPropNameInRow="CreationDate" msprop:Generator_ColumnPropNameInTable="CreationDateColumn" msprop:Generator_UserColumnName="CreationDate" type="xs:string" minOccurs="0" />
+              <xs:element name="DocumentCode" msprop:Generator_ColumnVarNameInTable="columnDocumentCode" msprop:Generator_ColumnPropNameInRow="DocumentCode" msprop:Generator_ColumnPropNameInTable="DocumentCodeColumn" msprop:Generator_UserColumnName="DocumentCode" type="xs:string" minOccurs="0" />
+              <xs:element name="OpeningCredit" msprop:Generator_ColumnVarNameInTable="columnOpeningCredit" msprop:Generator_ColumnPropNameInRow="OpeningCredit" msprop:Generator_ColumnPropNameInTable="OpeningCreditColumn" msprop:Generator_UserColumnName="OpeningCredit" type="xs:string" minOccurs="0" />
+              <xs:element name="OpeningDebit" msprop:Generator_ColumnVarNameInTable="columnOpeningDebit" msprop:Generator_ColumnPropNameInRow="OpeningDebit" msprop:Generator_ColumnPropNameInTable="OpeningDebitColumn" msprop:Generator_UserColumnName="OpeningDebit" type="xs:string" minOccurs="0" />
+              <xs:element name="FullCode" msprop:Generator_ColumnVarNameInTable="columnFullCode" msprop:Generator_ColumnPropNameInRow="FullCode" msprop:Generator_ColumnPropNameInTable="FullCodeColumn" msprop:Generator_UserColumnName="FullCode" type="xs:string" minOccurs="0" />
+              <xs:element name="Level" msprop:Generator_ColumnVarNameInTable="columnLevel" msprop:Generator_ColumnPropNameInRow="Level" msprop:Generator_ColumnPropNameInTable="LevelColumn" msprop:Generator_UserColumnName="Level" type="xs:string" minOccurs="0" />
+              <xs:element name="TotalCreditValue" msprop:Generator_ColumnVarNameInTable="columnTotalCreditValue" msprop:Generator_ColumnPropNameInRow="TotalCreditValue" msprop:Generator_ColumnPropNameInTable="TotalCreditValueColumn" msprop:Generator_UserColumnName="TotalCreditValue" type="xs:string" minOccurs="0" />
+              <xs:element name="TotalDebtValue" msprop:Generator_ColumnVarNameInTable="columnTotalDebtValue" msprop:Generator_ColumnPropNameInRow="TotalDebtValue" msprop:Generator_ColumnPropNameInTable="TotalDebtValueColumn" msprop:Generator_UserColumnName="TotalDebtValue" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="ReportFilter" msprop:Generator_TableClassName="ReportFilterDataTable" msprop:Generator_TableVarName="tableReportFilter" msprop:Generator_RowChangedName="ReportFilterRowChanged" msprop:Generator_TablePropName="ReportFilter" msprop:Generator_RowDeletingName="ReportFilterRowDeleting" msprop:Generator_RowChangingName="ReportFilterRowChanging" msprop:Generator_RowEvHandlerName="ReportFilterRowChangeEventHandler" msprop:Generator_RowDeletedName="ReportFilterRowDeleted" msprop:Generator_RowClassName="ReportFilterRow" msprop:Generator_UserTableName="ReportFilter" msprop:Generator_RowEvArgName="ReportFilterRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="DateFrom" msprop:Generator_ColumnVarNameInTable="columnDateFrom" msprop:Generator_ColumnPropNameInRow="DateFrom" msprop:Generator_ColumnPropNameInTable="DateFromColumn" msprop:Generator_UserColumnName="DateFrom" type="xs:string" minOccurs="0" />
+              <xs:element name="DateTo" msprop:Generator_ColumnVarNameInTable="columnDateTo" msprop:Generator_ColumnPropNameInRow="DateTo" msprop:Generator_ColumnPropNameInTable="DateToColumn" msprop:Generator_UserColumnName="DateTo" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,20 @@
+MersalAccountingService.Common.Exceptions.GeneralException: 27
+   at MersalAccountingService.BusinessLogic.Services.JournalPostingsService.PostStoreMovement(DateTime toDate, Boolean IsAutomaticPosting, Boolean IsBulkPosting, Nullable`1 id, Boolean postInMemory) in C:\Mersal\SmartBalance\Version 1.0.0\Code\Backend\MersalAccounting\MersalAccountingService.BusinessLogic\Services\JournalPosting\JournalPostingsService.cs:line 1768
+   at MersalAccountingService.BusinessLogic.Services.JournalPostingsService.Post(Int64 id, MovementType movementType) in C:\Mersal\SmartBalance\Version 1.0.0\Code\Backend\MersalAccounting\MersalAccountingService.BusinessLogic\Services\JournalPosting\JournalPostingsService.cs:line 2053
+   at MersalAccountingService.BusinessLogic.Services.InventoryMovementsService.AddInventoryMovement(InventoryMovementAddViewModel model) in C:\Mersal\SmartBalance\Version 1.0.0\Code\Backend\MersalAccounting\MersalAccountingService.BusinessLogic\Services\Shared\InventoryMovementsService.cs:line 766
+   at MersalAccountingService.WebAPI.Controllers.API.InventoryMovementsController.AddInventoryOpeningBalance(InventoryMovementAddViewModel model) in C:\Mersal\SmartBalance\Version 1.0.0\Code\Backend\MersalAccounting\MersalAccountingService.WebAPI\Controllers\API\Inventory\InventoryMovementsController.cs:line 175
+   at lambda_method(Closure , Object , Object[] )
+   at System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ActionExecutor.<>c__DisplayClass6_2.<GetExecutor>b__2(Object instance, Object[] methodParameters)
+   at System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ExecuteAsync(HttpControllerContext controllerContext, IDictionary`2 arguments, CancellationToken cancellationToken)
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Controllers.ApiControllerActionInvoker.<InvokeActionAsyncCore>d__1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Controllers.ActionFilterResult.<ExecuteAsync>d__5.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Controllers.ExceptionFilterResult.<ExecuteAsync>d__6.MoveNext()

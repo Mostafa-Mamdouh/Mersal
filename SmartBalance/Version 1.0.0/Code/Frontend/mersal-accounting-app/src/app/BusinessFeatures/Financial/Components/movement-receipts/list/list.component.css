@@ -1,0 +1,38 @@
+.search{
+    margin-top: 31px;
+}
+.indCol{
+    width: 15px;
+}
+.k-grid tbody td {
+    white-space: nowrap;
+    line-height: 20px;
+    padding: 8px 12px;
+}
+.searchComp{
+    width: 100%;
+}
+.k-grid th:first-child, .k-grid td:first-child {
+    border-left-width: thin !important;
+}
+.k-grid-header .k-header:first-child {
+    border-left-width: thin !important;
+}
+#collapseExample{
+    padding-left: 17px;
+    padding-right: 17px;
+}
+.card {
+    box-shadow: 0 0px 3px 0 rgba(0, 0, 0, 0.14);
+}
+.grid{
+    margin-top: 30px;
+}
+
+
+.k-grid tbody td {
+    white-space: nowrap;
+    line-height: 20px;
+    padding: 8px 12px;
+}
+

@@ -1,0 +1,63 @@
+<form class="row" [formGroup]="effiencyRaiseFormGroup">
+
+
+      <!--raiseAmount-->
+      <div class="form-group col-md-6">
+        <label>{{ 'asset.shared.EffiencyRaiseAmount' | translate }}
+            <i *ngIf="canEdit()" class="text-danger">*</i>
+        </label>
+        <div class="detail w-100">
+            <input type="number" *ngIf="editorMode == editorModeEnum.add" min="0" class="form-control"
+                #raiseAmount formControlName="raiseAmount">
+
+            <input type="number" *ngIf="editorMode != editorModeEnum.add" min="0" class="form-control"
+                #raiseAmount formControlName="raiseAmount" disabled>
+
+            <div class="text-danger" *ngIf="(effiencyRaiseFormGroup.controls['raiseAmount'].hasError('invalid' ) || 
+                    effiencyRaiseFormGroup.controls['raiseAmount'].hasError('required' ) )&&
+                   (effiencyRaiseFormGroup.controls['raiseAmount'].touched || 
+                    effiencyRaiseFormGroup.controls['raiseAmount'].dirty)">
+                {{ 'movements.fieldReq' | translate }}
+            </div>
+            <div class="text-danger" *ngIf="(effiencyRaiseFormGroup.controls['raiseAmount'].hasError('invalid' ) || 
+                    effiencyRaiseFormGroup.controls['raiseAmount'].hasError('min' ) )&&
+                   (effiencyRaiseFormGroup.controls['raiseAmount'].touched || 
+                    effiencyRaiseFormGroup.controls['raiseAmount'].dirty)">
+                {{ 'error.positiveNumbersOnly' | translate }}
+            </div>
+        </div>
+    </div>
+    <br>
+  <!--raiseDate-->
+     <div class="form-group col-md-6">
+      <label>{{ 'asset.shared.EffiencyRaiseDate' | translate }}
+          <span *ngIf="canEdit()" class="text-danger">*</span>
+      </label>
+      <div class="detail w-100">
+
+          <input *ngIf="editorMode == editorModeEnum.add" type="text" placeholder="Datepicker"
+              class="form-control" formControlName="raiseDate"
+              [ngClass]="{'border border-danger' :  effiencyRaiseFormGroup.controls['raiseDate'].invalid && effiencyRaiseFormGroup.controls['raiseDate'].touched}"
+              bsDatepicker  readonly
+              value="{{effiencyRaiseFormGroup.controls['raiseDate'].value |date:'dd/MM/yyyy'}}">
+          <input *ngIf="editorMode != editorModeEnum.add" type="text" disabled placeholder="Datepicker"
+              class="form-control" formControlName="raiseDate"
+              [ngClass]="{'border border-danger' :  effiencyRaiseFormGroup.controls['raiseDate'].invalid && effiencyRaiseFormGroup.controls['raiseDate'].touched}"
+              bsDatepicker
+              value="{{effiencyRaiseFormGroup.controls['raiseDate'].value |date:'dd/MM/yyyy'}}">
+      </div>
+      <div class="text-danger" *ngIf="effiencyRaiseFormGroup.controls['raiseDate'].hasError('required') &&
+                                          (effiencyRaiseFormGroup.controls['raiseDate'].touched || 
+                                          effiencyRaiseFormGroup.controls['raiseDate'].dirty)">
+          {{ 'movements.fieldReq' | translate }}
+      </div>
+  </div>
+
+  <div class="form-group col-lg-4" *ngIf="!isSubmited">
+    <button type="button" (click)="fireAddEvent()" [disabled]="!effiencyRaiseFormGroup.valid" class="btn btn-secondary"
+      data-dismiss="modal">{{ 'shared.add' | translate }}</button>
+    <button type="reset" (click)="Close()" class="btn btn-secondary"
+      data-dismiss="modal">{{ 'shared.cancel' | translate }}</button>
+  </div>
+
+</form>

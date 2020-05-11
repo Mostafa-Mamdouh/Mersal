@@ -1,0 +1,114 @@
+<div class="container-fluid">
+    <h3><i class="fa fa-credit-card"></i> {{ 'currency.exchange.shared.title' | translate }}</h3>
+    <loader [hidden]="!PageLoading"></loader>
+    <section class="editor-section" *ngIf="!PageLoading">
+        <form role="form" [formGroup]="editorForm">
+            <div class="row">
+                <!--currency-->
+                <div class="form-group col-md-2">
+                    <label>{{ 'currency.currency.shared.title' | translate }}
+                        <span *ngIf="canEdit()" class="text-danger">*</span>
+                    </label>
+                    <kendo-dropdownlist #currency [data]="Currencys" [filterable]="true" [textField]="'displyedName'"
+                        [valueField]="'id'" [valuePrimitive]="true" selected [kendoDropDownFilter]="filterSettings"
+                        id="currency" class="height38 width-100-per" formControlName="currency" [disabled]="!canEdit()">
+                    </kendo-dropdownlist>
+
+                    <div class="text-danger" *ngIf="editorForm.controls['currency'].hasError('required') &&
+                          (editorForm.controls['currency'].touched || 
+                           editorForm.controls['currency'].dirty)">
+                        {{ 'movements.fieldReq' | translate }}
+                    </div>
+                </div>
+
+                <!--date-->
+                <div class="form-group col-md-2">
+                    <label>{{ 'bank.shared.date' | translate }}
+                        <i *ngIf="canEdit()" class="text-danger">*</i>
+                    </label>
+                    <input *ngIf="editorMode != editorModeEnum.detail" type="text" [disabled]="!canEdit()"
+                        placeholder="Datepicker" class="form-control" formControlName="date"
+                        [ngClass]="{'border border-danger' :  editorForm.controls['date'].invalid && editorForm.controls['date'].touched}"
+                        bsDatepicker readonly value="{{editorForm.controls['date'].value |date:'dd/MM/yyyy'}}">
+
+                    <label *ngIf="editorMode == editorModeEnum.detail"
+                        class="form-control">{{itemModel?.date | date:'dd/MM/yyyy'}}</label>
+
+                    <div class="text-danger" *ngIf="(editorForm.controls['date'].hasError('invalid' ) || 
+                                     editorForm.controls['date'].hasError('required' ) )&&
+                                    (editorForm.controls['date'].touched || 
+                                     editorForm.controls['date'].dirty)">
+                        {{ 'movements.fieldReq' | translate }}
+                    </div>
+                    <div class="text-danger" *ngIf="(editorForm.controls['date'].hasError('invalid' ) || 
+                    editorForm.controls['date'].hasError('bsDate' ) )&&
+                   (editorForm.controls['date'].touched || 
+                    editorForm.controls['date'].dirty)">
+                        {{ 'error.maxDateAlert' | translate }}
+                    </div>
+                </div>
+
+                <!--price-->
+                <div class="form-group col-md-2">
+                    <label>{{ 'currency.exchange.shared.price' | translate }}
+                        <i *ngIf="canEdit()" class="text-danger">*</i>
+                    </label>
+                    <div class="detail w-100">
+                        <input type="text" *ngIf="canEdit()" class="form-control" #price formControlName="price">
+
+                        <label *ngIf="editorMode == editorModeEnum.detail"
+                            class="form-control">{{itemModel?.price}}</label>
+
+                        <div class="text-danger" *ngIf="(editorForm.controls['price'].hasError('invalid' ) || 
+                                            editorForm.controls['price'].hasError('required' ) )&&
+                                           (editorForm.controls['price'].touched || 
+                                            editorForm.controls['price'].dirty)">
+                            {{ 'movements.fieldReq' | translate }}
+                        </div>
+                        <div class="text-danger" *ngIf="(editorForm.controls['price'].hasError('invalid' ) || 
+                                        editorForm.controls['price'].hasError('pattern' ) )&&
+                                       (editorForm.controls['price'].touched || 
+                                        editorForm.controls['price'].dirty)">
+                            {{ 'error.numberOnly' | translate }}
+                        </div>
+                    </div>
+                </div>
+
+                <!--exchangeCurrency-->
+                <div class="form-group col-md-2">
+                    <label>{{ 'currency.exchange.shared.ExchangeCurrency' | translate }}
+                        <span *ngIf="canEdit()" class="text-danger">*</span>
+                    </label>
+                    <kendo-dropdownlist #ExchangeCurrency [data]="Currencys" [filterable]="true"
+                        [textField]="'displyedName'" [valueField]="'id'" [valuePrimitive]="true" selected
+                        [kendoDropDownFilter]="filterSettings" id="ExchangeCurrency" class="height38 width-100-per"
+                        formControlName="ExchangeCurrency" [disabled]="!canEdit()">
+                    </kendo-dropdownlist>
+
+                    <div class="text-danger" *ngIf="editorForm.controls['ExchangeCurrency'].hasError('required') &&
+                          (editorForm.controls['ExchangeCurrency'].touched || 
+                           editorForm.controls['ExchangeCurrency'].dirty)">
+                        {{ 'movements.fieldReq' | translate }}
+                    </div>
+                </div>
+            </div>
+
+
+            <loader [hidden]="!isProccessing"></loader>
+
+            <div class="row">
+                <div class="form-group col-lg-4">
+                    <button *ngIf="canEdit()" type="submit" (click)="save()"
+                        [disabled]="!editorForm.valid || isProccessing" class="btn btn-secondary">
+                        <i class="fa fa-floppy-o verticalLine"></i> {{ 'shared.save' | translate }}
+                    </button>
+                    &nbsp;
+                    <button (click)="goToBack()" class="btn btn-secondary">
+                        <i class="fa fa-undo"></i> {{'shared.back' | translate }}
+                    </button>
+                </div>
+            </div>
+
+        </form>
+    </section>
+</div>

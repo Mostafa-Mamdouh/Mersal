@@ -1,0 +1,90 @@
+<nav class="sidebar" [ngClass]="{ sidebarPushRight: isActive, collapsed: collapsed }">
+  <div class="list-group">
+    <a routerLink="/dashboard" [routerLinkActive]="['router-link-active']" class="list-group-item">
+      <i class="fa fa-fw fa-dashboard"></i>&nbsp;
+      <span>{{ 'Dashboard' | translate }}</span>
+    </a>
+    <!-- <a [routerLink]="['/tables']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+            <i class="fa fa-fw fa-table"></i>&nbsp;
+            <span>{{ 'Tables' | translate }}</span>
+        </a>
+        <a [routerLink]="['/forms']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+            <i class="fa fa-fw fa-edit"></i>&nbsp;
+            <span>{{ 'Forms' | translate }}</span>
+        </a> -->
+    <div class="nested-menu">
+      <a class="list-group-item" (click)="addExpandClass('pages')">
+        <i class="fa fa-edit"></i>&nbsp;
+        <span>{{ 'Movements.Financial' | translate }}</span>
+      </a>
+      <li class="nested" [class.expand]="showMenu === 'pages'">
+        <ul class="submenu">
+          <li>
+            <a [routerLink]="['/sales']">
+              <i class="fa fa-monument"></i>&nbsp;
+              <span>{{ 'Movements.Sales' | translate }}</span>
+            </a>
+          </li>
+          <li>
+            <a [routerLink]="['/sales/returnProduct']">
+              <i class="fa fa-monument"></i>&nbsp;
+              <span>{{ 'shared.returnProduct' | translate }}</span>
+            </a>
+          </li>
+          <li>
+            <a [routerLink]="['/sales/purchasesProduct']">
+              <i class="fa fa-monument"></i>&nbsp;
+              <span>{{ 'Movements.Purchases' | translate }}</span>
+            </a>
+          </li>
+          <li>
+            <a [routerLink]="['/sales/returnPurchases']">
+              <i class="fa fa-monument"></i>&nbsp;
+              <span>{{ 'Movements.ReturnPurchases' | translate }}</span>
+            </a>
+          </li>
+          <li>
+            <a [routerLink]="['/sales/receipts']">
+              <i class="fa fa-monument"></i>&nbsp;
+              <span>{{ 'Movements.Receipts' | translate }}</span>
+            </a>
+          </li>
+          <li>
+            <a [routerLink]="['/sales/payments']">
+              <i class="fa fa-monument"></i>&nbsp;
+              <span>{{ 'Movements.Payments' | translate }}</span>
+            </a>
+          </li>
+          <li>
+            <a [routerLink]="['/sales/DailyRestrictions']">
+              <i class="fa fa-monument"></i>&nbsp;
+              <span>{{ 'Movements.DailyRestrictions' | translate }}</span>
+            </a>
+          </li>
+          <li>
+            <a [routerLink]="['/sales/store/Movement']">
+              <i class="fa fa-monument"></i>&nbsp;
+              <span>{{ 'Movements.StoreMovement' | translate }}</span>
+            </a>
+          </li>
+          <li>
+            <a [routerLink]="['/sales/store/transfers']">
+              <i class="fa fa-monument"></i>&nbsp;
+              <span>{{ 'Movements.StoreTransfer' | translate }}</span>
+            </a>
+          </li>
+          <li>
+            <a [routerLink]="['/sales/store/balance']">
+              <i class="fa fa-monument"></i>&nbsp;
+              <span>{{ 'Movements.StartBalance' | translate }}</span>
+            </a>
+          </li>
+        </ul>
+      </li>
+    </div>
+  </div>
+  <div class="toggle-button" [ngClass]="{ collapsed: collapsed }" (click)="toggleCollapsed()">
+    <i class="fa fa-fw fa-angle-double-left"></i>&nbsp;
+    <span>{{ 'Collapse Sidebar' | translate }}</span>
+  </div>
+</nav>

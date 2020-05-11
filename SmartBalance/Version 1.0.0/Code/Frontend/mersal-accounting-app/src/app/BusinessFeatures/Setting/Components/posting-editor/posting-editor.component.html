@@ -1,0 +1,86 @@
+<div class="container-fluid">
+    <h3><i class="fa fa-credit-card"></i> {{ 'setting.postingSetting.posting' | translate }}</h3>
+    <loader [hidden]="!PageLoading"></loader>
+
+    <section *ngIf="!PageLoading">
+        <form role="form" [formGroup]="editorForm">
+            <section class="border-curvy">
+                <div class="row">
+                    <!--isPostingAutomatic-->
+                    <div class="form-group col-md-12">
+
+                        <input type="checkbox" placeholder="" class="form-control checkbox-inline checkbox-inline-25"
+                            formControlName="isPostingAutomatic" id="isPostingAutomatic" [ngClass]="{'border border-danger' :  editorForm.controls['isPostingAutomatic'].invalid && 
+                            editorForm.controls['isPostingAutomatic'].touched}">
+                        <label for="isPostingAutomatic">{{ 'setting.postingSetting.isAutomaticPosting' | translate }}
+                        </label>
+
+                        <div class="text-danger" *ngIf="(editorForm.controls['isPostingAutomatic'].hasError('invalid' ) || 
+                                     editorForm.controls['isPostingAutomatic'].hasError('required' ) )&&
+                                    (editorForm.controls['isPostingAutomatic'].touched || 
+                                     editorForm.controls['isPostingAutomatic'].dirty)">
+                            {{ 'movements.fieldReq' | translate }}
+                        </div>
+                    </div>
+
+                    <!--isBulkPosting-->
+                    <div *ngIf="!editorForm.controls['isPostingAutomatic'].value" class="form-group col-md-12">
+
+                        <input type="checkbox" placeholder="" class="form-control checkbox-inline checkbox-inline-25"
+                            formControlName="isBulkPosting" id="isBulkPosting" [ngClass]="{'border border-danger' :  
+                                editorForm.controls['isBulkPosting'].invalid && 
+                                editorForm.controls['isBulkPosting'].touched}">
+
+                        <label for="isBulkPosting">{{ 'setting.postingSetting.isBulkPosting' | translate }}
+                        </label>
+
+                        <div class="text-danger" *ngIf="(editorForm.controls['isBulkPosting'].hasError('invalid' ) || 
+                                         editorForm.controls['isBulkPosting'].hasError('required' ) )&&
+                                        (editorForm.controls['isBulkPosting'].touched || 
+                                         editorForm.controls['isBulkPosting'].dirty)">
+                            {{ 'movements.fieldReq' | translate }}
+                        </div>
+                    </div>
+
+                    <!--allowPostingAccountCurrencyMisMatch-->
+                    <div *ngIf="!editorForm.controls['isPostingAutomatic'].value" class="form-group col-md-12">
+
+                        <input type="checkbox" placeholder="" class="form-control checkbox-inline checkbox-inline-25"
+                            formControlName="allowPostingAccountCurrencyMisMatch" 
+                            id="allowPostingAccountCurrencyMisMatch" 
+                            [ngClass]="{'border border-danger' :  
+                            editorForm.controls['allowPostingAccountCurrencyMisMatch'].invalid && 
+                            editorForm.controls['allowPostingAccountCurrencyMisMatch'].touched}">
+
+                        <label for="allowPostingAccountCurrencyMisMatch">{{ 'setting.postingSetting.allowPostingAccountCurrencyMisMatch' | translate }}
+                        </label>
+
+                        <div class="text-danger" *ngIf="(editorForm.controls['allowPostingAccountCurrencyMisMatch'].hasError('invalid' ) || 
+                                     editorForm.controls['allowPostingAccountCurrencyMisMatch'].hasError('required' ) )&&
+                                    (editorForm.controls['allowPostingAccountCurrencyMisMatch'].touched || 
+                                     editorForm.controls['allowPostingAccountCurrencyMisMatch'].dirty)">
+                            {{ 'movements.fieldReq' | translate }}
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <loader [hidden]="!isProccessing"></loader>
+
+            <div class="row">
+                <div class="form-group col-lg-4">
+                    <button type="submit" (click)="save()" [disabled]="!editorForm.valid || isProccessing"
+                        class="btn btn-secondary">
+                        <i class="fa fa-floppy-o verticalLine"></i> {{ 'shared.save' | translate }}
+                    </button>
+                    &nbsp;
+                    <!--routerLink="/setting/control-panel"-->
+                    <button (click)="gotoList()" class="btn btn-secondary">
+                        <i class="fa fa-undo"></i> {{'shared.back' | translate }}
+                    </button>
+                </div>
+            </div>
+        </form>
+    </section>
+
+</div>

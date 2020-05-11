@@ -1,0 +1,67 @@
+<div [@routerTransition]>
+    <h1>{{ 'Movements.StoreTransfer' | translate }}</h1>
+  <section>
+    <form role="form" [formGroup]="addBill" (ngSubmit)="AddBill()">
+      <div class="row">
+        <div class="form-group col-lg-4">
+          <label>{{ 'Movements.DocumentNumber' | translate }}</label>
+          <input
+            type="number"
+            class="form-control"
+            formControlName="DocumentNumber"
+            placeholder="{{ 'Movements.DocumentNumber' | translate }}"
+          />
+        </div>
+        <div class="form-group col-lg-4">
+          <label>{{ 'Movements.DateDocument' | translate }}</label>
+          <input type="text" placeholder="Datepicker" class="form-control" formControlName="DateDocument" bsDatepicker />
+        </div>
+      </div>
+      <div class="row">      
+        <div class="form-group col-lg-4">
+          <label>{{ 'Movements.StoreFrom' | translate }}</label>
+         <div class="detail w-100">
+            <input type="text"  class="form-control" pattern=".*\S.*" formControlName="StoreNumberFrom"
+            [ngClass]="{'border border-danger' :  addBill.controls['StoreNumberFrom'].invalid && addBill.controls['StoreNumberFrom'].touched}"
+            placeholder="{{ 'Movements.StoreFrom' | translate }}">
+          </div>
+          <div class="text-danger" *ngIf=" addBill.controls['StoreNumberFrom'].hasError( 'required' ) &&
+              (addBill.controls['StoreNumberFrom'].touched || addBill.controls['StoreNumberFrom'].dirty)">
+          {{ 'Movements.fieldReq' | translate }}
+          </div>
+        </div>
+        <div class="form-group col-lg-4">
+            <label>{{ 'Movements.StoreTo' | translate }}</label>
+            <div class="detail w-100">
+              <input type="text"  class="form-control" pattern=".*\S.*" formControlName="StoreNumberTo"
+              [ngClass]="{'border border-danger' :  addBill.controls['StoreNumberTo'].invalid && addBill.controls['StoreNumberTo'].touched}"
+              placeholder="{{ 'Movements.StoreTo' | translate }}">
+            </div>
+            <div class="text-danger" *ngIf=" addBill.controls['StoreNumberTo'].hasError( 'required' ) &&
+                (addBill.controls['StoreNumberTo'].touched || addBill.controls['StoreNumberTo'].dirty)">
+            {{ 'Movements.fieldReq' | translate }}
+            </div>
+          </div>
+      </div>
+      <div class="row">
+        <div class="form-group col-lg-6">
+          <label>{{ 'Movements.StatementAr' | translate }}</label>
+          <textarea class="form-control" formControlName="StatementAr" placeholder="{{ 'Movements.StatementAr' | translate }}"></textarea>
+        </div>
+        <div class="form-group col-lg-6">
+          <label>{{ 'Movements.StatementEn' | translate }}</label>
+          <textarea class="form-control" formControlName="StatementEn" placeholder="{{ 'Movements.StatementEn' | translate }}"></textarea>
+        </div>
+      </div>
+      <div>
+        <app-add-product></app-add-product>
+      </div>
+      <div class="row">
+        <div class="form-group col-lg-3">
+          <button type="submit" class="btn btn-secondary">{{ 'shared.save' | translate }}</button>
+          <button type="reset" (click)="cancel()" class="btn btn-secondary">{{ 'shared.cancel' | translate }}</button>
+        </div>
+      </div>
+    </form>
+  </section>
+</div>

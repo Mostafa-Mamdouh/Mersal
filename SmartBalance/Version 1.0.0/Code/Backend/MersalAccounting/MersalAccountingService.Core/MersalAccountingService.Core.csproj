@@ -1,0 +1,730 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--This Solution Generated From Ahmed Shaikoun Code Generator 1.0.0.0-->
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{9622E50B-7F68-4115-A0AB-80B24D2F73C9}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MersalAccountingService.Core</RootNamespace>
+    <AssemblyName>MersalAccountingService.Core</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper, Version=8.0.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.8.0.0\lib\net461\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="DocumentFormat.OpenXml, Version=2.9.1.0, Culture=neutral, PublicKeyToken=8fb06cb64d019a17, processorArchitecture=MSIL">
+      <HintPath>..\packages\DocumentFormat.OpenXml.2.9.1\lib\net46\DocumentFormat.OpenXml.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.FileSystem.Primitives, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.FileSystem.Primitives.4.3.0\lib\net46\System.IO.FileSystem.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO.Packaging, Version=4.0.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.Packaging.4.5.0\lib\net46\System.IO.Packaging.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net461\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AutoMapperConfig\Configuration.cs" />
+    <Compile Include="AutoMapperConfig\Extentions.cs" />
+    <Compile Include="Common\GenericComparer.cs" />
+    <Compile Include="Common\ICurrentUserService.cs" />
+    <Compile Include="Common\IResourcesService.cs" />
+    <Compile Include="IRepositories\AccountChart\IAccountChartCategoriesRepository.cs" />
+    <Compile Include="IRepositories\AccountChart\IAccountChartGroupsRepository.cs" />
+    <Compile Include="IRepositories\AccountChart\IAccountChartLevelSettingsRepository.cs" />
+    <Compile Include="IRepositories\Asset\IAssetInventoryDetailsRepository.cs" />
+    <Compile Include="IRepositories\Asset\IAssetInventorysRepository.cs" />
+    <Compile Include="IRepositories\Asset\IAssetLocationsRepository.cs" />
+    <Compile Include="IRepositories\Asset\IDepreciationRatesRepository.cs" />
+    <Compile Include="IRepositories\Asset\IDepreciationsRepository.cs" />
+    <Compile Include="IRepositories\Asset\IDepreciationTypesRepository.cs" />
+    <Compile Include="IRepositories\Asset\IEffiencyRaiseHistoryRepository.cs" />
+    <Compile Include="IRepositories\Asset\IExcludesRepository.cs" />
+    <Compile Include="IRepositories\Asset\IExpensesRepository.cs" />
+    <Compile Include="IRepositories\Asset\IExpensesTypesRepository.cs" />
+    <Compile Include="IRepositories\Asset\ILocationsRepository.cs" />
+    <Compile Include="IRepositories\AccountChart\IAccountChartDocumentRepository.cs" />
+    <Compile Include="IRepositories\Bank\IBanksAccountChartRepository.cs" />
+    <Compile Include="IRepositories\Base\IBaseServiceRepository.cs" />
+    <Compile Include="IRepositories\Base\IBaseServiceRepositoryAsync.cs" />
+    <Compile Include="IRepositories\ClosedMonth\IClosedMonthsRepository.cs" />
+    <Compile Include="IRepositories\CostCenter\IBankMovementCostCentersRepository.cs" />
+    <Compile Include="IRepositories\CostCenter\IObjectCostCentersRepository.cs" />
+    <Compile Include="IRepositories\Custody\IAdvancesRepository.cs" />
+    <Compile Include="IRepositories\Custody\ILiquidationDetailRepository.cs" />
+    <Compile Include="IRepositories\Custody\ILiquidationRepository.cs" />
+    <Compile Include="IRepositories\Group\IGroupPermissionsRepository.cs" />
+    <Compile Include="IRepositories\Custody\IAdvancesTypeRepository.cs" />
+    <Compile Include="IRepositories\Shared\IBrandsRepository.cs" />
+    <Compile Include="IRepositories\CostCenter\ICostCenterTypesRepository.cs" />
+    <Compile Include="IRepositories\Shared\IClosedChequeRepository.cs" />
+    <Compile Include="IRepositories\Shared\IClosedReceiptRepository.cs" />
+    <Compile Include="IRepositories\Shared\ITestamentExtractionRepository.cs" />
+    <Compile Include="IRepositories\Custody\ITestamentRepository.cs" />
+    <Compile Include="IRepositories\Shared\IDiscountPercentagesRepository.cs" />
+    <Compile Include="IRepositories\Shared\IDocumentRepository.cs" />
+    <Compile Include="IRepositories\Shared\IDonationCasesRepository.cs" />
+    <Compile Include="IRepositories\Shared\IDonationTypesRepository.cs" />
+    <Compile Include="IRepositories\Shared\IFiscalYearsRepository.cs" />
+    <Compile Include="IRepositories\Shared\IGeneralAccountsRepository.cs" />
+    <Compile Include="IRepositories\Shared\IJournalPostingsRepository.cs" />
+    <Compile Include="IRepositories\Shared\IMenuItemsRepository.cs" />
+    <Compile Include="IRepositories\Inventory\IInventoryMovementTypeRepository.cs" />
+    <Compile Include="IRepositories\Inventory\IInventoryTransferCostCenterRepository.cs" />
+    <Compile Include="IRepositories\Inventory\IInventoryMovementCostCenterRepository.cs" />
+    <Compile Include="IRepositories\Inventory\IInventoryOpeningBalanceCostCenterRepository.cs" />
+    <Compile Include="IRepositories\Inventory\IInventoryOpeningBalanceRepository.cs" />
+    <Compile Include="IRepositories\Inventory\IInventoryProductHistoryRepository.cs" />
+    <Compile Include="IRepositories\Shared\IPaymentCaseRepository.cs" />
+    <Compile Include="IRepositories\JournalEntries\IJournalTypesRepository.cs" />
+    <Compile Include="IRepositories\Shared\IPaymentMovmentsRepository.cs" />
+    <Compile Include="IRepositories\Purchasing\IPurchaseInvoiceCostCentersRepository.cs" />
+    <Compile Include="IRepositories\Purchasing\IPurchaseInvoiceTypesRepository.cs" />
+    <Compile Include="IRepositories\Purchasing\IPurchaseRebateCostCentersRepository.cs" />
+    <Compile Include="IRepositories\Shared\IReceivingMehtodsRepository.cs" />
+    <Compile Include="IRepositories\Shared\ISalesBillRepository.cs" />
+    <Compile Include="IRepositories\Shared\ISalesBillTypesRepository.cs" />
+    <Compile Include="IRepositories\Shared\IMeasurementUnitsRepository.cs" />
+    <Compile Include="IRepositories\Shared\IPackageTypeRepository.cs" />
+    <Compile Include="IRepositories\Shared\IExitPermissionsRepository.cs" />
+    <Compile Include="IRepositories\Shared\IEntrancePermissionsRepository.cs" />
+    <Compile Include="IRepositories\Purchasing\IPurchaseRebateProductsRepository.cs" />
+    <Compile Include="IRepositories\Shared\ISalesRebateProductsRepository.cs" />
+    <Compile Include="IRepositories\AccountChart\IAccountChartSettingsRepository.cs" />
+    <Compile Include="IRepositories\Shared\ISettingsRepository.cs" />
+    <Compile Include="IRepositories\Shared\IStoreMovementsRepository.cs" />
+    <Compile Include="IRepositories\Shared\ITransactionsDetailsRepository.cs" />
+    <Compile Include="IRepositories\Shared\ISafeAccountChartsRepository.cs" />
+    <Compile Include="IRepositories\User\IUserBranchRepository.cs" />
+    <Compile Include="IRepositories\User\IUserGroupsRepository.cs" />
+    <Compile Include="IRepositories\Group\IGroupRolesRepository.cs" />
+    <Compile Include="IRepositories\Group\IGroupsRepository.cs" />
+    <Compile Include="IRepositories\Role\IRolePermissionsRepository.cs" />
+    <Compile Include="IRepositories\Shared\IPermissionsRepository.cs" />
+    <Compile Include="IRepositories\User\IUserMenuItemsRepository.cs" />
+    <Compile Include="IRepositories\User\IUserRolesRepository.cs" />
+    <Compile Include="IRepositories\Role\IRolesRepository.cs" />
+    <Compile Include="IRepositories\Address\ICountryCallingCodesRepository.cs" />
+    <Compile Include="IRepositories\Address\IAddresssRepository.cs" />
+    <Compile Include="IRepositories\Shared\IProductPricesRepository.cs" />
+    <Compile Include="IRepositories\JournalEntries\IJournalsRepository.cs" />
+    <Compile Include="IRepositories\Shared\IExchangeBondssRepository.cs" />
+    <Compile Include="IRepositories\Shared\IReceiptssRepository.cs" />
+    <Compile Include="IRepositories\Shared\ISalesRebatesRepository.cs" />
+    <Compile Include="IRepositories\Purchasing\IPurchaseRebatesRepository.cs" />
+    <Compile Include="IRepositories\Purchasing\IPurchaseInvoicesRepository.cs" />
+    <Compile Include="IRepositories\JournalEntries\ITransactionsRepository.cs" />
+    <Compile Include="IRepositories\Shared\IPaymentMethodsRepository.cs" />
+    <Compile Include="IRepositories\Asset\IAssetsRepository.cs" />
+    <Compile Include="IRepositories\Asset\IAssetCategorysRepository.cs" />
+    <Compile Include="IRepositories\Shared\IInventorysRepository.cs" />
+    <Compile Include="IRepositories\Shared\IProductsRepository.cs" />
+    <Compile Include="IRepositories\Shared\IProductTypesRepository.cs" />
+    <Compile Include="IRepositories\Shared\IStoreMeasurementUnitsRepository.cs" />
+    <Compile Include="IRepositories\Shared\IDelegateMansRepository.cs" />
+    <Compile Include="IRepositories\Shared\ICasesRepository.cs" />
+    <Compile Include="IRepositories\Shared\ICaseTypesRepository.cs" />
+    <Compile Include="IRepositories\CostCenter\ICostCentersRepository.cs" />
+    <Compile Include="IRepositories\Bank\IBanksRepository.cs" />
+    <Compile Include="IRepositories\Shared\ISafesRepository.cs" />
+    <Compile Include="IRepositories\AccountChart\IAccountChartsRepository.cs" />
+    <Compile Include="IRepositories\Shared\IDonatorsRepository.cs" />
+    <Compile Include="IRepositories\User\IUserPermissionsRepository.cs" />
+    <Compile Include="IRepositories\Vendor\IVendorTypesRepository.cs" />
+    <Compile Include="IRepositories\Vendor\IVendorsRepository.cs" />
+    <Compile Include="IRepositories\AccountChart\IAccountTypesRepository.cs" />
+    <Compile Include="IRepositories\Shared\IBranchsRepository.cs" />
+    <Compile Include="IRepositories\Shared\IDonationsRepository.cs" />
+    <Compile Include="IRepositories\Shared\ICurrencyRatesRepository.cs" />
+    <Compile Include="IRepositories\Shared\ICurrencysRepository.cs" />
+    <Compile Include="IRepositories\User\IUsersRepository.cs" />
+    <Compile Include="IRepositories\Shared\IAttachmentsRepository.cs" />
+    <Compile Include="IRepositories\Address\ICountrysRepository.cs" />
+    <Compile Include="IRepositories\Address\ICitysRepository.cs" />
+    <Compile Include="IRepositories\Address\IDistrictsRepository.cs" />
+    <Compile Include="IRepositories\Shared\IStockAssessmentPolicysRepository.cs" />
+    <Compile Include="IRepositories\Shared\IMailsRepository.cs" />
+    <Compile Include="IRepositories\Shared\IMobilesRepository.cs" />
+    <Compile Include="IRepositories\Shared\IBankMovementsRepository.cs" />
+    <Compile Include="IRepositories\Shared\ITransfersRepository.cs" />
+    <Compile Include="IRepositories\Shared\IInventoryTransfersRepository.cs" />
+    <Compile Include="IRepositories\Shared\IInventoryMovementsRepository.cs" />
+    <Compile Include="IRepositories\Shared\IInventoryInsRepository.cs" />
+    <Compile Include="IRepositories\Shared\IInventoryOutsRepository.cs" />
+    <Compile Include="IRepositories\Shared\IInventoryDifferencesRepository.cs" />
+    <Compile Include="IServices\AccountChart\IAccountChartCategoriesService.cs" />
+    <Compile Include="IServices\AccountChart\IAccountChartGroupsService.cs" />
+    <Compile Include="IServices\AccountChart\IAccountChartLevelSettingsService.cs" />
+    <Compile Include="IServices\Asset\IAssetInventoryDetailsService.cs" />
+    <Compile Include="IServices\Asset\IAssetInventorysService.cs" />
+    <Compile Include="IServices\Asset\IAssetLocationsService.cs" />
+    <Compile Include="IServices\Asset\IDepreciationRatesService.cs" />
+    <Compile Include="IServices\Asset\IDepreciationsService.cs" />
+    <Compile Include="IServices\Asset\IDepreciationTypesService.cs" />
+    <Compile Include="IServices\Asset\IEffiencyRaiseHistoryService.cs" />
+    <Compile Include="IServices\Asset\IExcludesService.cs" />
+    <Compile Include="IServices\Asset\IExpensesService.cs" />
+    <Compile Include="IServices\Asset\IExpensesTypesService.cs" />
+    <Compile Include="IServices\Asset\ILocationsService.cs" />
+    <Compile Include="IServices\Bank\IBankAccountChartService.cs" />
+    <Compile Include="IServices\AccountChart\IAccountChartDocumentService.cs" />
+    <Compile Include="IServices\Brand\IBrandService.cs" />
+    <Compile Include="IServices\Charts\IChartService.cs" />
+    <Compile Include="IServices\ClosedMonth\IClosedMonthsService.cs" />
+    <Compile Include="IServices\CostCenter\IBankMovementsCostCentersService.cs" />
+    <Compile Include="IServices\CostCenter\IObjectCostCentersService.cs" />
+    <Compile Include="IServices\Group\IGroupPermissionsService.cs" />
+    <Compile Include="IServices\CostCenter\ICostCenterTypesService.cs" />
+    <Compile Include="IServices\Safe\ISafeAccountChartsService.cs" />
+    <Compile Include="IServices\Testament\IAdvancesTypeService.cs" />
+    <Compile Include="IServices\Shared\IClosedReceiptService.cs" />
+    <Compile Include="IServices\Testament\ILiquidationService.cs" />
+    <Compile Include="IServices\Testament\ITestamentExtractionService.cs" />
+    <Compile Include="IServices\Testament\ITestamentService.cs" />
+    <Compile Include="IServices\Shared\IDiscountPercentagesService.cs" />
+    <Compile Include="IServices\Shared\IDocumentService.cs" />
+    <Compile Include="IServices\Shared\IDonationTypesService.cs" />
+    <Compile Include="IServices\Shared\IFiscalYearsService.cs" />
+    <Compile Include="IServices\Shared\IGeneralAccountsService.cs" />
+    <Compile Include="IServices\Shared\IJournalPostingsService.cs" />
+    <Compile Include="IServices\Shared\IMenuItemsService.cs" />
+    <Compile Include="IServices\Inventory\IInventoryMovementTypeService.cs" />
+    <Compile Include="IServices\Inventory\IInventoryTransferCostCentersService.cs" />
+    <Compile Include="IServices\Inventory\IInventoryMovementCostCentersService.cs" />
+    <Compile Include="IServices\Inventory\IInventoryOpeningBalanceCostCentersService.cs" />
+    <Compile Include="IServices\Inventory\IInventoryOpeningBalanceService.cs" />
+    <Compile Include="IServices\JournalEntries\IJournalTypesService.cs" />
+    <Compile Include="IServices\Shared\IPaymentMovmentsService.cs" />
+    <Compile Include="IServices\Purchasing\IPurchaseInvoiceCostCentersService.cs" />
+    <Compile Include="IServices\Purchasing\IPurchaseInvoiceTypesService.cs" />
+    <Compile Include="IServices\Purchasing\IPurchaseRebateCostCentersService.cs" />
+    <Compile Include="IServices\Shared\IReceivingMethodsService.cs" />
+    <Compile Include="IServices\Report\Donation\IDonationCaseReportsService.cs" />
+    <Compile Include="IServices\Report\FixedAsset\IFixedAssetReportsService.cs" />
+    <Compile Include="IServices\Report\IAccountReportsService.cs" />
+    <Compile Include="IServices\Report\IBankReportsService.cs" />
+    <Compile Include="IServices\Report\ICostCenterReportsService.cs" />
+    <Compile Include="IServices\Report\Inventory\IInventoryReportsService.cs" />
+    <Compile Include="IServices\Report\ISafeReportsService.cs" />
+    <Compile Include="IServices\Report\IVendorReportsService.cs" />
+    <Compile Include="IServices\Shared\IReportsService.cs" />
+    <Compile Include="IServices\Shared\ISalesBillService.cs" />
+    <Compile Include="IServices\Shared\ISalesBillTypesService.cs" />
+    <Compile Include="IServices\Shared\IMeasurementUnitsService.cs" />
+    <Compile Include="IServices\Shared\IDonatorsService.cs" />
+    <Compile Include="IServices\Shared\IExitPermissionsService.cs" />
+    <Compile Include="IServices\Shared\IEntrancePermissionsService.cs" />
+    <Compile Include="IServices\Shared\IPackageTypeService.cs" />
+    <Compile Include="IServices\Purchasing\IPurchaseRebateProductsService.cs" />
+    <Compile Include="IServices\Shared\ISalesRebateProductsService.cs" />
+    <Compile Include="IServices\AccountChart\IAccountChartSettingsService.cs" />
+    <Compile Include="IServices\Shared\ISettingsService.cs" />
+    <Compile Include="IServices\Shared\IStoreMovementsService.cs" />
+    <Compile Include="IServices\Shared\ITransactionsDetailsService.cs" />
+    <Compile Include="IServices\User\IUserBranchService.cs" />
+    <Compile Include="IServices\User\IUserGroupsService.cs" />
+    <Compile Include="IServices\Group\IGroupRolesService.cs" />
+    <Compile Include="IServices\Group\IGroupsService.cs" />
+    <Compile Include="IServices\Role\IRolePermissionsService.cs" />
+    <Compile Include="IServices\Shared\IPermissionsService.cs" />
+    <Compile Include="IServices\User\IUserMenuItemsService.cs" />
+    <Compile Include="IServices\User\IUserPermissionsService.cs" />
+    <Compile Include="IServices\User\IUserRolesService.cs" />
+    <Compile Include="IServices\Role\IRolesService.cs" />
+    <Compile Include="IServices\Shared\ICountryCallingCodesService.cs" />
+    <Compile Include="IServices\Shared\IAddresssService.cs" />
+    <Compile Include="IServices\Shared\IProductPricesService.cs" />
+    <Compile Include="IServices\JournalEntries\IJournalsService.cs" />
+    <Compile Include="IServices\Shared\IExchangeBondssService.cs" />
+    <Compile Include="IServices\Shared\IReceiptssService.cs" />
+    <Compile Include="IServices\Shared\ISalesRebatesService.cs" />
+    <Compile Include="IServices\Purchasing\IPurchaseRebatesService.cs" />
+    <Compile Include="IServices\Purchasing\IPurchaseInvoicesService.cs" />
+    <Compile Include="IServices\JournalEntries\ITransactionsService.cs" />
+    <Compile Include="IServices\Shared\IPaymentMethodsService.cs" />
+    <Compile Include="IServices\Asset\IAssetsService.cs" />
+    <Compile Include="IServices\Asset\IAssetCategorysService.cs" />
+    <Compile Include="IServices\Shared\IInventorysService.cs" />
+    <Compile Include="IServices\Shared\IProductsService.cs" />
+    <Compile Include="IServices\Shared\IProductTypesService.cs" />
+    <Compile Include="IServices\Shared\IStoreMeasurementUnitsService.cs" />
+    <Compile Include="IServices\Shared\IDelegateMansService.cs" />
+    <Compile Include="IServices\Shared\ICasesService.cs" />
+    <Compile Include="IServices\Shared\ICaseTypesService.cs" />
+    <Compile Include="IServices\CostCenter\ICostCentersService.cs" />
+    <Compile Include="IServices\Bank\IBanksService.cs" />
+    <Compile Include="IServices\Safe\ISafesService.cs" />
+    <Compile Include="IServices\AccountChart\IAccountChartsService.cs" />
+    <Compile Include="IServices\Vendor\IVendorTypesService.cs" />
+    <Compile Include="IServices\Vendor\IVendorsService.cs" />
+    <Compile Include="IServices\AccountChart\IAccountTypesService.cs" />
+    <Compile Include="IServices\Branch\IBranchsService.cs" />
+    <Compile Include="IServices\Shared\IDonationsService.cs" />
+    <Compile Include="IServices\Shared\ICurrencyRatesService.cs" />
+    <Compile Include="IServices\Shared\ICurrencysService.cs" />
+    <Compile Include="IServices\User\IUsersService.cs" />
+    <Compile Include="IServices\Shared\IAttachmentsService.cs" />
+    <Compile Include="IServices\Shared\ICountrysService.cs" />
+    <Compile Include="IServices\Shared\ICitysService.cs" />
+    <Compile Include="IServices\Shared\IDistrictsService.cs" />
+    <Compile Include="IServices\Shared\IStockAssessmentPolicysService.cs" />
+    <Compile Include="IServices\Shared\IMailsService.cs" />
+    <Compile Include="IServices\Shared\IMobilesService.cs" />
+    <Compile Include="IServices\Shared\IBankMovementsService.cs" />
+    <Compile Include="IServices\Shared\ITransfersService.cs" />
+    <Compile Include="IServices\Shared\IInventoryTransfersService.cs" />
+    <Compile Include="IServices\Shared\IInventoryMovementsService.cs" />
+    <Compile Include="IServices\Shared\IInventoryInsService.cs" />
+    <Compile Include="IServices\Shared\IInventoryOutsService.cs" />
+    <Compile Include="IServices\Shared\IInventoryDifferencesService.cs" />
+    <Compile Include="Models\DTOs\AccountChartFormDTO.cs" />
+    <Compile Include="Models\DTOs\DonorFormDTO.cs" />
+    <Compile Include="Models\DTOs\IDTO.cs" />
+    <Compile Include="Models\ViewModels\AccountChart\AccountChartCategoryViewModel.cs" />
+    <Compile Include="Models\ViewModels\AccountChart\AccountChartGroupViewModel.cs" />
+    <Compile Include="Models\ViewModels\AccountChart\AccountChartLevelSettingViewModel.cs" />
+    <Compile Include="Models\ViewModels\AccountChart\AddAccountChartViewModel.cs" />
+    <Compile Include="Models\ViewModels\AdvancesType\AdvancesTypeLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\AdvancesType\AdvancesTypeViewModel.cs" />
+    <Compile Include="Models\ViewModels\Asset\AssetFilterViewModel.cs" />
+    <Compile Include="Models\ViewModels\Asset\AssetInventory\AssetInventoryDetailViewModel.cs" />
+    <Compile Include="Models\ViewModels\Asset\AssetInventory\AssetInventoryFilterViewModel.cs" />
+    <Compile Include="Models\ViewModels\Asset\AssetInventory\AssetInventoryViewModel.cs" />
+    <Compile Include="Models\ViewModels\Asset\AssetLocation\AssetLocationFilterViewModel.cs" />
+    <Compile Include="Models\ViewModels\Asset\AssetLocation\AssetLocationViewModel.cs" />
+    <Compile Include="Models\ViewModels\Asset\Depreciation\DepreciationFilterViewModel.cs" />
+    <Compile Include="Models\ViewModels\Asset\Depreciation\DepreciationLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\Asset\DepreciationRateViewModel.cs" />
+    <Compile Include="Models\ViewModels\Asset\DepreciationTypeViewModel.cs" />
+    <Compile Include="Models\ViewModels\Asset\Depreciation\DepreciationViewModel.cs" />
+    <Compile Include="Models\ViewModels\Asset\EffiencyRaiseHistoryViewModel.cs" />
+    <Compile Include="Models\ViewModels\Asset\Exclude\ExcludeFilterViewModel.cs" />
+    <Compile Include="Models\ViewModels\Asset\Exclude\ExcludeLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\Asset\Exclude\ExcludeViewModel.cs" />
+    <Compile Include="Models\ViewModels\Asset\Expense\ExpenseFilterViewModel.cs" />
+    <Compile Include="Models\ViewModels\Asset\ExpensesTypesFilterViewModel.cs" />
+    <Compile Include="Models\ViewModels\Asset\ExpensesTypeViewModel.cs" />
+    <Compile Include="Models\ViewModels\Asset\Expense\ExpenseViewModel.cs" />
+    <Compile Include="Models\ViewModels\Asset\AssetInventory\ListAssetInventorysLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\Asset\ListAssetLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\Asset\AssetLocation\ListAssetLocationsLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\Asset\Depreciation\ListDepreciationViewModel.cs" />
+    <Compile Include="Models\ViewModels\Asset\Exclude\ListExcludeLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\Asset\Expense\ListExpenseLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\Asset\ListExpensesTypesLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\Asset\ListLocationsLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\Asset\LocationFilterViewModel.cs" />
+    <Compile Include="Models\ViewModels\Asset\LocationViewModel.cs" />
+    <Compile Include="Models\ViewModels\BankMovement\BankMovementFilterViewModel.cs" />
+    <Compile Include="Models\ViewModels\BankMovement\ListBankMovementsLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\Bank\BankAccountChart\BankAccountChartViewModel.cs" />
+    <Compile Include="Models\ViewModels\AccountChart\AccountChartDocument\AccountChartDocumentFilterViewModel.cs" />
+    <Compile Include="Models\ViewModels\AccountChart\AccountChartDocument\AccountChartDocumentViewModel.cs" />
+    <Compile Include="Models\ViewModels\AccountChart\AccountChartDocument\ListAccountChartDocumentLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\Bank\BankFilterViewModel.cs" />
+    <Compile Include="Models\ViewModels\Bank\ListBankLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\Branch\BranchFilterViewModel.cs" />
+    <Compile Include="Models\ViewModels\Branch\ListBranchsLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\Branch\UserBranchListViewModel.cs" />
+    <Compile Include="Models\ViewModels\Brand\BrandFilterViewModel.cs" />
+    <Compile Include="Models\ViewModels\Brand\BrandViewModel.cs" />
+    <Compile Include="Models\ViewModels\Brand\ListBrandsLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\Charts\FinancialMovementsChartViewModel.cs" />
+    <Compile Include="Models\ViewModels\ClosedMonth\ClosedMonthsFilterViewModel.cs" />
+    <Compile Include="Models\ViewModels\ClosedMonth\ClosedMonthViewModel.cs" />
+    <Compile Include="Models\ViewModels\ClosedMonth\ListClosedMonthsLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\ClosedReceipt\ClosedReceiptViewModel.cs" />
+    <Compile Include="Models\ViewModels\CostCenterType\CostCenterTypeViewModel.cs" />
+    <Compile Include="Models\ViewModels\CostCenterType\CostCenterTypesFilterViewModel.cs" />
+    <Compile Include="Models\ViewModels\CostCenter\CostCenterFilterViewModel.cs" />
+    <Compile Include="Models\ViewModels\CostCenter\BankMovementCostCentersViewModel.cs" />
+    <Compile Include="Models\ViewModels\CostCenter\ListCostCenterLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\Currency\CurrencyFilterViewModel.cs" />
+    <Compile Include="Models\ViewModels\Currency\CurrencyRateFilterViewModel.cs" />
+    <Compile Include="Models\ViewModels\Currency\LatestCurrencyRate.cs" />
+    <Compile Include="Models\ViewModels\Currency\ListCurrencyLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\Currency\ListCurrencyRateLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\Group\GroupRoleListViewModel.cs" />
+    <Compile Include="Models\ViewModels\PaymentMovment\NotificationsDiscountViewModel.cs" />
+    <Compile Include="Models\ViewModels\Setting\TestamentAndAdvancesSettingViewModel .cs" />
+    <Compile Include="Models\ViewModels\Shared\TestamentExtractionFilterViewModel.cs" />
+    <Compile Include="Models\ViewModels\Shared\TestamentExtractionViewModel.cs" />
+    <Compile Include="Models\ViewModels\Testament\AdvanceViewModel.cs" />
+    <Compile Include="Models\ViewModels\Testament\LiquidationDetailViewModel.cs" />
+    <Compile Include="Models\ViewModels\Testament\LiquidationViewModel.cs" />
+    <Compile Include="Models\ViewModels\Testament\TestamentFilterViewModel.cs" />
+    <Compile Include="Models\ViewModels\Testament\TestamentLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\Testament\TestamentViewModel.cs" />
+    <Compile Include="Models\ViewModels\Testament\ListTestamentLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\DelegateMan\DelegateMenFilterViewModel.cs" />
+    <Compile Include="Models\ViewModels\DelegateMan\ListDelegateMensLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\Inventory\InventoryCostCentersViewModel.cs" />
+    <Compile Include="Models\ViewModels\Inventory\InventoryOpeningBalanceLookupViewModel.cs" />
+    <Compile Include="Models\ViewModels\Inventory\InventoryOpeningBalanceProductViewModel.cs" />
+    <Compile Include="Models\ViewModels\JournalEntries\JournalDetailsViewModel.cs" />
+    <Compile Include="Models\ViewModels\LightViewModels\Asset\AssetLocationLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\LightViewModels\Bank\BankAccountChartLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\LightViewModels\Purchasing\PurchaseInvoiceLookupViewModel.cs" />
+    <Compile Include="Models\ViewModels\Safe\SafeAccountChartListViewModel.cs" />
+    <Compile Include="Models\ViewModels\Safe\SafeAccountChart\SafeAccountChartLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\Safe\SafeAccountChart\SafeAccountChartViewModel.cs" />
+    <Compile Include="Models\ViewModels\Shared\BaseFilterViewModel.cs" />
+    <Compile Include="Models\ViewModels\Shared\DiscountPercentageFilterViewMode.cs" />
+    <Compile Include="Models\ViewModels\Shared\DiscountPercentageViewModel.cs" />
+    <Compile Include="Models\ViewModels\Shared\DocumentFilterViewModel.cs" />
+    <Compile Include="Models\ViewModels\Shared\DocumentLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\Shared\DocumentViewModel.cs" />
+    <Compile Include="Models\ViewModels\Shared\DonationTypeViewModel.cs" />
+    <Compile Include="Models\ViewModels\Donation\AddExternalDonationViewModel.cs" />
+    <Compile Include="Models\ViewModels\Donation\ChecksUnderCollectionFilterViewModel.cs" />
+    <Compile Include="Models\ViewModels\Donation\ChecksUnderCollectionLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\Donation\ChecksUnderCollectionViewModel.cs" />
+    <Compile Include="Models\ViewModels\Donation\DetailsDonationCostCenterViewModel.cs" />
+    <Compile Include="Models\ViewModels\Donation\DetailsDonationCaseViewModel.cs" />
+    <Compile Include="Models\ViewModels\Donation\DetailsDonationInventoryViewModel.cs" />
+    <Compile Include="Models\ViewModels\Donation\DetailsDonationProductViewModel.cs" />
+    <Compile Include="Models\ViewModels\Donation\DetailsDonationViewModel.cs" />
+    <Compile Include="Models\ViewModels\Donation\DonationInvoiceViewModel.cs" />
+    <Compile Include="Models\ViewModels\Donation\ExternalCaseViewModel.cs" />
+    <Compile Include="Models\ViewModels\Donation\FinancialViewModel.cs" />
+    <Compile Include="Models\ViewModels\Donation\ListDonationLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\Donator\DonatorFilterViewModel.cs" />
+    <Compile Include="Models\ViewModels\Donator\ListDonatorLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\Shared\FiscalYearViewModel.cs" />
+    <Compile Include="Models\ViewModels\Group\GroupFilterViewModel.cs" />
+    <Compile Include="Models\ViewModels\Group\GroupPermissionListViewModel.cs" />
+    <Compile Include="Models\ViewModels\Group\GroupPermissionViewModel.cs" />
+    <Compile Include="Models\ViewModels\Group\ListGroupsLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\Group\UserGroupListViewModel.cs" />
+    <Compile Include="Models\ViewModels\Inventory\InventoryFilterViewModel.cs" />
+    <Compile Include="Models\ViewModels\Inventory\InventoryMovementTypeLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\Inventory\InventoryMovementTypeViewModel.cs" />
+    <Compile Include="Models\ViewModels\Inventory\InventoryMovementCostCenterViewModel.cs" />
+    <Compile Include="Models\ViewModels\Inventory\InventoryMovementAddViewModel.cs" />
+    <Compile Include="Models\ViewModels\Inventory\InventoryMovementFilterViewModel.cs" />
+    <Compile Include="Models\ViewModels\Inventory\InventoryTransferAddViewModel.cs" />
+    <Compile Include="Models\ViewModels\Inventory\InventoryTransferCostCenterViewModel.cs" />
+    <Compile Include="Models\ViewModels\Inventory\InventoryOpeningBalanceCostCenterViewModel.cs" />
+    <Compile Include="Models\ViewModels\Inventory\InventoryOpeningBalanceAddViewModel.cs" />
+    <Compile Include="Models\ViewModels\Inventory\InventoryTransferFilterViewModel.cs" />
+    <Compile Include="Models\ViewModels\Inventory\InventoryOpeningBalanceViewModel.cs" />
+    <Compile Include="Models\ViewModels\Inventory\InventoryOpeningBalanceLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\Inventory\InventoryOpeningBalanceFilterViewModel.cs" />
+    <Compile Include="Models\ViewModels\Inventory\ListInventoryLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\JournalEntries\AddJournalEntriesViewModel.cs" />
+    <Compile Include="Models\ViewModels\JournalEntries\FilterJournalEntriesViewModel.cs" />
+    <Compile Include="Models\ViewModels\JournalPosting\ApprovedRejectedCollectionViewModel.cs" />
+    <Compile Include="Models\ViewModels\JournalPosting\JournalPostingFilterViewModel.cs" />
+    <Compile Include="Models\ViewModels\JournalPosting\JournalPostingViewModel.cs" />
+    <Compile Include="Models\ViewModels\JournalPosting\ListJournalPostingLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\Shared\JournalTypeViewModel.cs" />
+    <Compile Include="Models\ViewModels\LightViewModels\AccountChart\AccountChartCategoryLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\LightViewModels\AccountChart\AccountChartGroupLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\LightViewModels\AccountChart\AccountChartLevelSettingLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\LightViewModels\Asset\AssetInventoryDetailLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\LightViewModels\Asset\AssetInventoryLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\LightViewModels\Asset\AssetLookupViewModel.cs" />
+    <Compile Include="Models\ViewModels\LightViewModels\Asset\DepreciationRateLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\LightViewModels\Asset\DepreciationTypeLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\LightViewModels\Asset\ExpenseLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\LightViewModels\Asset\ExpensesTypeLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\LightViewModels\Asset\LocationLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\LightViewModels\Shared\BrandLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\LightViewModels\ClosedMonth\ClosedMonthLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\LightViewModels\Shared\CostCenterTypeLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\LightViewModels\Shared\DiscountPercentageLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\LightViewModels\Shared\DonationTypeLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\LightViewModels\Shared\FiscalYearLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\LightViewModels\Group\GroupPermissionLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\LightViewModels\Shared\JournalPostingLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\LightViewModels\Shared\JournalTypeLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\LightViewModels\Shared\MenuItemLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\LightViewModels\Purchasing\PurchaseInvoiceCostCenterLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\LightViewModels\Purchasing\PurchaseInvoiceLookupLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\LightViewModels\Purchasing\PurchaseInvoiceTypeLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\LightViewModels\Shared\SettingLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\LightViewModels\Shared\StoreMovementLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\LightViewModels\User\UserMenuItemLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\LightViewModels\User\UserPermissionLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\CostCenterType\ListCostCenterTypesLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\Shared\ListDiscountPercentegesLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\Shared\ListDocumentsLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\LoggedInUser\MersalMenuItemViewModel.cs" />
+    <Compile Include="Models\ViewModels\LoggedInUser\MersalPrivilegeViewModel.cs" />
+    <Compile Include="Models\ViewModels\LoggedInUser\UserLoggedInViewModel.cs" />
+    <Compile Include="Models\ViewModels\Shared\LoginViewModel.cs" />
+    <Compile Include="Models\ViewModels\MeasurementUnit\ListMeasurementUnitsLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\MeasurementUnit\MeasurementUnitFilterViewModel.cs" />
+    <Compile Include="Models\ViewModels\MenuItem\ListMenuItemsLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\MenuItem\MenuItemFilterViewModel.cs" />
+    <Compile Include="Models\ViewModels\MenuItem\MenuItemViewModel.cs" />
+    <Compile Include="Models\ViewModels\MenuItem\MenuItemUsersListViewModel.cs" />
+    <Compile Include="Models\ViewModels\MenuItem\SidebarMenuItemLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\MenuItem\UserMenuItemsListViewModel.cs" />
+    <Compile Include="Models\ViewModels\ObjectCostCenter\ListObjectCostCenterLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\ObjectCostCenter\ObjectCostCenterFilterViewModel.cs" />
+    <Compile Include="Models\ViewModels\ObjectCostCenter\ObjectCostCenterLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\ObjectCostCenter\ObjectCostCenterViewModel.cs" />
+    <Compile Include="Models\ViewModels\Shared\PaymentMovmentViewModel.cs" />
+    <Compile Include="Models\ViewModels\Donation\AddDonationCostCenter.cs" />
+    <Compile Include="Models\ViewModels\Donation\AddDonationInventoryViewModel.cs" />
+    <Compile Include="Models\ViewModels\Donation\AddDonationProducts.cs" />
+    <Compile Include="Models\ViewModels\LightViewModels\Shared\PaymentMovmentLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\LightViewModels\Shared\ReceivingMethodLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\PaymentMovment\AddPaymentMovmentCostCenterViewModel.cs" />
+    <Compile Include="Models\ViewModels\PaymentMovment\AddPaymentMovmentInventoryViewModel.cs" />
+    <Compile Include="Models\ViewModels\PaymentMovment\AddPaymentMovmentViewModel.cs" />
+    <Compile Include="Models\ViewModels\PaymentMovment\DetailsPaymentMovmentCostCenterViewModel.cs" />
+    <Compile Include="Models\ViewModels\PaymentMovment\DetailsPaymentMovmentInventoryViewModel.cs" />
+    <Compile Include="Models\ViewModels\PaymentMovment\DetailsPaymentMovmentViewModel.cs" />
+    <Compile Include="Models\ViewModels\PaymentMovment\LisPaymentMovmentLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\Permission\ListPermissionsLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\Permission\PermissionFilterViewModel.cs" />
+    <Compile Include="Models\ViewModels\Purchasing\ListPurchasLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\Purchasing\PaymentCaseViewModel.cs" />
+    <Compile Include="Models\ViewModels\Purchasing\PurchaseInvoiceCostCenterViewModel.cs" />
+    <Compile Include="Models\ViewModels\Purchasing\PurchaseInvoiceTypeViewModel.cs" />
+    <Compile Include="Models\ViewModels\LightViewModels\Purchasing\PurchaseRebateCostCenterLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\Purchasing\PurchaseRebateCostCenterViewModel.cs" />
+    <Compile Include="Models\ViewModels\Purchasing\PurchasInvoiceFilterViewModel.cs" />
+    <Compile Include="Models\ViewModels\Shared\ReceivingMethodViewModel.cs" />
+    <Compile Include="Models\ViewModels\Donation\AddDonationViewModel.cs" />
+    <Compile Include="Models\ViewModels\CostCenter\CostCenterViewModel.cs" />
+    <Compile Include="Models\ViewModels\Donation\AddDonationCaseViewModel.cs" />
+    <Compile Include="Models\ViewModels\Donation\AddDonatorViewModel.cs" />
+    <Compile Include="Models\ViewModels\LightViewModels\Shared\SalesBillTypeLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\Reports\AccountsReportViewModel.cs" />
+    <Compile Include="Models\ViewModels\Reports\BalanceSheetReportViewModel.cs" />
+    <Compile Include="Models\ViewModels\Reports\BankAccountReportViewModel.cs" />
+    <Compile Include="Models\ViewModels\Reports\CostCenterAccountReportViewModel.cs" />
+    <Compile Include="Models\ViewModels\Reports\Donation\DonationCasesBalanceReportViewModel.cs" />
+    <Compile Include="Models\ViewModels\Reports\Donation\DonatorCasesHistoryReportViewModel.cs" />
+    <Compile Include="Models\ViewModels\Reports\FixedAsset\FixedAssetDepreciationReportViewModel.cs" />
+    <Compile Include="Models\ViewModels\Reports\FixedAsset\FixedAssetExcludedReportViewModel.cs" />
+    <Compile Include="Models\ViewModels\Reports\FixedAsset\FixedAssetInventoryReportViewModel.cs" />
+    <Compile Include="Models\ViewModels\Reports\FixedAsset\FixedAssetLocationReportViewModel.cs" />
+    <Compile Include="Models\ViewModels\Reports\FixedAsset\FixedAssetLostReportViewModel.cs" />
+    <Compile Include="Models\ViewModels\Reports\Inventory\InventoryBalanceReportViewModel.cs" />
+    <Compile Include="Models\ViewModels\Reports\ReportFiltersViewModel.cs" />
+    <Compile Include="Models\ViewModels\Reports\SafeReportViewModel.cs" />
+    <Compile Include="Models\ViewModels\Reports\VendorAccountReportViewModel.cs" />
+    <Compile Include="Models\ViewModels\Role\RolePermissionListViewModel.cs" />
+    <Compile Include="Models\ViewModels\Role\ListRolesLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\Role\RoleFilterViewModel.cs" />
+    <Compile Include="Models\ViewModels\Safe\ListSafesLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\Safe\SafeFilterViewModel.cs" />
+    <Compile Include="Models\ViewModels\Sales\SalesBillProductViewModel.cs" />
+    <Compile Include="Models\ViewModels\Sales\SalesBillTypeViewModel.cs" />
+    <Compile Include="Models\ViewModels\LightViewModels\Shared\MeasurementUnitLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\Sales\SalesBillViewModel.cs" />
+    <Compile Include="Models\ViewModels\MeasurementUnit\MeasurementUnitViewModel.cs" />
+    <Compile Include="Models\ViewModels\Donator\DonatorViewModel.cs" />
+    <Compile Include="Models\ViewModels\LightViewModels\Shared\ExitPermissionLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\LightViewModels\Shared\EntrancePermissionLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\LightViewModels\Shared\DonatorLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\LightViewModels\Purchasing\PurchaseRebateProductLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\LightViewModels\Shared\SalesRebateProductLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\LightViewModels\AccountChart\AccountChartSettingLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\LightViewModels\User\UserGroupLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\LightViewModels\Group\GroupRoleLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\LightViewModels\Group\GroupLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\LightViewModels\Role\RolePermissionLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\LightViewModels\Shared\PermissionLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\LightViewModels\User\UserRoleLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\LightViewModels\Role\RoleLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\LightViewModels\Address\CountryCallingCodeLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\LightViewModels\Address\AddressLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\LightViewModels\Shared\ProductPriceLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\LightViewModels\Shared\JournalLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\LightViewModels\Shared\ExchangeBondsLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\LightViewModels\Shared\ReceiptsLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\LightViewModels\Shared\SalesRebateLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\LightViewModels\Purchasing\PurchaseRebateLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\LightViewModels\Purchasing\PurchaseInvoiceLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\LightViewModels\Shared\TransactionLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\LightViewModels\Shared\PaymentMethodLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\LightViewModels\Asset\AssetLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\LightViewModels\Asset\AssetCategoryLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\LightViewModels\Inventory\InventoryLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\LightViewModels\Shared\ProductLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\LightViewModels\Shared\ProductTypeLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\LightViewModels\Shared\StoreMeasurementUnitLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\LightViewModels\Shared\DelegateManLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\LightViewModels\Shared\CaseLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\LightViewModels\Shared\CaseTypeLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\CostCenter\CostCenterLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\LightViewModels\Shared\BankLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\LightViewModels\Shared\SafeLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\LightViewModels\AccountChart\AccountChartLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\LightViewModels\Shared\VendorTypeLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\LightViewModels\Shared\VendorLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\LightViewModels\AccountChart\AccountTypeLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\LightViewModels\Shared\BranchLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\LightViewModels\Shared\DonationLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\LightViewModels\Shared\CurrencyRateLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\LightViewModels\Shared\CurrencyLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\LightViewModels\User\UserLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\LightViewModels\Shared\AttachmentLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\LightViewModels\Address\CountryLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\LightViewModels\Address\CityLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\LightViewModels\Address\DistrictLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\LightViewModels\Shared\StockAssessmentPolicyLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\LightViewModels\Shared\MailLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\LightViewModels\Shared\MobileLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\LightViewModels\Shared\BankMovementLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\LightViewModels\Shared\TransferLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\LightViewModels\Inventory\InventoryTransferLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\LightViewModels\Inventory\InventoryMovementLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\LightViewModels\Inventory\InventoryInLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\LightViewModels\Inventory\InventoryOutLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\LightViewModels\Inventory\InventoryDifferenceLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\Shared\ExitPermissionViewModel.cs" />
+    <Compile Include="Models\ViewModels\Shared\EntrancePermissionViewModel.cs" />
+    <Compile Include="Models\ViewModels\Purchasing\PurchaseRebateProductViewModel.cs" />
+    <Compile Include="Models\ViewModels\Sales\SalesRebateProductViewModel.cs" />
+    <Compile Include="Models\ViewModels\AccountChart\AccountChartSettingViewModel.cs" />
+    <Compile Include="Models\ViewModels\Setting\FixedAssetAccountSettingViewModel.cs" />
+    <Compile Include="Models\ViewModels\Setting\FinancialSettingViewModel.cs" />
+    <Compile Include="Models\ViewModels\Setting\GeneralSettingViewModel.cs" />
+    <Compile Include="Models\ViewModels\Setting\PostingSettingSettingViewModel.cs" />
+    <Compile Include="Models\ViewModels\Setting\SettingViewModel.cs" />
+    <Compile Include="Models\ViewModels\Setting\SystemCurrencySettingViewModel.cs" />
+    <Compile Include="Models\ViewModels\Setting\VATSettingViewModel.cs" />
+    <Compile Include="Models\ViewModels\Setting\VendorSettingViewModel.cs" />
+    <Compile Include="Models\ViewModels\Shared\FilterViewModel.cs" />
+    <Compile Include="Models\ViewModels\Shared\IdCollectionViewModel.cs" />
+    <Compile Include="Models\ViewModels\Shared\NmaeValueViewModel.cs" />
+    <Compile Include="Models\ViewModels\Shared\OrderViewModel.cs" />
+    <Compile Include="Models\ViewModels\StoreMovement\StoreMovementViewModel.cs" />
+    <Compile Include="Models\ViewModels\User\ChangePasswordViewModel.cs" />
+    <Compile Include="Models\ViewModels\User\UserBranchLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\User\UserBranchViewModel.cs" />
+    <Compile Include="Models\ViewModels\User\UserPermissionListViewModel.cs" />
+    <Compile Include="Models\ViewModels\User\UserRoleListViewModel.cs" />
+    <Compile Include="Models\ViewModels\User\ListUsersLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\User\UserFilterViewModel.cs" />
+    <Compile Include="Models\ViewModels\User\UserGroupViewModel.cs" />
+    <Compile Include="Models\ViewModels\Group\GroupRoleViewModel.cs" />
+    <Compile Include="Models\ViewModels\Group\GroupViewModel.cs" />
+    <Compile Include="Models\ViewModels\Role\RolePermissionViewModel.cs" />
+    <Compile Include="Models\ViewModels\Permission\PermissionViewModel.cs" />
+    <Compile Include="Models\ViewModels\User\UserMenuItemViewModel.cs" />
+    <Compile Include="Models\ViewModels\User\UserRoleViewModel.cs" />
+    <Compile Include="Models\ViewModels\Role\RoleViewModel.cs" />
+    <Compile Include="Models\ViewModels\Address\CountryCallingCodeViewModel.cs" />
+    <Compile Include="Models\ViewModels\Address\AddressViewModel.cs" />
+    <Compile Include="Models\ViewModels\Shared\ProductPriceViewModel.cs" />
+    <Compile Include="Models\ViewModels\Shared\JournalViewModel.cs" />
+    <Compile Include="Models\ViewModels\Shared\ExchangeBondsViewModel.cs" />
+    <Compile Include="Models\ViewModels\Shared\ReceiptsViewModel.cs" />
+    <Compile Include="Models\ViewModels\Sales\SalesRebateViewModel.cs" />
+    <Compile Include="Models\ViewModels\Purchasing\PurchaseRebateViewModel.cs" />
+    <Compile Include="Models\ViewModels\Purchasing\PurchaseInvoiceViewModel.cs" />
+    <Compile Include="Models\ViewModels\JournalEntries\TransactionViewModel.cs" />
+    <Compile Include="Models\ViewModels\Shared\PaymentMethodViewModel.cs" />
+    <Compile Include="Models\ViewModels\Asset\AssetViewModel.cs" />
+    <Compile Include="Models\ViewModels\Asset\AssetCategoryViewModel.cs" />
+    <Compile Include="Models\ViewModels\Inventory\InventoryViewModel.cs" />
+    <Compile Include="Models\ViewModels\Shared\ProductViewModel.cs" />
+    <Compile Include="Models\ViewModels\Shared\ProductTypeViewModel.cs" />
+    <Compile Include="Models\ViewModels\Inventory\StoreMeasurementUnitViewModel.cs" />
+    <Compile Include="Models\ViewModels\DelegateMan\DelegateManViewModel.cs" />
+    <Compile Include="Models\ViewModels\Shared\CaseViewModel.cs" />
+    <Compile Include="Models\ViewModels\Shared\CaseTypeViewModel.cs" />
+    <Compile Include="Models\ViewModels\Bank\BankViewModel.cs" />
+    <Compile Include="Models\ViewModels\Safe\SafeViewModel.cs" />
+    <Compile Include="Models\ViewModels\AccountChart\AccountChartViewModel.cs" />
+    <Compile Include="Models\ViewModels\User\UserPermissionViewModel.cs" />
+    <Compile Include="Models\ViewModels\Vendor\ListVendorsLightViewModel.cs" />
+    <Compile Include="Models\ViewModels\Vendor\VendorFilterViewModel.cs" />
+    <Compile Include="Models\ViewModels\Vendor\VendorTypeViewModel.cs" />
+    <Compile Include="Models\ViewModels\Vendor\VendorViewModel.cs" />
+    <Compile Include="Models\ViewModels\AccountChart\AccountTypeViewModel.cs" />
+    <Compile Include="Models\ViewModels\Branch\BranchViewModel.cs" />
+    <Compile Include="Models\ViewModels\Shared\DonationViewModel.cs" />
+    <Compile Include="Models\ViewModels\Currency\CurrencyRateViewModel.cs" />
+    <Compile Include="Models\ViewModels\Currency\CurrencyViewModel.cs" />
+    <Compile Include="Models\ViewModels\User\UserViewModel.cs" />
+    <Compile Include="Models\ViewModels\Shared\AttachmentViewModel.cs" />
+    <Compile Include="Models\ViewModels\Address\CountryViewModel.cs" />
+    <Compile Include="Models\ViewModels\Address\CityViewModel.cs" />
+    <Compile Include="Models\ViewModels\Address\DistrictViewModel.cs" />
+    <Compile Include="Models\ViewModels\Inventory\StockAssessmentPolicyViewModel.cs" />
+    <Compile Include="Models\ViewModels\Shared\MailViewModel.cs" />
+    <Compile Include="Models\ViewModels\Shared\MobileViewModel.cs" />
+    <Compile Include="Models\ViewModels\BankMovement\BankMovementViewModel.cs" />
+    <Compile Include="Models\ViewModels\Shared\TransferViewModel.cs" />
+    <Compile Include="Models\ViewModels\Inventory\InventoryTransferViewModel.cs" />
+    <Compile Include="Models\ViewModels\Inventory\InventoryMovementViewModel.cs" />
+    <Compile Include="Models\ViewModels\Inventory\InventoryInViewModel.cs" />
+    <Compile Include="Models\ViewModels\Inventory\InventoryOutViewModel.cs" />
+    <Compile Include="Models\ViewModels\Inventory\InventoryDifferenceViewModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="IServices\Address\" />
+    <Folder Include="Models\ValueObjects\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Framework.Common\Framework.Common.csproj">
+      <Project>{F8BEADB8-AFFA-42E5-AC34-2265F936FF42}</Project>
+      <Name>Framework.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Framework.Core\Framework.Core.csproj">
+      <Project>{12E94E97-C887-4CAE-B03C-69AA46ED770F}</Project>
+      <Name>Framework.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MersalAccountingService.Common\MersalAccountingService.Common.csproj">
+      <Project>{d0cc6ccc-ed64-47f2-940e-d7c58ce19e48}</Project>
+      <Name>MersalAccountingService.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MersalAccountingService.Entities\MersalAccountingService.Entities.csproj">
+      <Project>{1A9F998A-6C27-4B7A-ADEE-DC62F962312A}</Project>
+      <Name>MersalAccountingService.Entities</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

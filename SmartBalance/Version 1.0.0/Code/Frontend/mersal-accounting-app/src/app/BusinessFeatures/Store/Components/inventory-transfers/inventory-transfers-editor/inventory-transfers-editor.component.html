@@ -1,0 +1,191 @@
+<div class="container-fluid">
+  <h3><i class="fa fa-credit-card"></i> {{ 'movements.inventoryInventoryTransfers' | translate }}</h3>
+  <loader [hidden]="!PageLoading"></loader>
+  <section class="editor-section" *ngIf="!PageLoading">
+    <form role="form" [formGroup]="modelForm">
+      <div class="row">
+        <!--documentNumber-->
+        <div *ngIf="editorMode != editorModeEnum.add" class="form-group col-lg-2">
+          <label>{{ 'banking.shared.code' | translate }}</label>
+          <div class="detail w-100">
+            <input type="number" min="0" disabled class="form-control" pattern=".*\S.*" formControlName="code">
+          </div>
+          <div
+            *ngIf="(modelForm.controls['code'].touched || modelForm.controls['code'].dirty)&&modelForm.controls['code'].invalid"
+            class="text-danger">
+            {{ 'movements.fieldReq' | translate }}
+          </div>
+        </div>
+        <!--date-->
+        <div class="form-group col-lg-2">
+          <label>{{ 'journalEntries.date' | translate }} <i *ngIf="editorMode == editorModeEnum.add"
+              class="text-danger">*</i></label>
+          <input type="text" placeholder="Datepicker" class="form-control" formControlName="date"
+            [attr.disabled]="editorMode  != editorModeEnum.add? '' : null"
+            [ngClass]="{'border border-danger' : modelForm.controls['date'].invalid && modelForm.controls['date'].touched}"
+            bsDatepicker [minDate]="minDate" [maxDate]="maxDate" readonly value="{{modelForm.controls['date'].value |date:'dd/MM/yyyy'}}">
+
+          <div class="text-danger" *ngIf=" (modelForm.controls['date'].hasError('invalid' ) || modelForm.controls['date'].hasError('required' ) )&&
+                 (modelForm.controls['date'].touched || modelForm.controls['date'].dirty)">
+            {{ 'movements.fieldReq' | translate }}
+          </div>
+          <div class="text-danger" *ngIf=" (modelForm.controls['date'].hasError('invalid' ) || 
+          modelForm.controls['date'].hasError('bsDate' ) )&&
+                 (modelForm.controls['date'].touched || modelForm.controls['date'].dirty)">
+            {{ 'error.maxDateAlert' | translate }}
+          </div>
+        </div>
+
+        <!--inventory from-->
+        <div class="form-group col-lg-2">
+          <label>{{ 'movements.storeFrom' | translate }} <span *ngIf="editorMode == editorModeEnum.add"
+              class="text-danger">*</span> </label>
+          <kendo-dropdownlist #list [data]="inventoryListFrom" [filterable]="true" [textField]="'displyedName'"
+            [valueField]="'id'" [valuePrimitive]="true" selected [kendoDropDownFilter]="filterSettings"
+            id="inventoryFromId" (valueChange)="getProductByInventoryId($event)"
+            [attr.disabled]="editorMode  != editorModeEnum.add? '' : null" class="height38 width-100-per"
+            formControlName="inventoryFromId">
+          </kendo-dropdownlist>
+          <div class="text-danger" *ngIf=" modelForm.controls['inventoryFromId'].hasError('required' ) &&
+          (modelForm.controls['inventoryFromId'].touched || modelForm.controls['inventoryFromId'].dirty)">
+            {{ 'movements.fieldReq' | translate }}
+          </div>
+        </div>
+        <!--inventory to-->
+        <div class="form-group col-lg-2">
+          <label>{{ 'movements.storeTo' | translate }} <span *ngIf="editorMode == editorModeEnum.add"
+              class="text-danger">*</span> </label>
+          <kendo-dropdownlist #list [data]="inventoryListTo" [filterable]="true" [textField]="'displyedName'"
+            [valueField]="'id'" [valuePrimitive]="true" selected [kendoDropDownFilter]="filterSettings"
+            id="inventoryToId" [attr.disabled]="editorMode  != editorModeEnum.add? '' : null"
+            class="height38 width-100-per" formControlName="inventoryToId">
+          </kendo-dropdownlist>
+          <div class="text-danger" *ngIf=" modelForm.controls['inventoryToId'].hasError('required' ) &&
+          (modelForm.controls['inventoryToId'].touched || modelForm.controls['inventoryToId'].dirty)">
+            {{ 'movements.fieldReq' | translate }}
+          </div>
+        </div>
+
+
+
+        <div class="form-group col-lg-2 checkbox-col">
+          <input *ngIf="editorMode == editorModeEnum.add" type="checkbox" id="multiCostCenter"
+            class="form-control checkbox-inline" formControlName="CostCentersCheck"
+            (click)="CostCentersCHekedToggle()" />
+
+          <input *ngIf="editorMode != editorModeEnum.add" type="checkbox" id="multiCostCenter"
+            class="form-control checkbox-inline" formControlName="CostCentersCheck" disabled
+            (click)="CostCentersCHekedToggle()" />
+
+          <label for="multiCostCenter" class="">
+            {{ 'movements.multiCostCenter' | translate }}
+            <label [hidden]="!modelForm.controls['CostCentersCheck'].value==true"><a data-backdrop="static"
+                data-keyboard="false" data-toggle="modal" data-target="#CostCentersModal"> <i class="fa fa-info-circle"
+                  title=" {{'costCenter.costcenters' | translate}}"></i> </a></label>
+          </label>
+          <!--CostCenters Modal -->
+          <button id="openCostCentersModalBTN" [hidden]="true" data-backdrop="static" data-keyboard="false"
+            data-toggle="modal" data-target="#CostCentersModal"></button>
+          <div class="modal fade" id="CostCentersModal" data-backdrop="static" data-keyboard="false" role="dialog"
+            aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel"> {{ 'movements.multiCostCenter' | translate }}</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <!-- <app-store-cost-center (costCentersListChanged)="addCostCenters($event)"></app-store-cost-center> -->
+
+                  <app-add-cost-center [DetailsCostCenters]="DetailsCostCenters" [EditeCostCenters]="EditeCostCenters"
+                    [IsInventory]="true" (costCentersListChanged)="addCostCenters($event)">
+                  </app-add-cost-center>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--End Cost Centers Modal-->
+        </div>
+        <!--one cost Center-->
+        <div class="form-group col-lg-2  checkbox-col" *ngIf="editorMode  == editorModeEnum.add">
+          <input type="checkbox" id="onecostCenter" class="form-control checkbox-inline"
+            formControlName="OneCostCenterCheck" #onCostCenterCheck
+            (click)="OneCostCenterCHekedToggle(onCostCenterCheck)" />
+
+          <label for="onecostCenter" class="">
+            {{ 'movements.costCenter' | translate }}
+          </label>
+          <!--Check Box one CostCenter Modal -->
+        </div>
+
+        <div class="form-group col-lg-2" *ngIf="editorMode  == editorModeEnum.add" [hidden]="!IsOneCostCenterChecked">
+          <label>{{ 'movements.costCenterName' | translate }} <i class="text-danger">*</i> </label><br>
+          <!--*ngIf="isBranchedLoaded"-->
+          <kendo-dropdownlist #list [data]="CostCenterDropDown" [filterable]="true" textField="text" valueField="value"
+            [kendoDropDownFilter]="filterSettings" id="CostCenter" formControlName="OnCostCenterValue"
+            class="height38 width-100-per" (selectionChange)="onOneCostCenterChanged($event)">
+          </kendo-dropdownlist>
+          <div class="text-danger" *ngIf=" modelForm.controls['OnCostCenterValue'].hasError('required' ) &&
+            (modelForm.controls['OnCostCenterValue'].touched || modelForm.controls['OnCostCenterValue'].dirty)">
+            {{ 'movements.fieldReq' | translate }}
+          </div>
+
+        </div>
+
+
+      </div>
+
+      <div class="row">
+        <div class="form-group col-lg-6">
+          <label>{{ 'movements.statementAr' | translate }} <i class="text-danger">*</i></label>
+          <textarea class="form-control" formControlName="descriptionAr"
+            [attr.disabled]="editorMode  == editorModeEnum.detail? '' : null"
+            placeholder="{{ 'movements.statementAr' | translate }}"></textarea>
+
+          <div class="text-danger" *ngIf=" (modelForm.controls['descriptionAr'].hasError('invalid' ) || modelForm.controls['descriptionAr'].hasError('required' ) )&&
+                  (modelForm.controls['descriptionAr'].touched || modelForm.controls['descriptionAr'].dirty)">
+            {{ 'movements.fieldReq' | translate }}
+          </div>
+
+        </div>
+        <div class="form-group col-lg-6">
+          <label>{{ 'movements.statementEn' | translate }} </label>
+          <textarea class="form-control" formControlName="descriptionEn"
+            [attr.disabled]="editorMode  == editorModeEnum.detail? '' : null"
+            placeholder="{{ 'movements.statementEn' | translate }}"></textarea>
+          <div class="text-danger" *ngIf=" (modelForm.controls['descriptionEn'].hasError('invalid' ) || modelForm.controls['descriptionEn'].hasError('required' ) )&&
+                  (modelForm.controls['descriptionEn'].touched || modelForm.controls['descriptionEn'].dirty)">
+            {{ 'movements.fieldReq' | translate }}
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+
+        <!--End one Cost Center-->
+      </div>
+
+      <div class="row">
+        <div class="col-lg-12">
+          <store-product [canEditPrice]="canEditPrice" style="width: 100%" [isTransfer]="true" [editId]="editId" [detailId]="detailId"
+            [products]="products" (productListChanged)="onProductListChanged($event)"></store-product>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="form-group col-lg-4">
+          <button type="submit" *ngIf="!(editorMode == editorModeEnum.detail)" (click)="submit()"
+            [disabled]="!modelForm.valid" class="btn btn-secondary"><i class="fa fa-floppy-o verticalLine"></i>
+            {{ 'shared.save' | translate }}
+          </button>
+          &nbsp;
+          <button (click)="goToBack()" class="btn btn-secondary"><i class="fa fa-undo"></i>
+            {{'shared.back' | translate }}</button>
+
+        </div>
+      </div>
+    </form>
+  </section>
+</div>

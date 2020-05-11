@@ -1,0 +1,56 @@
+/* You can add global styles to this file, and also import other style files */
+/* bootstrap style toast */
+/* or import a bootstrap 4 alert styled design (SASS ONLY) */
+/* should be after your bootstrap imports, it uses bs4 variables, mixins, functions */
+
+
+#toast-container > div {
+    opacity:1;
+}
+
+.footer{
+    /* padding: 10px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    margin-top: 2px;
+    background-color: #eee;
+    color: #fff;
+    text-align: center; */
+    padding: 5px 10px 1px;
+    margin-top: 2px;
+    background-color: #4a4a4a;
+    color: #fff;
+    text-align: center;
+    font-size: 0.92em !important;
+}
+
+/**
+* table
+*/
+table.table-sky > thead > tr {
+    background-color: cornflowerblue;
+    color: #fff;
+}
+table.table-sky > thead > tr > th {
+    border-right: 1px solid #fff;
+    border-left: 1px solid #fff;
+    border-radius: 4px; 
+}
+table.table-sky > tbody > tr > td {
+    border-right: 1px solid #eee;
+    border-left: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+}
+
+/**
+* control-icon
+*/
+.control-icon{
+    width: 28px;
+    margin: 1px;
+    margin-left: 4px;
+    margin-right: 4px;
+}
+.icon-cursor{
+    cursor: pointer;
+}

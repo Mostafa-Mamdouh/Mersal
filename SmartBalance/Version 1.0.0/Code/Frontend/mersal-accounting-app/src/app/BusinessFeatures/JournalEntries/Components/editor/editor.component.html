@@ -1,0 +1,369 @@
+<div class="container-fluid">
+  <!-- <h1>postingStatus: {{postingStatus}}</h1> -->
+
+  <h3 *ngIf="postingStatus == postingStatusEnum.approved"><i class="fa fa-credit-card"></i>
+    {{ 'menu.journalEntries' | translate }}<span *ngIf="item?.movementTypeName"> - {{item?.movementTypeName}}</span>
+  </h3>
+  <h3 *ngIf="postingStatus != postingStatusEnum.approved"><i class="fa fa-credit-card"></i>
+    {{ 'journalEntries.post.previewJournal' | translate }}<span *ngIf="item?.movementTypeName"> -
+      {{item?.movementTypeName}}</span>
+  </h3>
+
+  <loader [hidden]="!PageLoading"></loader>
+  <section class="editor-section" *ngIf="!PageLoading">
+    <form role="form" [formGroup]="addJournal">
+      <loader [hidden]="!propPageLoading"></loader>
+
+      <div class="row">
+        <!--documentNumber-->
+        <div class="form-group col-lg-2" *ngIf="mode=='detail' || mode=='edit'">
+          <label>{{ 'movements.documentNumber' | translate }} <i class="text-danger">*</i></label>
+          <div class="detail w-100">
+            <label class="form-control">{{item?.documentNumber}}</label>
+            <!-- <input type="text" value="{{addJournal.controls['documentNumber'].value}}" disabled="disabled"
+                class="form-control"> -->
+          </div>
+          <div
+            *ngIf="(addJournal.controls['documentNumber'].touched || addJournal.controls['documentNumber'].dirty)&&addJournal.controls['documentNumber'].invalid"
+            class="text-danger">
+            <span *ngIf="addJournal.controls['Amount'].hasError( 'required' )">
+              {{ 'movements.fieldReq' | translate }}
+            </span>
+          </div>
+        </div>
+
+        <!--date-->
+        <div class="form-group col-lg-2">
+          <label>{{ 'donation.receiptDate' | translate }} <i class="text-danger">*</i></label>
+          <input type="text" *ngIf="mode !='detail'&&mode!='edit'" class="form-control" formControlName="date"
+            [ngClass]="{'border border-danger' :  addJournal.controls['date'].invalid && addJournal.controls['date'].touched}"
+            bsDatepicker [minDate]="minDate" [maxDate]="maxDate" readonly
+            value="{{addJournal.controls['date'].value |date:'dd/MM/yyyy'}}">
+          <input type="text" *ngIf="mode =='detail'||mode=='edit'"
+            value="{{addJournal.controls['date'].value |date:'dd/MM/yyyy'}}" disabled="disabled" class="form-control">
+
+          <div class="text-danger" *ngIf=" (addJournal.controls['date'].hasError('invalid' ) || 
+          addJournal.controls['date'].hasError('required' ) )&&
+                       (addJournal.controls['date'].touched || addJournal.controls['date'].dirty)">
+            {{ 'movements.fieldReq' | translate }}
+          </div>
+          <div class="text-danger" *ngIf=" (addJournal.controls['date'].hasError('invalid' ) || 
+          addJournal.controls['date'].hasError('bsDate' ) )&&
+                       (addJournal.controls['date'].touched || addJournal.controls['date'].dirty)">
+            {{ 'error.maxDateAlert' | translate }}
+          </div>
+        </div>
+
+        <!--isAutomaticPosting-->
+        <div class="form-group col-lg-2" *ngIf="mode=='detail' || mode=='edit'">
+          <label>{{ ' ' }}</label>
+          <div class="detail w-100">
+            <input type="checkbox" id="isAutomaticPosting" formControlName="isAutomaticPosting" disabled="disabled"
+              class="form-control checkbox-inline">
+            <label for="isAutomaticPosting">{{ 'journalPosting.journalPosting.isAutomaticPosting' | translate }}</label>
+          </div>
+        </div>
+
+        <!--isBulkPosting-->
+        <div class="form-group col-lg-2" *ngIf="mode=='detail' || mode=='edit'">
+          <label>{{ ' ' }}</label>
+          <div class="detail w-100">
+            <input type="checkbox" id="isBulkPosting" formControlName="isBulkPosting" disabled="disabled"
+              class="form-control checkbox-inline">
+            <label for="isBulkPosting">{{ 'journalPosting.journalPosting.isBulkPosting' | translate }}</label>
+          </div>
+        </div>
+
+        <!-- <h1>postingStatus: {{postingStatus}}</h1> -->
+
+        <!--reverseConstraint-->
+        <div class="form-group col-lg-4" *ngIf="mode =='detail'">
+
+          <div *ngIf="postingStatus == postingStatusEnum.needAprove" class="row">
+            <div class="col-md-6">
+              <button *ngIf="canApproveOrRejectJournalEntriesUnderReview" class="btn bg-success btn-block white"
+                (click)="approve()">{{ 'journalEntries.post.approve' | translate }}</button>
+            </div>
+            <div class="col-md-6">
+              <button *ngIf="canApproveOrRejectJournalEntriesUnderReview" class="btn bg-danger btn-block white"
+                (click)="reject()">{{ 'journalEntries.post.reject' | translate }}</button>
+            </div>
+          </div>
+
+          <div *ngIf="postingStatus == postingStatusEnum.approved">
+            <button *ngIf="postingStatus == postingStatusEnum.approved && 
+                !item?.isReversed && 
+                !item?.reversedFromId" class="btn-danger form-control"
+              (click)="reverseConstraint()">{{ 'movements.reverseConstraint' | translate }}</button>
+
+            <label *ngIf="item?.isReversed" (click)="goToLinkedJuornal(item.reversedToId)"
+              class="formcontrol label-info">
+              {{ 'journalEntries.reversed' | translate }}
+            </label>
+            <label *ngIf="item?.reversedFromId" (click)="goToLinkedJuornal(item.reversedFromId)"
+              class="formcontrol label-warn">
+              {{ 'journalEntries.canNotReversed' | translate }}
+            </label>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="row">
+        <!--descriptionAr-->
+        <div class="form-group col-lg-6">
+          <label>{{ 'movements.statementAr' | translate }} <i class="text-danger">*</i></label>
+          <textarea class="form-control" formControlName="descriptionAr"
+            placeholder="{{ 'movements.statementAr' | translate }}"></textarea>
+
+          <div class="text-danger" *ngIf=" (addJournal.controls['descriptionAr'].hasError('invalid' ) || addJournal.controls['descriptionAr'].hasError('required' ) )&&
+                    (addJournal.controls['descriptionAr'].touched || addJournal.controls['descriptionAr'].dirty)">
+            {{ 'movements.fieldReq' | translate }}
+          </div>
+        </div>
+
+        <!--descriptionEn-->
+        <div class="form-group col-lg-6">
+          <label>{{ 'movements.statementEn' | translate }} </label>
+          <textarea  class="form-control" formControlName="descriptionEn"
+            placeholder="{{ 'movements.statementEn' | translate }}" ></textarea>
+          <div class="text-danger" *ngIf=" (addJournal.controls['descriptionEn'].hasError('invalid' ) || addJournal.controls['descriptionEn'].hasError('required' ) )&&
+                    (addJournal.controls['descriptionEn'].touched || addJournal.controls['descriptionEn'].dirty)">
+            {{ 'movements.fieldReq' | translate }}
+          </div>
+        </div>
+      </div>
+
+      <!-- <div class="card mb-3">
+        <div class="card-header">
+          <h5><i class="fa fa-book"></i> {{ 'donation.description' | translate }} </h5>
+        </div>
+        <div class="card-body table-responsive">
+          
+        </div>
+      </div> -->
+
+      <div class="card mb-3">
+        <div class="card-header">
+          <h5><i class="fa fa-area-chart"></i> {{ 'journalEntries.accounts' | translate }} </h5>
+        </div>
+        <div class="card-body table-responsive padding-sides-2">
+          <table class="table table-inline-edit">
+            <thead>
+              <tr>
+                <th class="header-table">{{ 'journalEntries.accountCode' | translate }}</th>
+                <th class="header-table">{{ 'movements.accountName' | translate }}</th>
+                <th class="header-table-1 ">{{ 'movements.debtor' | translate }}</th>
+                <th class="header-table-1 ">{{ 'movements.creditor' | translate }}</th>
+                <th class="header-table-1">{{ 'movements.costCenterName' | translate }}</th>
+                <th class="header-table ">{{ 'movements.discriptionAr' | translate }}</th>
+                <th class="header-table ">{{ 'movements.discriptionEn' | translate }}</th>
+                <th *ngIf="mode == 'add'" class="header-table minHeight">
+                  <button type="button" class="btn secondary-btn btn-white" *ngIf="mode!='detail'"
+                    [attr.disabled]="mode !='add'? '' : null" (click)="addJournalDetails()">
+                    <i class="fa fa-plus" aria-hidden="true"></i>
+                  </button>
+                </th>
+              </tr>
+            </thead>
+            <tbody formArrayName="journalDetails"
+              *ngFor="let item of addJournal['controls'].journalDetails['controls']; let i=index">
+              <tr *ngIf="mode != 'detail'" formGroupName="{{i}}">
+                <!--accountFullCode-->
+                <td>
+                  <div class="detail w-100">
+                    <input type="number" value="0" step="any" class="form-control" pattern="^\d*(\.\d{0,2})?$"
+                      formControlName="accountFullCode" (change)="accountFullCodeChange($event,i)"
+                      [attr.disabled]="mode =='edit'? '' : null" placeholder="0">
+                  </div>
+                </td>
+                <!--accountId-->
+                <td>
+                  <kendo-dropdownlist *ngIf="!isInventory" #list [data]="AccountCharts" [filterable]="true" [textField]="'displyedName'"
+                    [valueField]="'id'" [valuePrimitive]="true" [kendoDropDownFilter]="filterSettings" id="AccountChart"
+                    formControlName="accountId" [attr.disabled]="mode =='edit'? '' : null"
+                    (selectionChange)="accountIdChanged($event, i)" class="height38 width-100-per">
+                  </kendo-dropdownlist>
+
+                  <kendo-dropdownlist *ngIf="isInventory  && item.controls['debtorValue'].value > 0" #list [data]="AccountCharts" [filterable]="true" [textField]="'displyedName'"
+                    [valueField]="'id'" [valuePrimitive]="true" [kendoDropDownFilter]="filterSettings" id="AccountChart"
+                    formControlName="accountId" [attr.disabled]="mode =='edit'? '' : null"
+                    (selectionChange)="accountIdChanged($event, i)" class="height38 width-100-per">
+                  </kendo-dropdownlist>
+
+                  <kendo-dropdownlist *ngIf="isInventory && item.controls['creditorValue'].value > 0" #list [data]="fixedAssetAccount" [filterable]="true"
+                  [textField]="'displyedName'" [valueField]="'id'" [valuePrimitive]="true"
+                  [kendoDropDownFilter]="filterSettings" id="AccountChart" formControlName="accountId"
+                  (selectionChange)="accountIdChanged($event, i)" class="height38 width-100-per">
+                </kendo-dropdownlist>
+
+                  <div class="text-danger" *ngIf=" item.controls['accountId'].hasError( 'required' ) &&
+                                  (item.controls['accountId'].touched || item.controls['accountId'].dirty)">
+                    {{ 'movements.fieldReq' | translate }}
+                  </div>
+                </td>
+                <!--debtorValue-->
+                <td>
+                  <!--debtorValue-->
+                  <div class="detail w-100">
+                    <input type="number" value="0" min="0" step="any" class="form-control"
+                       formControlName="debtorValue"
+                      (change)="debtorValueChange($event,i)"
+                      [attr.disabled]="item.controls['isCreditor'].value === true ||mode =='edit'? '' : null"
+                      placeholder="0">
+                  </div>
+                </td>
+                <!--creditorValue-->
+                <td>
+                  <!--creditorValue-->
+                  <div class="detail w-100">
+                    <input type="number" value="0" min="0" step="any" class="form-control"
+                       formControlName="creditorValue"
+                      (change)="creditorValueChange($event,i)"
+                      [attr.disabled]="item.controls['isCreditor'].value === false||mode =='edit'? '' : null"
+                      placeholder="0">
+                  </div>
+                </td>
+                
+                <!--costCenterId-->
+                <td>
+                  <kendo-dropdownlist #list [data]="CostCenters" [filterable]="true" [textField]="'displyedName'"
+                    [attr.disabled]="mode =='edit'? '' : null" [valueField]="'id'" [valuePrimitive]="true"
+                    class="height38 width-100-per" [kendoDropDownFilter]="filterSettings" id="CostCenter"
+                    formControlName="costCenterId">
+                  </kendo-dropdownlist>
+                </td>
+                <!--descriptionAr-->
+                <td>
+                  <textarea rows="2" class="form-control" pattern=".*\S.*"
+                    [title]="item.controls['descriptionAr'].value" formControlName="descriptionAr"></textarea>
+
+                  <!-- <input type="text" class="form-control" pattern=".*\S.*"
+                    [title]="item.controls['descriptionAr'].value" formControlName="descriptionAr"> -->
+                </td>
+                <!--descriptionEn-->
+                <td>
+                  <textarea rows="2" class="form-control" pattern=".*\S.*"
+                    [title]="item.controls['descriptionEn'].value" formControlName="descriptionEn"></textarea>
+
+                  <!-- <input type="text" class="form-control" pattern=".*\S.*"
+                    [title]="item.controls['descriptionEn'].value" formControlName="descriptionEn"> -->
+                </td>
+                <!--button-->
+                <td *ngIf="mode == 'add'">
+                  <button type="button" class="btn action" *ngIf="mode!='detail'" [attr.disabled]="mode =='edit'? '' : null"
+                    (click)="deletejournalDetails(i)">
+                    <i class="fa fa-times"></i>
+                  </button>
+                </td>
+              </tr>
+              <tr *ngIf="mode == 'detail'" formGroupName="{{i}}">
+                <!--accountFullCode-->
+                <td>
+                  <div class="detail w-100">
+                    <input *ngIf="!canChangePostedAccounts()" type="number" class="form-control"
+                      formControlName="accountFullCode" disabled>
+
+                    <input *ngIf="canChangePostedAccounts()" type="number" value="0" step="any" class="form-control"
+                      pattern="^\d*(\.\d{0,2})?$" formControlName="accountFullCode"
+                      (change)="accountFullCodeChange($event,i)" placeholder="0">
+                  </div>
+                </td>
+                <!--accountId-->
+                <td>
+                  <kendo-dropdownlist *ngIf="!canChangePostedAccounts()" disabled #list [data]="AccountCharts"
+                    [filterable]="true" [textField]="'name'" [valueField]="'id'" [valuePrimitive]="true"
+                    [kendoDropDownFilter]="filterSettings" id="AccountChart" formControlName="accountId"
+                    class="height38 width-100-per">
+                  </kendo-dropdownlist>
+
+                  <kendo-dropdownlist *ngIf="canChangePostedAccounts()" #list [data]="AccountCharts" [filterable]="true"
+                    [textField]="'displyedName'" [valueField]="'id'" [valuePrimitive]="true"
+                    [kendoDropDownFilter]="filterSettings" id="AccountChart" formControlName="accountId"
+                    (selectionChange)="accountIdChanged($event, i)" class="height38 width-100-per">
+                  </kendo-dropdownlist>
+
+                  
+                  <kendo-dropdownlist *ngIf="isInventory && item.controls['debtorValue'].value" #list [data]="AccountCharts" [filterable]="true"
+                    [textField]="'displyedName'" [valueField]="'id'" [valuePrimitive]="true"
+                    [kendoDropDownFilter]="filterSettings" id="AccountChart" formControlName="accountId"
+                    (selectionChange)="accountIdChanged($event, i)" class="height38 width-100-per">
+                  </kendo-dropdownlist>
+                </td>
+                <td>{{item.controls['debtorValue'].value }}</td>
+                <td>{{item.controls['creditorValue'].value }}</td>
+                <td>
+                  <kendo-dropdownlist #list [data]="CostCenters" [filterable]="true" [textField]="'name'"
+                    [valueField]="'id'" [valuePrimitive]="true" [kendoDropDownFilter]="filterSettings" id="CostCenter"
+                    class="height38 width-100-per" formControlName="costCenterId" [disabled]="!canChangePostedAccounts()" >
+                  </kendo-dropdownlist>
+                </td>
+                <td>
+                  <textarea *ngIf="canChangePostedAccounts()" rows="2" class="form-control" pattern=".*\S.*"
+                    [title]="item.controls['descriptionAr'].value" formControlName="descriptionAr"></textarea>
+
+                  <span *ngIf="!canChangePostedAccounts()">
+                    {{item.controls['descriptionAr'].value }}
+                  </span>
+                </td>
+                <td>
+                  <textarea *ngIf="canChangePostedAccounts()" rows="2" class="form-control" pattern=".*\S.*"
+                    [title]="item.controls['descriptionEn'].value" formControlName="descriptionEn"></textarea>
+
+                  <span *ngIf="!canChangePostedAccounts()">
+                    {{item.controls['descriptionEn'].value }}
+                  </span>
+                </td>
+                <td *ngIf="mode == 'add'">
+                  <!-- <button class="btn action" *ngIf="i>0" (click)="deletejournalDetails(i)" >
+                                      <i class="fa fa-times"></i>
+                                    </button> -->
+                </td>
+              </tr>
+            </tbody>
+            <thead>
+              <tr>
+                <th class="text-center header-table"></th>
+                <th class="header-table boldAndXLG">{{'shared.total'|translate}}</th>
+                <th class="text-center header-table boldAndXLG">
+                  {{totalDebtorValue}}
+                </th>
+                <th class="text-center header-table boldAndXLG">
+                  {{totalCreditorValue}}
+                </th>
+          
+                <th class="text-center header-table"></th>
+                <th class="text-center header-table"></th>
+                <th class="text-center header-table"></th>
+                <th *ngIf="mode == 'add'" class="text-center header-table"> </th>
+              </tr>
+            </thead>
+          </table>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group col-lg-4">
+          <button type="submit" *ngIf="mode !='detail' && journalPreview == undefined || (canChangePostedAccounts() && journalPreview == undefined)" (click)="submit()" [disabled]="!addJournal.valid"
+            class="btn btn-secondary">
+            <i class="fa fa-floppy-o verticalLine"></i> {{ 'shared.save' | translate }}
+          </button>
+
+          <ng-container *ngIf="canApproveOrRejectJournalEntriesUnderReview || journalPreview">
+            <button *ngIf="mode =='detail' && postingStatus == postingStatusEnum.needAprove || journalPreview"
+              class="btn bg-success white"
+              (click)="approve()">{{ 'journalEntries.post.approve' | translate }}{{' '}}</button>
+            <span *ngIf="mode =='detail' && postingStatus == postingStatusEnum.needAprove || journalPreview">&nbsp;</span>
+
+            <button *ngIf="mode =='detail' && postingStatus == postingStatusEnum.needAprove || journalPreview" class="btn bg-danger white"
+              (click)="reject()">{{ 'journalEntries.post.reject' | translate }}{{' '}}</button>
+            <span *ngIf="mode =='detail' && postingStatus == postingStatusEnum.needAprove || journalPreview">&nbsp;</span>
+          </ng-container>
+          &nbsp;
+          <button *ngIf="journalPreview == undefined" (click)="gotoList()" class="btn btn-secondary"><i class="fa fa-undo"></i>
+            {{'shared.back' | translate }}</button>
+        </div>
+      </div>
+    </form>
+  </section>
+
+</div>

@@ -1,0 +1,36 @@
+<div>
+    <h2>{{ 'movements.summary' | translate }}</h2>
+    <div class="">
+        <section class="form-group col-lg-6">
+            <form role="form" [formGroup]="addBillSummary" (ngSubmit)="AddBillSummary()">
+                <div class="form-group ">
+                    <label>{{ 'movements.billTotal' | translate }}</label>
+                    <input type="number" class="form-control" formControlName="BillTotal"
+                        placeholder="{{ 'movements.billTotal' | translate }}" />
+                </div>
+                <div class="form-group ">
+                    <label>{{ 'movements.totalCost' | translate }}</label>
+                    <input type="number" class="form-control" formControlName="TotalCost"
+                        placeholder="{{ 'movements.totalCost' | translate }}" />
+                </div>
+                <div class="form-group ">
+                    <label>{{ 'movements.totalDiscount' | translate }}</label>
+                    <input type="number" class="form-control" formControlName="TotalDiscount"
+                        placeholder="{{ 'movements.totalDiscount' | translate }}" />
+                </div>
+                <div class="form-group ">
+                    <label>{{ 'movements.billNet' | translate }}</label>
+                    <input type="number" class="form-control" formControlName="BillNet"
+                        placeholder="{{ 'movements.billNet' | translate }}" />
+                </div>
+                <div class="row">
+                    <div class="form-group col-lg-3">
+                        <button type="submit" class="btn btn-secondary" [disabled]="!addBillSummary.valid">{{ 'shared.save' | translate }}</button>
+                        <button type="reset" (click)="cancel()"
+                            class="btn btn-secondary">{{ 'shared.cancel' | translate }}</button>
+                    </div>
+                </div>
+            </form>
+        </section>
+    </div>
+</div>

@@ -1,0 +1,108 @@
+<div class="container-fluid">
+        <div class="row header">
+            <div class="col-md-10">
+                <h3>{{ 'measurementUnit.shared.title' | translate }}</h3>
+            </div>
+            <div class="col-md-2">
+                <a routerLink="/measurement-unit/add" 
+                class="btn btn-dark btn-block">{{'shared.add' | translate}}</a>
+            </div>
+        </div>
+    
+       
+        <loader [hidden]="!ListLoading"></loader>
+        <kendo-grid [data]="gridView" *ngIf="!ListLoading" [pageSize]="pageSize" [skip]="skip" [scrollable]="'none'"
+            [columnMenu]="true" [filter]="state.filter" [filterable]="true" [sortable]="true" [pageable]="true"
+            (dataStateChange)="dataStateChange($event)" (pageChange)="pageChange($event)"
+            class="kendoGridHeightAndDirection">
+    
+            <ng-template  kendoGridToolbarTemplate>
+                    <div class="row">
+                            <div class="col-md-11">
+                                    <label>{{'shared.display'| translate}}&nbsp;&nbsp;</label>
+                                        <kendo-dropdownlist #list [(ngModel)]="pagenationSize" 
+                                        (valueChange)="pagenationSizeChange($event)"
+                                        [data]="pagenationSizeList" [filterable]="true" 
+                                        textField="value" valueField="value"
+                                        [kendoDropDownFilter]="filterSettings" class="kendo small-width">
+                                    </kendo-dropdownlist>
+                                </div>
+                        <div *ngIf="gridView?.data?.length > 0" class="col-md-1">
+                            <button type="button" kendoGridExcelCommand 
+                                class="btn-excel"
+                                title="{{'shared.exportTo.excel' | translate}}">
+                                <i class="fa fa-file-excel-o" aria-hidden="true"></i>
+                            </button>
+                            <!-- <button type="button" 
+                                class="btn-excel"
+                                kendoGridExcelCommand
+                                icon="file-excel">{{'shared.exportTo.excel' | translate}}</button> -->
+                        </div>
+                    </div>
+                </ng-template>
+                                    
+             <kendo-grid-excel fileName="Measurement Unit List.xlsx"></kendo-grid-excel>
+
+             <kendo-grid-column media="(max-width: 768px)" title="{{ 'shared.data' | translate }}">
+                <ng-template kendoGridCellTemplate let-dataItem>
+                    <!-- template for mobile -->
+                    <dl>
+                        <dt>{{ 'measurementUnit.shared.code' | translate }}</dt>
+                        <dd>{{dataItem.code}}</dd>
+    
+                        <dt>{{ 'measurementUnit.shared.name' | translate }}</dt>
+                        <dd>{{dataItem.name}}</dd>
+          
+                        <dt>{{ 'measurementUnit.shared.date' | translate }}</dt>
+                        <dd>{{dataItem.date | date: 'mediumDate'}}</dd>
+          
+                    </dl>
+                </ng-template>
+            </kendo-grid-column>
+
+            <!-- <kendo-grid-column field="source" title="{{ 'movements.source' | translate }}"  class="width130px"></kendo-grid-column>
+            <kendo-grid-column field="paymentMethod" title="{{ 'movements.paymentMethod' | translate }}"  class="width130px">
+                <ng-template kendoGridFilterCellTemplate let-filter>
+                    <kendo-dropdownlist #list [(ngModel)]="PaymentId"  (valueChange)="paymentChange($event)"
+                     [data]="PaymentDropDownData" [filterable]="true"
+                     textField="text" valueField="value"
+                    [kendoDropDownFilter]="filterSettings"  class="kendo small-width"> 
+                  </kendo-dropdownlist>
+                </ng-template>
+            </kendo-grid-column> -->
+
+            <kendo-grid-column field="code" title="{{ 'measurementUnit.shared.code' | translate }}" class="width130px" media="md">
+            </kendo-grid-column>
+
+            <kendo-grid-column field="name" title="{{ 'measurementUnit.shared.name' | translate }}" class="width130px" media="md">
+            </kendo-grid-column>
+
+            <kendo-grid-column field="date" id="dateFilter" title="{{ 'measurementUnit.shared.date' | translate }}"
+                class="width130px" filter="date" format="{0:MM/dd/yyyy}" media="md">
+                <ng-template kendoGridCellTemplate let-dataItem>
+                    {{dataItem.date | date: 'mediumDate'}}
+                </ng-template>
+            </kendo-grid-column>
+
+            <!-- <kendo-grid-column field="name" title="{{ 'vendor.shared.name' | translate }}" class="width130px">
+                <ng-template kendoGridFilterCellTemplate let-filter>
+                    <kendo-dropdownlist #list [(ngModel)]="vendorId" (valueChange)="vendorChange($event)"
+                        [data]="vendorsDropDownData" [filterable]="true" textField="text" valueField="value"
+                        [kendoDropDownFilter]="filterSettings" class="kendo small-width">
+                    </kendo-dropdownlist>
+                </ng-template>
+            </kendo-grid-column> -->
+
+            <kendo-grid-column field="" title="" class="width180px" [filterable]="false">
+                <ng-template kendoGridCellTemplate let-dataItem>
+                    <span>
+                        <a routerLink="/measurement-unit/detail/{{dataItem.id}}"><i class="fa fa-eye"></i></a>
+                    </span>
+                    &nbsp;
+                    <span>
+                        <a routerLink="/measurement-unit/edit/{{dataItem.id}}"><i class="fa fa-edit"></i></a>
+                    </span>
+                </ng-template>
+            </kendo-grid-column>
+        </kendo-grid>
+    </div>

@@ -1,0 +1,51 @@
+<div class="container-fluid">
+  <div class="row header">
+    <div class="col-md-8">
+      <h3>{{'reports.fixedAssetDepreciationReport' | translate}}</h3>
+    </div>
+    <div class="col-md-2">
+    </div>
+  </div>
+  <loader [hidden]="!ListLoading"></loader>
+  <form role="form" *ngIf="!ListLoading" [formGroup]="searchForm">
+    <section class="editor-section">
+      <div class="row">
+        <!--bank-->
+        <!-- <div class="form-group col-lg-3">
+          <label>{{ 'banking.shared.bank' | translate }}
+            <i class="text-danger">*</i>
+          </label>
+          <kendo-dropdownlist #list 
+          [data]="Banks" [filterable]="true" [textField]="'displyedName'"
+            [valueField]="'id'" [valuePrimitive]="true" [kendoDropDownFilter]="filterSettings" 
+            id="bankId"
+            formControlName="bankId" class="width90 height38">
+          </kendo-dropdownlist>
+        </div> -->
+        <!--fromDate-->
+        <div class="form-group col-lg-3">
+          <label>{{ 'shared.fromDate' | translate }} </label>
+          <input type="text" formControlName="dateFrom" class="form-control" bsDatepicker>
+        </div>
+        <!--toDate-->
+        <div class="form-group col-lg-3">
+          <label>{{ 'shared.toDate' | translate }} </label>
+          <input type="text" formControlName="dateTo" class="form-control" bsDatepicker>
+        </div>
+
+      </div>
+
+      <div class="row">
+        <!--buttons-->
+        <div class="form-group col-lg-3">
+          <button (click)="gotoReport()" [disabled]="!searchForm.valid"
+            class="btn btn-info search">{{ 'shared.displayReport' | translate }}</button>
+          &nbsp;
+          <button routerLink="/reports/control-panel" class="btn btn-secondary">
+            <i class="fa fa-undo"></i> {{'shared.back' | translate }}
+          </button>
+        </div>
+      </div>
+    </section>
+  </form>
+</div>

@@ -1,0 +1,66 @@
+<div class="container-fluid">
+    <h3><i class="fa fa-credit-card"></i> {{ 'setting.testamentAndAdvancesSetting.title' | translate }}</h3>
+    <loader [hidden]="!PageLoading"></loader>
+
+    <section *ngIf="!PageLoading">
+        <form role="form" [formGroup]="editorForm">
+            <section class="border-curvy">
+                <div class="row">
+          
+                    <!--TestamentAccountNumber-->
+                    <div class="col-md-6">
+                        <label>{{ 'setting.testamentAndAdvancesSetting.testamentAccountNumber' | translate }} <span
+                                class="text-danger">*</span> </label>
+                        <kendo-dropdownlist #list [data]="AccountCharts" [filterable]="true"
+                            [textField]="'displyedName'" [valueField]="'id'" [valuePrimitive]="true"
+                            [kendoDropDownFilter]="filterSettings" id="testamentAccountNumber"
+                            formControlName="testamentAccountNumber" class="width90 height38">
+                        </kendo-dropdownlist>
+
+                        <div class="text-danger" *ngIf="editorForm.controls['testamentAccountNumber'].hasError('required') &&
+                    (editorForm.controls['testamentAccountNumber'].touched || 
+                    editorForm.controls['testamentAccountNumber'].dirty)">
+                            {{ 'movements.fieldReq' | translate }}
+                        </div>
+                    </div>
+
+                    <!--AdvancesAccountNumber-->
+                    <div class="col-md-6">
+                        <label>{{ 'setting.testamentAndAdvancesSetting.advancesAccountNumber' | translate }} <span
+                                class="text-danger">*</span> </label>
+                        <kendo-dropdownlist #list [data]="AccountCharts" [filterable]="true"
+                            [textField]="'displyedName'" [valueField]="'id'" [valuePrimitive]="true"
+                            [kendoDropDownFilter]="filterSettings" id="advancesAccountNumber"
+                            formControlName="advancesAccountNumber" class="width90 height38">
+                        </kendo-dropdownlist>
+
+                        <div class="text-danger" *ngIf="editorForm.controls['advancesAccountNumber'].hasError('required') &&
+                    (editorForm.controls['advancesAccountNumber'].touched || 
+                    editorForm.controls['advancesAccountNumber'].dirty)">
+                            {{ 'movements.fieldReq' | translate }}
+                        </div>
+                    </div>
+
+
+                </div>
+
+            </section>
+
+            <loader [hidden]="!isProccessing"></loader>
+
+            <div class="row">
+                <div class="form-group col-lg-4">
+                    <button type="submit" (click)="save()" [disabled]="!editorForm.valid || isProccessing"
+                        class="btn btn-secondary">
+                        <i class="fa fa-floppy-o verticalLine"></i> {{ 'shared.save' | translate }}
+                    </button>
+                    &nbsp;
+                    <button routerLink="/setting/control-panel" class="btn btn-secondary">
+                        <i class="fa fa-undo"></i> {{'shared.back' | translate }}
+                    </button>
+                </div>
+            </div>
+        </form>
+    </section>
+
+</div>

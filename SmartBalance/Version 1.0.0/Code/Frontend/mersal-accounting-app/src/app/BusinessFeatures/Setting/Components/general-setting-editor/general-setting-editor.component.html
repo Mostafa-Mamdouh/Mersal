@@ -1,0 +1,134 @@
+<div class="container-fluid">
+    <h3><i class="fa fa-credit-card"></i> {{ 'setting.generalSetting.title' | translate }}</h3>
+    <loader [hidden]="!PageLoading"></loader>
+
+    <section *ngIf="!PageLoading">
+        <form role="form" [formGroup]="editorForm">
+            <section class="border-curvy">
+                <div class="row">
+                      <!--isInventoryRequired-->
+                      <div class="col-md-6">
+                            <label>{{' '}}</label>
+                            <div>
+                                <input type="checkbox" placeholder=""
+                                    class="form-control checkbox-inline checkbox-inline-25"
+                                    formControlName="isInventoryRequired" id="isInventoryRequired" [ngClass]="{'border border-danger' : editorForm.controls['isInventoryRequired'].invalid && 
+                editorForm.controls['isInventoryRequired'].touched}">
+                                <label
+                                    for="isInventoryRequired">{{ 'setting.financialSetting.isInventoryRequired' | translate }}
+                                </label>
+                            </div>
+                            <div class="text-danger" *ngIf="(editorForm.controls['isInventoryRequired'].hasError('invalid' ) || 
+                         editorForm.controls['isInventoryRequired'].hasError('required' ) )&&
+                        (editorForm.controls['isInventoryRequired'].touched || 
+                         editorForm.controls['isInventoryRequired'].dirty)">
+                                {{ 'movements.fieldReq' | translate }}
+                            </div>                           
+                        </div>
+                       
+                    <div class="col-md-12">
+                            <hr />
+                        <div class="card">
+                            <div class="card-header">
+                                <h5>
+                                    <i class="fa fa-users" aria-hidden="true"></i>
+                                    <span>
+                                        {{ 'setting.financialSetting.fiscalYear' | translate }}
+                                    </span>
+                                </h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <!--fiscalYearStartMonth-->
+                                    <div class="col-3">
+                                        <label>{{ 'setting.financialSetting.fiscalYearStartMonth' | translate }} <span
+                                                class="text-danger">*</span> </label>
+                                        <kendo-dropdownlist #list [data]="months" [filterable]="true"
+                                            [textField]="'name'" [valueField]="'id'" [valuePrimitive]="true"
+                                            [kendoDropDownFilter]="filterSettings" id="fiscalYearStartMonth"
+                                            formControlName="fiscalYearStartMonth" class="width90 height38">
+                                        </kendo-dropdownlist>
+
+                                        <div class="text-danger" *ngIf="editorForm.controls['fiscalYearStartMonth'].hasError('required') &&
+                                    (editorForm.controls['fiscalYearStartMonth'].touched || 
+                                    editorForm.controls['fiscalYearStartMonth'].dirty)">
+                                            {{ 'movements.fieldReq' | translate }}
+                                        </div>
+                                    </div>
+
+                                    <!--fiscalYearEndMonth-->
+                                    <div class="col-3">
+                                        <label>{{ 'setting.financialSetting.fiscalYearEndMonth' | translate }} <span
+                                                class="text-danger">*</span> </label>
+                                        <kendo-dropdownlist #list [data]="months" [filterable]="true"
+                                            [textField]="'name'" [valueField]="'id'" [valuePrimitive]="true"
+                                            [kendoDropDownFilter]="filterSettings" id="fiscalYearEndMonth"
+                                            formControlName="fiscalYearEndMonth" class="width90 height38">
+                                        </kendo-dropdownlist>
+
+                                        <div class="text-danger" *ngIf="editorForm.controls['fiscalYearEndMonth'].hasError('required') &&
+                                    (editorForm.controls['fiscalYearEndMonth'].touched || 
+                                    editorForm.controls['fiscalYearEndMonth'].dirty)">
+                                            {{ 'movements.fieldReq' | translate }}
+                                        </div>
+                                    </div>
+
+                                    <!--fiscalYearStartDay-->
+                                    <div class="col-3">
+                                        <label>{{ 'setting.financialSetting.fiscalYearStartDay' | translate }} <span
+                                                class="text-danger">*</span> </label>
+                                        <kendo-dropdownlist #list [data]="days" [filterable]="true" [textField]="'name'"
+                                            [valueField]="'id'" [valuePrimitive]="true"
+                                            [kendoDropDownFilter]="filterSettings" id="fiscalYearStartDay"
+                                            formControlName="fiscalYearStartDay" class="width90 height38">
+                                        </kendo-dropdownlist>
+
+                                        <div class="text-danger" *ngIf="editorForm.controls['fiscalYearStartDay'].hasError('required') &&
+                            (editorForm.controls['fiscalYearStartDay'].touched || 
+                            editorForm.controls['fiscalYearStartDay'].dirty)">
+                                            {{ 'movements.fieldReq' | translate }}
+                                        </div>
+                                    </div>
+
+                                    <!--fiscalYearEndDay-->
+                                    <div class="col-3">
+                                        <label>{{ 'setting.financialSetting.fiscalYearEndDay' | translate }} <span
+                                                class="text-danger">*</span> </label>
+                                        <kendo-dropdownlist #list [data]="days" [filterable]="true" [textField]="'name'"
+                                            [valueField]="'id'" [valuePrimitive]="true"
+                                            [kendoDropDownFilter]="filterSettings" id="fiscalYearEndDay"
+                                            formControlName="fiscalYearEndDay" class="width90 height38">
+                                        </kendo-dropdownlist>
+
+                                        <div class="text-danger" *ngIf="editorForm.controls['fiscalYearEndDay'].hasError('required') &&
+                            (editorForm.controls['fiscalYearEndDay'].touched || 
+                            editorForm.controls['fiscalYearEndDay'].dirty)">
+                                            {{ 'movements.fieldReq' | translate }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                  
+                </div>
+            </section>
+
+            <loader [hidden]="!isProccessing"></loader>
+
+            <div class="row">
+                <div class="form-group col-lg-4">
+                    <button type="submit" (click)="save()" [disabled]="!editorForm.valid || isProccessing"
+                        class="btn btn-secondary">
+                        <i class="fa fa-floppy-o verticalLine"></i> {{ 'shared.save' | translate }}
+                    </button>
+                    &nbsp;
+                    <button routerLink="/setting/control-panel" class="btn btn-secondary">
+                        <i class="fa fa-undo"></i> {{'shared.back' | translate }}
+                    </button>
+                </div>
+            </div>
+        </form>
+    </section>
+
+</div>

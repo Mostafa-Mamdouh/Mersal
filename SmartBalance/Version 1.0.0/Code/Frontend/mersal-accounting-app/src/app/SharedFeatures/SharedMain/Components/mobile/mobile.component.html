@@ -1,0 +1,20 @@
+<div class="">
+  <form [formGroup]="mobileFormGroup">
+    <label>{{ 'shared.mobile' | translate }} </label>
+    <div class="detail w-100">
+      <input type="mobile" class="form-control" [attr.disabled]="isSubmited ? '' : null" pattern=".*\S.*"
+        formControlName="mobile" (keyup)="mobileChanged()"
+        [ngClass]="{'border border-danger':mobileFormGroup.controls['mobile'].invalid && mobileFormGroup.controls['mobile'].touched}">
+    </div>
+    <div class="text-danger" *ngIf=" mobileFormGroup.controls['mobile'].hasError( 'required' ) &&
+    (mobileFormGroup.controls['mobile'].touched || mobileFormGroup.controls['mobile'].dirty)">
+      {{ 'movements.fieldReq' | translate }}
+    </div>
+
+    <div class="text-danger" *ngIf=" mobileFormGroup.controls['mobile'].hasError( 'pattern' ) &&
+(mobileFormGroup.controls['mobile'].touched || mobileFormGroup.controls['mobile'].dirty)">
+      {{ 'donation.phone' | translate }}
+    </div>
+
+  </form>
+</div>

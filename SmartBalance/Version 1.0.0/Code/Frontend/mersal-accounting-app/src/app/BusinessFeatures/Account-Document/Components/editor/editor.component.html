@@ -1,0 +1,125 @@
+<div class="container-fluid">
+    <h3><i class="fa fa-credit-card"></i> {{ 'accountChart.accountDocument.title' | translate }}</h3>
+
+    <loader [hidden]="!PageLoading"></loader>
+
+    <section class="editor-section" *ngIf="!PageLoading">
+        <form role="form" [formGroup]="editorForm">
+            <div class="row">
+                <!--code-->
+                <!-- <div *ngIf="editorMode != editorModeEnum.add" class="form-group col-lg-2">
+                    <label>{{ 'donation.code' | translate }} </label>
+                    <label class="form-control">{{editorForm.controls['code'].value}}</label>
+                </div> -->
+
+                <!--bankId-->
+                <div  class="form-group col-md-2">
+                    <label>{{ 'bankAccountCharts.shared.bank' | translate }}
+                            <i *ngIf="canEdit()" class="text-danger">*</i>
+                    </label>
+                    <div class="detail w-100">
+                        <kendo-dropdownlist #bankId [data]="banks" [filterable]="true"
+                            [textField]="'displyedName'" [valueField]="'id'" [valuePrimitive]="true" selected
+                            [kendoDropDownFilter]="filterSettings" id="bankId" class="height38 width-100-per"
+                            formControlName="bankId" [disabled]="bankId != undefined" (valueChange)="bankValueChanged($event)">
+                        </kendo-dropdownlist>
+
+                        <div class="text-danger" *ngIf="(editorForm.controls['bankId'].hasError('invalid' ) || 
+                                    editorForm.controls['bankId'].hasError('required' ) )&&
+                                   (editorForm.controls['bankId'].touched || 
+                                    editorForm.controls['bankId'].dirty)">
+                            {{ 'movements.fieldReq' | translate }}
+                        </div>
+                    </div>
+                </div>
+
+                <!--accountId-->
+                <div class="form-group col-md-3">
+                    <label>{{ 'accountChart.accountDocument.account' | translate }}
+                        <i *ngIf="canEdit()" class="text-danger">*</i>
+                    </label>
+                    <div class="detail w-100">
+                        <kendo-dropdownlist #accountId [data]="accounts" [filterable]="true"
+                            [textField]="'displyedName'" [valueField]="'id'" [valuePrimitive]="true" selected
+                            [kendoDropDownFilter]="filterSettings" id="accountId" class="height38 width-100-per"
+                            formControlName="accountId" [disabled]="id != undefined"
+                            (valueChange)="accountValueChanged($event)">
+                        </kendo-dropdownlist>
+
+                        <div class="text-danger" *ngIf="(editorForm.controls['accountId'].hasError('invalid' ) || 
+                                    editorForm.controls['accountId'].hasError('required' ) )&&
+                                   (editorForm.controls['accountId'].touched || 
+                                    editorForm.controls['accountId'].dirty)">
+                            {{ 'movements.fieldReq' | translate }}
+                        </div>
+                    </div>
+                </div>
+
+                <!--documentId-->
+                <div *ngIf="canEdit()" class="form-group col-md-2">
+                    <label>{{ 'accountChart.accountDocument.document' | translate }}
+                    </label>
+                    <div class="detail w-100">
+                        <kendo-dropdownlist #documentId [data]="documents" [filterable]="true"
+                            [textField]="'documentNumber'" [valueField]="'id'" [valuePrimitive]="true" selected
+                            [kendoDropDownFilter]="filterSettings" id="documentId" class="height38 width-100-per"
+                            formControlName="documentId" [disabled]="!canEdit()">
+                        </kendo-dropdownlist>
+
+                        <div class="text-danger" *ngIf="(editorForm.controls['documentId'].hasError('invalid' ) || 
+                                    editorForm.controls['documentId'].hasError('required' ) )&&
+                                   (editorForm.controls['documentId'].touched || 
+                                    editorForm.controls['documentId'].dirty)">
+                            {{ 'movements.fieldReq' | translate }}
+                        </div>
+                    </div>
+                </div>
+
+                <div *ngIf="canEdit()" class="form-group col-md-2">
+                    <label> </label>
+                    <div class="detail w-100">
+                        <button class="btn btn-success action" type="button" (click)="Add()"><i class="fa fa-plus" aria-hidden="true"></i></button>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <loader [hidden]="!isProccessing"></loader>
+            <kendo-grid [data]="documentsList" [pageSize]="pageSize" [skip]="skip" [scrollable]="'none'"
+                [sortable]="true" (pageChange)="pageChange($event)" class="kendoGridHeightAndDirection">
+
+                <kendo-grid-column field="documentNumber"
+                    title="{{ 'accountChart.accountDocument.documentNumber' | translate }}" class="width130px">
+                </kendo-grid-column>
+
+                <kendo-grid-column field="countReceipts"
+                    title="{{ 'accountChart.accountDocument.countReceipts' | translate }}" class="width130px">
+                </kendo-grid-column>
+
+                <kendo-grid-column *ngIf="canEdit()" field="" title="" class="width130px">
+                    <ng-template kendoGridCellTemplate let-dataItem>
+                        <button class="btn action" (click)="delete(dataItem.documentId)">
+                            <i class="fa fa-times"></i>
+                        </button>
+                    </ng-template>
+                </kendo-grid-column>
+
+            </kendo-grid>
+
+            <div class="row">
+                <div class="form-group col-lg-4">
+                    <button *ngIf="canEdit()" type="submit" (click)="save()"
+                        [disabled]="!editorForm.valid || isProccessing" class="btn btn-secondary">
+                        <i class="fa fa-floppy-o verticalLine"></i> {{ 'shared.save' | translate }}
+                    </button>
+                    &nbsp;
+                    <button (click)="goToBack()" class="btn btn-secondary">
+                        <i class="fa fa-undo"></i> {{'shared.back' | translate }}
+                    </button>
+                </div>
+            </div>
+        </form>
+    </section>
+
+</div>

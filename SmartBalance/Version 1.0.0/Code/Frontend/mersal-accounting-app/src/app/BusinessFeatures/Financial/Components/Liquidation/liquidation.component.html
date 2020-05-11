@@ -1,0 +1,285 @@
+<div class="container-fluid">
+  <form [formGroup]="liquidationForm">
+    <div class="row">
+
+      <!-- <div class="form-group col-lg-2">
+        <label>{{ 'brand.shared.code' | translate }}<i class="text-danger">*</i>
+        </label>
+        <div class="detail w-100">
+          <kendo-dropdownlist #list [data]="testamentCodes" [filterable]="true" [kendoDropDownFilter]="filterSettings"
+            id="code" formControlName="code" class="kendo small-width">
+          </kendo-dropdownlist>
+
+          <div class="text-danger" *ngIf="(liquidationForm.controls['code'].hasError('invalid' ) || 
+            liquidationForm.controls['code'].hasError('required' ) )&&
+                       (liquidationForm.controls['code'].touched || 
+                       liquidationForm.controls['code'].dirty)">
+            {{ 'movements.fieldReq' | translate }}
+          </div>
+        </div>
+      </div> -->
+
+      <div class="form-group col-lg-2">
+        <label>{{ 'liquidation.employee' | translate }} <i class="text-danger">*</i></label>
+        <div class="detail w-100">
+          <kendo-dropdownlist #list [data]="costCenterDropDown" [filterable]="true" textField="displyedName"
+            valueField="id" [kendoDropDownFilter]="filterSettings" id="costCenterId" [valuePrimitive]="true"
+            formControlName="costCenterId" class="kendo small-width" (valueChange)="costCenterValueChange($event)">
+          </kendo-dropdownlist>
+        </div>
+
+        <div class="text-danger"
+          *ngIf=" liquidationForm.controls['costCenterId'].hasError( 'required' ) &&
+                        (liquidationForm.controls['costCenterId'].touched || liquidationForm.controls['costCenterId'].dirty)">
+          {{ 'movements.fieldReq' | translate }}
+        </div>
+      </div>
+
+      <!--liquidationType-->
+      <div class="form-group col-lg-2">
+        <label class="block">{{ 'testament.shared.advancesType' | translate }} <i class="text-danger">*</i> </label>
+        <kendo-dropdownlist #list [data]="advancesTypes" [filterable]="true" [textField]="'text'" [valueField]="'value'"
+          [valuePrimitive]="true" [kendoDropDownFilter]="filterSettings" id="liquidationType" 
+          formControlName="liquidationType" (valueChange)="liquidationTypeValueChange($event)">
+        </kendo-dropdownlist>
+
+        <div class="text-danger" *ngIf=" liquidationForm.controls['liquidationType'].hasError('required' ) &&
+(liquidationForm.controls['liquidationType'].touched || liquidationForm.controls['liquidationType'].dirty)">
+          {{ 'movements.fieldReq' | translate }}
+        </div>
+      </div>
+
+      <!--status-->
+      <div class="form-group col-lg-2">
+        <label class="block">{{ 'liquidation.status.status' | translate }} </label>
+        <kendo-dropdownlist #list [data]="status" [filterable]="true" [textField]="'text'" [valueField]="'value'"
+          [valuePrimitive]="true" [kendoDropDownFilter]="filterSettings" id="liquidationType" [value]="false"
+          (valueChange)="statusValueChange($event)">
+        </kendo-dropdownlist>
+
+      </div>
+
+      <!-- <div class="formgroup col-md-4">
+        <label>{{ 'liquidation.totalAmount' | translate }}</label>
+        <div class="detail w-100">
+          <input type="number" class="form-control" formControlName="totalAmount" min="1"
+            [ngClass]="{'border border-danger' :  liquidationForm.controls['totalAmount'].invalid && liquidationForm.controls['totalAmount'].touched}">
+        </div>
+
+        <div class="text-danger"
+          *ngIf=" liquidationForm.controls['totalAmount'].hasError( 'required' ) &&
+                        (liquidationForm.controls['totalAmount'].touched || liquidationForm.controls['totalAmount'].dirty)">
+          {{ 'movements.fieldReq' | translate }}
+        </div>
+      </div> -->
+
+      <div class="form-group col-md-2">
+        <label> </label>
+        <div class="detail w-100">
+          <button class="btn btn-success action" type="button" (click)="addLiquidationDetails()"><i class="fa fa-plus"
+              aria-hidden="true"></i></button>
+
+        </div>
+      </div>
+
+      <div class="card mb-3">
+        <div class="card-header">
+
+        </div>
+        <div class="card-body table-responsive padding-sides-2">
+          <table class="table table-inline-edit">
+            <thead>
+              <tr>
+                <th class="header-table">{{ 'liquidation.documentCode' | translate }}</th>
+                <th class="header-table">{{ 'liquidation.amount' | translate }}</th>
+                <th class="header-table-1">{{ 'liquidation.testamentExtraction' | translate }}</th>
+                <th class="header-table-1">{{ 'liquidation.caseCode'     | translate }}</th>
+                <th class="header-table-1">{{ 'liquidation.taxDiscount'     | translate }}</th>
+                <th class="header-table-1">{{ 'liquidation.medicineDiscount' | translate }}</th>
+
+              </tr>
+            </thead>
+            <tbody formArrayName="liquidationDetails"
+              *ngFor="let item of liquidationForm['controls'].liquidationDetails['controls']; let i=index;">
+              <ng-container>
+                <tr formGroupName="{{i}}">
+                  <!--liquidationNumber-->
+                  <td>
+                    <div class="detail w-100">
+                      <!-- <kendo-dropdownlist #list [data]="paymentCodes" [filterable]="true"
+                        [kendoDropDownFilter]="filterSettings" id="documentCode" formControlName="documentCode"
+                        class="kendo small-width">
+                      </kendo-dropdownlist> -->
+                      <p *ngIf="item.controls['testamentExtractionId'].value == 1
+                      || item.controls['testamentExtractionId'].value == 4 || 
+                      item.controls['testamentExtractionId'].value == 7 ||
+                      item.controls['testamentExtractionId'].value == null ||
+                      item.controls['testamentExtractionId'].value == 0">{{item.controls['liquidationNumber'].value}}</p>
+
+                      <a *ngIf="item.controls['testamentExtractionId'].value == 10 ||
+                      item.controls['testamentExtractionId'].value == 13" 
+                      (click)="goToPaymentsMovement()" routerLink="/financial/payments-movement/liquidation/{{item.controls['liquidationNumber'].value}}">{{item.controls['liquidationNumber'].value}}</a>
+                    </div>
+
+                    <div *ngIf="(item.controls['liquidationNumber'].touched || item.controls['liquidationNumber'].dirty)
+                                                &&item.controls['liquidationNumber'].invalid" class="text-danger">
+                      {{ 'movements.fieldReq' | translate }}
+                    </div>
+                  </td>
+                  <!--amount-->
+                  <td>
+                    <div class="detail w-100">
+                      <input *ngIf="item.controls['testamentExtractionId'].value != 1 && item.controls['oddAmount'].value" type="number" min="0" max="{{item.controls['oddAmount'].value}}" class="form-control" formControlName="amount"
+                        (change)="amountValueChange($event)">
+
+                        <input *ngIf="item.controls['testamentExtractionId'].value != 1 && !item.controls['oddAmount'].value" type="number" min="0" max="{{item.controls['oddAmount'].value}}" class="form-control" formControlName="amount"
+                        (change)="amountValueChange($event)">
+
+                        <input *ngIf="item.controls['testamentExtractionId'].value == 1" type="number" min="0" class="form-control" formControlName="amount"
+                        (change)="amountValueChange($event)">
+
+                    </div>
+                    <div *ngIf="(item.controls['amount'].touched || 
+                                              item.controls['amount'].dirty)
+                                              &&item.controls['amount'].invalid" class="text-danger">
+                      {{ 'movements.fieldReq' | translate }}
+                    </div>
+
+                    <div *ngIf=" item.controls['amount'].hasError('min' ) &&  (item.controls['amount'].touched || item.controls['amount'].dirty)
+                                                &&item.controls['amount'].invalid" class="text-danger">
+                      {{ 'movements.minLength' | translate }} 1
+                    </div>
+                  </td>
+                  <!--testamentExtractionId-->
+                  <td>
+                    <div class="detail w-100">
+                      <kendo-dropdownlist #list [data]="testamentExtractions" [filterable]="true" textField="name"
+                        valueField="id" [kendoDropDownFilter]="filterSettings" id="testamentExtractionId"
+                        formControlName="testamentExtractionId" class="kendo small-width" [valuePrimitive]="true">
+                      </kendo-dropdownlist>
+
+
+                    </div>
+                    <div *ngIf="item.controls['testamentExtractionId'].hasError('required' ) && (item.controls['testamentExtractionId'].touched || item.controls['testamentExtractionId'].dirty)
+                                                &&item.controls['testamentExtractionId'].invalid" class="text-danger">
+                      {{ 'movements.fieldReq' | translate }}
+                    </div>
+                  </td>
+                  <!--caseCode-->
+                  <td>
+                    <div class="detail w-100">
+                      <input type="text" class="form-control" formControlName="caseCode">
+
+                      <div *ngIf="(item.controls['caseCode'].touched || item.controls['caseCode'].dirty)
+                                    &&item.controls['caseCode'].invalid" class="text-danger">
+                        {{ 'movements.fieldReq' | translate }}
+                      </div>
+                    </div>
+                  </td>
+                  <!--taxDiscount-->
+                  <td>
+                    <div class="detail w-100">
+                      <input type="number" class="form-control" formControlName="taxDiscount">
+
+                      <div *ngIf="(item.controls['taxDiscount'].touched || item.controls['taxDiscount'].dirty)
+                                        &&item.controls['taxDiscount'].invalid" class="text-danger">
+                        {{ 'movements.fieldReq' | translate }}
+                      </div>
+
+                    </div>
+                  </td>
+                  <!--medicineDiscount-->
+                  <td>
+                    <div class="detail w-100">
+                      <input type="number" class="form-control" formControlName="medicineDiscount">
+
+                      <div *ngIf="(item.controls['medicineDiscount'].touched || item.controls['medicineDiscount'].dirty)
+                                    &&item.controls['medicineDiscount'].invalid" class="text-danger">
+                        {{ 'movements.fieldReq' | translate }}
+                      </div>
+                    </div>
+                  </td>
+
+                  <td>
+                    <button class="btn action" (click)="deleteLiquidationDetails(i)">
+                      <i class="fa fa-times"></i>
+                    </button>
+                  </td>
+                </tr>
+              </ng-container>
+            </tbody>
+            <tfoot>
+              <tr>
+                <th class="header-table boldAndXLG">{{'shared.total'|translate}}: {{total}}</th>
+                <th class="text-center header-table"></th>
+                <th class="text-center header-table boldAndXLG">
+                </th>
+                <th class="text-center header-table boldAndXLG">
+
+                </th>
+
+                <th class="text-center header-table"></th>
+                <th class="text-center header-table"></th>
+                <th class="text-center header-table"></th>
+                <th *ngIf="mode == 'add'" class="text-center header-table"> </th>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- <div class="form-group col-lg-4">
+      <label>{{ 'financial.accountChart' | translate }} <i class="text-danger">*</i></label>
+      <div class="detail w-100">
+        <select [attr.disabled]="isSubmited ? '' : null" class="form-control form-control-sm" id="AccountChart"
+                formControlName="donerAccountChart" [ngClass]="{ 'border border-danger': liquidationForm.controls['donerAccountChart'].invalid
+                    &&(liquidationForm.controls['donerAccountChart'].touched || liquidationForm.controls['donerAccountChart'].dirty) }">
+          <option *ngFor="let item of AccountCharts" [value]="item.id">
+            {{item.name}}
+          </option>
+        </select>
+      </div>
+      <di   v class="text-danger" *ngIf=" liquidationForm.controls['donerAccountChart'].hasError('required' ) &&
+                      (liquidationForm.controls['donerAccountChart'].touched || liquidationForm.controls['donerAccountChart'].dirty)">
+        {{ 'movements.fieldReq' | translate }}
+      </div>
+    </div> -->
+    <div class="form-group col-lg-4" *ngIf="!isSubmited">
+      <button type="submit" [disabled]="!liquidationForm.valid" (click)="save()"
+        class="btn btn-secondary">{{ 'shared.save' | translate }}</button>
+      <button (click)="goToBack()" class="btn btn-secondary"><i class="fa fa-undo"></i>
+        {{'shared.back' | translate }}</button>
+    </div>
+  </form>
+</div>
+
+
+<button type="button" id="openPostlBTN" [hidden]="true" data-backdrop="static" data-keyboard="false" data-toggle="modal"
+    data-target="#postModal"></button>
+<div class="modal fade" id="postModal" data-backdrop="static" data-keyboard="false" role="dialog"
+    aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <!-- <h5 class="modal-title" id="exampleModalLabel"> {{ 'movements.multiCostCenter' | translate }}</h5> -->
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <journal-entries-editor (journalValueChange)="journalValueChange($event)"
+                    (journalApprove)="journalApprove($event)" (journalReject)="journalReject($event)"
+                    *ngIf="journalPreviewShow" [postingStatus]="0" [journalPreview]="journalPreview">
+                </journal-entries-editor>
+
+                <!-- <app-add-cost-center [donationValue]="editorForm.controls['Amount'].value"
+                    (costCentersListChanged)="addCostCenters($event)" 
+                    [DetailsCostCenters]="CostCenters">
+                  </app-add-cost-center> -->
+            </div>
+
+        </div>
+    </div>
+</div>

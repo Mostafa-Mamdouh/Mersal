@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DonationCasesBalanceReportDataSet" targetNamespace="http://tempuri.org/DonationCasesBalanceReportDataSet.xsd" xmlns:mstns="http://tempuri.org/DonationCasesBalanceReportDataSet.xsd" xmlns="http://tempuri.org/DonationCasesBalanceReportDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DonationCasesBalanceReportDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DonationCasesBalanceReportDataSet" msprop:Generator_UserDSName="DonationCasesBalanceReportDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="ReportFilter" msprop:Generator_TableClassName="ReportFilterDataTable" msprop:Generator_TableVarName="tableReportFilter" msprop:Generator_RowChangedName="ReportFilterRowChanged" msprop:Generator_TablePropName="ReportFilter" msprop:Generator_RowDeletingName="ReportFilterRowDeleting" msprop:Generator_RowChangingName="ReportFilterRowChanging" msprop:Generator_RowEvHandlerName="ReportFilterRowChangeEventHandler" msprop:Generator_RowDeletedName="ReportFilterRowDeleted" msprop:Generator_RowClassName="ReportFilterRow" msprop:Generator_UserTableName="ReportFilter" msprop:Generator_RowEvArgName="ReportFilterRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="DateFrom" msprop:Generator_ColumnVarNameInTable="columnDateFrom" msprop:Generator_ColumnPropNameInRow="DateFrom" msprop:Generator_ColumnPropNameInTable="DateFromColumn" msprop:Generator_UserColumnName="DateFrom" type="xs:string" minOccurs="0" />
+              <xs:element name="DateTo" msprop:Generator_ColumnVarNameInTable="columnDateTo" msprop:Generator_ColumnPropNameInRow="DateTo" msprop:Generator_ColumnPropNameInTable="DateToColumn" msprop:Generator_UserColumnName="DateTo" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="DonationCasesBalanceReportTable" msprop:Generator_TableClassName="DonationCasesBalanceReportTableDataTable" msprop:Generator_TableVarName="tableDonationCasesBalanceReportTable" msprop:Generator_TablePropName="DonationCasesBalanceReportTable" msprop:Generator_RowDeletingName="DonationCasesBalanceReportTableRowDeleting" msprop:Generator_RowChangingName="DonationCasesBalanceReportTableRowChanging" msprop:Generator_RowEvHandlerName="DonationCasesBalanceReportTableRowChangeEventHandler" msprop:Generator_RowDeletedName="DonationCasesBalanceReportTableRowDeleted" msprop:Generator_UserTableName="DonationCasesBalanceReportTable" msprop:Generator_RowChangedName="DonationCasesBalanceReportTableRowChanged" msprop:Generator_RowEvArgName="DonationCasesBalanceReportTableRowChangeEvent" msprop:Generator_RowClassName="DonationCasesBalanceReportTableRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="TotalAmount" msprop:Generator_ColumnVarNameInTable="columnTotalAmount" msprop:Generator_ColumnPropNameInRow="TotalAmount" msprop:Generator_ColumnPropNameInTable="TotalAmountColumn" msprop:Generator_UserColumnName="TotalAmount" type="xs:string" minOccurs="0" />
+              <xs:element name="ExternalId" msprop:Generator_ColumnVarNameInTable="columnExternalId" msprop:Generator_ColumnPropNameInRow="ExternalId" msprop:Generator_ColumnPropNameInTable="ExternalIdColumn" msprop:Generator_UserColumnName="ExternalId" type="xs:string" minOccurs="0" />
+              <xs:element name="CaseName" msprop:Generator_ColumnVarNameInTable="columnCaseName" msprop:Generator_ColumnPropNameInRow="CaseName" msprop:Generator_ColumnPropNameInTable="CaseNameColumn" msprop:Generator_UserColumnName="CaseName" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,1379 @@
+{
+    "error": {
+        "error": "Error",
+        "notFound": "Page Not Found!",
+        "numberOnly": "This field accepts numbers only",
+        "dataMissing": "Please complete all missing data",      
+        "accountCurrencyNotMatchSelectedCurrencyg": "Account currency does not match the selected currency",  
+        "accountCurrencyNotMatchSystemCurrencyg": "Account currency does not match system currency",  
+        "maxDateAlert": "The maximum allowed date value is today's date",
+        "invalidSourceAndDestInventory": "You can not transfer from inventory to the same inventory",
+        "positiveNumbersOnly": "This field accepts Positive  numbers only",
+        "inventoryDonotHaveProduct":"This store has no products",
+        "auth": "You do not have permission",
+        "0001": "Invalid user name or password!",
+        "1": "This account does not belong to any level of existing accounts!",
+        "2": "The parent account for this account does not exist!",
+        "3": "This code is already available, please enter a new code",
+        "4": "No account can be added under a sub account!",
+        "5": "This email already exists, please enter a new email address",
+        "6": "This phone already exists, please enter a new phone",
+        "7": "",
+        "8": "User Name is already exist!",
+        "9": "Current user can not change his activation!",
+        "10": "Current user can not change his permissions!",
+        "11": "Current user can not change his roles!",
+        "12": "Current user can not change his groups!",
+        "13": "Current user can not change his menu items!",
+        "14": "The currency of the movement does not correspond to the currency of the account to which you will be posted in the journal",
+        "15": "Please select a place or create a new one",
+        "17": "The password incorrect",
+        "18": "Unbalanced constraint",
+        "19": "This document number already exists, please enter a new document number",
+        "20": "Invalid file format",
+        "21": "The first day of the cat should be chosen as the beginning date of the month!",
+        "22": "The last day of the month should be chosen as the end date of the month!",
+        "23": "Month in date does not match month in date to!",
+        "24": "This month has been added before!",
+        "25": "This month has been closed so no movements will be added or edited in it",
+        "26": "This receipt number closed, please enter new receipt number",
+        "27": "There are no Account Chart for fixed assets",
+        "28": "This Receipt Number Out Of Range",
+        "29": "This Bank Don't Have Account Chart",
+        "30": "Discount Percentage Already Exist",
+        "409": "The description is incorrect"
+    },
+    "shared": {
+        "add": "Add",
+        "edit": "Edit",
+        "detail": "Detail",
+        "delete": "Delete",
+        "close": "Close",
+        "save": "Save",
+        "back": "Back",
+        "select": "Select",
+        "loadmore": "load more",
+        "loading": "loading ...",
+        "deleteQuestion": "Are you sure do you want to delete this item?",
+        "operationSuccessed": "Operation done successfuly",
+        "operationFailed": "Operation has been failed!",
+        "pageNotFound": "The page you want to access does not exist!",
+        "cancel": "Cancel",
+        "clearSearch": "Clear",
+        "deletedSuccessfully": "Deletion is done successfully",
+        "addedSuccessfully": "Adding is done successfully",
+        "reset": "Reset",
+        "yes": "Yes",
+        "ok": "Ok",
+        "approve": "Approve",
+        "reject": "Reject",
+        "repass": "Repass",
+        "pass": "pass",
+        "deny": "Return Contract",
+        "no": "No",
+        "next": "Next",
+        "noData": "No Data Found",
+        "previous": "Previous",
+        "searchAbout": "Search about",
+        "from": "From",
+        "to": "To",
+        "fromDate": "From Date",
+        "toDate": "To Date",
+        "search": "Search",
+        "advancedSearch": "Advanced Search",
+        "all": "All",
+        "export": "Export",
+        "newestFirst": "Newest First",
+        "oldestFirst": "Oldest First",
+        "showDetails": "Show Details",
+        "enterVatidEmail": "Please enter a valid email!",
+        "enterValidPassword": "Please enter password not less than 6 characters !",
+        "searchbyname": "Search By Name",
+        "searchbyId": "Search By ID",
+        "address": "Address",
+        "mobile": "Mobile Phone",
+        "print": "Print",
+        "total": "Total",
+        "false": "No",
+        "true": "Yes",
+        "displayReport": "Display Report",
+        "underDevelopment": "Under Development",
+        "descriptionAr": "Arabic Description",
+        "descriptionEn": "English Description",
+        "change": "Change",
+        "alert": "Alert",
+        "clear": "Clear",
+        "date": "Date",
+        "display": "Display",
+        "import": "Import",
+        "added": "Has been added",
+        "loadVendorsFailed": "Operation of loading vendors has been failed!",
+        "unselect": "Un Select",
+        "data": "Data",
+        "multiSelect": "Multi select ...",
+        "exportTo": {
+            "excel": "Export To Excel"
+        },
+        "validation": {
+            "min": "no allowed value less than ",
+            "max": "no allowed value more than "
+        },
+        "Exception": {
+            "404": "not found",
+            "AccountChart404": "parent Account Chart Not Found",
+            "500": " something goes wrong",
+            "403": "no allowed",
+            "AccountChart403": "wrong Account Code",
+            "AccountChart406": "parent account dosnt allow to create child "
+        }
+    },
+    "menu": {
+        "brand": "Mersal Foundation",
+        "home": "Home",
+        "about": "About",
+        "contact": "Contact",
+        "journalEntries": "journal Entries",
+        "accountChart": "Manage Accounts",
+        "reports": "Reports",
+        "dashboard": "Dashboard"
+    },
+    "dashboard": {
+        "PaymentMovement": "Payment Movement",
+        "BankMovement": "Bank Movement",
+        "purchaseInvoice": "purchase Invoice",
+        "PurchaseRebate": "Purchase Rebate",
+        "Donation": "Donation",
+        "financialTransactions":"Financial Transactions",
+        "PaymentAndReceiptChart":"Payments and Receipts"
+    },
+    "contact": {
+        "title": "Mersal Foundation"
+    },
+    "footer": {
+        "siteName": "Mersal Foundation Accounting",
+        "rights": "Copyright @ 2020 all rights reserved",
+        "manifucture": "Smart-Tech sys"
+    },
+    "language": {
+        "title": "Language",
+        "arabic": "عربى",
+        "english": "English"
+    },
+    "user": {
+        "shared": {
+            "maxPaymentLimitAlert": "The maximum disbursement for the current user is ",
+            "title": "user",
+            "code": "code",
+            "name": "name",
+            "userName": "User Name",
+            "isActive": "isActive",
+            "description": "description",
+            "birthDate": "Birth Date",
+            "maxPaymentLimit": "Max Payment Limit"
+        },
+        "list": {
+            "users": "Users",
+            "name": "Name",
+            "userName": "User Name"           
+        },
+        "editor": {
+            "name": {
+                "name": "Name",
+                "error": {
+                    "required": "This field is required!",
+                    "minlength": "The min char length is 2 chars!"
+                }
+            },
+            "userName": {
+                "userName": "User Name",
+                "error": {
+                    "required": "This field is required!",
+                    "minlength": "The min char length is 2 chars!"
+                }
+            },
+            "password": {
+                "password": "password",
+                "error": {
+                    "required": "This field is required!",
+                    "minlength": "The min char length is 6 chars!"
+                }
+            },
+            "maxPaymentLimit": {
+                "maxPaymentLimit": "Max Payment Limit",
+                "error": {
+                    "invalidValue": "Invalid value"
+                } 
+            },
+            "nameAr": "Arabic Name",
+            "nameEn": "English Name",
+            "descriptionAr": "Arabic Description",
+            "descriptionEn": "English Description",
+            "changePassword": "Change Password",
+            "oldPassword": {
+                "oldPassword": "Old Password"
+            },
+            "newPassword": {
+                "newPassword": "New Password"
+            },
+            "confirmPassword": {
+                "confirmPassword": "Confirm Password",
+                "error": "Password not match"
+            },
+            "resetPassword": {
+                "resetPassword": "اعد تعين كلمة المرور",
+                "modalQuestion":"هل تريد اعد تعين كلمة المرور ؟"
+            }
+        },
+        "login": {
+            "username": "Username",
+            "password": "Password",
+            "login": "Login"
+        },
+        "userMenu": {
+            "logout": "logOut "
+        },
+        "master": {
+            "userPermissions": "User Permissions",
+            "userRoles": "User Role",
+            "userGroups": "User Groups",
+            "userMenuItems": "User Menu items"
+        },
+        "userPermissions": {
+            "title": "User Permissions"
+        },
+        "userRoles": {
+            "title": "User Role"
+        },
+        "userGroups": {
+            "title": "User Groups"
+        },
+        "userMenuItems": {
+            "title": "User Menu Items"
+        },
+        "userBranch": {
+            "title": "User Branchs"
+        }
+    },
+    "journalEntries": {
+        "shared": {
+            "journalEntries": "Journal Entries"
+        },
+        "error": {
+            "invalidAccountCode": "Invalid Account Code!"
+        },
+        "post": {
+            "journalUnderPreview": "Journal Under Preview",
+            "postJournal": "Post Journal",
+            "previewPostJournal": "Preview Post Journal",
+            "previewJournal": "Preview Journal",
+            "approveAll": "Approve All",
+            "rejectAll": "Reject All",
+            "approve": "Approve",
+            "reject": "Reject",
+            "modalQuestion": "Do you want save this changes ?",
+            "noJournalUnderPreview": "There is No Journal Under Preview"
+        },
+        "debtor": "Debtor",
+        "creditor": "Creditor",
+        "status": "Status",
+        "date": "Date",
+        "accounts": "Accounts",
+        "balance": "Unbalanced constraint",
+        "valueRequired": "Values must be entered for accounts",
+        "accountCode": "Account Code",
+        "reversed": "This journal has been reversed before.",
+        "canNotReversed": "This journal can not be reversed again.",
+        "journalcanceled": "The journal has been canceled"
+    },
+    "accountChart": {
+        "accountTree": "Accounting Tree ",
+        "accountNumber": "Account Code ",
+        "arabicName": " Name arabic",
+        "englishName": " name engllish ",
+        "accountType": "Account Type ",
+        "AccountGroup": " Account Group",
+        "AccountCategory": "Account Category ",
+        "credit": "credit",
+        "debt": "debt",
+        "createAccount": "Create Account",
+        "editAccount": "Edit Account",
+        "Accounts": "Accounts",
+        "amount": "Account Balance",
+        "date": "date",
+        "mainInfo": "main info",
+        "openingbalance": "opening balance",
+        "finalnode": "terminal Account",
+        "CreateMain": "create Main Account",
+        "DetailsProcess": "display Account Details",
+        "CreateProcess": "Create new Account",
+        "currentDebitBalance": "Current Debit Balance",
+        "currentCreditBalance": "Current Credit Balance",
+        "accountNature": "Account Nature",
+        "isCreditAccount": "Credit Account",
+        "isDebitAccount": "Debit Account",
+        "accountDocument": {
+            "title": "Account Document",
+            "account": "Account",
+            "document": "Document",
+            "documentNumber": "Document Number",
+            "countReceipts": "Count Receipts"
+        }
+    },
+    "addProduct": {
+        "Products": "Products",
+        "ProductCode": " Product Code",
+        "ProductName": "Product Name",
+        "UnitCode": "Unit Code",
+        "UnitName": "Unit Name",
+        "Quantity": "Quantity",
+        "price": "price",
+        "Total": "Total",
+        "Value": "The Value",
+        "fieldReq": "Field Required",
+        "brandIsUnique":"Cannot repeat the same item",
+        "quantityMax":"Input quantity is larger than stock"
+    },
+    "donation": {
+        "assoctcase": "Associate to Case",
+        "costcentername": "Center Name",
+        "code": "Code",
+        "branch": "Branch",
+        "receiptDate": "entry Date",
+        "donationValue": "Donation Value",
+        "donator": "Donator",
+        "cases": "Beneficiaries",
+        "caseName": "Cases ",
+        "caseCode": "Beneficiarie Code",
+        "phone": "invalid Phone",
+        "requiredAmount": "Required Amount",
+        "assignValue": "Assign Amount",
+        "Amount": "Amount",
+        "total": "Total",
+        "AssociatedBeneficiariesCases": "Associated Beneficiaries Cases",
+        "donerName": "Doner Name",
+        "email": "Email Address",
+        "phoneNumber": "Phone Number",
+        "nationalId": "National Id",
+        "reqAmount": "Required Amount",
+        "deductedAmount": "total deducted amount from total amount",
+        "description": "Movement Description",
+        "info": "Infomation",
+        "delegateManReciptNumber": "Receipt Number",
+        "invoicefor": "Mersal Foundation Receipt",
+        "donationType": "Donation Type",
+        "SecondarydonationType": "Secondary donation Type",
+        "duedate": "Due date",
+        "addReceiptDate": "Receipt Date"
+    },
+    "financial": {
+        "safes": "Safe",
+        "banks": "Bank",
+        "sourceBank": "Publisher Bank",
+        "cashBank": "Cashing Bank",
+        "isCash": "cashed",
+        "isDeposite": "deposited",
+        "chequeNumber": "Cheque Number",
+        "dueDate": "Due Date",
+        "visaNumber": "credit card Number",
+        "Cash": "Cash",
+        "cheque": "Cheque",
+        "visa": "redit card Number ",
+        "vendor": "Vendor",
+        "donator": "Donator",
+        "accountChart": "Account Chart",
+        "addDonator": "add Donator",
+        "vendorName": "Vendor Name",
+        "donatorDatails": "Donator Details",
+        "costCenterNotificationError": "Please check cost centers !",
+        "vendorNotificationError": "Please select vendor !",
+        "accountChartNotificationError": "Please select account chart !",
+        "donatorNotificationError": "Please check donator details !",
+        "paymentNotificationError": "Please check payment method and check that all selectted payment method fileds are completed with apropriate infomation!",
+        "formNotificationError": "Please check entered data !",
+        "costCenterTotalValue": "ِTotal Assign To Cost Center Is not equal Movement Value",
+        "casesTotalValue": "ِTotal Assign To Cases More Than Movement Value",
+        "casesAssignValue": "Amount must be allocated for selected cases",
+        "addNewDonator": "Add New Donator",
+        "dateRang": "The entered date range is incorrect",
+        "amountRang": "Input value range incorrect",
+        "discountpercentage": "Discount percentage",
+        "discountAmount": "Discount amount",
+        "invoiceAmount": "Invoice amount",
+        "notificationReceiptNumber": "Notification receipt number",
+        "discountNotice": "Discount notice",
+        "PaymentDirectionError":"You must choose at least one source type",
+        "PaymentError":"Invoice amount must be equal to the amount of the actual value plus the amount of the discount"
+
+    },
+    "purchasing": {
+        "shared": {
+            "code": "Invoice Code",
+            "date": "Invoice Date",
+            "vendor": "Vendor",
+            "safe": "Safe",
+            "cash": "Cash",
+            "postpone": "Postpone",
+            "credit": "Credit",
+            "amount": "Amount",
+            "discount": "Discount",
+            "totalAmountBeforeTax": "Total  Before Tax",
+            "totalAmountAfterTax": "Total Amount After Tax",
+            "totalAmount": "Total Amount",
+            "totalExpenses": "Total Expenses",
+            "totalDiscount": "Total Discount",
+            "netAmount": "Net Amount",
+            "itemCode": "item",
+            "measurementUnit": "Measurement Unit",
+            "productCode": "Product",
+            "quantity": "Quantity",
+            "price": "Price",
+            "total": "Total",
+            "net": "Net",
+            "expenses": "Expenses",
+            "deduction": "Invoice deduction",
+            "inventory": "Inventory",
+            "openingBalanceInvoice":"Vendor Invoice",
+            "description":"Description"
+
+        },
+        "invoice": {
+            "title": "Purchasing Invoice",
+            "vendorInvoiceCode": "Vendor Invoice Code",
+            "inventory": "Inventory",
+            "invoiceType": "Invoice Type",
+            "additionalExpenses": "Additional Expenses",
+            "taxAmount": "Tax Amount"
+        },
+        "rebate": {
+            "title": "Purchasing Rebate",
+            "totalAmount": "Total Amount",
+            "categories": "Categories",
+            "productReq": "At least one item must be selected",
+            "costCenteReq": "Cost center must be selected",
+            "safeReq": "The name of the safe must be chosen",
+            "additionalExpensesReq": "You must enter the value of additional expenses",
+            "discountReq": "You must enter a discount value"
+        }
+    },
+    "banking": {
+        "shared": {
+            "code": "Code",
+            "date": "Date",
+            "amount": "Amount",
+            "bank": "Bank",
+            "journalType": "Journal Type"
+        },
+        "bankMovement": {
+            "title": "Bank Movement",
+            "toBank": "To Bank",
+            "safe": "Safe",
+            "accountChart": "Account Chart",
+            "remittanceVoucherNumber": "Number of remittance voucher",
+            "directlyDonationBank": "Directly donation bank",
+            "chequesNotClosed": "cheques Not Closed"
+        }
+    },
+    "journalPosting": {
+        "shared": {
+            "date": "Date",
+            "movementType": "Movement Type",
+            "counts": "Journal Counts",
+            "automaticPostingOn": "Automatic posting is On"
+        },
+        "journalPosting": {
+            "title": "Journal Posting",
+            "isAutomaticPosting": "Is Automatic Posting",
+            "isBulkPosting": "Is Bulk Posting",
+            "selectAll": "Select All",
+            "postedReceiptsMovementCount": "Receipts Movement",
+            "postedPaymentMovementCount": "Payment Movement",
+            "postedBankMovementCount": "Bank Movement",
+            "postedPurchaseInvoiceCount": "Purchase Invoice",
+            "postedPurchaseRebateCount": "Purchase Rebate",
+            "postedStoreMovementCount": "Store Movement",
+            "postedSalesInvoiceCount": "Sales Invoice",
+            "postedSalesRebateCount": "Sales Rebate"
+        }
+    },
+    "setting": {
+        "shared": {
+            "title": "Setting"
+        },
+        "vat": {
+            "title": "VAT Setting",
+            "vat": "VAT",
+            "errors": {
+                "invalidVATPattern": "Invalid VAT value"
+            }
+        },
+        "vendorSetting": {
+            "title": "Vendor Setting",
+            "vendor": "Vendor",
+            "cashPurchaseAccountNumber": "Cash Purchase Account Number",
+            "futurePurchaseAccountNumber": "Future Purchase Account Number",
+            "purchaseDiscountAccountNumber": "Purchase Discount Account Number",
+            "purchaseExpensesAccountNumber": "Purchase Expenses Account Number",
+            "purchaseTaxAccountNumber": "Purchase Tax Account Number",
+            "cashPurchasesRebateAccountNumber": "Cash Purchases Rebate Account Number",
+            "futurePurchaseRebateAccountNumber": "Future Purchase Rebate Account Number",
+            "purchaseRebateDiscountAccountNumber": "Purchase Rebate DiscountAccountNumber",
+            "purchaseRebateExpensesAccountNumber": "Purchase Rebate ExpensesAccountNumber",
+            "purchaseRebateTaxAccountNumber": "Purchase Rebate Tax Account Number",
+
+            "temporaryCovenantAccountNumber": "Temporary Covenant AccountN umber",
+            "bankingPaymentsAccountNumber": "Banking Payments Account Number",
+            "receiptPapersAccountNumber": "Receipt Papers Account Number",
+            "generalDonationsAccountNumber":"General Donations Account Number",
+            "checksUnderReceiptPapersAccountNumber":"ChecksUnder Receipt Papers Account Number"
+
+        },
+        "financialSetting": {
+            "title": "Financial Setting",
+            "financial": "Financial",
+            "fiscalYear": "Fiscal Year",
+            "showCasesThatMetRequiredAmount": "Show Cases That Met Required Amount",
+            "useChecksUnderCollection": "UseChecksUnderCollection",
+            "vatAccountNumber": "VAT Account Number",
+            "checksUnderCollectionAccountNumber": "Checks Under Collection Account Number",
+            "donationAccountNumber": "Donation Account Number",
+            "fiscalYearEndDay": "Fiscal Year End Day",
+            "fiscalYearEndMonth": "Fiscal Year End Month",
+            "fiscalYearStartDay": "Fiscal Year Start Day",
+            "fiscalYearStartMonth": "Fiscal Year Start Month",
+            "donationReturnAccountNumber": "Donation Return Account Number",
+            "isInventoryRequired": "Inventory Required In Purchase Invoice And Rebate",
+            "temporaryCovenantAccountNumber": "Temporary Covenant Account Number",
+            "bankingPaymentsAccountNumber": "banking Payments Account Number",
+            "receiptPapersAccountNumber": "receipt Papers Account Number",
+            "generalDonationsAccountNumber":"general Donations Account Number",
+            "checksUnderReceiptPapersAccountNumber":"checksUnder Receipt Papers Account Number"
+        },
+        "testamentAndAdvancesSetting": {
+            "title": "Testament and advances Setting",
+            "testamentAndAdvances":"Testament and advances",
+            "testamentAccountNumber": "Testament Account Number",
+            "advancesAccountNumber": "Advances Account Number"
+        },
+        "postingSetting": {
+            "title": "Posting Setting",
+            "posting": "Posting",
+            "isAutomaticPosting": "Is Automatic Posting",
+            "isBulkPosting": "Is Bulk Posting",
+            "allowPostingAccountCurrencyMisMatch": "Allow posting to account his currency do not match movement currency",
+            "automaticPostingNotification": "Please note that the journal posting settings are set to automatic mode, to change them please go to next"
+        },
+        "systemCurrencySetting": {
+            "title": "System Currency",
+            "currency": "Currency"
+        },
+        "generalSetting": {
+            "title": "General Setting"
+        },
+        "AccountChartSetting":
+        {
+            "title": "Account Chart Setting",
+            "levelCount": "Account Chart Level Count",
+            "level": "Level",
+            "length": "Code length"
+        },
+        "fixedAssetAccountChartSetting":
+        {
+            "title": "fixed asset account chart setting-",
+            "AccountChart": "Account Chart",
+            "AccountCharts": "Account Charts"
+        }
+    },
+    "checksUnderCollection": {
+        "shared": {},
+        "checksUnderCollection": {
+            "title": "Checks Under Collection",
+            "amount": "Amount",
+            "bank": "Bank",
+            "modalQuestion": "Do you want save this checks ?"
+        }
+    },
+    "sales": {
+        "shared": {
+            "code": "Invoice Code",
+            "date": "Invoice Date"
+        },
+        "invoice": {
+            "title": "Sales Invoice"
+        },
+        "rebate": {
+            "title": "Sales Rebate"
+        }
+    },
+    "movements": {
+        "date": "Movement Date",
+        "financial": "Financial Movements",
+        "sales": "Sales bill",
+        "billNumber": "Bill Number",
+        "dateBill": "Bill Date",
+        "costCenter": "Linked To Cost Center",
+        "multiCostCenter": "Linked To Multi Cost Center",
+        "billType": "Bill Type",
+        "donator": " Donator",
+        "delegate": " Delegate",
+        "storeNumber": " Store Number",
+        "offerPrice": "Offer Price",
+        "products": "Products",
+        "billTotal": "Total Bill ",
+        "totalCost": "Total Cost",
+        "totalDiscount": "Total Discount",
+        "billNet": " Net Bill",
+        "additionalExpenses": "Additional Expenses",
+        "billDiscount": "Bill Discount",
+        "cashPayment": "Cash Payment",
+        "discountValue": "Discount Value",
+        "expensesValue": "Expenses Value",
+        "productCode": " Product Code",
+        "productName": "Product Name",
+        "unitCode": "Unit Code",
+        "unitName": "Unit Name",
+        "quantity": "Quantity",
+        "price": "price",
+        "total": "Total",
+        "summary": "Summary",
+        "receipts": "Receipts",
+        "documentNumber": "Document Number",
+        "dateDocument": "Document Date",
+        "source": "source",
+        "associatedProducts": "Associated products",
+        "paymentMethod": "Payment Method",
+        "value": "The Value",
+        "statementAr": "Statement Of Movement In Arabic",
+        "statementEn": "Statement Of Movement In English",
+        "supplierCode": "Supplier Code ",
+        "payments": "Movement of payments",
+        "storeMovement": "Inventory Movement",
+        "storeTransfer": "Inventory Transfers",
+        "startBalance": "Opening Balance ",
+        "movementType": "Movement Type",
+        "referenceNumber": "Reference Number",
+        "storeFrom": "The store moved from it",
+        "storeTo": "The store moved to it",
+        "dailyRestrictions": "Daily Restrictions",
+        "reverseConstraint": "Reverse Constraint",
+        "purchases": " Purchases bill",
+        "returnPurchases": "Purchases Rebate",
+        "billPurchasesNumber": "Supplier Bill Number",
+        "discountPercent": "Discount Percent",
+        "accountNumber": "Account Number",
+        "accountName": "Account Name",
+        "creditor": "Creditor",
+        "debtor": "Debtor",
+        "costCenterCode": "Cost Center Code",
+        "costCenterName": "Cost Center Name",
+        "discription": "Discription",
+        "discriptionAr": "Discription Arabic",
+        "discriptionEn": "Discription English",
+        "fieldReq": "Field Required",
+        "Donations": "Reciepts ",
+        "minLength": "field at least should have  ",
+        "MaxLength": "Filed Should Be Less than ",
+        "Currency": "Currency",
+        "TotalAmount": "Total Amount Is Not Defiend set it and reselect to Save new Values",
+        "costcenteramounterror": "please enter values that greater than 0 in the cost centers",
+        "destination": "Destination",
+        "bankMovement": "Bank Movement",
+        "inventoryMovement": "Inventory Movement",
+        "openingBalance": "Opening Balance",
+        "inventoryTransfers": "Inventory Movement",
+        "inventoryInventoryTransfers": "Inventory Transfers",
+        "reciptNumber": "Recipt Number",
+        "captureMethod": "Capture Method"
+    },
+    "costCenter": {
+        "costcenters": "Cost Centers",
+        "costcenter": "Cost Center",
+        "noCostCentersRelated": "no cost centers Related",
+        "SucessCostCentersAdd": "cost centers added successfully.",
+        "required": "You must select a cost center",
+        "shared":{
+            "code": "Code",
+            "openingCredit": "Opening Credit",
+            "isActive": "Is active",
+            "costCenterType": "Cost Center Type"
+        },
+        "list": {
+            "name": "Name"
+        },
+        "editor": {
+            "nameAr": "Arabic Name",
+            "nameEn": "English Name",
+            "isDebt": "Debt",
+            "isCredit": "Credit",
+            "description": "Description",
+            "descriptionAr": "Arabic Description",
+            "descriptionEn": "English Description"
+        }
+    },
+    "costCenterType": {
+        "shared": {
+            "title": "Cost Center Type",
+            "code": "Code",
+            "name": "Name"
+        },
+        "list": {},
+        "editor": {
+            "nameAr": "Arabic Name",
+            "nameEn": "English Name",
+            "description": "Description",
+            "descriptionAr": "Arabic Description",
+            "descriptionEn": "English Description"
+        }
+    },
+    "closedMonth": {
+        "shared": {
+            "title": "Closed Month",
+            "month": "Month",
+            "name": "Name",
+            "isClosed": "Is Closed",
+            "from": "From",
+            "to": "To"
+        },
+        "list": {},
+        "editor": {
+            "nameAr": "Arabic Name",
+            "nameEn": "English Name",
+            "description": "Description",
+            "descriptionAr": "Arabic Description",
+            "descriptionEn": "English Description"
+        }
+    },
+    "bank": {
+        "shared": {
+            "title" : "Bank",
+            "code": "Code",
+            "name": "Name",
+            "date" : "Date"
+        },
+        "list": {
+            "accountCharts":"Bank Account Charts",
+            "bankDocuments": "Bank Documents"
+        },
+        "editor": {
+            "nameAr": "Arabic Name",
+            "nameEn" : "English Name",
+            "openingCredit" : "Opening Balance",
+            "isDebt": "Debt",
+            "isCredit" : "Credit",
+            "description": "Description",
+            "descriptionAr": "Arabic Description",
+            "descriptionEn": "English Description"
+        }
+    },
+    "bankAccountCharts": {
+        "shared": {
+            "title": "bank Account Charts",
+            "bank": "Bank",
+            "accountChart": "Account Chart",
+            "accountCharts": "Account Charts"
+        },
+        "list": {},
+        "editor": {
+            "nameAr": "الاسم بالعربى",
+            "nameEn": "الاسم بالانجليزي",
+            "openingCredit": "الرصيد الأفتاحى",
+            "isDebt": "مدين",
+            "isCredit": "دائن",
+            "description": "وصف البنك",
+            "descriptionAr": "وصف البنك بالعربى",
+            "descriptionEn": "وصف البنك بالانجليزي"
+        }
+    },
+    "vendor": {
+        "shared": {
+            "title" : "Vendor",
+            "code": "Code",
+            "name": "Name",
+            "date" : "Date",
+            "openingCredit" : "Opening Credit",
+            "description": "Description"
+        },
+        "list": {
+
+        },
+        "editor": {
+            "isDebt": "Is Debt",
+            "isCredit": "Is Credit",
+            "nameAr": "Arabic Name",
+            "nameEn" : "English Name",
+            "descriptionAr": "Arabic Description",
+            "descriptionEn": "English Description",
+            "accountChart": " Account Chart",
+            "phone":"الهاتف",
+            "commercialRegister": "Commercial Registration No",
+            "taxCard": "Tax card number",
+            "beneficiaryName": "Payee name in checks",
+            "VATRegistrationCertificate": "VAT registration certificate",
+            "address": "Address",
+            "exemptFromTax": "Exempt from tax",
+            "notExemptFromTax": "Not exempt from tax"
+        }
+    },
+    "safe": {
+        "shared": {
+            "title" : "Safe",
+            "code": "Code",
+            "name": "Name",
+            "date" : "Date",
+            "openingCredit" : "Opening Credit",
+            "description": "Description",
+            "branch": "Branch"
+        },
+        "list": {
+
+        },
+        "editor": {
+            "nameAr": "Arabic Name",
+            "nameEn" : "English Name",
+            "descriptionAr": "Arabic Description",
+            "descriptionEn": "English Description",
+            "safeAccountChart": "Safe Account Charts",
+            "branch": "Branch"
+        }
+    },
+    "delegate": {
+        "shared": {
+            "title" : "Delegate",
+            "code": "Code",
+            "name": "Name",
+            "date" : "Date",
+            "phone": "Phone",
+            "email": "Mail"
+        },
+        "list": {
+
+        },
+        "editor": {
+            "nameAr": "Arabic Name",
+            "nameEn" : "English Name",
+            "address": "Address",
+            "description": "Description",
+            "descriptionAr": "Delegate Arabic Description",
+            "descriptionEn": "Delegate English Description"
+        }
+    },
+    "branch": {
+        "shared": {
+            "title": "Branch",
+            "code": "Code",
+            "name": "Name",
+            "date": "Date",
+            "description": "Description"
+        },
+        "list": {
+
+        },
+        "editor": {
+            "nameAr": "Arabic Name",
+            "nameEn": "English Name",
+            "descriptionAr": "Arabic Description",
+            "descriptionEn": "English Description"
+        }
+    },
+    "brand": {
+        "shared": {
+            "title": "Brand",
+            "code": "Code",
+            "name": "Name",
+            "date": "Date",
+            "description": "Description"
+        },
+        "list": {
+
+        },
+        "editor": {
+            "nameAr": "Arabic Name",
+            "nameEn": "English Name",
+            "descriptionAr": "Arabic Description",
+            "descriptionEn": "English Description",
+            "parentBrand": "Parent Brand"
+        }
+    },
+    "measurementUnit": {
+        "shared": {
+            "title": "Measurement Unit",
+            "code": "Code",
+            "name": "Name",
+            "date": "Date",
+            "description": "Description"
+        },
+        "list": {
+
+        },
+        "editor": {
+            "nameAr": "Arabic Name",
+            "nameEn": "English Name",
+            "descriptionAr": "Arabic Description",
+            "descriptionEn": "English Description"
+        }
+    },
+    "currency": {
+        "exchange": {
+            "shared": {
+                "title": "Currency exchange",
+                "code": "Code",
+                "price": "Price",
+                "date": "Date",
+                "ExchangeCurrency": "Currency exchange"
+                
+            },
+            "list": {},
+            "editor": {
+                "nameAr": "Arabic Name",
+                "nameEn": "English Name",
+                "descriptionAr": "Arabic Description",
+                "descriptionEn": "English Description"
+                
+            },
+            "errors": {
+                "sameSourceAndDest": "currencies are identical!"
+            }
+        },
+        "currency": {
+            "shared": {
+                "title": "Currency",
+                "code": "Code",
+                "name": "Name",
+                "date": "Date",
+                "description": "Description"
+            },
+            "list": {
+
+            },
+            "editor": {
+                "nameAr": "Arabic Name",
+                "nameEn": "English Name",
+                "descriptionAr": "Arabic Description",
+                "descriptionEn": "English Description",
+                "symbol": "Symbol"
+            }
+        }
+    },
+    "permission": {
+        "shared": {
+            "title": "Permission",
+            "code": "Code",
+            "name": "Name",
+            "isActive": "Is Active",
+            "description": "Description"
+        },
+        "list": {
+
+        },
+        "editor": {
+            "nameAr": "Arabic Name",
+            "nameEn": "English Name",
+            "descriptionAr": "Arabic Description",
+            "descriptionEn": "English Description"
+        }
+    },
+    "role": {
+        "shared": {
+            "title": "Role",
+            "code": "Code",
+            "name": "Name",
+            "isActive": "Is Active",
+            "description": "Description",
+            "date": "Date"
+        },
+        "list": {
+
+        },
+        "editor": {
+            "nameAr": "Arabic Name",
+            "nameEn": "English Name",
+            "descriptionAr": "Arabic Description",
+            "descriptionEn": "English Description"
+        },
+        "master": {
+            "rolePermissions": "Role Permissions"
+        },
+        "rolePermissions": {
+            "title": "Role Permissions"
+        }
+    },
+    "group": {
+        "shared": {
+            "title": "Group",
+            "code": "Code",
+            "name": "Name",
+            "isActive": "Is Active",
+            "description": "Description",
+            "date": "Date"
+        },
+        "list": {
+
+        },
+        "editor": {
+            "nameAr": "Arabic Name",
+            "nameEn": "English Name",
+            "descriptionAr": "Arabic Description",
+            "descriptionEn": "English Description"
+        },
+        "groupPermissions": {
+            "title": "Group Permissions"
+        }
+    },
+    "inventory":{
+        "shared": {
+            "title": "Inventory",
+            "code": "Code",
+            "name": "Name",
+            "description": "Description",
+            "date": "Date"
+        },
+        "list": {
+
+        },
+        "editor": {
+            "nameAr": "Arabic Name",
+            "nameEn": "English Name",
+            "descriptionAr": "Arabic Description",
+            "descriptionEn": "English Description",
+            "address": "Address",
+            "accountChart": "Account Chart",
+            "outgoingType": "outgoing Type"
+        }
+    },
+    "MenuItem":{
+        "shared": {
+            "title": "Menu Item",
+            "code": "Code",
+            "name": "Name",
+            "description": "Description",
+            "isActive": "Is Active",
+            "url": "URL",
+            "itemOrder": "Item Order",
+            "userMenuItems": "User Menu items",
+            "hasParent": "Has Parent"
+        },
+        "list": {
+
+        },
+        "editor": {
+            "nameAr": "Arabic Name",
+            "nameEn": "English Name",
+            "descriptionAr": "Arabic Description",
+            "descriptionEn": "English Description",
+            "title": "Title",
+            "titleAr": "Arabic Title",
+            "titleEn": "English Title",
+            "rootUrl": "Root URL",
+            "allowAnonymous": "Allow Anonymous",
+            "onErrorGoToURL": "On Error Go To URL",
+            "parentMenuItem": "Parent Menu Item"
+        },
+        "errors": {
+            "parentIsSame": "Menu, the father's list are the same!"
+        }
+    },
+    "donator":{
+        "shared": {
+            "title": "Donator",
+            "code": "Code",
+            "name": "Name",
+            "description": "Description",
+            "date": "Date"
+        },
+        "list": {
+
+        },
+        "editor": {
+            "nameAr": "Arabic Name",
+            "nameEn": "English Name",
+            "descriptionAr": "Arabic Description",
+            "descriptionEn": "English Description",
+            "accountChart": "Manage Accounts"
+        }
+    },
+    "asset": {
+        "shared": {
+            "title": "Received Asset",
+            "receivedAssets": "Received Assets",
+            "brand": "Brand",
+            "location": "location",
+            "accountChart": " Account Chart",
+            "depreciationRate": " Account Chart",
+            "depreciationType": "Depreciation Type",
+            "PurchaseInvoice": "Purchase Invoice ",
+            "EffiencyRaise":"Effiency Raise",
+            "EffiencyRaiseAmount":"Effiency Raise Amount",
+            "EffiencyRaiseDate":"Effiency Raise Date",
+            "EffiencyRaiseSuccessed": "Effiency Raise done successfuly"
+
+
+        },
+        "list": {
+
+        },
+        "editor": {
+            "depreciationValue": "Depreciation Value",
+            "startDepreciationDate": "Start Depreciation Date",
+            "Properties": "Properties",
+            "description": "Description",
+            "descriptionAr": "Arabic Description",
+            "descriptionEn": "English Description",
+            "invoice": "Invoice Detail",
+            "vendor": "Vendor",
+            "date": "Date",
+            "Amount": "Amount",
+            "Quantity": "Quantity",
+            "serial": "Serial",
+            "model": "Model",
+            "color": "Color",
+            "size": "Size",
+            "status": "Status"
+        }
+    },
+    "expensesAsset": {
+        "shared": {
+            "title": "Asset Expenses",
+            "add": "Add Expense",
+            "asset": "Asset",
+            "accountChart": " Account Chart",
+            "expensesType": "Expenses Type",
+            "amount": "Amount"
+
+        },
+        "list": {
+
+        },
+        "editor": {
+            "description": "Description",
+            "descriptionAr": "Arabic Description",
+            "descriptionEn": "English Description"
+        }
+    },
+    "depreciationAsset": {
+        "shared": {
+            "title": "Depreciation Asset",
+            "brand": "Brand",
+            "accountChart": "Account Chart",
+            "location": "Location",
+            "depreciationRate": "Depreciation Rate",
+            "depreciationType": "Depreciation Type",
+            "amount": "Amount",
+            "currentValue": "Current Value",
+            "date": "Date",
+            "modalQuestion":"Do you want do depreciation to this assets ?",
+            "modalButton": "Depreciation",
+            "successed": "Successed",
+            "depreciationValue":"Depreciation Value",
+            "nextDepreciationDate": "Next Depreciation Date"
+        },
+        "list": {
+
+        },
+        "editor": {
+            "description": "Description",
+            "descriptionAr": "Arabic Description",
+            "descriptionEn": "English Description"
+            
+        }
+    },
+    "excludeAsset": {
+        "shared": {
+            "title": "Exclude Asset",
+            "code": "Code",
+            "brand": "Brand",
+            "accountChart": "Account Chart",
+            "currentValue": "Current Value",
+            "depreciationValue":"Depreciation Value",
+            "modalQuestion":"Do you want do speculation to this assets ?",
+            "speculationButton": "Speculation",
+            "saleButton": "Sale",
+            "salePrice": "Sale price"
+        },
+        "list": {
+
+        },
+        "editor": {
+            "description": "Description",
+            "descriptionAr": "Arabic Description",
+            "descriptionEn": "English Description"
+            
+        }
+    },
+    "location": {
+        "shared": {
+            "title": "Location",
+            "code": "Code",  
+            "description": "Description",
+            "locationTitle": "Title"
+        },
+        "list": {
+            
+        },
+        "editor": {
+            "title": "Title",
+            "titleAr": "Arabic Title",
+            "titleEn": "English Title",
+            "descriptionAr": "Arabic Description",
+            "descriptionEn": "English Description",
+            "parentLocation": "parent Location"  
+        }
+    },
+    "assetInventory": {
+        "shared": {
+            "title": "Asset Inventory",
+            "code": "Code",
+            "date": "Date",
+            "location": "Location"
+        },
+        "list": {
+
+        },
+        "editor": {
+            "assetDetails": "Asset Details",
+            "brand": "Brand",
+            "expectedNumber": "Expected Number",
+            "actualNumber": "Actual Number",
+            "difference": "Difference",
+            "description": "Description",
+            "descriptionAr": "Arabic Description",
+            "descriptionEn": "English Description"
+            
+        }
+    },
+    "assetLocation": {
+        "shared": {
+            "title": "Asset Location",            
+            "asset": "Asset",
+            "location": "Location"          
+        },
+        "list": {
+
+        },
+        "editor": {
+            "description": "Description",
+            "descriptionAr": "Arabic Description",
+            "descriptionEn": "English Description"            
+        }
+    },
+    "expensesType": {
+        "shared": {
+            "title": "Expenses Type",
+            "code": "Code",
+            "name": "Name"
+        },
+        "list": {},
+        "editor": {
+            "nameAr": "Arabic Name",
+            "nameEn": "English Name",
+            "description": "Description",
+            "descriptionAr": "Arabic Description",
+            "descriptionEn": "English Description"
+        }
+    },
+    "document": {
+        "shared": {
+            "title": "the Document",
+            "documentNumber": "Document Number",
+            "countReceipts": "Count Receipts",
+            "firstNumber": "First Number"
+        },
+        "list": {},
+        "editor": {}
+    },
+    "discountPercent": {
+        "shared": {
+            "title": "Eiscount Percent",
+            "value": "value",
+            "valueError": "The discount rate should be like this: 60%"
+        },
+        "list": {},
+        "editor": {
+            "nameAr": "Arabic Name",
+            "nameEn": "English Name",
+            "description": "Description",
+            "descriptionAr": "Arabic Description",
+            "descriptionEn": "English Description"
+        }
+    },
+    "testament": {
+        "shared": {
+            "title": "Testament and advances",
+            "code": "Code",
+            "advancesType": "Advances Type",
+            "totalValue": "Total Value",
+            "liquidation": "Liquidation"
+        },
+        "list": {},
+        "editor": {
+            "custodyLiquidation": "Custody Liquidation",
+            "advanceliquidation": "Advance liquidation",
+            "nameAr": "Arabic Name",
+            "nameEn": "English Name",
+            "description": "Description",
+            "descriptionAr": "Arabic Description",
+            "descriptionEn": "English Description",
+            "advance": {
+                "liquidationNumber": "Liquidation Number",
+                "employees": "Employees",
+                "caseCode": "Case Code",
+                "amount": "Amount",
+                "paymentMethod": "payment Method",
+                "bank": "Bank",
+                "accountChart" :"Account Chart"
+            },
+            "error": {
+                "sumAmountNotEqualTotalValue": "Sum amount not equal total value"
+            }
+        }
+    },
+    "liquidation": {
+        "totalAmount": "Total Amount",
+        "amount": "Amount",
+        "documentCode": "liquidation number",
+        "testamentExtraction": "Testament Extraction",
+        "employee": "Employee",
+        "costCenter":"Cost Center",
+        "caseCode":"Case Code",
+        "taxDiscount": "Discount and addition tax",
+        "medicineDiscount": "Medicine Discount",
+        "liquidationType": {
+            "testament": "Testament",
+            "advance": "Advance"
+        },
+        "status": {
+            "status": "Status",
+            "closed": "Closed",
+            "open": "Open"
+        },
+        "error": {
+            "sumAmountNotEqualTotalValue": "Sum amount not equal total amount"
+        }
+    },
+    "reports": {
+        "accountReports": "AccountReports",
+        "balanceReports": "Balance Reports",
+        "accountsReport": "Account Report",        
+        "safeAccountReport": "Safe Account Report",
+        "vendorAccountReport": "Vendor Account Report",
+        "bankAccountReport": "Bank Account Report",
+        "costCenterAccountReport": "Cost Center Account Report",
+        "accountBalanceReport": "Accounts Balance Report",              
+        "safeBalanceReport": "Safe Balance Report",   
+        "vendorBalanceReport": "Vendor Balance Report",   
+        "bankBalanceReport": "Bank Balance Report",   
+        "costCenterBalanceReport": "Cost Center Balance Report",
+        "balanceSheetReport": "Balance Review",
+        "level": "Level",
+        "fixedAssetReports": "Fixed Asset Reports",
+        "fixedAssetDepreciationReport": "Fixed Asset Depreciation Report",
+        "fixedAssetLocationReport": "Fixed Asset Location Report",
+        "fixedAssetMoveReport": "Fixed Asset Move Report",
+        "fixedAssetInventoryReport": "Fixed Asset Inventory Report",
+        "fixedAssetLostReport": "Fixed Asset Lost Report",
+        "fixedAssetExcludedReport": "Fixed Asset Excluded Report",
+        "inventoryReports": "Inventory Reports",
+        "inventoryBalanceReport": "Inventory Balance Report",
+        "donationReports": "Donation Reports",
+        "donatorCasesHistoryReport": "Donations History",
+        "donationCasesBalanceReport": "Donation Cases Balance"
+    }
+}

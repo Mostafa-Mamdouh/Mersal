@@ -1,0 +1,17 @@
+<button type="button" [disabled]="!canEdit" #anchor (click)="onToggle()" class="k-button">{{ selectedKeys }}</button>
+<kendo-popup [anchor]="anchor" (anchorViewportLeave)="show = false" *ngIf="show">
+  <kendo-treeview
+    [nodes]="data"
+    [(textField)]="textField"
+    kendoTreeViewExpandable
+    kendoTreeViewSelectable
+    kendoTreeViewHierarchyBinding
+    [childrenField]="childrenField"
+    [hasChildren]="true"
+    (expand)="handleExpand($event)"
+    [selectBy]="textField"
+    [(selectedKeys)]="selectedKeys"
+    (selectionChange)="handleSelection($event)"
+  >
+  </kendo-treeview>
+</kendo-popup>

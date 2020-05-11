@@ -1,0 +1,58 @@
+<div class="container-fluid">
+        <h3><i class="fa fa-credit-card"></i> {{ 'setting.vat.title' | translate }}</h3>
+        <loader [hidden]="!PageLoading"></loader>
+           
+        <section *ngIf="!PageLoading">
+            <form role="form" [formGroup]="editorForm">
+                <section class="border-curvy">
+                    <div class="row">
+                        <!--vat-->
+                        <div class="form-group col-md-4">
+                                <label>{{ 'setting.vat.title' | translate }}
+                            </label>
+
+                            <input type="text" 
+                            placeholder="{{ 'setting.vat.title' | translate }}" 
+                            class="form-control"
+                                formControlName="vat" id="vat" 
+                                [ngClass]="{'border border-danger' : editorForm.controls['vat'].invalid && 
+                                    editorForm.controls['vat'].touched}">
+                           
+    
+                            <div class="text-danger" 
+                            *ngIf="(editorForm.controls['vat'].hasError('invalid' ) || 
+                                             editorForm.controls['vat'].hasError('required' ) )&&
+                                            (editorForm.controls['vat'].touched || 
+                                             editorForm.controls['vat'].dirty)">
+                                {{ 'movements.fieldReq' | translate }}
+                            </div>
+
+                            <div class="text-danger" 
+                            *ngIf="(editorForm.controls['vat'].hasError('invalid' ) || 
+                                             editorForm.controls['vat'].hasError('pattern' ) )&&
+                                            (editorForm.controls['vat'].touched || 
+                                             editorForm.controls['vat'].dirty)">
+                                {{ 'setting.vat.errors.invalidVATPattern' | translate }}
+                            </div>
+                        </div>                     
+                    </div>                   
+                </section>
+    
+                <loader [hidden]="!isProccessing"></loader>
+    
+                <div class="row">
+                    <div class="form-group col-lg-4">
+                        <button type="submit" (click)="save()" [disabled]="!editorForm.valid || isProccessing"
+                            class="btn btn-secondary">
+                            <i class="fa fa-floppy-o verticalLine"></i> {{ 'shared.save' | translate }}
+                        </button>
+                        &nbsp;
+                        <button routerLink="/setting/control-panel" class="btn btn-secondary">
+                            <i class="fa fa-undo"></i> {{'shared.back' | translate }}
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </section>
+    
+    </div>

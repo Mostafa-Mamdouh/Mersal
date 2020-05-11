@@ -1,0 +1,263 @@
+<form role="form" class="margin-bootom-0" [formGroup]="addPaymentMethods">
+
+  <div class="card">
+    <div class="card-header">
+      <h5 *ngIf="isPayment"> <i class="fa fa-money" aria-hidden="true"></i>
+        {{ 'movements.paymentMethod' | translate }}
+        <!-- <span *ngIf="!isDetails" class="text-danger">*</span>  -->
+      </h5>
+
+      <h5 *ngIf="!isPayment"> <i class="fa fa-money" aria-hidden="true"></i>
+        {{ 'movements.captureMethod' | translate }}
+        <!-- <span *ngIf="!isDetails" class="text-danger">*</span>  -->
+      </h5>
+
+    </div>
+    <div>
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <div *ngFor="let item of methods" class="col-md-3">
+          <div class='radiosDiv mtopPaymentMethod'>
+            <div class="radio radio-info radio-inline">
+              <input [id]="'ReceivingMethodId'+item.code" type="radio" name="ReceivingMethodId"
+                (change)="paymentMethodChanged()" formControlName="ReceivingMethodId" [value]="item.id" checked />
+              <label for="ReceivingMethodId{{item.code}}">{{item.name}}</label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <!--cash type-->
+        <div class="row" *ngIf="addPaymentMethods?.controls['ReceivingMethodId'].value==1">
+
+          <!--safes-->
+          <!-- <div class="col-3">
+            <label class="block">{{ 'financial.safes' | translate }} <span *ngIf="!isDetails"
+                class="text-danger">*</span> </label> -->
+          <!-- <kendo-dropdownlist #list [data]="SafesDropDownData" [filterable]="true" [textField]="'text'"
+              class="height38 width-100-per" [valueField]="'value'" [kendoDropDownFilter]="filterSettings" id="SafeId"
+              [disabled]="!IsCash" formControlName="SafeId" (selectionChange)="SafeCahnged($event)">
+            </kendo-dropdownlist>
+            <div class="text-danger" *ngIf="addPaymentMethods.controls['SafeId'].hasError('required') &&
+                                                (addPaymentMethods.controls['SafeId'].touched || 
+                                                addPaymentMethods.controls['SafeId'].dirty)">
+              {{ 'addProduct.fieldReq' | translate }}
+            </div> -->
+          <!-- <input type="text" formControlName="Safe" class="form-control free-text" disabled /> -->
+
+          <div class="col-lg-3">
+            <label>{{ 'financial.accountChart' | translate }} <span *ngIf="!isDetails"
+                class="text-danger">*</span> </label>
+            <kendo-dropdownlist #list [data]="AccountCharts" [filterable]="true" [textField]="'displyedName'"
+              [valueField]="'id'" [valuePrimitive]="true" [kendoDropDownFilter]="filterSettings" id="accountChart"
+              formControlName="accountChart" class="height38 width-100-per" (valueChange)="accountChartCahnged($event)">
+            </kendo-dropdownlist>
+
+            <div class="text-danger"
+              *ngIf=" addPaymentMethods.controls['accountChart'].hasError('required' ) &&
+                    (addPaymentMethods.controls['accountChart'].touched || addPaymentMethods.controls['accountChart'].dirty)">
+              {{ 'movements.fieldReq' | translate }}
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-2"></div>
+        <div class="col-lg-2"></div>
+        <div class="col-lg-2"></div>
+        <div class="col-lg-2"></div>
+      </div>
+
+      <!--check type-->
+      <div class="row" *ngIf="addPaymentMethods?.controls['ReceivingMethodId'].value==4">
+        <!--sourceBank-->
+        <div class=" col-lg-2">
+          <label class="block">{{ 'financial.sourceBank' | translate }}<span *ngIf="!isDetails && !isReceipt"
+              class="text-danger">*</span></label>
+          <kendo-dropdownlist #list [data]="BanksDropDownData" [filterable]="true" [textField]="'text'"
+            [valueField]="'value'" [kendoDropDownFilter]="filterSettings" id="FromBankId" class="height38 width-100-per"
+            formControlName="FromBankId" [valuePrimitive]="true" [disabled]="!IsCheque"
+            (selectionChange)="FromBankCahnged($event)">
+          </kendo-dropdownlist>
+          <div class="text-danger" *ngIf="addPaymentMethods.controls['FromBankId'].hasError('required') &&
+                                                  (addPaymentMethods.controls['FromBankId'].touched || 
+                                                  addPaymentMethods.controls['FromBankId'].dirty)">
+            {{ 'addProduct.fieldReq' | translate }}
+          </div>
+        </div>
+        <!--chequeNumber-->
+        <div class="col-lg-2">
+          <label class="block">{{ 'financial.chequeNumber' | translate }} <span *ngIf="!isDetails"
+              class="text-danger">*</span>
+          </label>
+          <input type="text" class="form-control" formControlName="ChequeNumber" (change)="firepaymentMethodsChanged()"
+            class="form-control" [attr.disabled]="!IsCheque ? '' : null" />
+          <div class="text-danger"
+            *ngIf=" addPaymentMethods.controls['ChequeNumber'].hasError('required' ) &&
+                                                    (addPaymentMethods.controls['ChequeNumber'].touched || addPaymentMethods.controls['ChequeNumber'].dirty)">
+            {{ 'movements.fieldReq' | translate }}
+          </div>
+
+        </div>
+        <!--dueDate-->
+        <div class="col-lg-2">
+          <label class="block">{{ 'financial.dueDate' | translate }} <span *ngIf="!isDetails"
+              class="text-danger">*</span> </label>
+          <input type="text" *ngIf="!isDetails" [attr.disabled]="!IsCheque ? '' : null"
+            placeholder="{{ 'financial.dueDate' | translate }}" class="form-control"
+            (change)="firepaymentMethodsChanged()" formControlName="Duedate" bsDatepicker />
+          <input type="text" *ngIf="isDetails"
+            value="{{addPaymentMethods.controls['Duedate'].value |date:'dd/MM/yyyy'}}" disabled="disabled"
+            class="form-control">
+          <div class="text-danger"
+            *ngIf=" addPaymentMethods.controls['Duedate'].hasError('required' ) &&
+                                                      (addPaymentMethods.controls['Duedate'].touched || addPaymentMethods.controls['Duedate'].dirty)">
+            {{ 'movements.fieldReq' | translate }}
+          </div>
+        </div>
+
+        <!--cashBank-->
+        <!-- <div class=" col-2" *ngIf="pageSource==pageSourceTypes.receiptsMovement"> -->
+        <div class=" col-lg-2">
+          <label class="block"> {{ 'financial.cashBank' | translate }}
+           <!-- <span *ngIf="!isDetails" class="text-danger">*</span>-->
+          </label>
+
+          <kendo-dropdownlist #list [data]="BanksDropDownData" [filterable]="true" [textField]="'text'"
+            [valueField]="'value'" [kendoDropDownFilter]="filterSettings" id="ToBankId" class="height38 width-100-per"
+            formControlName="ToBankId" [valuePrimitive]="true" [disabled]="!IsCheque"
+            (valueChange)="ToBankCahnged($event)">
+          </kendo-dropdownlist>
+
+
+          <div class="text-danger" *ngIf="addPaymentMethods.controls['ToBankId'].hasError('required') &&
+                              (addPaymentMethods.controls['ToBankId'].touched || 
+                              addPaymentMethods.controls['ToBankId'].dirty)">
+            {{ 'addProduct.fieldReq' | translate }}
+          </div>
+        </div>
+
+        <!--BankAccountChart-->
+
+        <div class="col-lg-2">
+          <label class="block">{{ 'financial.accountChart' | translate }} <span *ngIf="!isDetails && addPaymentMethods.controls['bankaccountchartId'].hasError('required')"
+              class="text-danger">*</span></label>
+          <kendo-dropdownlist #list [data]="BankAcountChartsDropDownData" [filterable]="true" [textField]="'text'"
+            [valueField]="'value'" [valuePrimitive]="true" [kendoDropDownFilter]="filterSettings"
+            id="bankaccountchartId" formControlName="bankaccountchartId" class="height38 width-100-per"
+            (selectionChange)="donatorChange($event)">
+          </kendo-dropdownlist>
+          <div class="text-danger" *ngIf="addPaymentMethods.controls['bankaccountchartId'].hasError('required') &&
+              (addPaymentMethods.controls['bankaccountchartId'].touched || 
+              addPaymentMethods.controls['bankaccountchartId'].dirty)">
+            {{ 'movements.fieldReq' | translate }}
+          </div>
+        </div>
+
+
+
+
+        <!--exchangeable-->
+        <div *ngIf="showExchangeable && financialSetting?.useChecksUnderCollection" 
+        class="col-lg-2 mtopPaymentMethod">
+          <div>
+            <label class="">{{' '}}</label>
+            <div>
+              <input type="checkbox" id="isCash" [disabled]="!IsCheque" name="exchangeable"
+                formControlName="exchangeable" class="form-control checkbox-inline"
+                (change)="firepaymentMethodsChanged()">
+              <label for="isCash" class="" *ngIf="pageSource==pageSourceTypes.receiptsMovement">
+                {{'financial.isDeposite' | translate}}
+              </label>
+              <label for="isCash" class="" *ngIf="pageSource==pageSourceTypes.paymentsMovments">
+                {{'financial.isCash' | translate}}
+              </label>
+            </div>
+            &nbsp;
+          </div>
+        </div>
+      </div>
+
+      <!--credit card type-->
+      <div class="row" *ngIf="addPaymentMethods?.controls['ReceivingMethodId'].value==7">
+        <!--banks-->
+        <div class="col-lg-2">
+          <label class="block">{{ 'financial.banks' | translate }} <span *ngIf="!isDetails" class="text-danger">*</span>
+          </label>
+          <kendo-dropdownlist #list [data]="BanksDropDownData" [filterable]="true" [textField]="'text'"
+            [valueField]="'value'" [kendoDropDownFilter]="filterSettings" id="VisaBankId" class="height38 width-100-per"
+            formControlName="VisaBankId" [valuePrimitive]="true" [disabled]="!IsVisa"
+            (selectionChange)="VisaBankCahnged($event)">
+          </kendo-dropdownlist>
+          <div class="text-danger" *ngIf="addPaymentMethods.controls['VisaBankId'].hasError('required') &&
+                                          (addPaymentMethods.controls['VisaBankId'].touched || 
+                                          addPaymentMethods.controls['VisaBankId'].dirty)">
+            {{ 'addProduct.fieldReq' | translate }}
+          </div>
+        </div>
+
+        <!--visaNumber-->
+        <div class="col-lg-2">
+          <label>{{ 'financial.visaNumber' | translate }} <span *ngIf="!isDetails" class="text-danger">*</span>
+          </label>
+          <input type="text" class="form-control" formControlName="VisaNumber" (change)="firepaymentMethodsChanged()"
+            [attr.disabled]="!IsVisa ? '' : null" />
+          <div class="text-danger"
+            *ngIf=" addPaymentMethods.controls['VisaNumber'].hasError('required' ) &&
+                                                    (addPaymentMethods.controls['VisaNumber'].touched || addPaymentMethods.controls['VisaNumber'].dirty)">
+            {{ 'movements.fieldReq' | translate }}
+          </div>
+        </div>
+      </div>
+
+      <!--bank type-->
+      <div class="row" *ngIf="addPaymentMethods?.controls['ReceivingMethodId'].value==10">
+        <!--cashBank-->
+        <!-- <div class=" col-2" *ngIf="pageSource==pageSourceTypes.receiptsMovement"> -->
+          <div class=" col-lg-2">
+            <label class="block"> {{ 'financial.banks' | translate }}
+             <!-- <span *ngIf="!isDetails" class="text-danger">*</span>-->
+            </label>
+  
+            <kendo-dropdownlist #list [data]="BanksDropDownData" [filterable]="true" [textField]="'text'"
+              [valueField]="'value'" [kendoDropDownFilter]="filterSettings" id="ToBankId" class="height38 width-100-per"
+              formControlName="FromBankId" [valuePrimitive]="true" [disabled]="!IsBank"
+              (valueChange)="ToBankCahnged($event)">
+            </kendo-dropdownlist>
+  
+  
+            <div class="text-danger" *ngIf="addPaymentMethods.controls['FromBankId'].hasError('required') &&
+                                (addPaymentMethods.controls['FromBankId'].touched || 
+                                addPaymentMethods.controls['FromBankId'].dirty)">
+              {{ 'addProduct.fieldReq' | translate }}
+            </div>
+          </div>
+  
+          <!--BankAccountChart-->
+  
+          <div class="col-lg-2">
+            <label class="block">{{ 'financial.accountChart' | translate }} <span *ngIf="!isDetails && addPaymentMethods.controls['bankaccountchartId'].hasError('required')"
+                class="text-danger">*</span></label>
+            <kendo-dropdownlist #list [data]="BankAcountChartsDropDownData" [filterable]="true" [textField]="'text'"
+              [valueField]="'value'" [valuePrimitive]="true" [kendoDropDownFilter]="filterSettings"
+              id="bankaccountchartId" formControlName="bankaccountchartId" class="height38 width-100-per"
+              (selectionChange)="donatorChange($event)">
+            </kendo-dropdownlist>
+            <div class="text-danger" *ngIf="addPaymentMethods.controls['bankaccountchartId'].hasError('required') &&
+                (addPaymentMethods.controls['bankaccountchartId'].touched || 
+                addPaymentMethods.controls['bankaccountchartId'].dirty)">
+              {{ 'movements.fieldReq' | translate }}
+            </div>
+          </div>
+      </div>
+
+      <div class="text-danger" *ngIf="addPaymentMethods.controls['ReceivingMethodId'].hasError('required') &&
+                                              (addPaymentMethods.controls['ReceivingMethodId'].touched || 
+                                              addPaymentMethods.controls['ReceivingMethodId'].dirty)">
+        {{ 'addProduct.fieldReq' | translate }}
+      </div>
+
+    </div>
+  </div>
+
+</form>

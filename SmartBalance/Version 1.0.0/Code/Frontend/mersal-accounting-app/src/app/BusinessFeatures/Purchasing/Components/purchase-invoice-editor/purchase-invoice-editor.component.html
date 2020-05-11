@@ -1,0 +1,540 @@
+<posting-setting-notification></posting-setting-notification>
+
+<div class="container-fluid">
+    <h3><i class="fa fa-credit-card"></i> {{ 'purchasing.invoice.title' | translate }}</h3>
+    <loader [hidden]="!PageLoading"></loader>
+    <section class="editor-section">
+        <form role="form" [formGroup]="editorForm">
+            <div class="row">
+                <!--id-->
+                <div *ngIf="editorMode != editorModeEnum.add" class="form-group col-md-2">
+                    <label>{{ 'purchasing.shared.code' | translate }}
+                    </label>
+                    <div class="detail w-100">
+                        <label class="form-control">
+                            <span>{{id}}</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!--vendorInvoiceCode-->
+                <div class="form-group col-md-2">
+                    <label>{{ 'purchasing.invoice.vendorInvoiceCode' | translate }}
+
+                    </label>
+                    <div class="detail w-100">
+                        <input type="text" *ngIf="canEdit()" min="0" class="form-control" #vendorInvoiceCode
+                            formControlName="vendorInvoiceCode">
+
+                        <label *ngIf="editorMode == editorModeEnum.detail"
+                            class="form-control">{{itemModel?.vendorInvoiceCode}}</label>
+
+                        <div class="text-danger" *ngIf="(editorForm.controls['vendorInvoiceCode'].hasError('invalid' ) || 
+                                    editorForm.controls['vendorInvoiceCode'].hasError('required' ) )&&
+                                   (editorForm.controls['vendorInvoiceCode'].touched || 
+                                    editorForm.controls['vendorInvoiceCode'].dirty)">
+                            {{ 'movements.fieldReq' | translate }}
+                        </div>
+                    </div>
+
+                </div>
+
+                <!--date-->
+                <div class="form-group col-md-2">
+                    <label>{{ 'purchasing.shared.date' | translate }}
+                        <i *ngIf="canEdit()" class="text-danger">*</i>
+                    </label>
+                    <input *ngIf="editorMode != editorModeEnum.detail" type="text" [disabled]="!canEdit()"
+                        placeholder="Datepicker" class="form-control" formControlName="date"
+                        [ngClass]="{'border border-danger' :  editorForm.controls['date'].invalid && editorForm.controls['date'].touched}"
+                        bsDatepicker [minDate]="minDate" [maxDate]="maxDate" readonly
+                        value="{{editorForm.controls['date'].value |date:'dd/MM/yyyy'}}">
+
+                    <label *ngIf="editorMode == editorModeEnum.detail"
+                        class="form-control">{{itemModel?.date | date:'dd/MM/yyyy'}}</label>
+
+                    <div class="text-danger" *ngIf="(editorForm.controls['date'].hasError('invalid' ) || 
+                                 editorForm.controls['date'].hasError('required' ) )&&
+                                (editorForm.controls['date'].touched || 
+                                 editorForm.controls['date'].dirty)">
+                        {{ 'movements.fieldReq' | translate }}
+                    </div>
+                    <div class="text-danger" *ngIf="(editorForm.controls['date'].hasError('invalid' ) || 
+                    editorForm.controls['date'].hasError('bsDate' ) )&&
+                   (editorForm.controls['date'].touched || 
+                    editorForm.controls['date'].dirty)">
+                        {{ 'error.maxDateAlert' | translate }}
+                    </div>
+                </div>
+
+                <!--vendor-->
+                <div class="form-group col-md-2">
+                    <label>{{ 'purchasing.shared.vendor' | translate }}
+                        <span *ngIf="canEdit()" class="text-danger">*</span>
+                    </label>
+                    <kendo-dropdownlist #list [data]="vendors" [filterable]="true" [textField]="'displyedName'"
+                        [valueField]="'id'" [valuePrimitive]="true" selected [kendoDropDownFilter]="filterSettings"
+                        id="vendorId" class="height38 width-100-per" (selectionChange)="VendorCahnged($event)"
+                        formControlName="vendorId" [disabled]="!canEdit()">
+                    </kendo-dropdownlist>
+
+                    <div class="text-danger" *ngIf="editorForm.controls['vendorId'].hasError('required') &&
+                                (editorForm.controls['vendorId'].touched || 
+                                 editorForm.controls['vendorId'].dirty)">
+                        {{ 'movements.fieldReq' | translate }}
+                    </div>
+                </div>
+
+                <!--opening balances-->
+                <div class="form-group col-md-2">
+                    <label>{{ 'purchasing.shared.openingBalanceInvoice' | translate }}
+
+                    </label>
+                    <kendo-dropdownlist #list [data]="openingBalances" [filterable]="true" [textField]="'billNumber'"
+                        [valueField]="'id'" [valuePrimitive]="true" selected [kendoDropDownFilter]="filterSettings"
+                        id="openingBalanceId" class="height38 width-100-per"
+                        (selectionChange)="OpeningBalanceCahnged($event)" formControlName="openingBalanceId"
+                        [disabled]="!canEdit()">
+                    </kendo-dropdownlist>
+
+                    <div class="text-danger" *ngIf="editorForm.controls['vendorId'].hasError('required') &&
+                                    (editorForm.controls['vendorId'].touched || 
+                                     editorForm.controls['vendorId'].dirty)">
+                        {{ 'movements.fieldReq' | translate }}
+                    </div>
+                </div>
+
+                <!--inventory-->
+                <div class="form-group col-md-2">
+                    <label>{{ 'purchasing.shared.inventory' | translate }}
+                        <span *ngIf="canEdit() && generalSetting?.isInventoryRequired" class="text-danger">*</span>
+                    </label>
+                    <kendo-dropdownlist #list [data]="inventorys" [filterable]="true" [textField]="'displyedName'"
+                        [valueField]="'id'" [valuePrimitive]="true" selected [kendoDropDownFilter]="filterSettings"
+                        id="inventoryId" class="height38 width-100-per" formControlName="inventoryId"
+                        [disabled]="!canEdit()">
+                    </kendo-dropdownlist>
+
+                    <div class="text-danger" *ngIf=" editorForm.controls['inventoryId'].hasError('required') &&
+                                (editorForm.controls['inventoryId'].touched || 
+                                editorForm.controls['inventoryId'].dirty)">
+                        {{ 'movements.fieldReq' | translate }}
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <!--CostCenter-->
+                <div class="form-group col-md-4">
+                    <div class="row CostCenter">
+                        <!--one cost Center-->
+                        <div class="form-group col-md-6  checkbox-col">
+                            <input *ngIf="editorMode == editorModeEnum.add" type="checkbox" id="onecostCenter"
+                                class="form-control checkbox-inline" formControlName="hasCostCenter"
+                                (click)="OneCostCenterCHekedToggle($event)" />
+
+                            <input *ngIf="editorMode != editorModeEnum.add" type="checkbox" id="onecostCenter"
+                                class="form-control checkbox-inline" formControlName="hasCostCenter" disabled />
+
+                            <label for="onecostCenter" class="">
+                                {{ 'movements.costCenter' | translate }}
+                            </label>
+                            <!--Check Box one CostCenter Modal -->
+                        </div>
+                        <div class="form-group col-md-6 CostCenterSelect"
+                            *ngIf="this.editorForm.controls['hasCostCenter'].value==true">
+                            <label>{{ 'movements.costCenterName' | translate }} <i class="text-danger">*</i>
+                            </label><br>
+                            <!--*ngIf="isBranchedLoaded"-->
+                            <kendo-dropdownlist #list [data]="costCenter" [filterable]="true"
+                                [textField]="'displyedName'" [valueField]="'id'" [valuePrimitive]="true" selected
+                                [disabled]="editorMode != editorModeEnum.add" [kendoDropDownFilter]="filterSettings"
+                                id="costCenterId" class="height38 width-100-per" formControlName="costCenterId">
+                            </kendo-dropdownlist>
+                            <div class="text-danger" *ngIf=" editorForm.controls['costCenterId'].hasError('required' ) &&
+    (editorForm.controls['costCenterId'].touched || editorForm.controls['costCenterId'].dirty)">
+                                {{ 'movements.fieldReq' | translate }}
+                            </div>
+                        </div>
+                        <!--End one Cost Center-->
+                    </div>
+                </div>
+            </div>
+
+            <!--invoiceType-->
+            <div class="row ">
+                <!--invoiceType-->
+                <div class="form-group col-md-2 ">
+                    <label>{{'purchasing.invoice.invoiceType' | translate }}
+                        <i class="text-danger" *ngIf="editorMode == editorModeEnum.add">*</i>
+                    </label><br>
+                    <kendo-dropdownlist #purchaseInvoiceTypeId [data]="purchaseInvoiceTypes" [filterable]="true"
+                        [textField]="'name'" [valueField]="'id'" [valuePrimitive]="true" selected
+                        [kendoDropDownFilter]="filterSettings" id="purchaseInvoiceTypeId" class="height38 width-100-per"
+                        [disabled]="editorMode != editorModeEnum.add" formControlName="purchaseInvoiceTypeId"
+                        (valueChange)="onInvoiceTypeChange($event)">
+                    </kendo-dropdownlist>
+                    <div class="text-danger" *ngIf=" 
+                                editorForm.controls['purchaseInvoiceTypeId'].hasError('required' ) &&
+                (editorForm.controls['purchaseInvoiceTypeId'].touched || 
+                editorForm.controls['purchaseInvoiceTypeId'].dirty)">
+                        {{ 'movements.fieldReq' | translate }}
+                    </div>
+                </div>
+                <!-- <div>
+                            <h3>{{editorForm.controls['purchaseInvoiceTypeId'].value}}</h3>
+                        </div> -->
+                <div *ngIf="isCashType()" class="form-group col-md-2">
+                    <label>{{ 'purchasing.shared.safe' | translate }}
+                        <i *ngIf="editorMode == editorModeEnum.add" class="text-danger">*</i>
+                    </label><br>
+                    <kendo-dropdownlist #list *ngIf="isCashType()" [data]="safes" [filterable]="true"
+                        [textField]="'displyedName'" [valueField]="'id'" [valuePrimitive]="true" selected
+                        [kendoDropDownFilter]="filterSettings" id="safeId" class="height38 width-100-per"
+                        [disabled]="editorMode != editorModeEnum.add" formControlName="safeId">
+                    </kendo-dropdownlist>
+                    <div class="text-danger" *ngIf=" editorForm.controls['safeId'].hasError('required' ) &&
+                (editorForm.controls['safeId'].touched || 
+                editorForm.controls['safeId'].dirty)">
+                        {{ 'movements.fieldReq' | translate }}
+                    </div>
+                </div>
+
+                <!--check type-->
+                <cheque (chequeFormValueChanged)="onChequeFormValueChanged($event)" [canEdit]="canEdit()"
+                    [cheque]="cheque" class="form-group col-md-10"
+                    *ngIf="editorForm.controls['purchaseInvoiceTypeId'].value == 7"></cheque>
+
+                <!--banks-->
+                <!-- <div *ngIf="isCreditType()" class="form-group col-md-4">
+                            <label class="block">{{ 'financial.banks' | translate }}
+                                <span *ngIf="editorMode == editorModeEnum.add" class="text-danger">*</span> </label>
+                            <kendo-dropdownlist #list [data]="banks" [filterable]="true" [textField]="'displyedName'"
+                                [valueField]="'id'" [kendoDropDownFilter]="filterSettings" id="visaBankId"
+                                class=" height38 width-100-per" formControlName="visaBankId" [valuePrimitive]="true"
+                                [disabled]="editorMode != editorModeEnum.add"
+                                (selectionChange)="visaBankCahnged($event)">
+                            </kendo-dropdownlist>
+                            <div class="text-danger" *ngIf="editorForm.controls['visaBankId'].hasError('required') &&
+                                              (editorForm.controls['visaBankId'].touched || 
+                                              editorForm.controls['visaBankId'].dirty)">
+                                {{ 'addProduct.fieldReq' | translate }}
+                            </div>
+                        </div> -->
+
+                <!--visaNumber-->
+                <!-- <div *ngIf="isCreditType()" class="form-group col-md-4">
+                            <label>{{ 'financial.visaNumber' | translate }}
+                                <span *ngIf="editorMode == editorModeEnum.add" class="text-danger">*</span>
+                            </label>
+                            <input type="text" class="form-control" formControlName="visaNumber"
+                                (change)="fireChanged()"
+                                [attr.disabled]="!(editorMode == editorModeEnum.add) ? '' : null" />
+                            <div class="text-danger" *ngIf=" editorForm.controls['visaNumber'].hasError('required' ) &&
+                        (editorForm.controls['visaNumber'].touched || 
+                        editorForm.controls['visaNumber'].dirty)">
+                                {{ 'movements.fieldReq' | translate }}
+                            </div>
+                        </div> -->
+                <!--End one Cost Center-->
+            </div>
+
+
+
+
+            <!-- <div class="row">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>
+                            <i class="fa fa-users" aria-hidden="true"></i>
+                            <span>
+                                {{ 'costCenter.costcenter' | translate }} &
+                                {{ 'purchasing.invoice.invoiceType' | translate }}
+                            </span>
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        
+                    </div>
+                </div>
+            </div> -->
+            <!-- <div class="row">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>
+                            <i class="fa fa-users" aria-hidden="true"></i>
+                            <span>
+                                {{ 'purchasing.invoice.additionalExpenses' | translate }} &
+                                {{ 'purchasing.shared.discount' | translate }}
+                            </span>
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        
+                    </div>
+                </div>
+            </div> -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <purchase-product style="width: 100%" [isInvoice]="true" [editId]="id" [detailId]="id"
+                        [products]="products" (productListChanged)="onProductListChanged($event)"></purchase-product>
+                </div>
+            </div>
+            <div class="row">
+                <!--hasAdditionalExpenses-->
+                <div class="form-group col-md-4">
+                    <div class="row CostCenter">
+
+                        <div class="form-group col-md-6  checkbox-col">
+                            <input *ngIf="editorMode == editorModeEnum.add" type="checkbox" id="hasAdditionalExpenses"
+                                class="form-control checkbox-inline" formControlName="hasAdditionalExpenses"
+                                (click)="hasAdditionalExpensesCHekedToggle($event)" />
+
+                            <input *ngIf="editorMode != editorModeEnum.add" disabled type="checkbox"
+                                id="hasAdditionalExpenses" class="form-control checkbox-inline"
+                                formControlName="hasAdditionalExpenses" />
+
+                            <label for="hasAdditionalExpenses" class="">
+                                {{ 'purchasing.invoice.additionalExpenses' | translate }}
+                            </label>
+                        </div>
+                        <div class="form-group col-md-6 CostCenterSelect">
+                            <label>{{ 'purchasing.shared.amount' | translate }}
+                                <i *ngIf="editorMode == editorModeEnum.add && isHasAdditionalExpenses()==true"
+                                    class="text-danger">*</i>
+                            </label><br>
+
+                            <input *ngIf="editorMode == editorModeEnum.add && isHasAdditionalExpenses()==true"
+                                type="number" formControlName="additionalExpensesAmount" (blur)="calcTotal()"
+                                class="form-control" />
+
+                            <label *ngIf="editorMode != editorModeEnum.add || !isHasAdditionalExpenses()"
+                                class="form-control">
+                                {{ editorForm.controls['additionalExpensesAmount'].value }}
+                            </label>
+
+                            <div class="text-danger" *ngIf=" 
+                            editorForm.controls['additionalExpensesAmount'].hasError('required' ) &&
+                      (editorForm.controls['additionalExpensesAmount'].touched || 
+                      editorForm.controls['additionalExpensesAmount'].dirty)">
+                                {{ 'movements.fieldReq' | translate }}
+                            </div>
+
+                            <div class="text-danger" *ngIf=" 
+                            editorForm.controls['additionalExpensesAmount'].hasError('pattern' ) &&
+                      (editorForm.controls['additionalExpensesAmount'].touched || 
+                      editorForm.controls['additionalExpensesAmount'].dirty)">
+                                {{ 'error.numberOnly' | translate }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--hasDiscount-->
+                <div class="form-group col-md-4">
+                    <div class="row CostCenter">
+
+                        <div class="form-group col-md-6  checkbox-col">
+                            <input *ngIf="editorMode == editorModeEnum.add" type="checkbox" id="hasDiscount"
+                                class="form-control checkbox-inline" formControlName="hasDiscount"
+                                (click)="hasDiscountCHekedToggle($event)" />
+
+                            <input *ngIf="editorMode != editorModeEnum.add" type="checkbox" id="hasDiscount" disabled
+                                class="form-control checkbox-inline" formControlName="hasDiscount" />
+
+
+
+                            <label for="hasDiscount" class="">
+                                {{ 'purchasing.shared.discount' | translate }}
+                            </label>
+
+                        </div>
+                        <div class="form-group col-md-6 CostCenterSelect">
+                            <label>{{ 'purchasing.shared.amount' | translate }}
+                                <i *ngIf="editorMode == editorModeEnum.add && isHasDiscount()==true"
+                                    class="text-danger">*</i>
+                            </label><br>
+
+                            <!-- <input *ngIf="editorMode == editorModeEnum.add && isHasDiscount()==true"
+                                (blur)="calcTotal()" class="form-control" type="number" formControlName="discountAmount"
+                                class="form-control" />
+
+                            <label *ngIf="editorMode != editorModeEnum.add || !isHasDiscount()" class="form-control">
+                                {{ editorForm.controls['discountAmount'].value }}
+                            </label> -->
+
+
+                            <kendo-combobox #list [data]="discountPercentages" [filterable]="true" [textField]="'name'"
+                                [valueField]="'id'" [valuePrimitive]="true" selected
+                                [kendoDropDownFilter]="filterSettings"
+                                [disabled]="editorMode != editorModeEnum.add || !isHasDiscount()"
+                                id="discountpercentageId" class="height38 width-100-per"
+                                formControlName="discountAmount">
+                            </kendo-combobox>
+
+                            <div class="text-danger" *ngIf=" 
+                            editorForm.controls['discountAmount'].hasError('required' ) &&
+                          (editorForm.controls['discountAmount'].touched || 
+                          editorForm.controls['discountAmount'].dirty)">
+                                {{ 'movements.fieldReq' | translate }}
+                            </div>
+
+                            <div class="text-danger" *ngIf=" 
+                            editorForm.controls['discountAmount'].hasError('pattern' ) &&
+                          (editorForm.controls['discountAmount'].touched || 
+                          editorForm.controls['discountAmount'].dirty)">
+                                {{ 'error.numberOnly' | translate }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <!--totalAmountBeforeTax-->
+                <div class="form-group col-lg-2">
+                    <label> {{ 'purchasing.shared.totalAmount' | translate }}
+                        <i *ngIf="canEdit()" class="text-danger">*</i></label>
+                    <div class="detail w-100">
+                        <input type="number" min="0" class="form-control" disabled pattern=".*\S.*"
+                            formControlName="totalAmountBeforeTax">
+                    </div>
+                    <div *ngIf="(editorForm.controls['totalAmountBeforeTax'].touched || 
+                        editorForm.controls['totalAmountBeforeTax'].dirty) && 
+                        editorForm.controls['totalAmountBeforeTax'].invalid" class="text-danger">
+                        <span>
+                            {{ 'movements.fieldReq' | translate }}
+                        </span>
+                    </div>
+                </div>
+                <!--taxAmount-->
+                <div class="form-group col-lg-2">
+                    <label> {{ 'purchasing.invoice.taxAmount' | translate }}
+                        <i *ngIf="canEdit()" class="text-danger">*</i></label>
+                    <div class="detail w-100">
+                        <input type="number" min="0" class="form-control" disabled pattern=".*\S.*"
+                            formControlName="taxAmount">
+                    </div>
+                    <div *ngIf="(editorForm.controls['taxAmount'].touched || 
+                        editorForm.controls['taxAmount'].dirty) &&
+                        editorForm.controls['taxAmount'].invalid" class="text-danger">
+                        <span>
+                            {{ 'movements.fieldReq' | translate }}
+                        </span>
+                    </div>
+                </div>
+
+                <!--totalAmount-->
+                <!-- <div class="form-group col-lg-2">
+                    <label> {{ 'purchasing.rebate.totalAmount' | translate }} 
+                        <i *ngIf="canEdit()" class="text-danger">*</i></label>
+                    <div class="detail w-100">
+                        <input type="number" min="0" 
+                        class="form-control" disabled 
+                        pattern=".*\S.*" 
+                        formControlName="totalAmount">
+                      </div>     
+                    <div *ngIf="(editorForm.controls['totalAmount'].touched || 
+                    editorForm.controls['totalAmount'].dirty) && 
+                    editorForm.controls['totalAmount'].invalid"
+                      class="text-danger">
+                      <span >
+                        {{ 'movements.fieldReq' | translate }}
+                      </span>                
+                    </div>
+                </div> -->
+                <!--totalExpenses-->
+                <div class="form-group col-lg-2">
+                    <label> {{ 'purchasing.shared.totalExpenses' | translate }}
+                        <i *ngIf="canEdit()" class="text-danger">*</i></label>
+                    <div class="detail w-100">
+                        <input type="number" min="0" class="form-control" disabled pattern=".*\S.*"
+                            formControlName="totalExpenses">
+                    </div>
+                    <div *ngIf="(editorForm.controls['totalExpenses'].touched || 
+                    editorForm.controls['totalExpenses'].dirty) && 
+                    editorForm.controls['totalExpenses'].invalid" class="text-danger">
+                        <span>
+                            {{ 'movements.fieldReq' | translate }}
+                        </span>
+                    </div>
+                </div>
+                <!--totalDiscount-->
+                <div class="form-group col-lg-2">
+                    <label> {{ 'purchasing.shared.totalDiscount' | translate }}
+                        <i *ngIf="canEdit()" class="text-danger">*</i></label>
+                    <div class="detail w-100">
+                        <input type="number" min="0" class="form-control" disabled pattern=".*\S.*"
+                            formControlName="totalDiscount">
+                    </div>
+                    <div *ngIf="(editorForm.controls['totalDiscount'].touched || 
+                    editorForm.controls['totalDiscount'].dirty) &&
+                    editorForm.controls['totalDiscount'].invalid" class="text-danger">
+                        <span>
+                            {{ 'movements.fieldReq' | translate }}
+                        </span>
+                    </div>
+                </div>
+
+                <!--netAmount-->
+                <div class="form-group col-lg-2">
+                    <label> {{ 'purchasing.shared.netAmount' | translate }}
+                        <i *ngIf="canEdit()" class="text-danger">*</i></label>
+                    <div class="detail w-100">
+                        <input type="number" min="0" class="form-control" disabled pattern=".*\S.*"
+                            formControlName="netAmount">
+                    </div>
+                    <div *ngIf="(editorForm.controls['netAmount'].touched || 
+                    editorForm.controls['netAmount'].dirty) && 
+                    editorForm.controls['netAmount'].invalid" class="text-danger">
+                        <span>
+                            {{ 'movements.fieldReq' | translate }}
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <loader [hidden]="!isProccessing"></loader>
+
+            <div class="row">
+                <div class="form-group col-lg-4">
+                    <button *ngIf="canEdit()" type="submit" (click)="save()"
+                        [disabled]="!editorForm.valid || isProccessing" class="btn btn-secondary">
+                        <i class="fa fa-floppy-o verticalLine"></i> {{ 'shared.save' | translate }}
+                    </button>
+                    &nbsp;
+                    <button (click)="goToBack()" class="btn btn-secondary">
+                        <i class="fa fa-undo"></i> {{'shared.back' | translate }}
+                    </button>
+                </div>
+            </div>
+        </form>
+    </section>
+
+</div>
+
+<button type="button" id="openPostlBTN" [hidden]="true" data-backdrop="static" data-keyboard="false" data-toggle="modal"
+    data-target="#postModal"></button>
+<div class="modal fade" id="postModal" data-backdrop="static" data-keyboard="false" role="dialog"
+    aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <!-- <h5 class="modal-title" id="exampleModalLabel"> {{ 'movements.multiCostCenter' | translate }}</h5> -->
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <journal-entries-editor (journalValueChange)="journalValueChange($event)"
+                    (journalApprove)="journalApprove($event)" (journalReject)="journalReject($event)"
+                    *ngIf="journalPreviewShow" [postingStatus]="0" [journalPreview]="journalPreview">
+                </journal-entries-editor>
+
+                <!-- <app-add-cost-center [donationValue]="editorForm.controls['Amount'].value"
+                    (costCentersListChanged)="addCostCenters($event)" 
+                    [DetailsCostCenters]="CostCenters">
+                  </app-add-cost-center> -->
+            </div>
+
+        </div>
+    </div>
+</div>

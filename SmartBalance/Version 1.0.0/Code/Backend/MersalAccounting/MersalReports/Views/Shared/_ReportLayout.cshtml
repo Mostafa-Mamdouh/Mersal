@@ -1,0 +1,35 @@
+﻿@using ReportViewerForMvc
+@model string
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@Model</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body class="report">
+    <div class="row">
+        <div class="col-md-12">
+            @Html.ReportViewer(ViewBag.reportViewer as Microsoft.Reporting.WebForms.ReportViewer, new { @class = "report-viewer report-viewer-" + ViewData["lang"] })
+        </div>
+    </div>
+
+    <style>
+        #ReportViewer1_fixedTable {
+            display: table;
+            margin: 0 auto;
+        }
+    </style>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+</body>
+</html>
+
+

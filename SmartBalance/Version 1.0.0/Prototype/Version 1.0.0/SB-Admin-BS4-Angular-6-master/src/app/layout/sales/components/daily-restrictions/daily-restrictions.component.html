@@ -1,0 +1,180 @@
+<div [@routerTransition]>
+  <h1>{{ 'Movements.DailyRestrictions' | translate }}</h1>
+  <section>
+    <form role="form" [formGroup]="addBill" (ngSubmit)="AddBill()">
+      <div class="row">
+        <div class="form-group col-lg-4">
+          <label>{{ 'Movements.DocumentNumber' | translate }}</label>
+          <input
+            type="number"
+            class="form-control"
+            formControlName="DocumentNumber"
+            placeholder="{{ 'Movements.DocumentNumber' | translate }}"
+          />
+        </div>
+        <div class="form-group col-lg-4">
+          <label>{{ 'Movements.DateDocument' | translate }}</label>
+          <input type="text" placeholder="Datepicker" class="form-control" formControlName="DateDocument" bsDatepicker />
+        </div>
+        <button type="submit" class="btn btn-danger form-group">{{ 'Movements.ReverseConstraint' | translate }}</button>
+      </div>
+      <div class="row">
+        <div class="form-group col-lg-6">
+          <label>{{ 'Movements.StatementAr' | translate }}</label>
+          <textarea class="form-control" formControlName="StatementAr" placeholder="{{ 'Movements.StatementAr' | translate }}"></textarea>
+        </div>
+        <div class="form-group col-lg-6">
+          <label>{{ 'Movements.StatementEn' | translate }}</label>
+          <textarea class="form-control" formControlName="StatementEn" placeholder="{{ 'Movements.StatementEn' | translate }}"></textarea>
+        </div>
+      </div>
+      <section>
+        <h2>{{ 'Movements.Products' | translate }}</h2>
+        <form role="form" [formGroup]="addProduct" (ngSubmit)="AddProduct()">
+          <div class="row">
+            <div class="form-group col-lg-3">
+              <label>{{ 'Movements.AccountNumber' | translate }}</label>
+             <div class="detail w-100">
+                <input type="text"  class="form-control" pattern=".*\S.*" formControlName="AccountNumber"
+                [ngClass]="{'border border-danger' :  addProduct.controls['AccountNumber'].invalid && addProduct.controls['AccountNumber'].touched}"
+                placeholder="{{ 'Movements.AccountNumber' | translate }}">
+              </div>
+              <div class="text-danger" *ngIf=" addProduct.controls['AccountNumber'].hasError( 'required' ) &&
+                  (addProduct.controls['AccountNumber'].touched || addProduct.controls['AccountNumber'].dirty)">
+              {{ 'Movements.fieldReq' | translate }}
+              </div>
+            </div>
+            <div class="form-group col-lg-3">
+              <label>{{ 'Movements.AccountName' | translate }}</label>
+              <div class="detail w-100">
+                <input type="text"  class="form-control" pattern=".*\S.*" formControlName="AccountName"
+                [ngClass]="{'border border-danger' :  addProduct.controls['AccountName'].invalid && addProduct.controls['AccountName'].touched}"
+                placeholder="{{ 'Movements.AccountName' | translate }}">
+              </div>
+              <div class="text-danger" *ngIf=" addProduct.controls['AccountName'].hasError( 'required' ) &&
+                  (addProduct.controls['AccountName'].touched || addProduct.controls['AccountName'].dirty)">
+              {{ 'Movements.fieldReq' | translate }}
+              </div>
+            </div>
+            <div class="form-group col-lg-3">
+              <label>{{ 'Movements.Debtor' | translate }}</label>              
+              <div class="detail w-100">
+                <input type="text"  class="form-control" pattern=".*\S.*" formControlName="Debtor"
+                [ngClass]="{'border border-danger' :  addProduct.controls['Debtor'].invalid && addProduct.controls['Debtor'].touched}"
+                placeholder="{{ 'Movements.Debtor' | translate }}">
+              </div>
+              <div class="text-danger" *ngIf=" addProduct.controls['Debtor'].hasError( 'required' ) &&
+                  (addProduct.controls['Debtor'].touched || addProduct.controls['Debtor'].dirty)">
+              {{ 'Movements.fieldReq' | translate }}
+              </div>
+            </div>
+            <div class="form-group col-lg-3">
+              <label>{{ 'Movements.Creditor' | translate }}</label>
+              <div class="detail w-100">
+                <input type="text"  class="form-control" pattern=".*\S.*" formControlName="Creditor"
+                [ngClass]="{'border border-danger' :  addProduct.controls['Creditor'].invalid && addProduct.controls['Creditor'].touched}"
+                placeholder="{{ 'Movements.Creditor' | translate }}">
+              </div>
+              <div class="text-danger" *ngIf=" addProduct.controls['Creditor'].hasError( 'required' ) &&
+                  (addProduct.controls['Creditor'].touched || addProduct.controls['Creditor'].dirty)">
+              {{ 'Movements.fieldReq' | translate }}
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group col-lg-3">
+              <label>{{ 'Movements.CostCenterCode' | translate }}</label>
+              <div class="detail w-100">
+                <input type="text"  class="form-control" pattern=".*\S.*" formControlName="CostCenterCode"
+                [ngClass]="{'border border-danger' :  addProduct.controls['CostCenterCode'].invalid && addProduct.controls['CostCenterCode'].touched}"
+                placeholder="{{ 'Movements.CostCenterCode' | translate }}">
+              </div>
+              <div class="text-danger" *ngIf=" addProduct.controls['CostCenterCode'].hasError( 'required' ) &&
+                  (addProduct.controls['CostCenterCode'].touched || addProduct.controls['CostCenterCode'].dirty)">
+              {{ 'Movements.fieldReq' | translate }}
+              </div>
+            </div>
+            <div class="form-group col-lg-3">
+              <label>{{ 'Movements.CostCenterName' | translate }}</label>             
+              <div class="detail w-100">
+                <input type="text"  class="form-control" pattern=".*\S.*" formControlName="CostCenterName"
+                [ngClass]="{'border border-danger' :  addProduct.controls['CostCenterName'].invalid && addProduct.controls['CostCenterName'].touched}"
+                placeholder="{{ 'Movements.CostCenterName' | translate }}">
+              </div>
+              <div class="text-danger" *ngIf=" addProduct.controls['CostCenterName'].hasError( 'required' ) &&
+                  (addProduct.controls['CostCenterName'].touched || addProduct.controls['CostCenterName'].dirty)">
+              {{ 'Movements.fieldReq' | translate }}
+              </div>
+            </div>
+            <div class="form-group col-lg-3">
+              <label>{{ 'Movements.discription' | translate }}</label>             
+              <div class="detail w-100">
+                <input type="text"  class="form-control" pattern=".*\S.*" formControlName="discription"
+                [ngClass]="{'border border-danger' :  addProduct.controls['discription'].invalid && addProduct.controls['discription'].touched}"
+                placeholder="{{ 'Movements.discription' | translate }}">
+              </div>
+              <div class="text-danger" *ngIf=" addProduct.controls['discription'].hasError( 'required' ) &&
+                  (addProduct.controls['discription'].touched || addProduct.controls['discription'].dirty)">
+              {{ 'Movements.fieldReq' | translate }}
+              </div>
+            </div>
+            <div class="form-group col-lg-3">
+              <button type="submit" class="btn btn-secondary">{{ 'shared.add' | translate }}</button>
+              <button type="reset" (click)="cancel('1')" class="btn btn-secondary">{{ 'shared.cancel' | translate }}</button>
+            </div>
+          </div>
+        </form>
+        <div class="col-lg-12" *ngIf="products.length > 0">
+          <div class="card mb-3">
+            <div class="card-header">
+              {{ 'Movements.Products' | translate }}
+            </div>
+            <div class="card-body table-responsive">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>{{ 'Movements.AccountNumber' | translate }}</th>
+                    <th>{{ 'Movements.AccountName' | translate }}</th>
+                    <th>{{ 'Movements.Creditor' | translate }}</th>
+                    <th>{{ 'Movements.Debtor' | translate }}</th>
+                    <th>{{ 'Movements.CostCenterCode' | translate }}</th>
+                    <th>{{ 'Movements.CostCenterName'    | translate }}</th>
+                    <th>{{ 'Movements.discription'     | translate }}</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let product of products; let i = index">
+                    <th scope="row">{{ i + 1 }}</th>
+                    <td>{{ product?.AccountNumber  }}</td>
+                    <td>{{ product?.AccountName    }}</td>
+                    <td>{{ product?.Creditor       }}</td>
+                    <td>{{ product?.Debtor         }}</td>
+                    <td>{{ product?.CostCenterCode }}</td>
+                    <td>{{ product?.CostCenterName }}</td>
+                    <td>{{ product?.discription    }}</td>
+                    <td>
+                      <button type="submit" class="btn action" title="{{ 'shared.save' | translate }}">
+                        <i class="fa fa-pencil"></i>
+                      </button>
+                      <button class="btn action" (click)="delete(product)">
+                        <i class="fa fa-times"></i>
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+      <div class="row">
+        <div class="form-group col-lg-3">
+          <button type="submit" class="btn btn-secondary">{{ 'shared.save' | translate }}</button>
+          <button type="reset" (click)="cancel('0')" class="btn btn-secondary">{{ 'shared.cancel' | translate }}</button>
+        </div>
+      </div>
+    </form>
+  </section>
+</div>

@@ -1,0 +1,20 @@
+
+<div class="row">
+    <div class="col-2">
+      <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+        <a [ngClass]="getActiveTab()=='user' ? 'nav-link active' : 'nav-link'" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" (click)="gotoEditor()" role="tab" aria-controls="v-pills-home" [attr.aria-selected]="getActiveTab()=='user'">{{'user.shared.title' | translate}}</a>
+        <a *ngIf="id" [ngClass]="getActiveTab()=='userPermissions' ? 'nav-link active' : 'nav-link'" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-home" (click)="gotoUserPermissions()" role="tab" aria-controls="v-pills-profile" [attr.aria-selected]="getActiveTab()=='userPermissions'">{{'user.userPermissions.title' | translate}}</a>
+        <a *ngIf="id" [ngClass]="getActiveTab()=='userRoles' ? 'nav-link active' : 'nav-link'" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-home" (click)="gotoUserRoles()" role="tab" aria-controls="v-pills-profile" [attr.aria-selected]="getActiveTab()=='userRoles'">{{'user.userRoles.title' | translate}}</a>
+        <a *ngIf="id" [ngClass]="getActiveTab()=='userGroups' ? 'nav-link active' : 'nav-link'" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-home" (click)="gotoUserGroups()" role="tab" aria-controls="v-pills-profile" [attr.aria-selected]="getActiveTab()=='userGroups'">{{'user.userGroups.title' | translate}}</a>
+        <a *ngIf="id" [ngClass]="getActiveTab()=='userMenuItems' ? 'nav-link active' : 'nav-link'" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-home" (click)="gotoUserMenuItems()" role="tab" aria-controls="v-pills-profile" [attr.aria-selected]="getActiveTab()=='userMenuItems'">{{'user.userMenuItems.title' | translate}}</a>
+        <a *ngIf="id" [ngClass]="getActiveTab()=='userBranch' ? 'nav-link active' : 'nav-link'" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-home" (click)="gotoUserBranchs()" role="tab" aria-controls="v-pills-profile" [attr.aria-selected]="getActiveTab()=='userBranch'">{{'user.userBranch.title' | translate}}</a>
+      </div>
+    </div>
+    <div class="col-10">
+      <div class="tab-content" id="v-pills-tabContent">
+        <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+            <router-outlet></router-outlet>
+        </div>
+      </div>
+    </div>
+  </div>

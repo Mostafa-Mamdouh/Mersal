@@ -1,0 +1,25 @@
+button {
+    width: 100%;
+    //justify-content: left;
+    appearance: none;
+    background-image:
+      linear-gradient(45deg, transparent 50%, #000 50%),
+      linear-gradient(135deg, #000 50%, transparent 50%) !important;
+    background-position:
+      calc(100% - 0.7rem) 1rem, 
+      calc(100% - 0.4rem) 1rem;
+    background-size:
+      0.3rem 0.3rem,
+      0.3rem 0.3rem;
+    background-repeat: no-repeat;
+    padding-right: 1.25rem;
+    height: 36px;
+  }
+  kendo-treeview {
+    width: 240px;
+  
+  }
+  
+  kendo-popup.k-animation-container{
+    display: contents;
+  }

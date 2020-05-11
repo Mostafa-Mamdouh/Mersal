@@ -1,0 +1,5 @@
+#pass-status{
+    float: left;
+    z-index: 99999;
+    margin: -30px;
+}

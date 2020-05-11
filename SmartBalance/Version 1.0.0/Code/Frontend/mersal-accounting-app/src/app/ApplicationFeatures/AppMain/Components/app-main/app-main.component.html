@@ -1,0 +1,15 @@
+<div class="wrapper ">
+    <app-header (sidebarsStatus)='sidebarsStatusChange($event)' *ngIf="checkCurrentUser()"></app-header> 
+    <div class="main-panel" [ngClass]="{'page-fullwidth': !this.currentUserService.isLoggedIn()||sideStatus}">
+        <div class="content">
+            <div class="container-fluid">
+                <!-- <p>sideStatus: {{sideStatus}}</p> -->
+                <app-sidebar (sidebarsStatus)='sidebarsStatusChange($event)' 
+                             *ngIf="checkCurrentUser() && !sideStatus"></app-sidebar> 
+                <loader [hidden]="!_isNavigating"></loader>
+                <router-outlet [hidden]="_isNavigating"></router-outlet>
+            </div>
+        </div>
+        <app-footer></app-footer>
+    </div>
+</div>

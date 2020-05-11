@@ -1,0 +1,179 @@
+<div class="container-fluid">
+    <h3><i class="fa fa-credit-card"></i> {{ 'donator.shared.title' | translate }}</h3>
+
+    <loader [hidden]="!PageLoading"></loader>
+
+    <section class="editor-section" *ngIf="!PageLoading">
+        <form role="form" [formGroup]="editorForm">
+            <div class="row">
+                <!--code-->
+                <!-- <div *ngIf="editorMode != editorModeEnum.add" class="form-group col-lg-2">
+                    <label>{{ 'donation.code' | translate }} </label>
+                    <label class="form-control">{{editorForm.controls['code'].value}}</label>
+                </div> -->
+
+                <!--name-->
+                <div class="form-group col-md-2">
+                    <label>{{ 'donator.shared.name' | translate }}
+                        <i *ngIf="canEdit()" class="text-danger">*</i>
+                    </label>
+                    <div class="detail w-100">
+                        <input type="text" *ngIf="canEdit()" min="0" class="form-control" #name formControlName="name">
+
+                        <label *ngIf="editorMode == editorModeEnum.detail"
+                            class="form-control">{{itemModel?.name}}</label>
+
+                        <div class="text-danger" *ngIf="(editorForm.controls['name'].hasError('invalid' ) || 
+                                    editorForm.controls['name'].hasError('required' ) )&&
+                                (editorForm.controls['name'].touched || 
+                                    editorForm.controls['name'].dirty)">
+                            {{ 'movements.fieldReq' | translate }}
+                        </div>
+                    </div>
+                </div>
+
+                <!--date-->
+                <div class="form-group col-md-2">
+                    <label>{{ 'donator.shared.date' | translate }}
+                    </label>
+
+                    <input *ngIf="editorMode != editorModeEnum.detail" type="text" [disabled]="!canEdit()"
+                        placeholder="Datepicker" class="form-control" formControlName="date"
+                        [ngClass]="{'border border-danger' :  editorForm.controls['date'].invalid && editorForm.controls['date'].touched}"
+                        bsDatepicker readonly
+                        value="{{editorForm.controls['date'].value |date:'dd/MM/yyyy'}}">
+
+                    <label *ngIf="editorMode == editorModeEnum.detail"
+                        class="form-control">{{itemModel?.creationDate | date:'dd/MM/yyyy'}}</label>
+
+                    <div class="text-danger" *ngIf="(editorForm.controls['date'].hasError('invalid' ) || 
+                                 editorForm.controls['date'].hasError('required' ) )&&
+                                (editorForm.controls['date'].touched || 
+                                 editorForm.controls['date'].dirty)">
+                        {{ 'movements.fieldReq' | translate }}
+                    </div>
+                </div>
+
+                <!--phone-->
+                <div class="form-group col-md-2">
+                    <label>{{ 'delegate.shared.phone' | translate }}
+                        <!-- <span *ngIf="canEdit()" class="text-danger">*</span> -->
+                    </label>
+                    <div class="detail w-100">
+                        <input type="text" *ngIf="canEdit()" min="0" class="form-control" #phone
+                            formControlName="phone">
+
+                        <label *ngIf="editorMode == editorModeEnum.detail"
+                            class="form-control">{{itemModel?.phone}}</label>
+
+                        <div class="text-danger" *ngIf="(editorForm.controls['phone'].hasError('invalid' ) || 
+                                                        editorForm.controls['phone'].hasError('required' ) )&&
+                                                       (editorForm.controls['phone'].touched || 
+                                                        editorForm.controls['phone'].dirty)">
+                            {{ 'movements.fieldReq' | translate }}
+                        </div>
+
+                        <div class="text-danger" *ngIf="(editorForm.controls['phone'].hasError('invalid' ) || 
+                                                editorForm.controls['phone'].hasError('pattern' ) )&&
+                                                (editorForm.controls['phone'].touched || 
+                                                editorForm.controls['phone'].dirty)">
+                            {{ 'donation.phone' | translate }}
+                        </div>
+                    </div>
+                </div>
+
+                <!--email-->
+                <div class="form-group col-md-2">
+                    <label>{{ 'delegate.shared.email' | translate }}
+                        <!-- <span *ngIf="canEdit()" class="text-danger">*</span> -->
+                    </label>
+                    <div class="detail w-100">
+                        <input type="text" *ngIf="canEdit()" min="0" class="form-control" #email
+                            formControlName="email">
+
+                        <label *ngIf="editorMode == editorModeEnum.detail"
+                            class="form-control">{{itemModel?.email}}</label>
+
+                        <div class="text-danger" *ngIf="(editorForm.controls['email'].hasError('invalid' ) || 
+                                                        editorForm.controls['email'].hasError('required' ) )&&
+                                                       (editorForm.controls['email'].touched || 
+                                                        editorForm.controls['email'].dirty)">
+                            {{ 'movements.fieldReq' | translate }}
+                        </div>
+                        <div class="text-danger" *ngIf="(editorForm.controls['email'].hasError('invalid' ) || 
+                                                        editorForm.controls['email'].hasError('email' ) )&&
+                                                        (editorForm.controls['email'].touched || 
+                                                        editorForm.controls['email'].dirty)">
+                            {{ 'shared.enterVatidEmail' | translate }}
+                        </div>
+                    </div>
+                </div>
+
+                <!--accountChart-->
+                <div class="form-group col-md-4">
+                    <label>{{ 'donator.editor.accountChart' | translate }}
+
+                    </label>
+                    <kendo-dropdownlist #accountChartId [data]="accountCharts" [filterable]="true"
+                        [textField]="'displyedName'" [valueField]="'id'" [valuePrimitive]="true" selected
+                        [kendoDropDownFilter]="filterSettings" id="accountChartId" class="height38 width-100-per"
+                        formControlName="accountChartId" [disabled]="!canEdit()">
+                    </kendo-dropdownlist>
+
+                    <div class="text-danger" *ngIf="editorForm.controls['accountChartId'].hasError('required') &&
+                  (editorForm.controls['accountChartId'].touched || 
+                   editorForm.controls['accountChartId'].dirty)">
+                        {{ 'movements.fieldReq' | translate }}
+                    </div>
+                </div>
+
+                <!--address-->
+                <div class="form-group col-md-12">
+                    <label>{{ 'delegate.editor.address' | translate }}
+                        <!-- <span *ngIf="canEdit()" class="text-danger">*</span> -->
+                    </label>
+                    <div class="detail w-100">
+                        <textarea *ngIf="canEdit()" class="form-control" formControlName="address"
+                            placeholder="{{ 'delegate.editor.address' | translate }}"></textarea>
+
+                        <textarea *ngIf="!canEdit()" disabled class="form-control" formControlName="address"
+                            placeholder="{{ 'delegate.editor.address' | translate }}"></textarea>
+
+                        <!-- <input type="text" *ngIf="canEdit()" min="0" class="form-control" #address
+                            formControlName="address">
+
+                        <label *ngIf="editorMode == editorModeEnum.detail"
+                            class="form-control">{{itemModel?.address}}</label> -->
+
+                        <div class="text-danger" *ngIf="(editorForm.controls['address'].hasError('invalid' ) || 
+                                    editorForm.controls['address'].hasError('required' ) )&&
+                                (editorForm.controls['address'].touched || 
+                                    editorForm.controls['address'].dirty)">
+                            {{ 'movements.fieldReq' | translate }}
+                        </div>
+                    </div>
+                </div>
+
+                <!-- <div>
+                    <h3>{{editorForm.controls['donatorId'].value}}</h3>
+                </div> -->
+            </div>
+
+            <loader [hidden]="!isProccessing"></loader>
+
+            <div class="row">
+                <div class="form-group col-lg-4">
+                    <button *ngIf="canEdit()" type="submit" (click)="save()"
+                        [disabled]="!editorForm.valid || isProccessing" class="btn btn-secondary">
+                        <i class="fa fa-floppy-o verticalLine"></i> {{ 'shared.save' | translate }}
+                    </button>
+                    &nbsp;
+                    <button (click)="goToBack()" class="btn btn-secondary">
+                        <i class="fa fa-undo"></i> {{'shared.back' | translate }}
+                    </button>
+                </div>
+            </div>
+        </form>
+    </section>
+
+</div>

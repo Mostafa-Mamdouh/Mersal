@@ -1,0 +1,72 @@
+<div class="hide rtldirection" [attr.id]="'print-section'+data?.id" >
+  <div class="header">
+    {{'donation.invoicefor' |translate}}
+  </div>
+
+  <div class="address">
+    <div class="for">
+      <h5>{{ 'movements.source' | translate }} </h5>
+      <p>
+        <span *ngIf="data?.vendorId">{{ 'financial.vendor' | translate }}: </span>
+        <span *ngIf="data?.accountChartId">{{ 'financial.accountChart' | translate }}: </span>
+        <span *ngIf="data?.donatorId">{{ 'financial.donator' | translate }}: </span>
+        
+        {{data?.source}}
+      </p>
+      <h5>{{'movements.paymentMethod' |translate}} </h5>
+      <p>
+        {{data?.paymentMethod}}
+      </p>
+    </div>
+    <!-- <div class="for">
+  <h3>{{'donation.invoicefor' |translate}} </h3>
+  <p>
+    {{data.source}} 
+  </p>
+</div> -->
+    <div class="from block" >
+      <h5>{{'donation.receiptDate' |translate}} </h5>
+      <p>
+        {{data?.date |date:'dd/MM/yyyy' }} 
+      </p>
+
+      <h5>{{'movements.date' |translate}} </h5>
+      <p>
+        {{data?.creationDate |date:'dd/MM/yyyy' }} 
+      </p>
+    </div>
+
+
+    <div class="from block">
+      <h5>{{'donation.branch' |translate}} </h5>
+      <p>{{data?.branch}}</p>
+    </div>
+
+
+
+    <div class="from" *ngIf="data?.delegateMan!=null &&data?.reciptNumber!=null">
+      <h5>{{'movements.delegate' |translate}} </h5>
+      <p>
+        {{data?.delegateMan }} 
+      </p>
+
+      <h5>{{'donation.delegateManReciptNumber' |translate}} </h5>
+      <p>{{data?.reciptNumber}}</p>
+    </div>
+
+    <div class="from" *ngIf="data?.donationTypeName">
+      <h5>{{'donation.donationType' |translate}} </h5>
+      <p>{{data?.donationTypeName}}</p>
+    </div>
+
+  </div>
+  <hr />
+  <div class="signature">
+    {{'addProduct.Total' |translate}} : {{data?.amount}} {{data?.currency}} {{data?.lastCurrencyExchange}}
+  </div>  
+</div>
+
+<div class="signature">
+  <button class="btn btn-link" [useExistingCss]="true" printSectionId="{{'print-section'+data?.id}}"
+    styleSheetFile="src\assets\css\invoice.css" ngxPrint><i class="fa fa-print"></i></button>
+</div>

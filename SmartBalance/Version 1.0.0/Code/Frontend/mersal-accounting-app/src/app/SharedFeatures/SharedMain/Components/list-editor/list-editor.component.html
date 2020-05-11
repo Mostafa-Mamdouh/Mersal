@@ -1,0 +1,81 @@
+<div class="row">
+    <div class="col-md-5">
+
+        <div class="topnav">
+            <div class="row">
+                <div class="col-md-9">
+                    <div class="search-container">
+                        <input type="text" [(ngModel)]="sourceSearchText"
+                            placeholder="{{'shared.searchAbout' | translate}} ..." name="search">
+                        <button type="button"><i class="fa fa-search"></i></button>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="clear-container">
+                        <div *ngIf="isAnySourceItemSelected() || sourceSearchText">
+                            <a (click)="unselectAllSourceItems()" class="clear">{{'shared.unselect'|translate}}</a>
+                        </div>
+                    </div>                  
+                </div>
+            </div>
+        </div>
+
+        <div class="list">
+            <ng-container *ngIf="sourceList">
+                <div *ngFor="let item of sourceList | filter:sourceSearchText;" class="list-item"
+                    [ngClass]="{'list-item selected': item.selected, 'list-item': !item.selected}"
+                    (click)="sourceClicked(item)">{{item?.name}}
+                </div>
+            </ng-container>
+        </div>
+
+    </div>
+    <div class="col-md-1">
+        <div class="control-buttons">
+            <button class="btn btn-light" [disabled]="!canEdit" (click)="moveSelectedToDest()"><i
+                    class="fa fa-angle-left"></i></button>
+            <br />
+            <button class="btn btn-light" [disabled]="!canEdit" (click)="moveAllToDest()"><i
+                    class="fa fa-angle-double-left"></i></button>
+            <br />
+            <button class="btn btn-light" [disabled]="!canEdit" (click)="moveSelectedToSourcet()"><i
+                    class="fa fa-angle-right"></i></button>
+            <br />
+            <button class="btn btn-light" [disabled]="!canEdit" (click)="moveAllToSource()"><i
+                    class="fa fa-angle-double-right"></i></button>
+            <br />
+        </div>
+    </div>
+    <div class="col-md-6">
+
+        <div class="topnav">
+            <div class="row">
+                <div class="col-md-9">
+                    <div class="search-container">
+                        <input type="text" [(ngModel)]="distSearchText"
+                            placeholder="{{'shared.searchAbout' | translate}} ..." name="search">
+                        <button type="button"><i class="fa fa-search"></i></button>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="clear-container">
+                        <div *ngIf="isAnyDestItemSelected() || distSearchText">
+                            <a (click)="unselectAllDestItems()" class="clear">{{'shared.unselect'|translate}}</a>
+                        </div>
+                    </div>                   
+                </div>
+            </div>
+        </div>
+
+
+        <div class="list">
+            <ng-container *ngIf="destList">
+                <div *ngFor="let item of destList | filter:distSearchText;" class="list-item"
+                    [ngClass]="{'list-item selected': item.selected, 'list-item': !item.selected}"
+                    (click)="destClicked(item)">{{item?.name}}
+                </div>
+            </ng-container>
+        </div>
+
+    </div>
+</div>

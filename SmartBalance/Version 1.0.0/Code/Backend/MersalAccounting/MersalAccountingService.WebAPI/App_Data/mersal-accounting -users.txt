@@ -1,0 +1,51 @@
+﻿System Admin:
+Username: TopAdmin
+Email: 
+Pass: P@ssw0rd@2019sys
+
+
+
+Username: Maade
+Email: AccountingMaadeBranch@any.any
+Pass: P@ssw0rd_123
+ID: 1431
+
+
+Username: NasrCity
+Email: AccountingNasrBranch@any.any
+Pass: P@ssw0rd_123
+ID: 1432
+
+
+Username: Alex
+Email: AccountingAlexBranch@any.any
+Pass: P@ssw0rd_123
+ID: 1433
+
+
+Username: NewCairo
+Email: AccountingNewCairoBranch@any.any
+Pass: P@ssw0rd_123
+ID: 1434
+
+
+Username: Zayed
+Email: AccountingZayedBranch@any.any
+Pass: P@ssw0rd_123
+ID: 1435
+
+
+
+ahmed
+احمد
+Mersal
+مرسال
+01000000000
+
+
+
+update [UmUser] set [UserName] = 'Maade' where Id = 1431
+update [UmUser] set [UserName] = 'NasrCity' where Id = 1432
+update [UmUser] set [UserName] = 'Alex' where Id = 1433
+update [UmUser] set [UserName] = 'NewCairo' where Id = 1434
+update [UmUser] set [UserName] = 'Zayed' where Id = 1435

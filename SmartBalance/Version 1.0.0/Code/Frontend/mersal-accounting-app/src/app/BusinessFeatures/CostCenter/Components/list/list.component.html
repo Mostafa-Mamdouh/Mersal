@@ -1,0 +1,111 @@
+<div class="container-fluid">
+    <div class="row header">
+        <div class="col-md-10">
+            <h3>{{ 'costCenter.costcenter' | translate}}</h3>
+        </div>
+        <div class="col-md-2">
+            <a routerLink="/cost-center/add" class="btn btn-dark btn-block">{{'shared.add' | translate}}</a>
+        </div>
+    </div>
+
+    <loader [hidden]="!ListLoading"></loader>
+
+    <kendo-grid [data]="gridView" *ngIf="!ListLoading" [pageSize]="pageSize" [skip]="skip" [scrollable]="'none'"
+        [columnMenu]="true" [filter]="state.filter" [filterable]="true" [sortable]="true" [pageable]="true"
+        (dataStateChange)="dataStateChange($event)" (pageChange)="pageChange($event)"
+        class="kendoGridHeightAndDirection">
+
+        <ng-template kendoGridToolbarTemplate>
+            <div class="row">
+                <div class="col-md-11">
+                    <label>{{'shared.display'| translate}}&nbsp;&nbsp;</label>
+                    <kendo-dropdownlist #list [(ngModel)]="pagenationSize" (valueChange)="pagenationSizeChange($event)"
+                        [data]="pagenationSizeList" [filterable]="true" textField="value" valueField="value"
+                        [kendoDropDownFilter]="filterSettings" class="kendo small-width">
+                    </kendo-dropdownlist>
+                </div>
+                <div *ngIf="gridView?.data?.length > 0" class="col-md-1">
+                    <button type="button" kendoGridExcelCommand class="btn-excel"
+                        title="{{'shared.exportTo.excel' | translate}}">
+                        <i class="fa fa-file-excel-o" aria-hidden="true"></i>
+                    </button>
+                    <!-- <button type="button" 
+                        class="btn-excel"
+                        kendoGridExcelCommand
+                        icon="file-excel">{{'shared.exportTo.excel' | translate}}</button> -->
+                </div>
+            </div>
+        </ng-template>
+
+        <kendo-grid-column media="(max-width: 768px)" title="{{ 'shared.data' | translate }}">
+            <ng-template kendoGridCellTemplate let-dataItem>
+                <!-- template for mobile -->
+                <dl>
+                    <dt>{{ 'costCenter.shared.code' | translate }}</dt>
+                    <dd>{{dataItem.code}}</dd>
+
+                    <dt>{{ 'costCenter.list.name' | translate }}</dt>
+                    <dd>{{dataItem.name}}</dd>
+      
+                    <dt>{{ 'costCenter.shared.openingCredit' | translate }}</dt>
+                    <dd>{{dataItem.openingCredit}}</dd>
+    
+                    <dt>{{ 'costCenter.shared.costCenterType' | translate }}</dt>
+                    <dd>{{dataItem.costCenterTypeName}}</dd>
+      
+                </dl>
+            </ng-template>
+        </kendo-grid-column>
+
+        <!--code-->
+        <kendo-grid-column field="code" title="{{ 'costCenter.shared.code' | translate }}" class="width130px" media="md">
+        </kendo-grid-column>
+
+        <!--name-->
+        <kendo-grid-column field="name" title="{{ 'costCenter.list.name' | translate }}" class="width130px" media="md">
+        </kendo-grid-column>
+
+        <!--openingCredit-->
+        <kendo-grid-column field="openingCredit" title="{{ 'costCenter.shared.openingCredit' | translate }}"
+            class="width130px" media="md">
+            <ng-template kendoGridCellTemplate let-dataItem>
+                {{dataItem.openingCredit}}
+            </ng-template>
+
+        </kendo-grid-column>
+
+        <kendo-grid-column field="costCenterTypeName" title="{{ 'costCenter.shared.costCenterType' | translate}}" class="width130px" media="md">
+            <ng-template kendoGridFilterCellTemplate let-filter>
+                    <kendo-dropdownlist #costCenterType (valueChange)="costCenterTypeChange($event)"
+                    [(ngModel)]="id"  [data]="costCenterTypes" [filterable]="true"
+                    textField="text" valueField="value" [valuePrimitive]="true" selected
+                    [kendoDropDownFilter]="filterSettings" id="costCenterType" class="height38 width-100-per">
+                </kendo-dropdownlist>
+            </ng-template>
+        </kendo-grid-column>
+
+        <!--isActive-->
+        <!-- <kendo-grid-column field="isActive" title="{{ 'costCenter.costCenter.isActive' | translate }}" class="width130px">
+            <ng-template kendoGridCellTemplate let-dataItem>
+                    {{dataItem.isActive}}
+                </ng-template>
+
+        </kendo-grid-column> -->
+
+        <kendo-grid-column field="" title="" class="width180px" [filterable]="false">
+            <ng-template kendoGridCellTemplate let-dataItem>
+                <span>
+                    <a routerLink="/cost-center/detail/{{dataItem.id}}"><i class="fa fa-eye"></i></a>
+                </span>
+                &nbsp;
+                <span>
+                    <a routerLink="/cost-center/edit/{{dataItem.id}}"><i class="fa fa-edit"></i></a>
+                </span>
+            </ng-template>
+        </kendo-grid-column>
+
+        <kendo-grid-excel fileName="cost Centers.xlsx"></kendo-grid-excel>
+
+    </kendo-grid>
+
+</div>

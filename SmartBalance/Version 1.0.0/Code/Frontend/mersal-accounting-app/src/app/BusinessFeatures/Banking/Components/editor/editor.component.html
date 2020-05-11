@@ -1,0 +1,634 @@
+<posting-setting-notification></posting-setting-notification>
+
+<div class="container-fluid">
+    <h3><i class="fa fa-credit-card"></i> {{ 'banking.bankMovement.title' | translate }}</h3>
+
+    <loader [hidden]="!PageLoading"></loader>
+
+    <section class="editor-section" *ngIf="!PageLoading">
+        <form role="form" [formGroup]="editorForm">
+            <div class="row">
+
+                <!--code-->
+                <div *ngIf="editorMode != editorModeEnum.add" class="form-group col-lg-2">
+                    <label>{{ 'donation.code' | translate }} </label>
+                    <label class="form-control">{{editorForm.controls['code'].value}}</label>
+                </div>
+
+                <!-- <div class="form-group col-md-2">
+                    <label>{{ 'banking.shared.code' | translate }}
+                        <i *ngIf="canEdit()" class="text-danger">*</i>
+                    </label>
+                    <div class="detail w-100">
+                        <input type="text" *ngIf="canEdit()" min="0" class="form-control" #code formControlName="code">
+
+                        <label *ngIf="editorMode == editorModeEnum.detail"
+                            class="form-control">{{itemModel?.code}}</label>
+
+                        <div class="text-danger" *ngIf="(editorForm.controls['code'].hasError('invalid' ) || 
+                                    editorForm.controls['code'].hasError('required' ) )&&
+                                   (editorForm.controls['code'].touched || 
+                                    editorForm.controls['code'].dirty)">
+                            {{ 'movements.fieldReq' | translate }}
+                        </div>
+                    </div>
+                </div> -->
+
+                <!--date-->
+                <div class="form-group col-md-2">
+                    <label>{{ 'banking.shared.date' | translate }}
+                        <i *ngIf="canEdit()" class="text-danger">*</i>
+                    </label>
+                    <input *ngIf="editorMode != editorModeEnum.detail" type="text" [disabled]="!canEdit()"
+                        placeholder="Datepicker" class="form-control" formControlName="date"
+                        [ngClass]="{'border border-danger' :  editorForm.controls['date'].invalid && editorForm.controls['date'].touched}"
+                        bsDatepicker [minDate]="minDate" [maxDate]="maxDate" readonly
+                        value="{{editorForm.controls['date'].value |date:'dd/MM/yyyy'}}">
+
+                    <label *ngIf="editorMode == editorModeEnum.detail"
+                        class="form-control">{{itemModel?.date | date:'dd/MM/yyyy'}}</label>
+
+                    <div class="text-danger" *ngIf="(editorForm.controls['date'].hasError('invalid' ) || 
+                                 editorForm.controls['date'].hasError('required' ) )&&
+                                (editorForm.controls['date'].touched || 
+                                 editorForm.controls['date'].dirty)">
+                        {{ 'movements.fieldReq' | translate }}
+                    </div>
+                    <div class="text-danger" *ngIf="(editorForm.controls['date'].hasError('invalid' ) || 
+                    editorForm.controls['date'].hasError('bsDate' ) )&&
+                   (editorForm.controls['date'].touched || 
+                    editorForm.controls['date'].dirty)">
+                        {{ 'error.maxDateAlert' | translate }}
+                    </div>
+                </div>
+
+                <!--amount-->
+                <div class="form-group col-md-2">
+                    <label>{{ 'banking.shared.amount' | translate }}
+                        <i *ngIf="canEdit()" class="text-danger">*</i>
+                    </label>
+                    <div class="detail w-100">
+                        <input type="number" *ngIf="canEdit()" min="0" class="form-control" #amount
+                            formControlName="amount">
+
+                        <label *ngIf="editorMode == editorModeEnum.detail"
+                            class="form-control">{{itemModel?.amount}}</label>
+
+                        <div class="text-danger" *ngIf="(editorForm.controls['amount'].hasError('invalid' ) || 
+                                    editorForm.controls['amount'].hasError('required' ) )&&
+                                   (editorForm.controls['amount'].touched || 
+                                    editorForm.controls['amount'].dirty)">
+                            {{ 'movements.fieldReq' | translate }}
+                        </div>
+                        <div class="text-danger" *ngIf="(editorForm.controls['amount'].hasError('invalid' ) || 
+                                    editorForm.controls['amount'].hasError('min' ) )&&
+                                   (editorForm.controls['amount'].touched || 
+                                    editorForm.controls['amount'].dirty)">
+                            {{ 'error.positiveNumbersOnly' | translate }}
+                        </div>
+                    </div>
+                </div>
+
+                <!--bank-->
+                <div *ngIf="getSelectedJournalType()!=journalTypeCodesEnum.directDonations" class="form-group col-md-2">
+                    <label>{{ 'banking.shared.bank' | translate }}
+                        <span *ngIf="canEdit()" class="text-danger">*</span>
+                    </label>
+                    <!-- <h3>
+                        {{editorForm?.controls['bankId']?.value}}
+                    </h3> -->
+                    <kendo-dropdownlist #list [data]="banks" [filterable]="true" [textField]="'displyedName'"
+                        [valueField]="'id'" [valuePrimitive]="true" selected [kendoDropDownFilter]="filterSettings"
+                        id="bankId" class="height38 width-100-per" formControlName="bankId"
+                        (valueChange)="FromBankCahnged($event)" [disabled]="!canEdit()">
+                    </kendo-dropdownlist>
+
+                    <div class="text-danger" *ngIf="canEdit() &&
+                     editorForm.controls['bankId'].hasError('required') &&
+                                (editorForm.controls['bankId'].touched || 
+                                 editorForm.controls['bankId'].dirty)">
+                        {{ 'movements.fieldReq' | translate }}
+                    </div>
+                </div>
+
+                <!--BankAccountChart-->
+
+                <div *ngIf="getSelectedJournalType()!=journalTypeCodesEnum.directDonations" class="form-group col-md-2">
+
+                    <label>{{ 'financial.accountChart' | translate }}
+                        <i *ngIf="canEdit()" class="text-danger">*</i>
+                    </label>
+                    <kendo-dropdownlist #list [data]="BankAcountChartsDropDownData" [filterable]="true"
+                        [textField]="'text'" [valueField]="'value'" [valuePrimitive]="true"
+                        [kendoDropDownFilter]="filterSettings" id="bankaccountchartId"
+                        formControlName="bankaccountchartId" [disabled]="editorMode == editorModeEnum.detail"
+                        (valueChange)="fromBankAccountCahnged($event)" class="height38 width-100-per">
+                    </kendo-dropdownlist>
+                    <div class="text-danger" *ngIf="editorForm.controls['bankaccountchartId'].hasError('required') &&
+                (editorForm.controls['bankaccountchartId'].touched || 
+                editorForm.controls['bankaccountchartId'].dirty)">
+                        {{ 'movements.fieldReq' | translate }}
+                    </div>
+                </div>
+
+                <!--Currency-->
+                <div *ngIf="getSelectedJournalType()!=journalTypeCodesEnum.directDonations" class="form-group col-lg-2">
+                    <label>{{ 'movements.Currency' | translate }} <i *ngIf="editorMode == editorModeEnum.add"
+                            class="text-danger">*</i></label>
+                    <!--*ngIf="isBranchedLoaded"-->
+
+                    <!-- [valuePrimitive]="true" -->
+                    <kendo-dropdownlist #list [data]="CurrenciesDropDownData" [filterable]="true" textField="text"
+                        valueField="value" id="Currency" formControlName="Currency"
+                        [kendoDropDownFilter]="filterSettings" [disabled]="true" class="height38 width-100-per">
+                    </kendo-dropdownlist>
+
+
+                    <div class="text-danger" *ngIf=" (editorForm.controls['Currency'].hasError('invalid' ) || 
+        editorForm.controls['Currency'].hasError('required' ) )&&
+                          (editorForm.controls['Currency'].touched || 
+                          editorForm.controls['Currency'].dirty)">
+                        {{ 'movements.fieldReq' | translate }}
+                    </div>
+                </div>
+
+                <!-- <div>
+                    <h3>{{editorForm.controls['bankId'].value}}</h3>
+                </div> -->
+            </div>
+            <!--in case of create view this costcenter raw will renderd-->
+    
+            <div class="row">
+                <div *ngIf="getSelectedJournalType()==journalTypeCodesEnum.directDonations" class="form-group col-lg-3 checkbox-col">
+                  <input *ngIf="editorMode == editorModeEnum.add" type="checkbox" id="multiCostCenter"
+                    class="form-control checkbox-inline" formControlName="CostCentersCheck"
+                    (click)="CostCentersCHekedToggle()" />
+        
+                  <input *ngIf="editorMode != editorModeEnum.add" type="checkbox" id="multiCostCenter"
+                    class="form-control checkbox-inline" formControlName="CostCentersCheck" disabled
+                    (click)="CostCentersCHekedToggle()" />
+        
+                  <label for="multiCostCenter" class="">
+                    {{ 'movements.multiCostCenter' | translate }}
+                    <label [hidden]="!editorForm.controls['CostCentersCheck'].value==true"><a data-backdrop="static"
+                        data-keyboard="false" data-toggle="modal" data-target="#CostCentersModal"> <i class="fa fa-info-circle"
+                          title=" {{'costCenter.costcenters' | translate}}"></i> </a></label>
+                  </label>
+                  <!--CostCenters Modal -->
+                 
+                  <button type="button" id="openCostCentersModalBTN" [hidden]="true" data-backdrop="static"
+                    data-keyboard="false" data-toggle="modal" data-target="#CostCentersModal"></button>
+                  <div class="modal fade" id="CostCentersModal" data-backdrop="static" data-keyboard="false" role="dialog"
+                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel"> {{ 'movements.multiCostCenter' | translate }}</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                          <app-add-cost-center  [donationValue]="editorForm.controls['amount'].value"
+                            [IsDetails]="editorMode != editorModeEnum.add" (costCentersListChanged)="addCostCenters($event)"
+                            [DetailsCostCenters]="CostCenters">
+                          </app-add-cost-center>
+        
+                          <!-- <app-add-cost-center [donationValue]="editorForm.controls['Amount'].value"
+                            (costCentersListChanged)="addCostCenters($event)" 
+                            [DetailsCostCenters]="CostCenters">
+                          </app-add-cost-center> -->
+                        </div>
+        
+                      </div>
+                    </div>
+                  </div>
+                  <!--End Cost Centers Modal-->
+                </div>
+        
+                <!--one cost Center-->
+              
+                <div *ngIf="getSelectedJournalType()==journalTypeCodesEnum.directDonations" class="form-group col-lg-3  checkbox-col">
+                  <input *ngIf="editorMode == editorModeEnum.add" type="checkbox" id="onecostCenter"
+                    class="form-control checkbox-inline" formControlName="OneCostCenterCheck" #onCostCenterCheck
+                    (click)="OneCostCenterCHekedToggle(onCostCenterCheck)" (change)="OneCostCenterCheckChanged($event)" />
+        
+                  <input *ngIf="editorMode != editorModeEnum.add" type="checkbox" id="onecostCenter"
+                    class="form-control checkbox-inline" formControlName="OneCostCenterCheck" #onCostCenterCheck disabled
+                    (click)="OneCostCenterCHekedToggle(onCostCenterCheck)" (change)="OneCostCenterCheckChanged($event)" />
+        
+                  <label for="onecostCenter" class="">
+                    {{ 'movements.costCenter' | translate }}
+                  </label>
+                  <!--Check Box one CostCenter Modal -->
+                </div>
+                <div class="form-group col-lg-2" [hidden]="!IsOneCostCenterChecked">
+                  <label>{{ 'movements.costCenterName' | translate }} <i *ngIf="editorMode == editorModeEnum.add"
+                      class="text-danger">*</i> </label><br>
+                  <!--*ngIf="isBranchedLoaded"-->
+                  <kendo-dropdownlist #list [data]="CostCenterDropDown" [filterable]="true" textField="text" valueField="value"
+                    [kendoDropDownFilter]="filterSettings" id="CostCenter" formControlName="OnCostCenterValue"
+                    class="height38 width-100-per" [disabled]="editorMode != editorModeEnum.add"
+                    (selectionChange)="onOneCostCenterChanged($event)">
+                  </kendo-dropdownlist>
+                  <div class="text-danger" *ngIf=" editorForm.controls['OnCostCenterValue'].hasError('required' ) &&
+                  (editorForm.controls['OnCostCenterValue'].touched || 
+                  editorForm.controls['OnCostCenterValue'].dirty)">
+                    {{ 'movements.fieldReq' | translate }}
+                    
+                  </div>
+                  <!-- <label [hidden]="!IsOneCostCenterChecked"><a  data-backdrop="static" data-keyboard="false"
+                    data-toggle="modal" data-target="#CostCentersModal" > <i class="fa fa-info-circle" title=" {{'donation.cases' | translate}}" ></i> </a></label> -->
+                  <!--CostCenter popUp -->
+                </div>
+                <!--End one Cost Center-->
+              </div>
+
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5>
+                                <i class="fa fa-users" aria-hidden="true"></i>
+                                <span>
+                                    {{ 'banking.shared.journalType' | translate }}
+                                </span>
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <!--journalType-->
+                                <div class="form-group col-md-2">
+                                    <label>{{ 'banking.shared.journalType' | translate }}
+                                        <span *ngIf="canEdit()" class="text-danger">*</span>
+                                    </label>
+                                    <kendo-dropdownlist #journalTypeId [data]="journalTypes" [filterable]="true"
+                                        [textField]="'name'" [valueField]="'id'" [valuePrimitive]="true"
+                                        (valueChange)="journalTypeIdChanged($event)" selected
+                                        [kendoDropDownFilter]="filterSettings" id="journalTypeId"
+                                        class="height38 width-100-per" formControlName="journalTypeId"
+                                        [disabled]="!canEdit()">
+                                    </kendo-dropdownlist>
+
+                                    <div class="text-danger" *ngIf="editorForm.controls['journalTypeId'].hasError('required') &&
+            (editorForm.controls['journalTypeId'].touched || 
+             editorForm.controls['journalTypeId'].dirty)">
+                                        {{ 'movements.fieldReq' | translate }}
+                                    </div>
+                                </div>
+                                <!-- <div>
+<h3>{{getSelectedJournalType()}}</h3>
+</div> -->
+                                <!--toBank-->
+                                <div *ngIf="getSelectedJournalType()==journalTypeCodesEnum.bankTransfers"
+                                    class="form-group col-md-2">
+                                    <label>{{ 'banking.bankMovement.toBank' | translate }}
+                                        <span *ngIf="canEdit()" class="text-danger">*</span>
+                                    </label>
+                                    <!-- <h3>
+                        {{editorForm?.controls['toBankId']?.value}}
+                    </h3> -->
+                                    <kendo-dropdownlist #toBankId [data]="toBanks" [filterable]="true"
+                                        [textField]="'displyedName'" [valueField]="'id'" [valuePrimitive]="true"
+                                        selected [kendoDropDownFilter]="filterSettings" id="toBankId"
+                                        class="height38 width-100-per" (valueChange)="ToBankCahnged($event)"
+                                        formControlName="toBankId" [disabled]="!canEdit()">
+                                    </kendo-dropdownlist>
+
+                                    <div class="text-danger" *ngIf="editorForm.controls['toBankId'].hasError('required') &&
+                            (editorForm.controls['toBankId'].touched || 
+                             editorForm.controls['toBankId'].dirty)">
+                                        {{ 'movements.fieldReq' | translate }}
+                                    </div>
+                                </div>
+                                <!--ToBankAccountChart-->
+
+                                <div *ngIf="getSelectedJournalType()==journalTypeCodesEnum.bankTransfers"
+                                    class="form-group col-md-2">
+
+                                    <label>{{ 'financial.accountChart' | translate }} <span *ngIf="canEdit()"
+                                            class="text-danger">*</span></label>
+                                    <kendo-dropdownlist #list [data]="toBankAcountChartsDropDownData"
+                                        [filterable]="true" [textField]="'text'" [valueField]="'value'"
+                                        [valuePrimitive]="true" [kendoDropDownFilter]="filterSettings"
+                                        id="tobankaccountchartId" formControlName="tobankaccountchartId"
+                                        [disabled]="!canEdit()" class="height38 width-100-per">
+                                    </kendo-dropdownlist>
+                                    <div class="text-danger" *ngIf="editorForm.controls['tobankaccountchartId'].hasError('required') &&
+    (editorForm.controls['tobankaccountchartId'].touched || 
+    editorForm.controls['tobankaccountchartId'].dirty)">
+                                        {{ 'movements.fieldReq' | translate }}
+                                    </div>
+                                </div>
+                                <!--remittanceVoucherNumber-->
+                                <div *ngIf="getSelectedJournalType()==journalTypeCodesEnum.bankTransfers"
+                                    class="form-group col-md-2">
+                                    <label>{{ 'banking.bankMovement.remittanceVoucherNumber' | translate }}
+                                    </label>
+                                    <div class="detail w-100">
+                                        <input type="text" *ngIf="canEdit()" min="0" class="form-control"
+                                            #remittanceVoucherNumber formControlName="remittanceVoucherNumber">
+
+                                        <label *ngIf="editorMode == editorModeEnum.detail"
+                                            class="form-control">{{itemModel?.remittanceVoucherNumber}}</label>
+
+                                        <div class="text-danger" *ngIf="(editorForm.controls['remittanceVoucherNumber'].hasError('invalid' ) || 
+                                    editorForm.controls['remittanceVoucherNumber'].hasError('required' ) )&&
+                                   (editorForm.controls['remittanceVoucherNumber'].touched || 
+                                    editorForm.controls['remittanceVoucherNumber'].dirty)">
+                                            {{ 'movements.fieldReq' | translate }}
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!--safe-->
+                                <!-- <div *ngIf="getSelectedJournalType()==journalTypeCodesEnum.withdrawal"
+                                    class="form-group col-md-2">
+                                    <label>{{ 'banking.bankMovement.safe' | translate }}
+                                        <span *ngIf="canEdit()" class="text-danger">*</span>
+                                    </label>
+                                    <kendo-dropdownlist #safeId [data]="safes" [filterable]="true"
+                                        [textField]="'displyedName'" [valueField]="'id'" [valuePrimitive]="true"
+                                        selected [kendoDropDownFilter]="filterSettings" id="safeId"
+                                        class="height38 width-100-per" formControlName="safeId" [disabled]="!canEdit()">
+                                    </kendo-dropdownlist>
+
+                                    <div class="text-danger" *ngIf="editorForm.controls['safeId'].hasError('required') &&
+                                            (editorForm.controls['safeId'].touched || 
+                                             editorForm.controls['safeId'].dirty)">
+                                        {{ 'movements.fieldReq' | translate }}
+                                    </div>
+                                </div> -->
+
+                                <!--directlyDonationBankId-->
+                                <div *ngIf="getSelectedJournalType()==journalTypeCodesEnum.directDonations"
+                                    class="form-group col-md-2">
+                                    <label>{{ 'banking.bankMovement.directlyDonationBank' | translate }}
+                                        <span *ngIf="canEdit()" class="text-danger">*</span>
+                                    </label>
+
+                                    <kendo-dropdownlist #list [data]="banks" [filterable]="true"
+                                        [textField]="'displyedName'" [valueField]="'id'" [valuePrimitive]="true"
+                                        selected [kendoDropDownFilter]="filterSettings" id="bankId"
+                                        class="height38 width-100-per" formControlName="directlyDonationBankId"
+                                        [disabled]="!canEdit()" (valueChange)="bankValueChanged($event)">
+                                    </kendo-dropdownlist>
+
+                                    <div class="text-danger" *ngIf="canEdit() &&
+                     editorForm.controls['directlyDonationBankId'].hasError('required') &&
+                                (editorForm.controls['directlyDonationBankId'].touched || 
+                                 editorForm.controls['directlyDonationBankId'].dirty)">
+                                        {{ 'movements.fieldReq' | translate }}
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-2"
+                                    *ngIf="getSelectedJournalType()==journalTypeCodesEnum.deposit">
+                                    <label>{{ 'movements.costCenterName' | translate }} <i *ngIf="!isDetails"
+                                            class="text-danger">*</i>
+                                    </label><br>
+                                    <!--*ngIf="isBranchedLoaded"-->
+                                    <kendo-dropdownlist #list [data]="CostCenterDropDown" [filterable]="true"
+                                        textField="text" valueField="value" [kendoDropDownFilter]="filterSettings"
+                                        id="CostCenter" class="height38 width-100-per"
+                                        formControlName="OnCostCenterValue" [valuePrimitive]="true"
+                                        [disabled]="editorMode != editorModeEnum.add"
+                                        (selectionChange)="onOneCostCenterChanged($event)">
+                                    </kendo-dropdownlist>
+                                    <div class="text-danger"
+                                        *ngIf=" editorForm.controls['OnCostCenterValue'].hasError('required' ) &&
+                                    (editorForm.controls['OnCostCenterValue'].touched || editorForm.controls['OnCostCenterValue'].dirty)">
+                                        {{ 'movements.fieldReq' | translate }}
+                                    </div>
+
+                                    <!--CostCenter popUp -->
+                                </div>
+                                <!--accountChart-->
+                                <div *ngIf="getSelectedJournalType()==journalTypeCodesEnum.paymentPapers ||
+                                getSelectedJournalType()==journalTypeCodesEnum.repatedPaymentPapers"
+                                    class="form-group col-md-2">
+                                    <label>{{ 'banking.bankMovement.accountChart' | translate }}
+                                        <span *ngIf="canEdit()" class="text-danger">*</span>
+                                    </label>
+                                    <kendo-dropdownlist #accountChartId [data]="accountCharts" [filterable]="true"
+                                        [textField]="'displyedName'" [valueField]="'id'" [valuePrimitive]="true"
+                                        selected [kendoDropDownFilter]="filterSettings" id="accountChartId"
+                                        class="height38 width-100-per" formControlName="accountChartId"
+                                        [disabled]="!canEdit()">
+                                    </kendo-dropdownlist>
+
+                                    <div class="text-danger" *ngIf="editorForm.controls['accountChartId'].hasError('required') &&
+                                            (editorForm.controls['accountChartId'].touched || 
+                                             editorForm.controls['accountChartId'].dirty)">
+                                        {{ 'movements.fieldReq' | translate }}
+                                    </div>
+                                </div>
+                                <!--chequeNumber-->
+                                <div *ngIf="getSelectedJournalType()==journalTypeCodesEnum.paymentPapers ||
+                                getSelectedJournalType()==journalTypeCodesEnum.repatedPaymentPapers"
+                                    class="form-group col-md-2">
+                                    <label>{{ 'financial.chequeNumber' | translate }} <span *ngIf="canEdit()"
+                                            class="text-danger">*</span>
+                                    </label>
+                                    <input type="text" class="form-control" formControlName="ChequeNumber"
+                                        *ngIf="canEdit()" class="form-control" />
+                                    <label *ngIf="editorMode == editorModeEnum.detail"
+                                        class="form-control">{{itemModel?.chequeNo}}</label>
+
+                                    <div class="text-danger"
+                                        *ngIf=" editorForm.controls['ChequeNumber'].hasError('required' ) &&
+                                              (editorForm.controls['ChequeNumber'].touched || editorForm.controls['ChequeNumber'].dirty)">
+                                        {{ 'movements.fieldReq' | translate }}
+                                    </div>
+
+                                </div>
+
+                                <!--directlyDonationBankaccountChart-->
+                                <div *ngIf="getSelectedJournalType()==journalTypeCodesEnum.directDonations"
+                                    class="form-group col-md-2">
+                                    <label>{{ 'banking.bankMovement.accountChart' | translate }}
+                                        <span *ngIf="canEdit()" class="text-danger">*</span>
+                                    </label>
+                                    <kendo-dropdownlist #accountChartId [data]="directlyDonationBankaccountChartList"
+                                        [filterable]="true" [textField]="'displyedName'" [valueField]="'id'"
+                                        [valuePrimitive]="true" selected [kendoDropDownFilter]="filterSettings"
+                                        id="accountChartId" class="height38 width-100-per"
+                                        formControlName="accountChartId" [disabled]="!canEdit()">
+                                    </kendo-dropdownlist>
+
+                                    <div class="text-danger" *ngIf="editorForm.controls['accountChartId'].hasError('required') &&
+                                            (editorForm.controls['accountChartId'].touched || 
+                                             editorForm.controls['accountChartId'].dirty)">
+                                        {{ 'movements.fieldReq' | translate }}
+                                    </div>
+                                </div>
+
+                                <!--cheque-->
+                                <!-- <div *ngIf="getSelectedJournalType()==journalTypeCodesEnum.paymentPapers"
+                                    class="form-group col-md-2">
+                                    <label class="chequeInfo">
+                                        <a data-backdrop="static" (click)="showCheck()" data-keyboard="false"
+                                            data-toggle="modal" data-target="#exampleModal"> <i
+                                                class="fa fa-info-circle"
+                                                title=" {{'banking.bankMovement.chequesNotClosed' | translate}}"></i></a>
+                                    </label>
+                                </div> -->
+
+                                <!--capturePapersbankId-->
+                                <!-- <div *ngIf="getSelectedJournalType()==journalTypeCodesEnum.capturePapers"
+                                    class="form-group col-md-2">
+                                    <label>{{ 'banking.shared.bank' | translate }}
+                                        <span *ngIf="canEdit()" class="text-danger">*</span>
+                                    </label>
+
+                                    <kendo-dropdownlist #list [data]="banks" [filterable]="true"
+                                        [textField]="'displyedName'" [valueField]="'id'" [valuePrimitive]="true"
+                                        selected [kendoDropDownFilter]="filterSettings" id="capturePapersbankId"
+                                        class="height38 width-100-per" formControlName="capturePapersbankId"
+                                        [disabled]="!canEdit()">
+                                    </kendo-dropdownlist>
+
+                                    <div class="text-danger" *ngIf="canEdit() &&
+                     editorForm.controls['capturePapersbankId'].hasError('required') &&
+                                (editorForm.controls['capturePapersbankId'].touched || 
+                                 editorForm.controls['capturePapersbankId'].dirty)">
+                                        {{ 'movements.fieldReq' | translate }}
+                                    </div>
+                                </div> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5>
+                                <i class="fa fa-users" aria-hidden="true"></i>
+                                <span>
+                                    {{ 'donation.description' | translate }}
+                                </span>
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="form-group col-lg-6">
+                                    <label>{{ 'movements.statementAr' | translate }} <i
+                                            class="text-danger">*</i></label>
+                                    <textarea *ngIf="canEdit()" class="form-control" formControlName="descriptionAr"
+                                        placeholder="{{ 'movements.statementAr' | translate }}"></textarea>
+
+                                    <textarea *ngIf="!canEdit()" disabled class="form-control"
+                                        formControlName="descriptionAr"
+                                        placeholder="{{ 'movements.statementAr' | translate }}"></textarea>
+
+                                    <div class="text-danger" *ngIf=" (editorForm.controls['descriptionAr'].hasError('invalid' ) || 
+                                                editorForm.controls['descriptionAr'].hasError('required' ) )&&
+                                                      (editorForm.controls['descriptionAr'].touched || 
+                                                      editorForm.controls['descriptionAr'].dirty)">
+                                        {{ 'movements.fieldReq' | translate }}
+                                    </div>
+
+                                </div>
+                                <div class="form-group col-lg-6">
+                                    <label>{{ 'movements.statementEn' | translate }} </label>
+                                    <textarea *ngIf="canEdit()" class="form-control" formControlName="descriptionEn"
+                                        placeholder="{{ 'movements.statementEn' | translate }}"></textarea>
+
+                                    <textarea *ngIf="!canEdit()" disabled class="form-control"
+                                        formControlName="descriptionEn"
+                                        placeholder="{{ 'movements.statementEn' | translate }}"></textarea>
+
+                                    <div class="text-danger" *ngIf=" (editorForm.controls['descriptionEn'].hasError('invalid' ) || 
+                                                    editorForm.controls['descriptionEn'].hasError('required' ) )&&
+                                                      (editorForm.controls['descriptionEn'].touched || 
+                                                      editorForm.controls['descriptionEn'].dirty)">
+                                        {{ 'movements.fieldReq' | translate }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <loader [hidden]="!isProccessing"></loader>
+
+            <div class="row">
+                <div class="form-group col-lg-4">
+                    <button *ngIf="canEdit()" type="submit" (click)="save()"
+                        [disabled]="!editorForm.valid || isProccessing" class="btn btn-secondary">
+                        <i class="fa fa-floppy-o verticalLine"></i> {{ 'shared.save' | translate }}
+                    </button>
+                    &nbsp;
+                    <button (click)="goToBack()" class="btn btn-secondary">
+                        <i class="fa fa-undo"></i> {{'shared.back' | translate }}
+                    </button>
+                </div>
+            </div>
+        </form>
+    </section>
+
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">{{ 'banking.bankMovement.chequesNotClosed' | translate }}
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <cheques-list [cheques]="itemModel?.cheques" [canEidt]="canEdit()"
+                    (checkListChanged)="checkListChanged($event)" [bankId]="editorForm.controls['bankId'].value"
+                    *ngIf="showChecks"></cheques-list>
+            </div>
+            <div class="modal-footer">
+                <button *ngIf="canEdit()" type="button" class="btn btn-secondary"
+                    data-dismiss="modal">{{ 'shared.no' | translate }}</button>
+                <button *ngIf="!canEdit()" type="button" class="btn btn-secondary"
+                    data-dismiss="modal">{{ 'shared.close' | translate }}</button>
+                <button *ngIf=canEdit() type="button" class="btn btn-success"
+                    data-dismiss="modal">{{ 'shared.yes' | translate }}</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<button type="button" id="openPostlBTN" [hidden]="true" data-backdrop="static" data-keyboard="false" data-toggle="modal"
+    data-target="#postModal"></button>
+<div class="modal fade" id="postModal" data-backdrop="static" data-keyboard="false" role="dialog"
+    aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <!-- <h5 class="modal-title" id="exampleModalLabel"> {{ 'movements.multiCostCenter' | translate }}</h5> -->
+                <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button> -->
+            </div>
+            <div class="modal-body">
+                <journal-entries-editor (journalValueChange)="journalValueChange($event)"
+                    (journalApprove)="journalApprove($event)" (journalReject)="journalReject($event)"
+                    *ngIf="journalPreviewShow" [postingStatus]="0" [journalPreview]="journalPreview">
+                </journal-entries-editor>
+
+                <!-- <app-add-cost-center [donationValue]="editorForm.controls['Amount'].value"
+                    (costCentersListChanged)="addCostCenters($event)" 
+                    [DetailsCostCenters]="CostCenters">
+                  </app-add-cost-center> -->
+            </div>
+
+        </div>
+    </div>
+</div>

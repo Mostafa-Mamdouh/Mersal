@@ -1,0 +1,21 @@
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at MersalAccountingService.BusinessLogic.Services.BankReportsService.<>c__DisplayClass27_0.<GetBankAccountReportBeforeDate>b__2(Transaction x) in C:\Mersal\SmartBalance\Version 1.0.0\Code\Backend\MersalAccounting\MersalAccountingService.BusinessLogic\Services\Report\BankReportsService.cs:line 952
+   at System.Collections.Generic.List`1.FindAll(Predicate`1 match)
+   at MersalAccountingService.BusinessLogic.Services.BankReportsService.GetBankAccountReportBeforeDate(Int64 bankId, DateTime DateFrom, List`1 source) in C:\Mersal\SmartBalance\Version 1.0.0\Code\Backend\MersalAccounting\MersalAccountingService.BusinessLogic\Services\Report\BankReportsService.cs:line 952
+   at MersalAccountingService.BusinessLogic.Services.BankReportsService.GetBankBalanceReport(Int64 bankId, Nullable`1 DateFrom, Nullable`1 DateTo) in C:\Mersal\SmartBalance\Version 1.0.0\Code\Backend\MersalAccounting\MersalAccountingService.BusinessLogic\Services\Report\BankReportsService.cs:line 833
+   at MersalAccountingService.WebAPI.Controllers.API.BankReportsController.GetBankBalanceReport(Nullable`1 bankId, Nullable`1 DateFrom, Nullable`1 DateTo) in C:\Mersal\SmartBalance\Version 1.0.0\Code\Backend\MersalAccounting\MersalAccountingService.WebAPI\Controllers\API\Report\BankReportsController.cs:line 63
+   at lambda_method(Closure , Object , Object[] )
+   at System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ActionExecutor.<>c__DisplayClass6_2.<GetExecutor>b__2(Object instance, Object[] methodParameters)
+   at System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ExecuteAsync(HttpControllerContext controllerContext, IDictionary`2 arguments, CancellationToken cancellationToken)
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Controllers.ApiControllerActionInvoker.<InvokeActionAsyncCore>d__1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Controllers.ActionFilterResult.<ExecuteAsync>d__5.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Controllers.ExceptionFilterResult.<ExecuteAsync>d__6.MoveNext()

@@ -1,0 +1,17 @@
+C:\Mersal\SmartBalance\Version 1.0.0\Code\Backend\MersalAccounting\Framework.DataAccess\bin\Debug\Framework.DataAccess.dll.config
+C:\Mersal\SmartBalance\Version 1.0.0\Code\Backend\MersalAccounting\Framework.DataAccess\bin\Debug\Framework.DataAccess.dll
+C:\Mersal\SmartBalance\Version 1.0.0\Code\Backend\MersalAccounting\Framework.DataAccess\bin\Debug\Framework.DataAccess.pdb
+C:\Mersal\SmartBalance\Version 1.0.0\Code\Backend\MersalAccounting\Framework.DataAccess\bin\Debug\EntityFramework.dll
+C:\Mersal\SmartBalance\Version 1.0.0\Code\Backend\MersalAccounting\Framework.DataAccess\bin\Debug\EntityFramework.SqlServer.dll
+C:\Mersal\SmartBalance\Version 1.0.0\Code\Backend\MersalAccounting\Framework.DataAccess\bin\Debug\Framework.Common.dll
+C:\Mersal\SmartBalance\Version 1.0.0\Code\Backend\MersalAccounting\Framework.DataAccess\bin\Debug\Framework.Core.dll
+C:\Mersal\SmartBalance\Version 1.0.0\Code\Backend\MersalAccounting\Framework.DataAccess\bin\Debug\System.Linq.Dynamic.dll
+C:\Mersal\SmartBalance\Version 1.0.0\Code\Backend\MersalAccounting\Framework.DataAccess\bin\Debug\Framework.Common.pdb
+C:\Mersal\SmartBalance\Version 1.0.0\Code\Backend\MersalAccounting\Framework.DataAccess\bin\Debug\Framework.Core.pdb
+C:\Mersal\SmartBalance\Version 1.0.0\Code\Backend\MersalAccounting\Framework.DataAccess\bin\Debug\Framework.Core.dll.config
+C:\Mersal\SmartBalance\Version 1.0.0\Code\Backend\MersalAccounting\Framework.DataAccess\bin\Debug\EntityFramework.xml
+C:\Mersal\SmartBalance\Version 1.0.0\Code\Backend\MersalAccounting\Framework.DataAccess\bin\Debug\EntityFramework.SqlServer.xml
+C:\Mersal\SmartBalance\Version 1.0.0\Code\Backend\MersalAccounting\Framework.DataAccess\obj\Debug\Framework.DataAccess.csprojAssemblyReference.cache
+C:\Mersal\SmartBalance\Version 1.0.0\Code\Backend\MersalAccounting\Framework.DataAccess\obj\Debug\Framework.DataAccess.csproj.CopyComplete
+C:\Mersal\SmartBalance\Version 1.0.0\Code\Backend\MersalAccounting\Framework.DataAccess\obj\Debug\Framework.DataAccess.dll
+C:\Mersal\SmartBalance\Version 1.0.0\Code\Backend\MersalAccounting\Framework.DataAccess\obj\Debug\Framework.DataAccess.pdb

@@ -1,0 +1,19 @@
+<div class=""> 
+  <form [formGroup]="emailFormGroup">
+    <label>{{ 'donation.email' | translate }}</label>
+    <div class="detail w-100">
+      <input type="email" class="form-control" [attr.disabled]="isSubmited ? '' : null" pattern=".*\S.*"
+        formControlName="email" (keyup)="emailChanged()"
+        [ngClass]="{'border border-danger':emailFormGroup.controls['email'].invalid && emailFormGroup.controls['email'].touched}">
+    </div>
+    <div class="text-danger" *ngIf=" emailFormGroup.controls['email'].hasError( 'required' ) &&
+                      (emailFormGroup.controls['email'].touched || emailFormGroup.controls['email'].dirty)">
+      {{ 'movements.fieldReq' | translate }}
+    </div>
+
+    <div class="text-danger" *ngIf=" emailFormGroup.controls['email'].hasError( 'email' ) &&
+                      (emailFormGroup.controls['email'].touched || emailFormGroup.controls['email'].dirty)">
+      {{ 'shared.enterVatidEmail' | translate }}
+    </div>
+  </form>
+</div>

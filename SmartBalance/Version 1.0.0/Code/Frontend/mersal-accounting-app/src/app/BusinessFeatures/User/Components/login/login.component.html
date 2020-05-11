@@ -1,0 +1,46 @@
+<div class="login-page w-100">
+   
+    <div class="row justify-content-md-center">
+        <div class="col-md-6">
+            <div class="login-container">
+                <h2 class="mt-5">{{'footer.siteName' | translate}}</h2>
+                <form [formGroup]="loginForm" (ngSubmit)="submit()">
+                    <div class="form-content">
+
+                        <!--username-->
+                        <div class="form-group">
+                            <input type="text" formControlName="username" ng-model="name" class="form-control input-underline input-lg" placeholder="{{ 'user.login.username' | translate }}">
+                            <div class="alert alert-danger" *ngIf="loginForm.controls['username'].hasError('required' ) &&
+                                (loginForm.controls['username'].touched || loginForm.controls['username'].dirty)">
+                                {{ 'movements.fieldReq' | translate }}
+                            </div>
+
+                        </div>
+
+                        <!--password-->
+                        <div class="form-group">
+                            <input [type]="show? 'text':'password'"  formControlName="password" class="form-control input-underline input-lg" 
+                            placeholder="{{ 'user.login.password' | translate }}">
+                            <i id="pass-status" class="fa fa-eye" aria-hidden="true" (click)="password()"></i>
+                            <div class="alert alert-danger" *ngIf=" loginForm.controls['password'].hasError('required' ) &&
+                                (loginForm.controls['password'].touched || loginForm.controls['password'].dirty)">
+                                {{ 'movements.fieldReq' | translate }}
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!--login-->
+                    <button class="btn rounded-btn" 
+                    *ngIf="!showLoader"
+                    [disabled]="loginForm.invalid" 
+                    type="submit">{{ 'user.login.login' | translate }}</button>
+                    
+                </form>
+                <loader *ngIf="showLoader" [backColor]="'dark'"></loader>
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,56 @@
+.checkbox-inline{
+    margin-top: 39px;
+}
+section{
+    box-shadow: black 0px 0px 1px 0px;
+    padding: 20px;
+    border-radius: 15px;
+    margin-top: 10px;
+}
+.radio-inline{
+    margin: 20px;
+    margin-left: 0;
+}
+button{
+    margin-top: 10px;
+    margin-right: 2px;
+}
+.action{
+    background: transparent;
+    margin-top: -7px;
+
+}
+
+.modal-dialog {
+    max-width: 750px !important;
+    margin: 1.75rem auto;
+}
+.header {
+    font-size: 30px;
+    font-weight: bold;
+    margin: 0 0 20px 0;
+    border-bottom: 1px solid #e5e5e5;
+    color: #3aabf0;
+  }
+
+  .address {
+      display: flex;
+      justify-content: space-between;
+      margin: 0 0 0px 0;
+  }
+
+  .from p, .for p {
+    color: #787878;
+  }
+
+  .signature {
+    padding-top: 10px;
+  }
+  .print {
+    padding-top: 10px;
+  }
+  .hide{
+      margin: 25px 25px;
+    //   width: 300px;
+    //   height:auto;
+  }

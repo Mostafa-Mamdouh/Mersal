@@ -1,0 +1,128 @@
+<section class="">
+  <h2>{{ 'movements.sales' | translate }}</h2>
+
+
+  <form role="form" [formGroup]="addSalesBill" (ngSubmit)="AddSales()">
+    <div class="row">
+      <div class="form-group col-lg-4">
+        <label>{{ 'movements.billNumber' | translate }}</label>
+        <input type="text" class="form-control" formControlName="BillNumber"
+          placeholder="{{ 'movements.billNumber' | translate }}" />
+        <div class="text-danger" *ngIf=" addSalesBill.controls['BillNumber'].hasError('required' ) &&
+                    (addSalesBill.controls['BillNumber'].touched || addSalesBill.controls['BillNumber'].dirty)">
+          {{ 'movements.fieldReq' | translate }}
+        </div>
+      </div>
+      <div class="form-group col-lg-4">
+        <label>{{ 'movements.dateBill' | translate }}</label>
+        <input type="text" placeholder="Datepicker" class="form-control" formControlName="BillDate" bsDatepicker>
+
+        <div class="text-danger" *ngIf=" addSalesBill.controls['BillDate'].hasError('required' ) &&
+                    (addSalesBill.controls['BillDate'].touched || addSalesBill.controls['BillDate'].dirty)">
+          {{ 'movements.fieldReq' | translate }}
+        </div>
+      </div>
+      <div class="form-group col-lg-4">
+        <label class="checkbox-inline">
+          <input type="checkbox" formControlName="LinkedToCostCenter" />{{ 'movements.costCenter' | translate }}</label>
+        <div *ngIf="addSalesBill.controls['LinkedToCostCenter'].value == true">
+          <label>{{ 'movements.costCenterName' | translate }}</label>
+          <div class="detail w-100">
+            <select [attr.disabled]="" class="form-control form-control-sm" formControlName="CostCenter"
+              [ngClass]="{ 'border border-danger': addSalesBill.controls['CostCenter'].invalid &&(addSalesBill.controls['CostCenter'].touched || addSalesBill.controls['BillType'].dirty) }">
+              <option *ngFor="let item of CostCenterList" [value]="item.id">
+                {{item.name}}
+              </option>
+            </select>
+          </div>
+          <div class="text-danger" *ngIf="addSalesBill.controls['LinkedToCostCenter'].value == true && addSalesBill.controls['CostCenter'].hasError('required' ) &&
+              (addSalesBill.controls['CostCenter'].touched || addSalesBill.controls['CostCenter'].dirty)">
+            {{ 'movements.fieldReq' | translate }}
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-group col-lg-3">
+        <label>{{ 'movements.billType' | translate }}</label>
+        <div class="detail w-100">
+          <select [attr.disabled]="" class="form-control form-control-sm" id="BillType" formControlName="BillType"
+            [ngClass]="{ 'border border-danger': addSalesBill.controls['BillType'].invalid &&(addSalesBill.controls['BillType'].touched || addSalesBill.controls['BillType'].dirty) }">
+            <option *ngFor="let item of BillTypes" [value]="item.id">
+              {{item.name}}
+            </option>
+          </select>
+        </div>
+        <div class="text-danger" *ngIf=" addSalesBill.controls['BillType'].hasError('required' ) &&
+              (addSalesBill.controls['BillType'].touched || addSalesBill.controls['BillType'].dirty)">
+          {{ 'movements.fieldReq' | translate }}
+        </div>
+      </div>
+
+
+      <div class="form-group col-lg-3">
+        <label>{{ 'movements.Customer' | translate }}</label>
+        <div class="detail w-100">
+          <select [attr.disabled]="" class="form-control form-control-sm" formControlName="Customer"
+            [ngClass]="{ 'border border-danger': addSalesBill.controls['Customer'].invalid &&(addSalesBill.controls['Customer'].touched || addSalesBill.controls['BillType'].dirty) }">
+            <option *ngFor="let item of CostumersList" [value]="item.id">
+              {{item.name}}
+            </option>
+          </select>
+
+        </div>
+
+        <div class="text-danger" *ngIf=" addSalesBill.controls['Customer'].hasError( 'required' ) &&
+              (addSalesBill.controls['Customer'].touched || addSalesBill.controls['Customer'].dirty)">
+          {{ 'movements.fieldReq' | translate }}
+        </div>
+      </div>
+
+
+      <div class="form-group col-lg-3">
+        <label>{{ 'movements.delegate' | translate }}</label>
+        <div class="detail w-100">
+          <select [attr.disabled]="" class="form-control form-control-sm" formControlName="Delegate"
+            [ngClass]="{ 'border border-danger': addSalesBill.controls['Delegate'].invalid &&(addSalesBill.controls['Delegate'].touched || addSalesBill.controls['BillType'].dirty) }">
+            <option *ngFor="let item of DelegateList" [value]="item.id">
+              {{item.name}}
+            </option>
+          </select>
+        </div>
+        <div class="text-danger" *ngIf=" addSalesBill.controls['Delegate'].hasError( 'required' ) &&
+              (addSalesBill.controls['Delegate'].touched || addSalesBill.controls['Delegate'].dirty)">
+          {{ 'movements.fieldReq' | translate }}
+        </div>
+      </div>
+
+
+      <div class="form-group col-lg-3">
+        <label>{{ 'movements.storeNumber' | translate }}</label>
+        <div class="detail w-100">
+          <select [attr.disabled]="" class="form-control form-control-sm" formControlName="InventoryNumber"
+            [ngClass]="{ 'border border-danger': addSalesBill.controls['InventoryNumber'].invalid &&(addSalesBill.controls['InventoryNumber'].touched || addSalesBill.controls['BillType'].dirty)}">
+            <option *ngFor="let item of InventoryList" [value]="item.id">
+              {{item.name}}
+            </option>
+          </select>
+        </div>
+        <div class="text-danger" *ngIf=" addSalesBill.controls['InventoryNumber'].hasError( 'required' ) &&
+              (addSalesBill.controls['InventoryNumber'].touched || addSalesBill.controls['InventoryNumber'].dirty)">
+          {{ 'movements.fieldReq' | translate }}
+        </div>
+      </div>
+    </div>
+    <app-add-product (productListChanged)="handleProductListChange($event)"></app-add-product>
+    <app-bill-summary (billSummaryChange)="handleBillSummaryChange($event)"></app-bill-summary>
+
+    <div class="row">
+      <div class="form-group col-lg-3">
+        <button type="submit" class="btn btn-secondary" [disabled]="!addSalesBill.valid">{{ 'shared.save' | translate }}</button>
+        <button type="reset" (click)="cancel()" class="btn btn-secondary">{{ 'shared.cancel' | translate }}</button>
+      </div>
+    </div>
+  </form>
+
+
+</section>

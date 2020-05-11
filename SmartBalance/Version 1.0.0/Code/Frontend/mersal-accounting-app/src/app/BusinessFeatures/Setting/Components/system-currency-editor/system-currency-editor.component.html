@@ -1,0 +1,47 @@
+
+<div class="container-fluid">
+    <h3><i class="fa fa-credit-card"></i> {{ 'setting.systemCurrencySetting.title' | translate }}</h3>
+    <loader [hidden]="!PageLoading"></loader>
+           
+        <section *ngIf="!PageLoading">
+        <form role="form" [formGroup]="editorForm">
+            <section class="border-curvy">
+                <div class="row">                  
+                    <!--currencyId-->
+                    <div class="col-4">
+                        <label>{{ 'setting.systemCurrencySetting.currency' | translate }} <span
+                                class="text-danger">*</span> </label>
+                        <kendo-dropdownlist #list [data]="Currencys" [filterable]="true"
+                            [textField]="'displyedName'" [valueField]="'id'" [valuePrimitive]="true"
+                            [kendoDropDownFilter]="filterSettings" id="currencyId"
+                            formControlName="currencyId" class="width90 height38">
+                        </kendo-dropdownlist>
+
+                        <div class="text-danger" *ngIf="editorForm.controls['currencyId'].hasError('required') &&
+                        (editorForm.controls['currencyId'].touched || 
+                        editorForm.controls['currencyId'].dirty)">
+                            {{ 'movements.fieldReq' | translate }}
+                        </div>
+                    </div>                   
+                </div>
+               
+            </section>
+
+            <loader [hidden]="!isProccessing"></loader>
+
+            <div class="row">
+                <div class="form-group col-lg-4">
+                    <button type="submit" (click)="save()" [disabled]="!editorForm.valid || isProccessing"
+                        class="btn btn-secondary">
+                        <i class="fa fa-floppy-o verticalLine"></i> {{ 'shared.save' | translate }}
+                    </button>
+                    &nbsp;
+                    <button routerLink="/setting/control-panel" class="btn btn-secondary">
+                        <i class="fa fa-undo"></i> {{'shared.back' | translate }}
+                    </button>
+                </div>
+            </div>
+        </form>
+    </section>
+
+</div>

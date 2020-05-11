@@ -1,0 +1,24 @@
+.btn-danger{
+    margin-top: 30px;
+}
+.header-table{
+    width: 14%;
+    /* font-size: x-large; */
+}
+.header-table-1{
+    width: 10%; 
+    /* font-size: x-large; */
+}
+.minHeight{
+height:48.5px !important;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none !important; 
+  margin: 0 !important; 
+}
+
+.modal-lg {
+    max-width: 90% !important;
+}

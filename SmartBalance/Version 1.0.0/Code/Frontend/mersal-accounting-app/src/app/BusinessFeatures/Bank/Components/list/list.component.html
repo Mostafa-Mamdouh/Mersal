@@ -1,0 +1,124 @@
+<div class="container-fluid">
+    <div class="row header">
+        <div class="col-md-10">
+            <h3>{{ 'bank.shared.title' | translate }}</h3>
+        </div>
+        <div class="col-md-2">
+            <a routerLink="/bank/add" class="btn btn-dark btn-block">{{'shared.add' | translate}}</a>
+        </div>
+    </div>
+
+
+    <loader [hidden]="!ListLoading"></loader>
+    <kendo-grid [data]="gridView" *ngIf="!ListLoading" [pageSize]="pageSize" [skip]="skip" [scrollable]="'none'"
+        [columnMenu]="true" [filter]="state.filter" [filterable]="true" [sortable]="true" [pageable]="true"
+        (dataStateChange)="dataStateChange($event)" (pageChange)="pageChange($event)"
+        class="kendoGridHeightAndDirection">
+
+        <ng-template kendoGridToolbarTemplate>
+            <div class="row">
+                <div class="col-md-11">
+                    <label>{{'shared.display'| translate}}&nbsp;&nbsp;</label>
+                    <kendo-dropdownlist #list [(ngModel)]="pagenationSize" (valueChange)="pagenationSizeChange($event)"
+                        [data]="pagenationSizeList" [filterable]="true" textField="value" valueField="value"
+                        [kendoDropDownFilter]="filterSettings" class="kendo small-width">
+                    </kendo-dropdownlist>
+                </div>
+                <div *ngIf="gridView?.data?.length > 0" class="col-md-1">
+                    <button type="button" kendoGridExcelCommand class="btn-excel"
+                        title="{{'shared.exportTo.excel' | translate}}">
+                        <i class="fa fa-file-excel-o" aria-hidden="true"></i>
+                    </button>
+                    <!-- <button type="button" 
+                            class="btn-excel"
+                            kendoGridExcelCommand
+                            icon="file-excel">{{'shared.exportTo.excel' | translate}}</button> -->
+                </div>
+            </div>
+        </ng-template>
+
+
+        <kendo-grid-column media="(max-width: 768px)" title="{{ 'shared.data' | translate }}">
+            <ng-template kendoGridCellTemplate let-dataItem>
+                <!-- template for mobile -->
+                <dl>
+                    <dt>{{ 'bank.shared.code' | translate }}</dt>
+                    <dd>{{dataItem.code}}</dd>
+
+                    <dt>{{ 'bank.shared.date' | translate }}</dt>
+                    <dd>{{dataItem.date}}</dd>
+
+                    <dt>{{ 'bank.shared.name' | translate }}</dt>
+                    <dd>{{dataItem.name}}</dd>
+
+                    <dt>{{ 'bank.editor.openingCredit' | translate }}</dt>
+                    <dd>{{dataItem.openingCredit}}</dd>
+
+                    <dt>{{ 'bank.list.accountCharts' | translate }}</dt>
+                    <dd><a routerLink="/bank-account-chart/edit/{{dataItem.id}}" 
+                        class="link">{{dataItem.accountChartCount}}</a></dd>
+
+                    <dt>{{ 'bank.list.bankDocuments' | translate }}</dt>
+                    <dd><a routerLink="/account-document/bank/{{dataItem.id}}" 
+                        class="link">{{dataItem.accountChartDocumentsCount}}</a></dd>
+                </dl>
+            </ng-template>
+        </kendo-grid-column>
+
+        <kendo-grid-column field="code" title="{{ 'bank.shared.code' | translate }}" class="width130px" media="md">
+        </kendo-grid-column>
+
+        <kendo-grid-column field="date" id="dateFilter" title="{{ 'bank.shared.date' | translate }}" class="width130px"
+            filter="date" format="{0:MM/dd/yyyy}" media="md">
+            <ng-template kendoGridCellTemplate let-dataItem>
+                {{dataItem.date | date: 'mediumDate'}}
+            </ng-template>
+        </kendo-grid-column>
+
+        <kendo-grid-column field="name" title="{{ 'bank.shared.name' | translate }}" class="width130px" media="md">
+        </kendo-grid-column>
+
+        <kendo-grid-column field="openingCredit" title="{{ 'bank.editor.openingCredit' | translate }}"
+            class="width130px" media="md">
+            <ng-template kendoGridCellTemplate let-dataItem>
+                {{dataItem.openingCredit}}
+            </ng-template>
+        </kendo-grid-column>
+
+        <kendo-grid-column field="accountChartCount" title="{{ 'bank.list.accountCharts' | translate }}"
+            class="width130px"  media="md">
+            <ng-template kendoGridCellTemplate let-dataItem>
+                <a routerLink="/bank-account-chart/edit/{{dataItem.id}}" 
+                   class="link">{{dataItem.accountChartCount}}</a>
+            </ng-template>
+        </kendo-grid-column>
+
+        <kendo-grid-column field="accountChartDocumentsCount" title="{{ 'bank.list.bankDocuments' | translate }}"
+            class="width130px" media="md">
+            <ng-template kendoGridCellTemplate let-dataItem>
+                <a routerLink="/account-document/bank/{{dataItem.id}}" 
+                   class="link">{{dataItem.accountChartDocumentsCount}}</a>
+            </ng-template>
+        </kendo-grid-column>
+        <!-- <kendo-grid-column field="name" title="{{ 'bank.shared.name' | translate }}" class="width130px">
+            <ng-template kendoGridFilterCellTemplate let-filter>
+                <kendo-dropdownlist #list [(ngModel)]="bankId" (valueChange)="bankChange($event)"
+                    [data]="banksDropDownData" [filterable]="true" textField="text" valueField="value"
+                    [kendoDropDownFilter]="filterSettings" class="kendo small-width">
+                </kendo-dropdownlist>
+            </ng-template>
+        </kendo-grid-column> -->
+        <kendo-grid-column field="" title="" class="width180px" [filterable]="false">
+            <ng-template kendoGridCellTemplate let-dataItem>
+                <span>
+                    <a routerLink="/bank/detail/{{dataItem.id}}"><i class="fa fa-eye"></i></a>
+                </span>
+                &nbsp;
+                <span>
+                    <a routerLink="/bank/edit/{{dataItem.id}}"><i class="fa fa-edit"></i></a>
+                </span>
+            </ng-template>
+        </kendo-grid-column>
+        <kendo-grid-excel fileName="Banks.xlsx"></kendo-grid-excel>
+    </kendo-grid>
+</div>

@@ -1,0 +1,109 @@
+<div class="container-fluid">
+    <h3><i class="fa fa-credit-card"></i> {{ 'document.shared.title' | translate }}</h3>
+
+    <loader [hidden]="!PageLoading"></loader>
+
+    <section class="editor-section" *ngIf="!PageLoading">
+        <form role="form" [formGroup]="editorForm">
+            <div class="row">
+                <!--code-->
+                <!-- <div *ngIf="editorMode != editorModeEnum.add" class="form-group col-lg-2">
+                    <label>{{ 'donation.code' | translate }} </label>
+                    <label class="form-control">{{editorForm.controls['code'].value}}</label>
+                </div> -->
+
+                <!--documentNumber-->
+                <div class="form-group col-md-2">
+                    <label>{{ 'document.shared.documentNumber' | translate }}
+                        <i *ngIf="canEdit()" class="text-danger">*</i>
+                    </label>
+                    <div class="detail w-100">
+                        <input type="text" *ngIf="canEdit()" min="0" class="form-control" #documentNumber
+                            formControlName="documentNumber">
+
+                        <label *ngIf="editorMode == editorModeEnum.detail"
+                            class="form-control">{{itemModel?.documentNumber}}</label>
+
+                        <div class="text-danger" *ngIf="(editorForm.controls['documentNumber'].hasError('invalid' ) || 
+                                    editorForm.controls['documentNumber'].hasError('required' ) )&&
+                                   (editorForm.controls['documentNumber'].touched || 
+                                    editorForm.controls['documentNumber'].dirty)">
+                            {{ 'movements.fieldReq' | translate }}
+                        </div>
+                        <div class="text-danger" *ngIf="(editorForm.controls['documentNumber'].hasError('invalid' ) || 
+                                            editorForm.controls['documentNumber'].hasError('pattern' ) )&&
+                                           (editorForm.controls['documentNumber'].touched || 
+                                            editorForm.controls['documentNumber'].dirty)">
+                            {{ 'error.numberOnly' | translate }}
+                        </div>
+                    </div>
+                </div>
+
+                <!--countReceipts-->
+                <div class="form-group col-md-2">
+                    <label>{{ 'document.shared.countReceipts' | translate }}
+                        <i *ngIf="canEdit()" class="text-danger">*</i>
+                    </label>
+                    <div class="detail w-100">
+                        <input type="number" *ngIf="canEdit()" min="0" class="form-control" #countReceipts
+                            formControlName="countReceipts">
+
+                        <label *ngIf="editorMode == editorModeEnum.detail"
+                            class="form-control">{{itemModel?.countReceipts}}</label>
+
+                        <div class="text-danger" *ngIf="(editorForm.controls['countReceipts'].hasError('invalid' ) || 
+                                    editorForm.controls['countReceipts'].hasError('required' ) )&&
+                                   (editorForm.controls['countReceipts'].touched || 
+                                    editorForm.controls['countReceipts'].dirty)">
+                            {{ 'movements.fieldReq' | translate }}
+                        </div>
+                    </div>
+                </div>
+
+                <!--firstNumber-->
+                <div class="form-group col-md-2">
+                    <label>{{ 'document.shared.firstNumber' | translate }}
+                        <i *ngIf="canEdit()" class="text-danger">*</i>
+                    </label>
+                    <div class="detail w-100">
+                        <input type="text" *ngIf="canEdit()" min="0" class="form-control" #firstNumber
+                            formControlName="firstNumber">
+
+                        <label *ngIf="editorMode == editorModeEnum.detail"
+                            class="form-control">{{itemModel?.firstNumber}}</label>
+
+                        <div class="text-danger" *ngIf="(editorForm.controls['firstNumber'].hasError('invalid' ) || 
+                                    editorForm.controls['firstNumber'].hasError('required' ) )&&
+                                   (editorForm.controls['firstNumber'].touched || 
+                                    editorForm.controls['firstNumber'].dirty)">
+                            {{ 'movements.fieldReq' | translate }}
+                        </div>
+                        <div class="text-danger" *ngIf="(editorForm.controls['firstNumber'].hasError('invalid' ) || 
+                        editorForm.controls['firstNumber'].hasError('pattern' ) )&&
+                       (editorForm.controls['firstNumber'].touched || 
+                        editorForm.controls['firstNumber'].dirty)">
+                            {{ 'error.numberOnly' | translate }}
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <loader [hidden]="!isProccessing"></loader>
+
+            <div class="row">
+                <div class="form-group col-lg-4">
+                    <button *ngIf="canEdit()" type="submit" (click)="save()"
+                        [disabled]="!editorForm.valid || isProccessing" class="btn btn-secondary">
+                        <i class="fa fa-floppy-o verticalLine"></i> {{ 'shared.save' | translate }}
+                    </button>
+                    &nbsp;
+                    <button (click)="goToBack()" class="btn btn-secondary">
+                        <i class="fa fa-undo"></i> {{'shared.back' | translate }}
+                    </button>
+                </div>
+            </div>
+        </form>
+    </section>
+
+</div>

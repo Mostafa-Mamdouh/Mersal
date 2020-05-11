@@ -1,0 +1,15 @@
+<div *ngIf="smallSize" 
+     class="alert alert-default small-size"
+     [ngClass]="{'dark': backColor=='dark', 'white': backColor != 'backColor' }">
+  <div class="text-center">
+    <img [src]="'assets/images/lg.dual-ring-loader.gif'" width="40" class="central-block" />
+  </div>
+</div>
+
+<div *ngIf="!smallSize" 
+     class="alert alert-default"
+     [ngClass]="{'dark': backColor=='dark', 'white': backColor != 'backColor' }">
+  <div class="text-center">
+    <img [src]="'assets/images/lg.dual-ring-loader.gif'" width="90" class="central-block" />
+  </div>
+</div>

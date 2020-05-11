@@ -1,0 +1,112 @@
+<section class="container">
+
+  <section class="site-map">
+    <a routerLink="/user/list" [href]="''" class="">Users</a>
+    <span>&nbsp;&gt;&nbsp;</span>
+    <a *ngIf="mode=='add'">Add</a>
+    <a *ngIf="mode=='edit'">Edit</a>
+    <a *ngIf="mode=='detail'">Detail</a>
+  </section>
+
+  <section class="header">
+    <h3 *ngIf="mode=='add'" class="text-center">Add User</h3>
+    <h3 *ngIf="mode=='edit'" class="text-center">Edit User</h3>
+    <h3 *ngIf="mode=='detail'" class="text-center">Detail User</h3>
+  </section>
+
+  <section class="form-horizontal">
+    <form [formGroup]="editorForm" (ngSubmit)="submit()">
+      <!--name-->
+      <div class="form-group">
+        <div class="row">
+          <div class="col-md-2">
+            <label>{{'user.editor.name.name' | translate}}</label>
+          </div>
+          <div class="col-md-6">
+            <input type="text" 
+                   class="form-control" 
+                   formControlName="name" 
+                   placeholder="{{'user.editor.name.name' | translate}}" />
+          </div>
+          <div class="col-md-4">
+            <section *ngIf="isControlHasError('name')">
+              <span *ngFor="let err of controlErrorMessages('name')" class="text-danger">{{err}}</span>
+            </section>
+          </div>
+        </div>
+      </div>
+      <!--userName-->
+      <div class="form-group">
+        <div class="row">
+
+          <div class="col-md-2">
+            <label>{{'user.editor.userName.userName' | translate}}</label>
+          </div>
+
+          <div class="col-md-6">
+            <input type="text" 
+                   class="form-control" 
+                   formControlName="userName" 
+                   placeholder="{{'user.editor.userName.userName' | translate}}" />
+          </div>
+
+          <div class="col-md-4">
+            <section *ngIf="isControlHasError('userName')">
+              <span *ngFor="let err of controlErrorMessages('userName')" class="text-danger">{{err}}</span>
+            </section>
+          </div>
+
+        </div>
+      </div>
+
+      <!--password-->
+      <div class="form-group">
+        <div class="row">
+
+              <div class="col-md-2">
+                <label>{{'user.login.password' | translate}}</label>
+              </div>
+
+              <div class="col-md-6">
+
+                  <input [type]="show? 'text':'password'"  formControlName="password" class="form-control input-underline input-lg" 
+                  placeholder="{{ 'user.login.password' | translate }}">
+
+                  <i id="pass-status" class="fa fa-eye" aria-hidden="true" (click)="password()"></i>
+
+                  <!-- <div class="alert alert-danger" *ngIf=" loginForm.controls['password'].hasError('required' ) &&
+                      (loginForm.controls['password'].touched || loginForm.controls['password'].dirty)">
+                      {{ 'movements.fieldReq' | translate }}
+                  </div> -->
+
+              </div>
+
+              <div class="col-md-4">
+                  <section *ngIf="isControlHasError('password')">
+                    <span *ngFor="let err of controlErrorMessages('password')" class="text-danger">{{err}}</span>
+                  </section>
+              </div>
+        </div>
+      </div>
+      <!--buttons-->
+      <div class="form-group">
+        <div class="row">
+          <div class="col-md-2">
+          </div>
+          <div class="col-md-6">
+            <button *ngIf="mode!='detail'" type="submit" class="btn btn-success"
+              [disabled]="!editorForm.valid">{{'shared.save' | translate}}</button>
+            <a routerLink='/user/add' class="btn btn-default">{{'shared.back' | translate}}</a>
+          </div>
+          <div class="col-md-4">
+          </div>
+        </div>
+      </div>
+    </form>
+
+    <!-- <div>
+      <p>Form Status: {{editorForm.status}}</p>
+      <p>Form Value: {{editorForm.value | json}}</p>
+    </div> -->
+  </section>
+</section>

@@ -1,0 +1,152 @@
+<div class="container-fluid">
+    <h3><i class="fa fa-credit-card"></i> {{'journalPosting.journalPosting.title' | translate}}</h3>
+
+    <loader [hidden]="!PageLoading"></loader>
+
+    <div *ngIf="postingSetting.isPostingAutomatic">
+        <p>{{'journalPosting.shared.automaticPostingOn'| translate}}</p>
+    </div>
+    <div *ngIf="!postingSetting.isPostingAutomatic">
+        <section *ngIf="!PageLoading">
+            <form role="form" [formGroup]="editorForm">
+                <div class="row">
+                    <!--date-->
+                    <div class="form-group col-md-2">
+                        <label>{{ 'journalPosting.shared.date' | translate }}
+                        </label>
+
+                        <label class="form-control">{{itemModel?.toDate | date:'yyyy-MM-dd'}}</label>
+                    </div>
+
+                    <!--isAutomaticPosting-->
+                    <div class="form-group col-md-2">
+                        <input type="checkbox" id="isAutomaticPosting" disabled
+                            class="form-control checkbox-inline checkbox-inline-25"
+                            formControlName="isAutomaticPosting" />
+
+                        <label
+                            for="isAutomaticPosting">{{ 'journalPosting.journalPosting.isAutomaticPosting' | translate }}</label>
+                    </div>
+
+
+
+                </div>
+
+                <div class="row">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5>
+                                <i class="fa fa-users" aria-hidden="true"></i>
+                                <span>
+                                    {{ 'journalPosting.shared.counts' | translate }}
+                                </span>
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            <div>
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>{{ 'journalPosting.journalPosting.postedReceiptsMovementCount' | translate }}
+                                            </th>
+                                            <th>{{ 'journalPosting.journalPosting.postedPaymentMovementCount' | translate }}
+                                            </th>
+                                            <th>{{ 'journalPosting.journalPosting.postedBankMovementCount' | translate }}
+                                            </th>
+                                            <th>{{ 'journalPosting.journalPosting.postedPurchaseInvoiceCount' | translate }}
+                                            </th>
+                                            <th>{{ 'journalPosting.journalPosting.postedPurchaseRebateCount' | translate }}
+                                            </th>
+                                            <th>{{ 'journalPosting.journalPosting.postedStoreMovementCount' | translate }}
+                                            </th>
+                                            <th>{{ 'journalPosting.journalPosting.postedSalesInvoiceCount' | translate }}
+                                            </th>
+                                            <th>{{ 'journalPosting.journalPosting.postedSalesRebateCount' | translate }}
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <label class="">
+                                                    {{itemModel?.postedReceiptsMovementCount}}
+                                                </label>
+                                            </td>
+                                            <td>
+                                                <label class="">
+                                                    {{itemModel?.postedPaymentMovementCount}}
+                                                </label>
+                                            </td>
+                                            <td>
+                                                <label class="">
+                                                    {{itemModel?.postedBankMovementCount}}
+                                                </label>
+                                            </td>
+                                            <td>
+                                                <label class="">
+                                                    {{itemModel?.postedPurchaseInvoiceCount}}
+                                                </label>
+                                            </td>
+                                            <td>
+                                                <label class="">
+                                                    {{itemModel?.postedPurchaseRebateCount}}
+                                                </label>
+                                            </td>
+                                            <td>
+                                                <label class="">
+                                                    {{itemModel?.postedStoreMovementCount}}
+                                                </label>
+                                            </td>
+                                            <td>
+                                                <label class="">
+                                                    {{itemModel?.postedSalesInvoiceCount}}
+                                                </label>
+                                            </td>
+                                            <td>
+                                                <label class="">
+                                                    {{itemModel?.postedSalesRebateCount}}
+                                                </label>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- <div class="row">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5>
+                                        <i class="fa fa-users" aria-hidden="true"></i>
+                                        <span>
+                                            {{ 'donation.description' | translate }}
+                                        </span>
+                                    </h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+            
+            
+                                    </div>
+                                </div>
+                            </div>
+                        </div> -->
+
+                <loader [hidden]="!isProccessing"></loader>
+
+                <div class="row">
+                    <div class="form-group col-lg-4">
+                        <button (click)="goToBack()" routerLink="/journal-posting/list" class="btn btn-secondary">
+                            <i class="fa fa-undo"></i> {{'shared.back' | translate }}
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </section>
+
+    </div>
+
+</div>

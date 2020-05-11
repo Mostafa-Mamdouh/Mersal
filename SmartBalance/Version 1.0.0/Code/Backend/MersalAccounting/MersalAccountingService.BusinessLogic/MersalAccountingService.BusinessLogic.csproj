@@ -1,0 +1,236 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--This Solution Generated From Ahmed Shaikoun Code Generator 1.0.0.0-->
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{FD3F1343-41F1-4F10-97E4-8CD41A24CD39}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MersalAccountingService.BusinessLogic</RootNamespace>
+    <AssemblyName>MersalAccountingService.BusinessLogic</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DocumentFormat.OpenXml, Version=2.9.1.0, Culture=neutral, PublicKeyToken=8fb06cb64d019a17, processorArchitecture=MSIL">
+      <HintPath>..\packages\DocumentFormat.OpenXml.2.9.1\lib\net46\DocumentFormat.OpenXml.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp, Version=106.6.9.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
+      <HintPath>..\packages\RestSharp.106.6.9\lib\net452\RestSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.IO.FileSystem.Primitives, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.FileSystem.Primitives.4.3.0\lib\net46\System.IO.FileSystem.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO.Packaging, Version=4.0.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.Packaging.4.5.0\lib\net46\System.IO.Packaging.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Common\CurrentUserService.cs" />
+    <Compile Include="Common\LanguageService.cs" />
+    <Compile Include="Common\LoggerService.cs" />
+    <Compile Include="Common\ResourcesService.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\AccountChart\AccountChartGroupsService.cs" />
+    <Compile Include="Services\AccountChart\AccountChartCategoriesService.cs" />
+    <Compile Include="Services\AccountChart\AccountChartLevelSettingsService.cs" />
+    <Compile Include="Services\Asset\AssetInventoryDetailsService.cs" />
+    <Compile Include="Services\Asset\AssetInventorysService.cs" />
+    <Compile Include="Services\Asset\AssetLocationsService.cs" />
+    <Compile Include="Services\Asset\DepreciationRatesService.cs" />
+    <Compile Include="Services\Asset\DepreciationsService.cs" />
+    <Compile Include="Services\Asset\DepreciationTypesService.cs" />
+    <Compile Include="Services\Asset\EffiencyRaiseHistoryService.cs" />
+    <Compile Include="Services\Asset\ExcludesService.cs" />
+    <Compile Include="Services\Asset\ExpensesService.cs" />
+    <Compile Include="Services\Asset\ExpensesTypesService.cs" />
+    <Compile Include="Services\Asset\LocationsService.cs" />
+    <Compile Include="Services\Bank\BankAccountChartService.cs" />
+    <Compile Include="Services\AccountChart\AccountChartDocumentService.cs" />
+    <Compile Include="Services\Brand\BrandService.cs" />
+    <Compile Include="Services\Charts\ChartService.cs" />
+    <Compile Include="Services\ClosedMonth\ClosedMonthsService.cs" />
+    <Compile Include="Services\CostCenter\BankMovementCostCentersService.cs" />
+    <Compile Include="Services\CostCenter\CostCenterTypesService.cs" />
+    <Compile Include="Services\Safe\SafeAccountChartsService.cs" />
+    <Compile Include="Services\Shared\AdvancesTypeService.cs" />
+    <Compile Include="Services\Shared\ClosedReceiptService.cs" />
+    <Compile Include="Services\Shared\LiquidationService.cs" />
+    <Compile Include="Services\Shared\TestamentExtractionService.cs" />
+    <Compile Include="Services\Shared\TestamentService.cs" />
+    <Compile Include="Services\Shared\DiscountPercentagesService.cs" />
+    <Compile Include="Services\Shared\DocumentService.cs" />
+    <Compile Include="Services\Shared\DonationTypesService.cs" />
+    <Compile Include="Services\Shared\ExcelService.cs" />
+    <Compile Include="Services\Shared\FiscalYearsService.cs" />
+    <Compile Include="Services\Group\GroupPermissionsService.cs" />
+    <Compile Include="Services\Inventory\InventoryMovementTypeService.cs" />
+    <Compile Include="Services\Inventory\InventoryMovementCostCentersService.cs" />
+    <Compile Include="Services\Inventory\InventoryTransferCostCenters.cs" />
+    <Compile Include="Services\Inventory\InventoryOpeningBalanceCostCentersService.cs" />
+    <Compile Include="Services\Inventory\InventoryOpeningBalanceService.cs" />
+    <Compile Include="Services\JournalPosting\JournalPostingsService.cs" />
+    <Compile Include="Services\JournalEntries\JournalTypesService.cs" />
+    <Compile Include="Services\Shared\MenuItemsService.cs" />
+    <Compile Include="Services\CostCenter\ObjectCostCentersService.cs" />
+    <Compile Include="Services\Shared\PaymentMovmentsService.cs" />
+    <Compile Include="Services\Base\BaseService.cs" />
+    <Compile Include="Services\Purchasing\PurchaseInvoiceCostCentersService.cs" />
+    <Compile Include="Services\Purchasing\PurchaseInvoiceTypesService.cs" />
+    <Compile Include="Services\Purchasing\PurchaseRebateCostCentersService.cs" />
+    <Compile Include="Services\Shared\ReceivingMethodsService.cs" />
+    <Compile Include="Services\Report\AccountReportsService.cs" />
+    <Compile Include="Services\Report\BankReportsService.cs" />
+    <Compile Include="Services\Report\CostCenterReportsService.cs" />
+    <Compile Include="Services\Report\Donation\DonationCaseReportsService.cs" />
+    <Compile Include="Services\Report\FixedAsset\FixedAssetReportsService.cs" />
+    <Compile Include="Services\Report\Inventory\InventoryReportsService.cs" />
+    <Compile Include="Services\Report\SafeReportsService.cs" />
+    <Compile Include="Services\Report\VendorReportsService.cs" />
+    <Compile Include="Services\Shared\ReportsService.cs" />
+    <Compile Include="Services\Shared\SalesBillService.cs" />
+    <Compile Include="Services\Shared\SalesBillTypesService.cs" />
+    <Compile Include="Services\Shared\MeasurementUnitsService.cs" />
+    <Compile Include="Services\Shared\DonatorsService.cs" />
+    <Compile Include="Services\Shared\ExitPermissionsService.cs" />
+    <Compile Include="Services\Shared\EntrancePermissionsService.cs" />
+    <Compile Include="Services\Purchasing\PurchaseRebateProductsService.cs" />
+    <Compile Include="Services\Shared\SalesRebateProductsService.cs" />
+    <Compile Include="Services\AccountChart\AccountChartSettingsService.cs" />
+    <Compile Include="Services\Setting\SettingsService.cs" />
+    <Compile Include="Services\Shared\StoreMovementsService.cs" />
+    <Compile Include="Services\User\UserBranchService.cs" />
+    <Compile Include="Services\User\UserGroupsService.cs" />
+    <Compile Include="Services\Group\GroupRolesService.cs" />
+    <Compile Include="Services\Group\GroupsService.cs" />
+    <Compile Include="Services\Role\RolePermissionsService.cs" />
+    <Compile Include="Services\Permission\PermissionsService.cs" />
+    <Compile Include="Services\User\UserMenuItemsService.cs" />
+    <Compile Include="Services\User\UserPermissionsService.cs" />
+    <Compile Include="Services\User\UserRolesService.cs" />
+    <Compile Include="Services\Role\RolesService.cs" />
+    <Compile Include="Services\Shared\CountryCallingCodesService.cs" />
+    <Compile Include="Services\Address\AddresssService.cs" />
+    <Compile Include="Services\Shared\ProductPricesService.cs" />
+    <Compile Include="Services\JournalEntries\JournalsService.cs" />
+    <Compile Include="Services\Shared\ExchangeBondssService.cs" />
+    <Compile Include="Services\Shared\ReceiptssService.cs" />
+    <Compile Include="Services\Shared\SalesRebatesService.cs" />
+    <Compile Include="Services\Purchasing\PurchaseRebatesService.cs" />
+    <Compile Include="Services\Purchasing\PurchaseInvoicesService.cs" />
+    <Compile Include="Services\JournalEntries\TransactionsService.cs" />
+    <Compile Include="Services\Shared\PaymentMethodsService.cs" />
+    <Compile Include="Services\Asset\AssetsService.cs" />
+    <Compile Include="Services\Asset\AssetCategorysService.cs" />
+    <Compile Include="Services\Shared\InventorysService.cs" />
+    <Compile Include="Services\Shared\ProductsService.cs" />
+    <Compile Include="Services\Shared\ProductTypesService.cs" />
+    <Compile Include="Services\Shared\StoreMeasurementUnitsService.cs" />
+    <Compile Include="Services\Shared\DelegateMansService.cs" />
+    <Compile Include="Services\Shared\CasesService.cs" />
+    <Compile Include="Services\Shared\CaseTypesService.cs" />
+    <Compile Include="Services\CostCenter\CostCentersService.cs" />
+    <Compile Include="Services\Bank\BanksService.cs" />
+    <Compile Include="Services\Safe\SafesService.cs" />
+    <Compile Include="Services\AccountChart\AccountChartsService.cs" />
+    <Compile Include="Services\Vendor\VendorTypesService.cs" />
+    <Compile Include="Services\Vendor\VendorsService.cs" />
+    <Compile Include="Services\AccountChart\AccountTypesService.cs" />
+    <Compile Include="Services\Branch\BranchsService.cs" />
+    <Compile Include="Services\Shared\DonationsService.cs" />
+    <Compile Include="Services\Shared\CurrencyRatesService.cs" />
+    <Compile Include="Services\Shared\CurrencysService.cs" />
+    <Compile Include="Services\User\UsersService.cs" />
+    <Compile Include="Services\Shared\AttachmentsService.cs" />
+    <Compile Include="Services\Address\CountrysService.cs" />
+    <Compile Include="Services\Address\CitysService.cs" />
+    <Compile Include="Services\Address\DistrictsService.cs" />
+    <Compile Include="Services\Shared\StockAssessmentPolicysService.cs" />
+    <Compile Include="Services\Shared\MailsService.cs" />
+    <Compile Include="Services\Shared\MobilesService.cs" />
+    <Compile Include="Services\Shared\BankMovementsService.cs" />
+    <Compile Include="Services\Shared\TransfersService.cs" />
+    <Compile Include="Services\Shared\InventoryTransfersService.cs" />
+    <Compile Include="Services\Shared\InventoryMovementsService.cs" />
+    <Compile Include="Services\Shared\InventoryInsService.cs" />
+    <Compile Include="Services\Shared\InventoryOutsService.cs" />
+    <Compile Include="Services\Shared\InventoryDifferencesService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Framework.Common\Framework.Common.csproj">
+      <Project>{F8BEADB8-AFFA-42E5-AC34-2265F936FF42}</Project>
+      <Name>Framework.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Framework.Core\Framework.Core.csproj">
+      <Project>{12E94E97-C887-4CAE-B03C-69AA46ED770F}</Project>
+      <Name>Framework.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MersalAccountingService.Common\MersalAccountingService.Common.csproj">
+      <Project>{D0CC6CCC-ED64-47F2-940E-D7C58CE19E48}</Project>
+      <Name>MersalAccountingService.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MersalAccountingService.Core\MersalAccountingService.Core.csproj">
+      <Project>{9622E50B-7F68-4115-A0AB-80B24D2F73C9}</Project>
+      <Name>MersalAccountingService.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MersalAccountingService.DataAccess\MersalAccountingService.DataAccess.csproj">
+      <Project>{B0FE1618-9ECC-4FD9-B355-D2B011DE67B5}</Project>
+      <Name>MersalAccountingService.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MersalAccountingService.Entities\MersalAccountingService.Entities.csproj">
+      <Project>{1A9F998A-6C27-4B7A-ADEE-DC62F962312A}</Project>
+      <Name>MersalAccountingService.Entities</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Common\Enums\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

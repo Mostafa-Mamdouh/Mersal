@@ -1,0 +1,660 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--This Solution Generated From Ahmed Shaikoun Code Generator 1.0.0.0-->
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6E39D3CF-D6A7-4CBA-8093-BDB6EA97D35E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MersalAccountingService.Resourcing</RootNamespace>
+    <AssemblyName>MersalAccountingService.Resourcing</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ExceptionResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ExceptionResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="ExceptionResource.ar.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ExceptionResource.ar.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ExitPermissionResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ExitPermissionResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="EntrancePermissionResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EntrancePermissionResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="PurchaseRebateProductResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PurchaseRebateProductResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="SalesRebateProductResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SalesRebateProductResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="AccountChartSettingResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AccountChartSettingResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="UserGroupResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UserGroupResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="GroupRoleResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GroupRoleResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="GroupResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GroupResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="RolePermissionResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RolePermissionResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="PermissionResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PermissionResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="UserRoleResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UserRoleResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="RoleResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RoleResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="CountryCallingCodeResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CountryCallingCodeResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="AddressResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AddressResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="ProductPriceResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProductPriceResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="JournalResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>JournalResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="ExchangeBondsResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ExchangeBondsResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="ReceiptsResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReceiptsResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="SalesRebateResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SalesRebateResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="PurchaseRebateResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PurchaseRebateResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="PurchaseInvoiceResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PurchaseInvoiceResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="TransactionResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TransactionResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="PaymentMethodResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PaymentMethodResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="AssetResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AssetResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="AssetCategoryResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AssetCategoryResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="InventoryResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>InventoryResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="ProductResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProductResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="ProductTypeResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProductTypeResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="StoreMeasurementUnitResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StoreMeasurementUnitResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="DelegateManResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DelegateManResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="CaseResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CaseResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="CaseTypeResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CaseTypeResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="CostCenterResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CostCenterResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="BankResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BankResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="SafeResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SafeResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="AccountChartResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AccountChartResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="VendorTypeResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>VendorTypeResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="VendorResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>VendorResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="AccountTypeResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AccountTypeResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="BranchResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BranchResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="DonationResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DonationResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="CurrencyRateResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CurrencyRateResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="CurrencyResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CurrencyResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="UserResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UserResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="AttachmentResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AttachmentResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="CountryResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CountryResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="CityResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CityResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="DistrictResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DistrictResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="StockAssessmentPolicyResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StockAssessmentPolicyResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="MailResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MailResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="MobileResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MobileResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="BankMovementResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BankMovementResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="TransferResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TransferResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="InventoryTransferResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>InventoryTransferResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="InventoryMovementResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>InventoryMovementResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="InventoryInResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>InventoryInResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="InventoryOutResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>InventoryOutResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="InventoryDifferenceResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>InventoryDifferenceResource.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ExceptionResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ExceptionResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExitPermissionResource.ar.resx" />
+    <EmbeddedResource Include="ExitPermissionResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ExitPermissionResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EntrancePermissionResource.ar.resx" />
+    <EmbeddedResource Include="EntrancePermissionResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>EntrancePermissionResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PurchaseRebateProductResource.ar.resx" />
+    <EmbeddedResource Include="PurchaseRebateProductResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>PurchaseRebateProductResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SalesRebateProductResource.ar.resx" />
+    <EmbeddedResource Include="SalesRebateProductResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>SalesRebateProductResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AccountChartSettingResource.ar.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AccountChartSettingResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>AccountChartSettingResource.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserGroupResource.ar.resx" />
+    <EmbeddedResource Include="UserGroupResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>UserGroupResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GroupRoleResource.ar.resx" />
+    <EmbeddedResource Include="GroupRoleResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>GroupRoleResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GroupResource.ar.resx" />
+    <EmbeddedResource Include="GroupResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>GroupResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RolePermissionResource.ar.resx" />
+    <EmbeddedResource Include="RolePermissionResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>RolePermissionResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PermissionResource.ar.resx" />
+    <EmbeddedResource Include="PermissionResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>PermissionResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserRoleResource.ar.resx" />
+    <EmbeddedResource Include="UserRoleResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>UserRoleResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RoleResource.ar.resx" />
+    <EmbeddedResource Include="RoleResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>RoleResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CountryCallingCodeResource.ar.resx" />
+    <EmbeddedResource Include="CountryCallingCodeResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>CountryCallingCodeResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddressResource.ar.resx" />
+    <EmbeddedResource Include="AddressResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>AddressResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProductPriceResource.ar.resx" />
+    <EmbeddedResource Include="ProductPriceResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ProductPriceResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="JournalResource.ar.resx" />
+    <EmbeddedResource Include="JournalResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>JournalResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExchangeBondsResource.ar.resx" />
+    <EmbeddedResource Include="ExchangeBondsResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ExchangeBondsResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReceiptsResource.ar.resx" />
+    <EmbeddedResource Include="ReceiptsResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ReceiptsResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SalesRebateResource.ar.resx" />
+    <EmbeddedResource Include="SalesRebateResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>SalesRebateResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PurchaseRebateResource.ar.resx" />
+    <EmbeddedResource Include="PurchaseRebateResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>PurchaseRebateResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PurchaseInvoiceResource.ar.resx" />
+    <EmbeddedResource Include="PurchaseInvoiceResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>PurchaseInvoiceResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TransactionResource.ar.resx" />
+    <EmbeddedResource Include="TransactionResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>TransactionResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PaymentMethodResource.ar.resx" />
+    <EmbeddedResource Include="PaymentMethodResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>PaymentMethodResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AssetResource.ar.resx" />
+    <EmbeddedResource Include="AssetResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>AssetResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AssetCategoryResource.ar.resx" />
+    <EmbeddedResource Include="AssetCategoryResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>AssetCategoryResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InventoryResource.ar.resx" />
+    <EmbeddedResource Include="InventoryResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>InventoryResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProductResource.ar.resx" />
+    <EmbeddedResource Include="ProductResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ProductResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProductTypeResource.ar.resx" />
+    <EmbeddedResource Include="ProductTypeResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ProductTypeResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StoreMeasurementUnitResource.ar.resx" />
+    <EmbeddedResource Include="StoreMeasurementUnitResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>StoreMeasurementUnitResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DelegateManResource.ar.resx" />
+    <EmbeddedResource Include="DelegateManResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>DelegateManResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CaseResource.ar.resx" />
+    <EmbeddedResource Include="CaseResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>CaseResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CaseTypeResource.ar.resx" />
+    <EmbeddedResource Include="CaseTypeResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>CaseTypeResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CostCenterResource.ar.resx" />
+    <EmbeddedResource Include="CostCenterResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>CostCenterResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BankResource.ar.resx" />
+    <EmbeddedResource Include="BankResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>BankResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SafeResource.ar.resx" />
+    <EmbeddedResource Include="SafeResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>SafeResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AccountChartResource.ar.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AccountChartResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>AccountChartResource.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VendorTypeResource.ar.resx" />
+    <EmbeddedResource Include="VendorTypeResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>VendorTypeResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VendorResource.ar.resx" />
+    <EmbeddedResource Include="VendorResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>VendorResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AccountTypeResource.ar.resx" />
+    <EmbeddedResource Include="AccountTypeResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>AccountTypeResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BranchResource.ar.resx" />
+    <EmbeddedResource Include="BranchResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>BranchResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DonationResource.ar.resx" />
+    <EmbeddedResource Include="DonationResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>DonationResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CurrencyRateResource.ar.resx" />
+    <EmbeddedResource Include="CurrencyRateResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>CurrencyRateResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CurrencyResource.ar.resx" />
+    <EmbeddedResource Include="CurrencyResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>CurrencyResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserResource.ar.resx" />
+    <EmbeddedResource Include="UserResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>UserResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AttachmentResource.ar.resx" />
+    <EmbeddedResource Include="AttachmentResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>AttachmentResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CountryResource.ar.resx" />
+    <EmbeddedResource Include="CountryResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>CountryResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CityResource.ar.resx" />
+    <EmbeddedResource Include="CityResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>CityResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DistrictResource.ar.resx" />
+    <EmbeddedResource Include="DistrictResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>DistrictResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StockAssessmentPolicyResource.ar.resx" />
+    <EmbeddedResource Include="StockAssessmentPolicyResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>StockAssessmentPolicyResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MailResource.ar.resx" />
+    <EmbeddedResource Include="MailResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>MailResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MobileResource.ar.resx" />
+    <EmbeddedResource Include="MobileResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>MobileResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BankMovementResource.ar.resx" />
+    <EmbeddedResource Include="BankMovementResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>BankMovementResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TransferResource.ar.resx" />
+    <EmbeddedResource Include="TransferResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>TransferResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InventoryTransferResource.ar.resx" />
+    <EmbeddedResource Include="InventoryTransferResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>InventoryTransferResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InventoryMovementResource.ar.resx" />
+    <EmbeddedResource Include="InventoryMovementResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>InventoryMovementResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InventoryInResource.ar.resx" />
+    <EmbeddedResource Include="InventoryInResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>InventoryInResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InventoryOutResource.ar.resx" />
+    <EmbeddedResource Include="InventoryOutResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>InventoryOutResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InventoryDifferenceResource.ar.resx" />
+    <EmbeddedResource Include="InventoryDifferenceResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>InventoryDifferenceResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ExceptionResource.ar.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ExceptionResource.ar.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

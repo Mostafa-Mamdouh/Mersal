@@ -1,0 +1,46 @@
+<section>
+    <div class="row">
+         <div class="col-md-10">
+         <h3>{{ 'movements.payments' | translate }}</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group col-lg-6">
+          <label>{{ 'donation.branch' | translate }}:</label><label class="labelValue">{{details.branch}}</label><br>
+          <label>{{ 'movements.value' | translate }}:</label><label class="labelValue">{{details.totalAmount}}</label>   <br>
+          <label>{{ 'movements.statementAr' | translate }}</label>
+          <textarea class="form-control" [(ngModel)]="details.descriptionAR" disabled
+                placeholder="{{ 'movements.statementAr' | translate }}"></textarea>
+        </div>
+        <div class="form-group col-lg-6">
+          <label>{{ 'movements.dateDocument' | translate }}:</label><label class="labelValue">{{details.date | date: 'dd/MM/yyyy'}}</label><br>
+          <label *ngIf="sourceType.vendor==details.sourceType">
+            {{ 'financial.vendorName' | translate }}:</label>
+            <label class="labelValue" *ngIf="sourceType.vendor==details.sourceType">
+              {{details.vendorName}}
+          </label>
+          <label *ngIf="sourceType.AccountChart==details.sourceType">
+              {{ 'financial.accountChart' | translate }}:</label>
+              <label class="labelValue" *ngIf="sourceType.AccountChart==details.sourceType">
+                {{details.accountNumber}}
+          </label> <br> 
+          <label>{{ 'movements.statementEn' | translate }}</label>
+          <textarea class="form-control" [(ngModel)]="details.descriptionEN" disabled
+                placeholder="{{ 'movements.statementEn' | translate }}"></textarea>
+        </div>             
+    </div>   
+    <hr>       
+    <div class="row">       
+        <section  class="col-md-12" *ngIf="details?.costCenters?.length>0">
+             <div class="col-md-10" *ngIf="details?.costCenters?.length>0">
+              <h4>{{ 'movements.costCenter' | translate }}</h4>
+             </div>
+             <div *ngIf="details?.costCenters?.length>0">
+                <div class="col-md-12"  *ngFor="let item of details.costCenters; let i = index">
+                    <label>{{ 'movements.costCenterCode' | translate }}:</label><label class="labelValue">{{item.name}}</label><br>
+                    <label>{{ 'donation.Amount' | translate }}:</label><label class="labelValue">{{item.amount}}</label>
+                 </div>
+             </div>                          
+        </section>          
+    </div>    
+  </section>

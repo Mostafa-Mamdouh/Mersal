@@ -1,0 +1,8 @@
+C:\Mersal\SmartBalance\Version 1.0.0\Code\Backend\MersalAccounting\MersalAccountingService.Common\bin\Debug\MersalAccountingService.Common.dll
+C:\Mersal\SmartBalance\Version 1.0.0\Code\Backend\MersalAccounting\MersalAccountingService.Common\bin\Debug\MersalAccountingService.Common.pdb
+C:\Mersal\SmartBalance\Version 1.0.0\Code\Backend\MersalAccounting\MersalAccountingService.Common\bin\Debug\Framework.Common.dll
+C:\Mersal\SmartBalance\Version 1.0.0\Code\Backend\MersalAccounting\MersalAccountingService.Common\bin\Debug\Framework.Common.pdb
+C:\Mersal\SmartBalance\Version 1.0.0\Code\Backend\MersalAccounting\MersalAccountingService.Common\obj\Debug\MersalAccountingService.Common.csprojAssemblyReference.cache
+C:\Mersal\SmartBalance\Version 1.0.0\Code\Backend\MersalAccounting\MersalAccountingService.Common\obj\Debug\MersalAccountingService.Common.csproj.CopyComplete
+C:\Mersal\SmartBalance\Version 1.0.0\Code\Backend\MersalAccounting\MersalAccountingService.Common\obj\Debug\MersalAccountingService.Common.dll
+C:\Mersal\SmartBalance\Version 1.0.0\Code\Backend\MersalAccounting\MersalAccountingService.Common\obj\Debug\MersalAccountingService.Common.pdb

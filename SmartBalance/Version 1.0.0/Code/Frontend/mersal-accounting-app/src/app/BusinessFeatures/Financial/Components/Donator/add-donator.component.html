@@ -1,0 +1,68 @@
+<div>
+  <form [formGroup]="addDoner" (ngSubmit)="AddDoner()">
+    <div class="row">
+
+      <div class="formgroup col-md-4">
+        <label>{{ 'donation.donerName' | translate }}</label>
+        <div class="detail w-100">
+          <input type="text" class="form-control" [attr.disabled]="isSubmited ? '' : null" pattern=".*\S.*"
+            formControlName="donerName"
+            [ngClass]="{'border border-danger' :  addDoner.controls['donerName'].invalid && addDoner.controls['donerName'].touched}">
+        </div>
+  
+        <div class="text-danger" *ngIf=" addDoner.controls['donerName'].hasError( 'required' ) &&
+                        (addDoner.controls['donerName'].touched || addDoner.controls['donerName'].dirty)">
+          {{ 'movements.fieldReq' | translate }}
+        </div>
+        <div class="text-danger"
+          *ngIf="addDoner.controls['donerName'].hasError( 'maxlength') &&
+                        (addDoner.controls['donerName'].touched && addDoner.controls['donerName'].dirty&& addDoner.controls['donerName'].invalid)">
+          {{ 'movements.MaxLength' | translate }} 250
+        </div>
+  
+        <div class="text-danger"
+          *ngIf="addDoner.controls['donerName'].hasError( 'minlength') &&
+                      (addDoner.controls['donerName'].touched && addDoner.controls['donerName'].dirty&& addDoner.controls['donerName'].invalid)">
+          {{ 'movements.minLength' | translate }} 4
+        </div>
+      </div>
+
+      <div class="formgroup col-md-4">
+        <mobile (mobilechangedOutPutEvent)="mobilechangedOutPutEvent($event)"></mobile>
+      </div>
+      
+      <div class="formgroup col-md-4">
+        <email (emailchangedOutPutEvent)="emailchangedOutPutEvent($event)"></email>
+      </div>
+    </div>
+  
+  
+    <div class="row">    
+      <div class="formgroup col-md-12">
+        <address (addresschangedOutPutEvent)="addresschangedOutPutEvent($event)"></address>
+      </div>
+    </div>
+  
+  
+    <!-- <div class="form-group col-lg-4">
+      <label>{{ 'financial.accountChart' | translate }} <i class="text-danger">*</i></label>
+      <div class="detail w-100">
+        <select [attr.disabled]="isSubmited ? '' : null" class="form-control form-control-sm" id="AccountChart"
+                formControlName="donerAccountChart" [ngClass]="{ 'border border-danger': addDoner.controls['donerAccountChart'].invalid
+                    &&(addDoner.controls['donerAccountChart'].touched || addDoner.controls['donerAccountChart'].dirty) }">
+          <option *ngFor="let item of AccountCharts" [value]="item.id">
+            {{item.name}}
+          </option>
+        </select>
+      </div>
+      <di   v class="text-danger" *ngIf=" addDoner.controls['donerAccountChart'].hasError('required' ) &&
+                      (addDoner.controls['donerAccountChart'].touched || addDoner.controls['donerAccountChart'].dirty)">
+        {{ 'movements.fieldReq' | translate }}
+      </div>
+    </div> -->
+    <div class="form-group col-lg-4" *ngIf="!isSubmited">
+      <button type="submit" [disabled]="!addDoner.valid" class="btn btn-secondary">{{ 'shared.add' | translate }}</button>
+      <button type="reset" (click)="Close()" class="btn btn-secondary">{{ 'shared.cancel' | translate }}</button>
+    </div>
+  </form>
+</div>

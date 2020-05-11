@@ -1,0 +1,104 @@
+<div class="container-fluid">
+    <div class="row header">
+        <div class="col-md-10">
+            <h3>{{ 'journalPosting.journalPosting.title' | translate }}</h3>
+        </div>
+        <div class="col-md-2">
+            <a *ngIf="!ListLoading && !postingSetting.isPostingAutomatic" routerLink="/journal-posting/post-journal"
+                class="btn btn-dark btn-block">{{'journalEntries.post.postJournal' | translate}}</a>
+        </div>
+    </div>
+
+    <loader [hidden]="!ListLoading || postingSetting.isPostingAutomatic"></loader>
+    <div *ngIf="!ListLoading && postingSetting.isPostingAutomatic">
+        <p>{{'journalPosting.shared.automaticPostingOn'| translate}}</p>
+    </div>
+    <div *ngIf="!ListLoading && !postingSetting.isPostingAutomatic">
+
+        <kendo-grid [data]="gridView" *ngIf="!ListLoading" [pageSize]="pageSize" [skip]="skip" [scrollable]="'none'"
+            [columnMenu]="true" [filter]="state.filter" [filterable]="true" [sortable]="true" [pageable]="true"
+            (dataStateChange)="dataStateChange($event)" (pageChange)="pageChange($event)"
+            class="kendoGridHeightAndDirection">
+
+            <ng-template  kendoGridToolbarTemplate>
+                    <div class="row">
+                            <div class="col-md-11">
+                                    <label>{{'shared.display'| translate}}&nbsp;&nbsp;</label>
+                                        <kendo-dropdownlist #list [(ngModel)]="pagenationSize" 
+                                        (valueChange)="pagenationSizeChange($event)"
+                                        [data]="pagenationSizeList" [filterable]="true" 
+                                        textField="value" valueField="value"
+                                        [kendoDropDownFilter]="filterSettings" class="kendo small-width">
+                                    </kendo-dropdownlist>
+                                </div>
+                        <div *ngIf="gridView?.data?.length > 0" class="col-md-1">
+                            <button type="button" kendoGridExcelCommand 
+                                class="btn-excel"
+                                title="{{'shared.exportTo.excel' | translate}}">
+                                <i class="fa fa-file-excel-o" aria-hidden="true"></i>
+                            </button>
+                            <!-- <button type="button" 
+                                class="btn-excel"
+                                kendoGridExcelCommand
+                                icon="file-excel">{{'shared.exportTo.excel' | translate}}</button> -->
+                        </div>
+                    </div>
+                </ng-template>
+
+            <kendo-grid-excel fileName="Journal Posting List.xlsx"></kendo-grid-excel>
+
+
+
+            <kendo-grid-column field="id" title="{{ 'donation.code' | translate }}" class="width130px">
+            </kendo-grid-column>
+
+            <!-- <kendo-grid-column field="source" title="{{ 'movements.source' | translate }}"  class="width130px"></kendo-grid-column>
+                    <kendo-grid-column field="paymentMethod" title="{{ 'movements.paymentMethod' | translate }}"  class="width130px">
+                        <ng-template kendoGridFilterCellTemplate let-filter>
+                            <kendo-dropdownlist #list [(ngModel)]="PaymentId"  (valueChange)="paymentChange($event)"
+                             [data]="PaymentDropDownData" [filterable]="true"
+                             textField="text" valueField="value"
+                            [kendoDropDownFilter]="filterSettings"  class="kendo small-width"> 
+                          </kendo-dropdownlist>
+                        </ng-template>
+                    </kendo-grid-column> -->
+            <kendo-grid-column field="isAutomaticPosting"
+                title="{{'journalPosting.journalPosting.isAutomaticPosting' | translate }}" class="width130px">
+                <!-- <ng-template kendoGridCellTemplate let-dataItem>                       
+                        <span *ngIf="dataItem.isAutomaticPosting == true">
+                                {{'shared.true' | translate}}
+                        </span>
+                        <span *ngIf="dataItem.isAutomaticPosting != true">
+                                {{'shared.false' | translate}}
+                        </span>
+                    </ng-template> -->
+
+                <ng-template kendoGridFilterCellTemplate let-filter>
+                    <kendo-dropdownlist #list [(ngModel)]="isAutomaticPosting"
+                        (valueChange)="isAutomaticPostingChange($event)" [data]="AutomaticPostingDropDownData"
+                        [filterable]="true" textField="text" valueField="value" [kendoDropDownFilter]="filterSettings"
+                        class="kendo small-width">
+                    </kendo-dropdownlist>
+                </ng-template>
+            </kendo-grid-column>
+            <kendo-grid-column field="toDate" id="dateFilter" title="{{'journalPosting.shared.date' | translate }}"
+                class="width130px" filter="date" format="{0:MM/dd/yyyy}">
+                <ng-template kendoGridCellTemplate let-dataItem>
+                    {{dataItem.toDate | date: 'mediumDate'}}
+                </ng-template>
+            </kendo-grid-column>
+
+            <!-- <kendo-grid-column field="movementType" title="{{ 'journalPosting.shared.movementType' | translate }}"
+                    class="width130px">
+                </kendo-grid-column> -->
+            <kendo-grid-column field="" title="" class="width180px" [filterable]="false">
+                <ng-template kendoGridCellTemplate let-dataItem>
+                    <span>
+                        <a routerLink="/journal-posting/detail/{{dataItem.id}}"><i class="fa fa-eye"></i></a>
+                    </span>
+                </ng-template>
+            </kendo-grid-column>
+        </kendo-grid>
+    </div>
+
+</div>

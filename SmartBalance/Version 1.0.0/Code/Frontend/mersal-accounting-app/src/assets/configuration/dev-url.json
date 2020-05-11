@@ -1,0 +1,8 @@
+{
+    "baseApiUrl": "http://localhost/MersalAccountingService.WebAPI/api/",
+    "mersalApiUrl": "http://localhost/Mersal.WebAPI/api/",
+    "userManagmentApiUrl": "http://localhost/MersalAccountingService.WebAPI/api/",
+    "systemCodeApiUrl": "http://localhost/MersalAccountingService.WebAPI/api/",
+    "userManagmentUiUrl": "http://localhost/MersalAccountingService.WebAPI/api/",
+    "systemCodeUiUrl": "http://localhost/MersalAccountingService.WebAPI/api/"
+}

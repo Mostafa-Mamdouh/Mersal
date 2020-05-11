@@ -1,0 +1,52 @@
+<div class="container-fluid">
+    <div class="row header">
+        <div class="col-md-10">
+            <h3>{{ 'setting.AccountChartSetting.title' | translate }}</h3>
+        </div>
+        <div class="col-md-2">
+            <!-- <h4>{{ 'setting.AccountChartSetting.levelCount' | translate }} {{levelCount}}</h4> -->
+        </div>
+    </div>
+
+
+    <div class="row">
+            <div class="col-3">
+                    <label>{{ 'setting.AccountChartSetting.levelCount' | translate }} 
+                        </label>
+                            <input type="number" [value]="levelCount" class="form-control" disabled />
+            
+                </div>            
+    </div>
+<hr />
+    <!-- <div class="row levelCount width130px">
+            <label>{{ 'setting.AccountChartSetting.levelCount' | translate }}</label>
+    </div> -->
+
+    <loader [hidden]="!ListLoading"></loader>
+    <kendo-grid [data]="gridView" *ngIf="!ListLoading" [pageSize]="pageSize" [skip]="skip" [scrollable]="'none'"
+     [sortable]="true" (pageChange)="pageChange($event)" class="kendoGridHeightAndDirection">
+
+        <kendo-grid-column field="level" title="{{ 'setting.AccountChartSetting.level' | translate }}" class="width130px">
+        </kendo-grid-column>
+
+        <kendo-grid-column field="length" title="{{ 'setting.AccountChartSetting.length' | translate }}" class="width130px">
+                <ng-template kendoGridCellTemplate let-dataItem>
+                        <input type="number" [value]="dataItem.length" class="form-control" disabled />
+                    </ng-template>
+        </kendo-grid-column>
+
+    </kendo-grid>
+
+    <div class="row">
+        <div class="form-group col-lg-4">
+            <!-- <button type="submit" (click)="save()" [disabled]="!editorForm.valid || isProccessing"
+                class="btn btn-secondary">
+                <i class="fa fa-floppy-o verticalLine"></i> {{ 'shared.save' | translate }}
+            </button> -->
+            &nbsp;
+            <button routerLink="/setting/control-panel" class="btn btn-secondary">
+                <i class="fa fa-undo"></i> {{'shared.back' | translate }}
+            </button>
+        </div>
+    </div>
+</div>

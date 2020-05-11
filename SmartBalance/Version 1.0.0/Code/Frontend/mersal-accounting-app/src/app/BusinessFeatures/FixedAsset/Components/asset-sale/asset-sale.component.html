@@ -1,0 +1,23 @@
+<form role="form" 
+  class="margin-bootom-0" 
+  [formGroup]="modelForm"> 
+           <div class="card mb-3">
+             <div class="card-body table-responsive padding-sides-2">                       
+                          <div formArrayName="saleAssets" 
+                          *ngFor="let item of modelForm['controls'].saleAssets['controls']; let i=index;" >
+                            <div formGroupName="{{i}}">
+                              <input type="hidden" value="item.assetId" formControlName="assetId(index)" />
+                              <div class="width130px">
+                                  <label>{{'excludeAsset.shared.code' | translate}}: </label>
+                                  <label>{{item.brandCode}}</label>
+                                </div>
+                                <div class="width160px">
+                                  <label >{{'excludeAsset.shared.salePrice' | translate}}: </label>
+                                  <input type="number" formControlName="salePrice(index)">
+                                </div>
+                            </div>
+                          </div>
+                        
+                    </div>
+          </div>
+        </form>
